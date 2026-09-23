@@ -18,6 +18,7 @@ OUT_PATH = ROOT / "data" / "processed" / "corpus.parquet"
 QURAN_EDITIONS = {"ar": "quran-simple", "ms": "ms.basmeih", "en": "en.sahih"}
 HADITH_COLLECTIONS = ["bukhari", "muslim"]
 EXPECTED_AYAH_COUNT = 6236
+UNCLASSIFIED = "Tidak diklasifikasikan"
 
 COLUMNS = [
     "id", "source", "ref", "book_no", "item_no", "chapter_title",
@@ -26,15 +27,25 @@ COLUMNS = [
 
 TAG_RE = re.compile(r"<[^>]+>")
 WS_RE = re.compile(r"\s+")
+INVISIBLE_RE = re.compile(r"[\ufeff\u200b-\u200f]")
+AR_DIACRITICS_RE = re.compile(r"[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]")
+AR_ALIF_RE = re.compile(r"[\u0622\u0623\u0625\u0671]")
 
 
 def clean_text(text):
     if not isinstance(text, str):
         return None
     text = unicodedata.normalize("NFC", text)
+    text = INVISIBLE_RE.sub("", text)
     text = TAG_RE.sub(" ", text)
     text = WS_RE.sub(" ", text).strip()
     return text or None
+
+
+def ar_skeleton(text: str) -> str:
+    """Rangka huruf Arab: tanpa harakat, semua bentuk alif diseragamkan."""
+    text = AR_DIACRITICS_RE.sub("", text)
+    return AR_ALIF_RE.sub("\u0627", text)
 
 
 def load_json(path: Path):
@@ -76,6 +87,30 @@ def build_quran() -> pd.DataFrame:
     if len(df) != EXPECTED_AYAH_COUNT:
         print(f"AMARAN: {len(df)} ayat, dijangka {EXPECTED_AYAH_COUNT}")
 
+        # Buang Basmalah yang tercantum pada ayat 1 (kecuali Al-Fatihah & At-Taubah)
+    basmalah_words = df.loc[(df.surah_no == 1) & (df.ayah_no == 1), "text_ar"].iloc[0].split()
+    n = len(basmalah_words)
+    target = ar_skeleton(" ".join(basmalah_words))
+
+    def strip_basmalah(text):
+        words = text.split()
+        if len(words) > n and ar_skeleton(" ".join(words[:n])) == target:
+            return " ".join(words[n:])
+        return text
+
+    is_first = (df.ayah_no == 1) & ~df.surah_no.isin([1, 9])
+    original = df.loc[is_first, "text_ar"]
+    stripped = original.apply(strip_basmalah)
+    df.loc[is_first, "text_ar"] = stripped
+    removed = (stripped != original).sum()
+    print(f"[quran] Basmalah dibuang dari {removed} ayat pertama")
+
+    if removed < is_first.sum():
+        # Diagnostik: tunjuk perbezaan Unicode kalau masih ada yang tak padan
+        sample = original[stripped == original].iloc[0]
+        print("  Rujukan 1:1 :", [hex(ord(c)) for c in " ".join(basmalah_words)[:12]])
+        print("  Tak padan   :", [hex(ord(c)) for c in sample[:12]])
+
     ref = df["surah_no"].astype(str) + ":" + df["ayah_no"].astype(str)
     return pd.DataFrame({
         "id": "quran:" + ref,
@@ -94,9 +129,6 @@ def build_quran() -> pd.DataFrame:
 
 
 # ---------------- Hadis ----------------
-
-UNCLASSIFIED = "Tidak diklasifikasikan"
-
 
 def load_hadith_edition(lang: str, collection: str):
     data = load_json(RAW_DIR / "hadith" / f"{lang}-{collection}.json")
@@ -166,7 +198,7 @@ def build_hadith(collection: str) -> pd.DataFrame:
     df = fill_book_from_neighbors(df, collection, sections)
     df["chapter_title"] = (
         df["book_no"]
-        .apply(lambda b: clean_text(sections.get(str(b))) if pd.notna(b) else None)
+        .apply(lambda b: clean_text(sections.get(str(int(b)))) if pd.notna(b) else None)
         .fillna(UNCLASSIFIED)
     )
 
@@ -195,9 +227,13 @@ def validate(corpus: pd.DataFrame) -> None:
     print("\n=== Bilangan mengikut sumber ===")
     print(corpus["source"].value_counts().to_string())
 
-    cols = ["text_ar", "text_ms", "text_en", "chapter_title", "grade"]
+    cols = ["text_ar", "text_ms", "text_en", "grade"]
     print("\n=== Nilai kosong (%) ===")
     print((corpus[cols].isna().groupby(corpus["source"]).mean() * 100).round(1).to_string())
+
+    print("\n=== 'Tidak diklasifikasikan' mengikut sumber ===")
+    unclassified = (corpus["chapter_title"] == UNCLASSIFIED).groupby(corpus["source"]).sum()
+    print(unclassified.to_string())
 
 
 def main() -> None:
