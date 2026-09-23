@@ -1,0 +1,216 @@
+"""
+Bina data/processed/corpus.parquet daripada data mentah.
+
+Jalankan dari root repo:
+    python src/ingest/clean.py
+"""
+import json
+import re
+import unicodedata
+from pathlib import Path
+
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[2]
+RAW_DIR = ROOT / "data" / "raw"
+OUT_PATH = ROOT / "data" / "processed" / "corpus.parquet"
+
+QURAN_EDITIONS = {"ar": "quran-simple", "ms": "ms.basmeih", "en": "en.sahih"}
+HADITH_COLLECTIONS = ["bukhari", "muslim"]
+EXPECTED_AYAH_COUNT = 6236
+
+COLUMNS = [
+    "id", "source", "ref", "book_no", "item_no", "chapter_title",
+    "text_ar", "text_ms", "text_en", "grade", "grade_source", "book_inferred",
+]
+
+TAG_RE = re.compile(r"<[^>]+>")
+WS_RE = re.compile(r"\s+")
+
+
+def clean_text(text):
+    if not isinstance(text, str):
+        return None
+    text = unicodedata.normalize("NFC", text)
+    text = TAG_RE.sub(" ", text)
+    text = WS_RE.sub(" ", text).strip()
+    return text or None
+
+
+def load_json(path: Path):
+    if not path.exists():
+        raise FileNotFoundError(f"{path} tiada. Jalankan download.py dahulu.")
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def fmt_num(n) -> str:
+    """1.0 -> '1', 2.5 -> '2.5' (sesetengah nombor hadis bukan integer)."""
+    n = float(n)
+    return str(int(n)) if n.is_integer() else str(n)
+
+
+# ---------------- Quran ----------------
+
+def load_quran_edition(lang: str, edition: str) -> pd.DataFrame:
+    data = load_json(RAW_DIR / "quran" / f"{edition}.json")
+    rows = []
+    for surah in data["surahs"]:
+        for ayah in surah["ayahs"]:
+            rows.append({
+                "surah_no": surah["number"],
+                "ayah_no": ayah["numberInSurah"],
+                "surah_name": surah.get("englishName"),
+                f"text_{lang}": clean_text(ayah["text"]),
+            })
+    return pd.DataFrame(rows)
+
+
+def build_quran() -> pd.DataFrame:
+    keys = ["surah_no", "ayah_no"]
+    df = load_quran_edition("ar", QURAN_EDITIONS["ar"])
+    for lang in ("ms", "en"):
+        other = load_quran_edition(lang, QURAN_EDITIONS[lang]).drop(columns="surah_name")
+        df = df.merge(other, on=keys, how="outer", validate="one_to_one")
+
+    if len(df) != EXPECTED_AYAH_COUNT:
+        print(f"AMARAN: {len(df)} ayat, dijangka {EXPECTED_AYAH_COUNT}")
+
+    ref = df["surah_no"].astype(str) + ":" + df["ayah_no"].astype(str)
+    return pd.DataFrame({
+        "id": "quran:" + ref,
+        "source": "quran",
+        "ref": ref,
+        "book_no": df["surah_no"],
+        "item_no": df["ayah_no"].astype(float),
+        "chapter_title": df["surah_name"],
+        "text_ar": df["text_ar"],
+        "text_ms": df["text_ms"],
+        "text_en": df["text_en"],
+        "grade": None,
+        "grade_source": None,
+        "book_inferred": False,
+    })
+
+
+# ---------------- Hadis ----------------
+
+UNCLASSIFIED = "Tidak diklasifikasikan"
+
+
+def load_hadith_edition(lang: str, collection: str):
+    data = load_json(RAW_DIR / "hadith" / f"{lang}-{collection}.json")
+    sections = data.get("metadata", {}).get("sections", {})
+    rows = []
+    for h in data["hadiths"]:
+        ref = h.get("reference") or {}
+        rows.append({
+            "hadith_no": h["hadithnumber"],
+            "book_no": ref.get("book"),
+            "text": clean_text(h.get("text")),
+            "grades": h.get("grades") or [],
+        })
+    df = pd.DataFrame(rows)
+
+    dupes = df["hadith_no"].duplicated().sum()
+    if dupes:
+        print(f"AMARAN: {dupes} nombor hadis berulang dalam {lang}-{collection}, simpan yang pertama")
+        df = df.drop_duplicates("hadith_no")
+    return df, sections
+
+
+def fill_book_from_neighbors(df: pd.DataFrame, collection: str, sections: dict) -> pd.DataFrame:
+    """
+    Isi book_no = 0 berdasarkan hadis sebelum & selepas, tetapi hanya jika
+    dataset tiada tajuk untuk kitab 0 (maksudnya 0 = tidak dipetakan).
+    Hanya diisi jika kedua-dua jiran dalam kitab yang sama.
+    """
+    df = df.sort_values("hadith_no").copy()
+    book = pd.to_numeric(df["book_no"], errors="coerce")
+    if not clean_text(sections.get("0")):
+        book = book.replace(0, float("nan"))
+
+    prev_book = book.ffill()
+    next_book = book.bfill()
+    missing = book.isna()
+    fillable = missing & (prev_book == next_book)
+
+    df["book_no"] = book.where(~fillable, prev_book).astype("Int64")
+    df["book_inferred"] = fillable
+    print(f"[{collection}] book_no diisi dari jiran: {fillable.sum()}, "
+          f"masih tidak diklasifikasikan: {(missing & ~fillable).sum()}")
+    return df
+
+
+def pick_grade(grades, collection):
+    for g in grades:
+        if isinstance(g, dict) and g.get("grade"):
+            return clean_text(g["grade"]), "dataset"
+    # Bukhari & Muslim secara umum diterima sahih; ditanda supaya jelas ia bukan dari dataset
+    if collection in ("bukhari", "muslim"):
+        return "Sahih", "collection"
+    return None, None
+
+
+def build_hadith(collection: str) -> pd.DataFrame:
+    en, sections = load_hadith_edition("eng", collection)
+    ar, _ = load_hadith_edition("ara", collection)
+    ar = ar[["hadith_no", "text"]].rename(columns={"text": "text_ar"})
+    df = en.merge(ar, on="hadith_no", how="left", validate="one_to_one")
+
+    before = len(df)
+    df = df[df["text"].notna() | df["text_ar"].notna()]
+    if len(df) < before:
+        print(f"[{collection}] buang {before - len(df)} baris tanpa teks")
+
+    df = fill_book_from_neighbors(df, collection, sections)
+    df["chapter_title"] = (
+        df["book_no"]
+        .apply(lambda b: clean_text(sections.get(str(b))) if pd.notna(b) else None)
+        .fillna(UNCLASSIFIED)
+    )
+
+    grade_info = df["grades"].apply(lambda g: pick_grade(g, collection))
+    nums = df["hadith_no"].apply(fmt_num)
+    return pd.DataFrame({
+        "id": f"{collection}:" + nums,
+        "source": collection,
+        "ref": f"{collection.capitalize()} " + nums,
+        "book_no": df["book_no"],
+        "item_no": df["hadith_no"].astype(float),
+        "chapter_title": df["chapter_title"],
+        "text_ar": df["text_ar"],
+        "text_ms": None,
+        "text_en": df["text"],
+        "grade": grade_info.apply(lambda t: t[0]),
+        "grade_source": grade_info.apply(lambda t: t[1]),
+        "book_inferred": df["book_inferred"],
+    })
+
+
+# ---------------- Main ----------------
+
+def validate(corpus: pd.DataFrame) -> None:
+    assert corpus["id"].is_unique, "Ada id berulang!"
+    print("\n=== Bilangan mengikut sumber ===")
+    print(corpus["source"].value_counts().to_string())
+
+    cols = ["text_ar", "text_ms", "text_en", "chapter_title", "grade"]
+    print("\n=== Nilai kosong (%) ===")
+    print((corpus[cols].isna().groupby(corpus["source"]).mean() * 100).round(1).to_string())
+
+
+def main() -> None:
+    parts = [build_quran()] + [build_hadith(c) for c in HADITH_COLLECTIONS]
+    corpus = pd.concat(parts, ignore_index=True)[COLUMNS]
+    corpus["book_no"] = pd.to_numeric(corpus["book_no"], errors="coerce").astype("Int64")
+
+    validate(corpus)
+
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    corpus.to_parquet(OUT_PATH, index=False)
+    print(f"\nDisimpan: {OUT_PATH} ({len(corpus):,} baris)")
+
+
+if __name__ == "__main__":
+    main()
