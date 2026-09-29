@@ -40,7 +40,7 @@ def main() -> None:
     parser.add_argument("--rrf-k", type=int, default=60)
     parser.add_argument("--w-bm25", type=float, default=1.0)
     parser.add_argument("--w-dense", type=float, default=1.0)
-    parser.add_argument("--emb-variant", default="", choices=["", "ctx"])
+    parser.add_argument("--emb-variant", default="ctx", choices=["", "ctx"])
     parser.add_argument("--tag", default="", help="label tambahan untuk nama fail keputusan")
     args = parser.parse_args()
 
