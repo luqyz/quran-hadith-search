@@ -40,6 +40,7 @@ def main() -> None:
     parser.add_argument("--rrf-k", type=int, default=60)
     parser.add_argument("--w-bm25", type=float, default=1.0)
     parser.add_argument("--w-dense", type=float, default=1.0)
+    parser.add_argument("--emb-variant", default="", choices=["", "ctx"])
     parser.add_argument("--tag", default="", help="label tambahan untuk nama fail keputusan")
     args = parser.parse_args()
 
@@ -47,7 +48,8 @@ def main() -> None:
         testset = [json.loads(line) for line in f]
 
     searcher = Searcher(args.model, use_dense=any(m != "bm25" for m in args.methods),
-                        rrf_k=args.rrf_k, w_bm25=args.w_bm25, w_dense=args.w_dense)
+                    rrf_k=args.rrf_k, w_bm25=args.w_bm25, w_dense=args.w_dense,
+                    emb_variant=args.emb_variant)
 
     bm25_top_cache = {}
     rows = []

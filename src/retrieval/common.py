@@ -22,8 +22,13 @@ def model_slug(model_name: str) -> str:
     return model_name.split("/")[-1]
 
 
-def emb_path(model_name: str) -> Path:
-    return INDEX_DIR / f"emb_{model_slug(model_name)}.npy"
+CTX_MAX_WORDS = 12   # ayat lebih pendek dari ini diberi konteks (untuk dense sahaja)
+CTX_WINDOW = 1       # bilangan ayat jiran di setiap sisi
+
+
+def emb_path(model_name: str, variant: str = "") -> Path:
+    suffix = f"_{variant}" if variant else ""
+    return INDEX_DIR / f"emb_{model_slug(model_name)}{suffix}.npy"
 
 
 def is_e5(model_name: str) -> bool:

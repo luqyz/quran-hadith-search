@@ -59,7 +59,7 @@ class Section:
 class Searcher:
     def __init__(self, model_name: str = DEFAULT_MODEL, use_dense: bool = True,
                  rrf_k: int = 60, rrf_depth: int = 100,
-                 w_bm25: float = 1.0, w_dense: float = 1.0):
+                 w_bm25: float = 1.0, w_dense: float = 1.0, emb_variant: str = ""):
         units = pd.read_parquet(UNITS_PATH)
         self.corpus = pd.read_parquet(CORPUS_PATH).set_index("id")
         self.rrf_k = rrf_k
@@ -74,7 +74,7 @@ class Searcher:
         self.model = None
         emb = None
         if use_dense:
-            path = emb_path(model_name)
+            path = emb_path(model_name, emb_variant)
             if not path.exists():
                 raise FileNotFoundError(f"{path} tiada. Jalankan build_index.py dahulu.")
             emb = np.load(path)
