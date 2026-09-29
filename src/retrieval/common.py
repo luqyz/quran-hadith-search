@@ -37,3 +37,9 @@ def passage_prefix(model_name: str) -> str:
 
 def query_prefix(model_name: str) -> str:
     return "query: " if is_e5(model_name) else ""
+
+# Parameter BM25 per bahagian (ditala dengan src/eval/tune_bm25.py)
+BM25_PARAMS = {
+    "quran": {"k1": 1.2, "b": 0.3},
+    "hadith": {"k1": 1.5, "b": 0.75},
+}

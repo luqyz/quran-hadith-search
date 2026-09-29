@@ -11,8 +11,7 @@ import numpy as np
 import pandas as pd
 from rank_bm25 import BM25Okapi
 
-from common import (CORPUS_PATH, DEFAULT_MODEL, MT_LANG, UNITS_PATH,
-                    emb_path, query_prefix, tokenize)
+from common import (BM25_PARAMS, CORPUS_PATH, DEFAULT_MODEL, MT_LANG, UNITS_PATH, emb_path, query_prefix, tokenize)
 
 METHODS = ["bm25", "dense", "hybrid"]
 SECTIONS = {"quran": ["quran"], "hadith": ["bukhari", "muslim"]}
@@ -26,17 +25,22 @@ def section_of(doc_id: str) -> str:
 class Section:
     """Index BM25 & dense untuk satu bahagian (Quran atau hadis)."""
 
-    def __init__(self, units_sec: pd.DataFrame, emb_rows: np.ndarray, emb: np.ndarray | None):
+    def __init__(self, units_sec: pd.DataFrame, emb_rows: np.ndarray, emb: np.ndarray | None,
+                 k1: float = 1.5, b: float = 0.75):
         codes, uniques = pd.factorize(units_sec["doc_id"])
         self.doc_ids = uniques.to_numpy()
         self.codes = codes
-        self.bm25 = BM25Okapi([tokenize(t) for t in units_sec["text"]])
+        self.tokens = [tokenize(t) for t in units_sec["text"]]
+        self.set_bm25(k1, b)
 
         self.emb = None
         if emb is not None:
             dense_pos = np.flatnonzero((units_sec["lang"] != MT_LANG).to_numpy())
             self.dense_codes = codes[dense_pos]
             self.emb = emb[emb_rows[dense_pos]]
+
+    def set_bm25(self, k1: float, b: float) -> None:
+        self.bm25 = BM25Okapi(self.tokens, k1=k1, b=b)
 
     def _aggregate(self, unit_scores: np.ndarray, codes: np.ndarray) -> np.ndarray:
         out = np.full(len(self.doc_ids), -np.inf)
@@ -83,7 +87,8 @@ class Searcher:
         self.sections = {}
         for name, sources in SECTIONS.items():
             idx = np.flatnonzero(units["source"].isin(sources).to_numpy())
-            self.sections[name] = Section(units.iloc[idx], emb_row[idx], emb)
+            self.sections[name] = Section(units.iloc[idx], emb_row[idx], emb,
+                                          **BM25_PARAMS.get(name, {}))
 
         self._qcache: dict[str, np.ndarray] = {}
 
