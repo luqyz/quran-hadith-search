@@ -1,0 +1,15 @@
+{"qid": "q0000", "query": "berbuat baik kepada ibu bapa", "type": "manual", "relevant": ["quran:17:23", "quran:17:24", "quran:4:36", "quran:2:83", "quran:31:14", "quran:46:15", "quran:29:8"]}
+{"qid": "q0001", "query": "larangan mengumpat dan mengintip", "type": "manual", "relevant": ["quran:49:12"]}
+{"qid": "q0002", "query": "kemudahan selepas kesusahan", "type": "manual", "relevant": ["quran:94:5", "quran:94:6", "quran:65:7"]}
+{"qid": "q0003", "query": "resepi nasi lemak sambal sotong", "type": "negative", "relevant": []}
+{"qid": "q0004", "query": "cara tukar tayar kereta", "type": "negative", "relevant": []}
+{"qid": "q0005", "query": "keputusan perlawanan bola sepak semalam", "type": "negative", "relevant": []}
+{"qid": "q0006", "query": "harga emas hari ini", "type": "negative", "relevant": []}
+{"qid": "q0007", "query": "cara install python di windows", "type": "negative", "relevant": []}
+{"qid": "q0008", "query": "laptop terbaik untuk pelajar universiti", "type": "negative", "relevant": []}
+{"qid": "q0009", "query": "jadual tren KTM Komuter", "type": "negative", "relevant": []}
+{"qid": "q0010", "query": "cara menulis resume untuk fresh graduate", "type": "negative", "relevant": []}
+{"qid": "q0011", "query": "tips menanam cili dalam pasu", "type": "negative", "relevant": []}
+{"qid": "q0012", "query": "how to fix a leaking tap", "type": "negative", "relevant": []}
+{"qid": "q0013", "query": "best budget smartphone 2026", "type": "negative", "relevant": []}
+{"qid": "q0014", "query": "cara renew lesen memandu", "type": "negative", "relevant": []}

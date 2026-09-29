@@ -1,0 +1,31 @@
+﻿qid,type,method,query,top_score,top_ref,recall@5,recall@10,mrr@10,kategori
+q0000,manual,bm25,berbuat baik kepada ibu bapa,27.88558396562898,19:14,0.5714285714285714,0.7142857142857143,0.5,positif
+q0001,manual,bm25,larangan mengumpat dan mengintip,33.22609971402771,49:12,1.0,1.0,1.0,positif
+q0002,manual,bm25,kemudahan selepas kesusahan,21.68659431971531,92:10,0.0,0.3333333333333333,0.1111111111111111,positif
+q0003,negative,bm25,resepi nasi lemak sambal sotong,10.508636464803287,6:146,,,,negative
+q0004,negative,bm25,cara tukar tayar kereta,11.427119772006671,4:2,,,,negative
+q0005,negative,bm25,keputusan perlawanan bola sepak semalam,13.847788210974485,20:60,,,,negative
+q0006,negative,bm25,harga emas hari ini,13.923006494954572,40:17,,,,negative
+q0007,negative,bm25,cara install python di windows,13.534646517035076,26:155,,,,negative
+q0008,negative,bm25,laptop terbaik untuk pelajar universiti,7.063209375243859,25:47,,,,negative
+q0009,negative,bm25,jadual tren KTM Komuter,0.0,Bukhari 1,,,,negative
+q0010,negative,bm25,cara menulis resume untuk fresh graduate,13.560000135015187,18:109,,,,negative
+q0011,negative,bm25,tips menanam cili dalam pasu,12.766066326125616,12:47,,,,negative
+q0012,negative,bm25,how to fix a leaking tap,12.776331536880786,Muslim 663,,,,negative
+q0013,negative,bm25,best budget smartphone 2026,7.590305651124943,18:44,,,,negative
+q0014,negative,bm25,cara renew lesen memandu,11.630425921192812,46:30,,,,negative
+q0000,manual,dense,berbuat baik kepada ibu bapa,0.8424113988876343,31:3,0.0,0.0,0.0,positif
+q0001,manual,dense,larangan mengumpat dan mengintip,0.8440203666687012,35:19,0.0,0.0,0.0,positif
+q0002,manual,dense,kemudahan selepas kesusahan,0.8474206924438477,94:5,0.6666666666666666,0.6666666666666666,1.0,positif
+q0003,negative,dense,resepi nasi lemak sambal sotong,0.8344835042953491,44:44,,,,negative
+q0004,negative,dense,cara tukar tayar kereta,0.8058786392211914,37:2,,,,negative
+q0005,negative,dense,keputusan perlawanan bola sepak semalam,0.8158935308456421,78:10,,,,negative
+q0006,negative,dense,harga emas hari ini,0.800649106502533,9:35,,,,negative
+q0007,negative,dense,cara install python di windows,0.7767255306243896,71:20,,,,negative
+q0008,negative,dense,laptop terbaik untuk pelajar universiti,0.7861920595169067,92:6,,,,negative
+q0009,negative,dense,jadual tren KTM Komuter,0.836286187171936,Bukhari 4204,,,,negative
+q0010,negative,dense,cara menulis resume untuk fresh graduate,0.7927635312080383,2:282,,,,negative
+q0011,negative,dense,tips menanam cili dalam pasu,0.8395774960517883,51:33,,,,negative
+q0012,negative,dense,how to fix a leaking tap,0.791919469833374,Muslim 697,,,,negative
+q0013,negative,dense,best budget smartphone 2026,0.7851068377494812,83:26,,,,negative
+q0014,negative,dense,cara renew lesen memandu,0.8038956522941589,37:2,,,,negative
