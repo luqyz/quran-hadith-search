@@ -1,0 +1,207 @@
+﻿qid,type,method,query,top_score,top_ref,recall@5,recall@10,mrr@10,kategori
+q0000,synthetic_quran,hybrid,ciri orang bertakwa yang membawa dan membenarkan kebenaran,0.048651507139079855,39:33,1.0,1.0,1.0,positif
+q0001,synthetic_quran,hybrid,manusia tidak boleh lari dari kuasa Allah walau di mana berada,0.03925,22:8,1.0,1.0,0.2,positif
+q0002,synthetic_quran,hybrid,jangan membuat tandingan atau perumpamaan bagi Allah,0.0334026334026334,10:95,0.0,0.0,0.0,positif
+q0003,synthetic_quran,hybrid,orang paling zalim ialah yang mereka-reka dusta atas nama Allah,0.04771225838023,3:94,0.0,0.0,0.0,positif
+q0004,synthetic_quran,hybrid,kisah tuan kebun yang mahu memetik hasil pada awal pagi,0.047492767598842814,68:17,1.0,1.0,0.5,positif
+q0005,synthetic_quran,hybrid,malaikat turun membawa wahyu kepada hamba pilihan Allah,0.045771578029642546,97:4,1.0,1.0,0.5,positif
+q0006,synthetic_quran,hybrid,Firaun dan binaan kukuh yang dikuasainya,0.048651507139079855,89:10,1.0,1.0,1.0,positif
+q0007,synthetic_quran,hybrid,syurga Adn tempat Allah reda kepada mereka dan mereka reda kepada-Nya,0.03938194837007726,47:6,1.0,1.0,0.5,positif
+q0008,synthetic_quran,hybrid,Allah memberi makan dan rasa aman kepada kaum Quraisy,0.04918032786885246,106:1,0.0,0.0,0.0,positif
+q0009,synthetic_quran,hybrid,Allah beri pendengaran penglihatan dan hati tapi manusia jarang bersyukur,0.04891591750396616,67:23,1.0,1.0,0.5,positif
+q0010,synthetic_quran,hybrid,penyesalan orang yang terima buku amalan dengan tangan kiri,0.04498200719712116,84:10,1.0,1.0,0.5,positif
+q0011,synthetic_quran,hybrid,golongan kafir yang bersatu akan kalah dan lari,0.04841188524590164,54:45,1.0,1.0,1.0,positif
+q0012,synthetic_quran,hybrid,kesejahteraan ke atas Nabi Isa semasa lahir mati dan dibangkitkan,0.04353957341794465,19:33,1.0,1.0,1.0,positif
+q0013,synthetic_quran,hybrid,Nabi Lut menegur kaumnya kerana perbuatan keji yang belum pernah dilakukan,0.04918032786885246,29:28,1.0,1.0,0.5,positif
+q0014,synthetic_quran,hybrid,orang yang menukar petunjuk dengan kesesatan dan keampunan dengan azab,0.039649122807017545,47:17,1.0,1.0,0.3333333333333333,positif
+q0015,synthetic_quran,hybrid,Allah yang mencipta langit dan bumi mampu menghidupkan orang mati,0.04918032786885246,29:44,0.0,0.0,0.0,positif
+q0016,synthetic_quran,hybrid,suruhan mengembara dan melihat nasib umat terdahulu,0.046897546897546896,56:13,0.0,0.0,0.0,positif
+q0017,synthetic_quran,hybrid,orang kafir sentiasa berpaling setiap kali datang tanda dari Tuhan,0.04568764568764569,6:4,1.0,1.0,1.0,positif
+q0018,synthetic_quran,hybrid,no one will bear the sins of another person,0.04918032786885246,53:38,1.0,1.0,1.0,positif
+q0019,synthetic_quran,hybrid,teguran kepada Nabi kerana berpaling dari orang buta yang mahu belajar,0.039021758676497036,80:2,0.0,0.0,0.0,positif
+q0020,synthetic_quran,hybrid,jangan takut Aku bersama kamu mendengar dan melihat,0.04918032786885246,20:46,1.0,1.0,1.0,positif
+q0021,synthetic_quran,hybrid,belum tiba masa hati orang beriman khusyuk sebelum hati menjadi keras,0.04891591750396616,57:16,1.0,1.0,1.0,positif
+q0022,synthetic_quran,hybrid,kiamat datang secara tiba-tiba ketika manusia lalai,0.04592074592074592,43:66,1.0,1.0,1.0,positif
+q0023,synthetic_quran,hybrid,Musa dan Harun diutus kepada Firaun sebagai utusan Tuhan sekalian alam,0.04838709677419355,7:104,1.0,1.0,0.5,positif
+q0024,synthetic_quran,hybrid,memberi makan kerana Allah tanpa mengharap balasan atau terima kasih,0.04865990111891751,76:9,1.0,1.0,1.0,positif
+q0025,synthetic_quran,hybrid,separuh mahar jika bercerai sebelum bersama isteri,0.047379032258064516,2:237,1.0,1.0,1.0,positif
+q0026,synthetic_quran,hybrid,manusia dikembalikan ke dalam tanah dan dikeluarkan semula,0.04503676470588235,71:18,1.0,1.0,1.0,positif
+q0027,synthetic_quran,hybrid,Nabi Yaakub bersabar dengan sebaik-baiknya selepas kehilangan anaknya lagi,0.04052252732604639,2:132,0.0,0.0,0.0,positif
+q0028,synthetic_quran,hybrid,tetamu Nabi Ibrahim tidak menyentuh makanan yang dihidangkan,0.04764267990074442,15:51,0.0,0.0,0.0,positif
+q0029,synthetic_quran,hybrid,air hujan yang mencurah diturunkan dari awan,0.04918032786885246,78:14,1.0,1.0,1.0,positif
+q0030,synthetic_quran,hybrid,tugas Rasul hanya menyampaikan dengan jelas maka taatlah,0.043203551912568305,64:12,1.0,1.0,0.3333333333333333,positif
+q0031,synthetic_quran,hybrid,orang berdosa sanggup menebus diri dengan semua penghuni bumi,0.0432712215320911,14:49,0.0,0.0,0.0,positif
+q0032,synthetic_quran,hybrid,abang-abang Yusuf memujuk ayah mereka supaya mempercayai mereka,0.04865990111891751,12:11,1.0,1.0,1.0,positif
+q0033,synthetic_quran,hybrid,Nabi Ibrahim bersumpah akan bertindak terhadap berhala-berhala,0.03337041156840934,15:51,1.0,1.0,0.2,positif
+q0034,synthetic_quran,hybrid,Maryam yang menjaga kehormatannya dan ditiupkan roh,0.04498200719712116,70:29,0.0,1.0,0.1,positif
+q0035,synthetic_quran,hybrid,women cut their hands when they saw Prophet Yusuf,0.04841188524590164,12:50,1.0,1.0,0.3333333333333333,positif
+q0036,synthetic_quran,hybrid,kamu tahu penciptaan pertama kenapa tidak mengambil pengajaran,0.048651507139079855,56:62,1.0,1.0,1.0,positif
+q0037,synthetic_quran,hybrid,Al-Quran bukan dibawa turun oleh syaitan,0.04891591750396616,26:210,1.0,1.0,1.0,positif
+q0038,synthetic_quran,hybrid,tunaikan janji dengan Allah dan jangan langgar sumpah,0.042671259089169536,16:91,1.0,1.0,1.0,positif
+q0039,synthetic_quran,hybrid,menyerahkan segala urusan kepada Allah yang melihat hamba-Nya,0.04381654381654382,53:25,0.0,1.0,0.16666666666666666,positif
+q0040,synthetic_quran,hybrid,yang disembah selain Allah hanyalah berhala dan syaitan,0.04918032786885246,4:117,1.0,1.0,1.0,positif
+q0041,synthetic_quran,hybrid,orang ramai hampir berhimpit mengerumuni Nabi ketika beribadah,0.04891591750396616,72:19,1.0,1.0,1.0,positif
+q0042,synthetic_quran,hybrid,Musa suruh kaumnya minta tolong kepada Allah dan bersabar kerana bumi milik Allah,0.04918032786885246,7:128,1.0,1.0,1.0,positif
+q0043,synthetic_quran,hybrid,Nabi mengadu kepada Allah kaumnya tidak mahu beriman,0.039809209319390935,43:88,1.0,1.0,1.0,positif
+q0044,synthetic_quran,hybrid,rujuk atau lepaskan isteri dengan baik jangan tahan untuk menyakiti,0.044691647150663545,2:231,1.0,1.0,1.0,positif
+q0045,synthetic_quran,hybrid,dosa yang dilakukan hanya memudaratkan diri sendiri,0.04667577413479053,4:111,1.0,1.0,1.0,positif
+q0046,synthetic_quran,hybrid,perjanjian dengan musyrik di Masjidil Haram selagi mereka jujur,0.03278688524590164,9:7,1.0,1.0,1.0,positif
+q0047,synthetic_quran,hybrid,tinggalkan orang yang hanya mahukan kehidupan dunia,0.04404202995752292,53:29,1.0,1.0,1.0,positif
+q0048,synthetic_quran,hybrid,angin yang membinasakan menjadikan semua yang dilanggarnya hancur,0.04342046964997785,69:6,1.0,1.0,0.5,positif
+q0049,synthetic_quran,hybrid,amaran kepada orang yang mendakwa Allah mempunyai anak,0.04918032786885246,18:4,1.0,1.0,1.0,positif
+q0050,synthetic_quran,hybrid,orang murtad selepas jelas petunjuk kerana diperdaya syaitan,0.04891591750396616,43:37,0.0,0.0,0.0,positif
+q0051,synthetic_quran,hybrid,Zakariya finds food with Maryam in the prayer chamber,0.04210305823209049,3:37,1.0,1.0,1.0,positif
+q0052,synthetic_quran,hybrid,Bani Israil disuruh masuk pintu kota dengan merendah diri dan memohon ampun,0.047371031746031744,7:161,1.0,1.0,1.0,positif
+q0053,synthetic_quran,hybrid,setiap umat ada ajal yang tidak boleh dicepatkan atau dilambatkan,0.04456245670745786,7:34,0.0,1.0,0.16666666666666666,positif
+q0054,synthetic_quran,hybrid,adakah kamu sangka Allah mencipta kamu sia-sia,0.04270923209663503,37:96,0.0,1.0,0.125,positif
+q0055,synthetic_quran,hybrid,tuan kebun sangka mereka sesat jalan bila lihat kebun musnah,0.04490392648287385,44:25,1.0,1.0,0.5,positif
+q0056,synthetic_quran,hybrid,pemuda bernama Ibrahim yang mencela berhala,0.04718343765045739,21:60,1.0,1.0,1.0,positif
+q0057,synthetic_quran,hybrid,kaum Firaun merayu Musa berdoa supaya bala diangkat,0.045445113094002905,7:109,0.0,1.0,0.1,positif
+q0058,synthetic_quran,hybrid,Allah tidak memerlukan bantuan makhluk untuk mencipta langit dan bumi,0.04513256425824732,18:51,1.0,1.0,1.0,positif
+q0059,synthetic_quran,hybrid,jangan sekutukan Allah nanti tercela dan tidak ditolong,0.04456245670745786,17:22,1.0,1.0,1.0,positif
+q0060,synthetic_quran,hybrid,bertasbih pada waktu malam dan ketika bintang terbenam,0.04918032786885246,52:49,1.0,1.0,1.0,positif
+q0061,synthetic_quran,hybrid,Allah menolong orang Islam di Badar ketika mereka lemah,0.04918032786885246,3:123,1.0,1.0,1.0,positif
+q0062,synthetic_quran,hybrid,surah tentang datangnya pertolongan Allah dan kemenangan,0.04918032786885246,110:1,1.0,1.0,1.0,positif
+q0063,synthetic_quran,hybrid,seruan kepada semua manusia supaya menyembah Tuhan yang mencipta mereka,0.04419642857142857,2:21,1.0,1.0,1.0,positif
+q0064,synthetic_quran,hybrid,sembah Allah dengan ikhlas kerana Al-Quran diturunkan dengan kebenaran,0.03946488294314381,39:2,1.0,1.0,1.0,positif
+q0065,synthetic_quran,hybrid,doa Allah akan menghimpunkan manusia pada hari yang tiada keraguan,0.04838709677419355,3:9,1.0,1.0,1.0,positif
+q0066,synthetic_quran,hybrid,orang yang menunaikan janji Allah dan tidak merosakkan perjanjian,0.04918032786885246,13:20,1.0,1.0,1.0,positif
+q0067,synthetic_quran,hybrid,diuji sekali dua kali setiap tahun tetapi tetap tidak bertaubat,0.04918032786885246,9:126,1.0,1.0,1.0,positif
+q0068,synthetic_quran,hybrid,balasan neraka bagi yang memperolok ayat Allah dan rasul,0.04568764568764569,18:106,1.0,1.0,1.0,positif
+q0069,synthetic_quran,hybrid,taubat yang sebenar diikuti dengan amal soleh,0.04771225838023,25:71,1.0,1.0,1.0,positif
+q0070,synthetic_quran,hybrid,pada hari kiamat tiada siapa boleh beri manfaat atau mudarat kepada kawannya,0.040522875816993466,2:123,1.0,1.0,0.2,positif
+q0071,synthetic_quran,hybrid,mereka kata Allah ada anak sedangkan Dia Maha Kaya,0.04865990111891751,10:68,1.0,1.0,1.0,positif
+q0072,synthetic_quran,hybrid,syurga dengan pasangan yang suci dan naungan yang teduh,0.04537894986932763,77:41,1.0,1.0,0.3333333333333333,positif
+q0073,synthetic_quran,hybrid,Nabi tidak tahu perbincangan malaikat di alam tinggi tanpa wahyu,0.04918032786885246,38:69,1.0,1.0,1.0,positif
+q0074,synthetic_quran,hybrid,siapa yang menciptakan manusia daripada air mani,0.04764267990074442,25:54,0.0,0.0,0.0,positif
+q0075,synthetic_quran,hybrid,rasul terdahulu juga diejek lalu Allah beri tempoh kemudian mengazab,0.04413702239789197,39:25,1.0,1.0,0.5,positif
+q0076,synthetic_quran,hybrid,Nabi keluar awal pagi menyusun tentera di medan Uhud,0.047643442622950824,19:11,1.0,1.0,0.5,positif
+q0077,synthetic_quran,hybrid,hanya orang rugi yang rasa aman dari rancangan Allah,0.04353957341794465,7:99,1.0,1.0,1.0,positif
+q0078,synthetic_quran,hybrid,Maryam hairan bagaimana dapat anak tanpa disentuh lelaki,0.04918032786885246,19:20,1.0,1.0,1.0,positif
+q0079,synthetic_quran,hybrid,orang yang enggan bila disuruh sembahyang,0.04713064713064713,70:22,1.0,1.0,0.5,positif
+q0080,synthetic_quran,hybrid,mereka menisbahkan kepada Allah apa yang mereka sendiri benci,0.04500226142017187,6:24,1.0,1.0,0.3333333333333333,positif
+q0081,synthetic_quran,hybrid,Allah mengampunkan dan menyeksa sesiapa yang Dia kehendaki,0.045607398066414465,3:129,1.0,1.0,0.5,positif
+q0082,synthetic_quran,hybrid,syaitan dihalang daripada mendengar wahyu,0.04865990111891751,26:212,1.0,1.0,1.0,positif
+q0083,synthetic_quran,hybrid,tiada seksaan yang setanding seksaan Allah pada hari itu,0.048651507139079855,89:25,1.0,1.0,1.0,positif
+q0084,synthetic_quran,hybrid,hujan menghidupkan tanah mati begitu juga kebangkitan dari kubur,0.046244188891607536,43:11,1.0,1.0,0.3333333333333333,positif
+q0085,synthetic_quran,hybrid,hujah diulang-ulang dalam Al-Quran tetapi kebanyakan manusia tetap kufur,0.04675081813931744,17:89,1.0,1.0,0.5,positif
+q0086,synthetic_quran,hybrid,kaum dibinasakan angin tujuh malam lapan hari bergelimpangan seperti batang kurma,0.04918032786885246,69:7,1.0,1.0,1.0,positif
+q0087,synthetic_quran,hybrid,manusia dicipta dari satu diri dengan tempat tetap dan tempat simpanan,0.045445113094002905,6:98,1.0,1.0,1.0,positif
+q0088,synthetic_quran,hybrid,pembesar Firaun menuduh Musa mahu mengusir mereka dari negeri,0.04503676470588235,7:127,0.0,1.0,0.1,positif
+q0089,synthetic_quran,hybrid,diperintah menyembah Tuhan negeri Makkah yang dimuliakan,0.04496487119437939,106:3,1.0,1.0,0.2,positif
+q0090,synthetic_quran,hybrid,Nabi Ibrahim yang menyempurnakan segala perintah,0.048651507139079855,53:37,1.0,1.0,1.0,positif
+q0091,synthetic_quran,hybrid,syurga diwarisi kerana amalan yang dikerjakan,0.03720998103020575,76:12,0.0,1.0,0.125,positif
+q0092,synthetic_quran,hybrid,Allah bertanya di mana sekutu-sekutu-Ku pada hari kiamat,0.04918032786885246,28:62,1.0,1.0,0.3333333333333333,positif
+q0093,synthetic_quran,hybrid,Nabi Soleh dan pengikutnya diselamatkan dari azab,0.03896103896103896,37:76,0.0,0.0,0.0,positif
+q0094,synthetic_quran,hybrid,Allah menghidupkan dan mematikan dan tiada pelindung selain-Nya,0.04689826302729529,53:44,1.0,1.0,0.3333333333333333,positif
+q0095,synthetic_quran,hybrid,golongan yang terdahulu dalam kebaikan,0.046342571558382555,87:18,1.0,1.0,0.5,positif
+q0096,synthetic_quran,hybrid,kalau dikembalikan ke dunia pun mereka akan ulang kesalahan yang sama,0.04667577413479053,6:28,1.0,1.0,1.0,positif
+q0097,synthetic_quran,hybrid,kaum Thamud berpecah dua puak selepas seruan Nabi Soleh,0.046871392288155164,27:45,1.0,1.0,1.0,positif
+q0098,synthetic_quran,hybrid,wanita beriman disuruh melabuhkan pakaian supaya tidak diganggu,0.04771225838023,33:59,1.0,1.0,1.0,positif
+q0099,synthetic_quran,hybrid,keadaan golongan kiri pada hari kiamat,0.0416038589086524,56:41,1.0,1.0,1.0,positif
+q0100,synthetic_quran,hybrid,Prophet Shuaib tells his people to give full measure and weight,0.04458874458874459,Bukhari 2241,1.0,1.0,0.5,positif
+q0101,synthetic_quran,hybrid,humans are created hasty,0.04394115369725125,37:11,0.0,0.0,0.0,positif
+q0102,synthetic_quran,hybrid,ujian takut lapar dan kehilangan harta serta berita gembira untuk orang sabar,0.04918032786885246,2:155,1.0,1.0,1.0,positif
+q0103,synthetic_quran,hybrid,langit dan bumi tidak dicipta dengan sia-sia,0.039649256576439196,44:29,0.0,0.0,0.0,positif
+q0104,synthetic_quran,hybrid,penghuni neraka terpaksa minum dan maut datang dari semua arah tapi tidak mati,0.048131080389144903,20:74,1.0,1.0,0.3333333333333333,positif
+q0105,synthetic_quran,hybrid,binatang ternak dijadikan untuk ditunggang dan dimakan,0.048171500630517027,6:142,1.0,1.0,0.25,positif
+q0106,synthetic_quran,hybrid,ahli kitab yang soleh menyuruh kebaikan dan bersegera beramal,0.04191176470588236,13:29,0.0,0.0,0.0,positif
+q0107,synthetic_quran,hybrid,tafsiran mimpi dua sahabat Nabi Yusuf dalam penjara,0.04793840039741679,12:42,0.0,0.0,0.0,positif
+q0108,synthetic_quran,hybrid,perhiasan dunia sebagai ujian siapa paling baik amalannya,0.04838709677419355,18:7,1.0,1.0,1.0,positif
+q0109,synthetic_quran,hybrid,manusia sangat tidak bersyukur kepada Tuhannya,0.04918032786885246,100:6,1.0,1.0,1.0,positif
+q0110,synthetic_quran,hybrid,the army of the elephant that tried to destroy the Kaaba,0.047492767598842814,105:1,1.0,1.0,1.0,positif
+q0111,synthetic_quran,hybrid,Musa minta kaumnya membiarkannya jika tidak mahu beriman,0.048651507139079855,10:84,0.0,0.0,0.0,positif
+q0112,synthetic_quran,hybrid,seeking protection from the evil of the envious,0.04098952690501986,113:4,0.0,0.0,0.0,positif
+q0113,synthetic_quran,hybrid,sembahan palsu akan mengingkari penyembahnya dan menjadi musuh,0.04145408163265306,43:67,1.0,1.0,0.5,positif
+q0114,synthetic_quran,hybrid,Musa sees a fire and tells his family,0.048651507139079855,28:29,1.0,1.0,0.5,positif
+q0115,synthetic_quran,hybrid,Firaun perintah bunuh anak lelaki orang beriman,0.042055310096547206,40:25,1.0,1.0,1.0,positif
+q0116,synthetic_quran,hybrid,doa minta pasangan dan zuriat yang menyejukkan mata,0.04289636238846946,14:40,1.0,1.0,0.2,positif
+q0117,synthetic_quran,hybrid,orang kafir diberi tempoh hidup supaya bertambah dosa,0.044150521609538,3:178,1.0,1.0,1.0,positif
+q0118,synthetic_quran,hybrid,orang yang mencintai sekutu seperti mencintai Allah,0.04918032786885246,2:165,1.0,1.0,1.0,positif
+q0119,synthetic_quran,hybrid,bila disuruh sujud kepada Ar-Rahman mereka bertanya siapa Ar-Rahman,0.04727963886909005,25:60,1.0,1.0,1.0,positif
+q0120,synthetic_quran,hybrid,nabi takut kaumnya ditimpa azab hari yang dahsyat,0.04891591750396616,26:135,1.0,1.0,1.0,positif
+q0121,synthetic_quran,hybrid,soalan tentang arak dan judi yang dosanya lebih besar dari manfaat,0.04891591750396616,2:219,1.0,1.0,1.0,positif
+q0122,synthetic_quran,hybrid,shirk is the sin Allah does not forgive,0.04788306451612903,4:48,1.0,1.0,1.0,positif
+q0123,synthetic_quran,hybrid,datang kepada Allah seorang diri seperti mula dicipta tanpa harta,0.04056437389770723,26:89,0.0,0.0,0.0,positif
+q0124,synthetic_quran,hybrid,Adam dan Hawa makan buah pohon larangan lalu terdedah aurat,0.04918032786885246,20:121,1.0,1.0,1.0,positif
+q0125,synthetic_quran,hybrid,penyembah memanggil sekutu mereka tetapi tidak disahut,0.04595669465311533,28:64,1.0,1.0,1.0,positif
+q0126,synthetic_quran,hybrid,taat kepada Allah dan Rasul kerana Allah tidak suka orang kafir,0.04813947436898257,3:32,1.0,1.0,1.0,positif
+q0127,synthetic_quran,hybrid,khabar gembira kelahiran Nabi Ishak,0.04554079696394687,37:112,1.0,1.0,1.0,positif
+q0128,synthetic_hadith,hybrid,larangan jual buah kurma sebelum masak dan jual perak secara bertangguh,0.03885003885003885,26:148,0.0,0.0,0.0,positif
+q0129,synthetic_hadith,hybrid,Nabi menjamakkan Maghrib dan Isyak di Muzdalifah,0.03278688524590164,2:198,0.0,0.0,0.0,positif
+q0130,synthetic_hadith,hybrid,bawa anak panah dalam masjid mesti pegang mata panahnya,0.03278688524590164,72:18,0.0,0.0,0.0,positif
+q0131,synthetic_hadith,hybrid,solat sunat empat rakaat sebelum Zohor dan dua rakaat sebelum Subuh,0.040661425860666844,50:39,0.0,0.0,0.0,positif
+q0132,synthetic_hadith,hybrid,perumpamaan ilmu dan petunjuk seperti hujan yang jatuh atas pelbagai tanah,0.03915343915343915,13:17,0.0,0.0,0.0,positif
+q0133,synthetic_hadith,hybrid,sesiapa yang dihisab secara terperinci akan binasa,0.047492767598842814,84:8,0.0,0.0,0.0,positif
+q0134,synthetic_hadith,hybrid,do not curse time because Allah is time,0.04865990111891751,Muslim 5866,0.0,1.0,0.14285714285714285,positif
+q0135,synthetic_hadith,hybrid,mandi sebelum solat Jumaat dan teguran Umar kepada Uthman,0.038837011884550084,51:18,0.0,0.0,0.0,positif
+q0136,synthetic_hadith,hybrid,Ibnu Masud tahu di mana setiap ayat Al-Quran diturunkan,0.046875,26:192,0.0,0.0,0.0,positif
+q0137,synthetic_hadith,hybrid,makmum tidak turun sujud sehingga dahi Nabi sampai ke lantai,0.038373095717160105,26:46,0.0,0.0,0.0,positif
+q0138,synthetic_hadith,hybrid,jual buah kurma hanya bila sudah merah atau kuning,0.04525954525954526,55:11,0.0,0.0,0.0,positif
+q0139,synthetic_hadith,hybrid,women are like glass vessels drive the camels gently,0.04918032786885246,Bukhari 6210,1.0,1.0,0.3333333333333333,positif
+q0140,synthetic_hadith,hybrid,zikir tiada tuhan selain Allah yang memenangkan tentera-Nya,0.047162673392181595,27:26,0.0,0.0,0.0,positif
+q0141,synthetic_hadith,hybrid,mengeluarkan Yahudi dan Nasrani dari Semenanjung Arab,0.035437430786267994,79:31,0.0,0.0,0.0,positif
+q0142,synthetic_hadith,hybrid,kisah orang sakit yang minum susu unta lalu membunuh penggembala,0.03829225352112676,56:55,0.0,0.0,0.0,positif
+q0143,synthetic_hadith,hybrid,Aisha's lost necklace and the revelation of tayammum,0.04918032786885246,Bukhari 5882,1.0,1.0,0.3333333333333333,positif
+q0144,synthetic_hadith,hybrid,Nabi tawaf menunggang unta dan bertakbir di Hajarul Aswad,0.03278688524590164,22:27,0.0,0.0,0.0,positif
+q0145,synthetic_hadith,hybrid,Nabi sujud sehingga anak kambing boleh lalu di bawah lengannya,0.03354700854700855,26:46,0.0,0.0,0.0,positif
+q0146,synthetic_hadith,hybrid,nazar berjalan kaki tanpa kasut ke Kaabah,0.033698630136986304,37:23,0.0,0.0,0.0,positif
+q0147,synthetic_hadith,hybrid,kenapa Nabi tidak bertahallul selepas umrah kerana membawa binatang korban,0.03278688524590164,22:28,0.0,0.0,0.0,positif
+q0148,synthetic_hadith,hybrid,help your brother whether he is an oppressor or oppressed,0.04865990111891751,Bukhari 2443,1.0,1.0,0.5,positif
+q0149,synthetic_hadith,hybrid,cara solat ketika dalam bahaya dengan dua saf,0.043064182194616975,55:66,0.0,0.0,0.0,positif
+q0150,synthetic_hadith,hybrid,Nabi menukar nama Barrah kepada Zainab,0.03278688524590164,Bukhari 6192,1.0,1.0,1.0,positif
+q0151,synthetic_hadith,hybrid,kesan minyak wangi di rambut Nabi ketika bertalbiah,0.03278688524590164,55:37,0.0,0.0,0.0,positif
+q0152,synthetic_hadith,hybrid,Nabi membaca surah Qaf dalam solat,0.04122965641952984,37:3,0.0,0.0,0.0,positif
+q0153,synthetic_hadith,hybrid,solat ketika berdepan musuh boleh sambil berdiri atau menunggang,0.04511453950444133,40:71,0.0,0.0,0.0,positif
+q0154,synthetic_hadith,hybrid,orang berihram yang tiada kain boleh memakai seluar dan khuf,0.04793840039741679,44:53,0.0,0.0,0.0,positif
+q0155,synthetic_hadith,hybrid,two people punished in their graves for urine and spreading gossip,0.04841188524590164,Bukhari 1378,1.0,1.0,0.3333333333333333,positif
+q0156,synthetic_hadith,hybrid,khutbah hari Nahar darah harta dan maruah kamu adalah suci,0.0357927786499215,64:15,0.0,0.0,0.0,positif
+q0157,synthetic_hadith,hybrid,lelaki menggigit tangan orang lalu giginya tercabut tanpa pampasan,0.045944779982743746,5:38,0.0,0.0,0.0,positif
+q0158,synthetic_hadith,hybrid,Nabi suruh lelaki menunggang unta korbannya,0.03278688524590164,22:27,0.0,0.0,0.0,positif
+q0159,synthetic_hadith,hybrid,Nabi berkata kepada wanita Ansar kamu antara orang paling aku sayang,0.03278688524590164,12:9,0.0,0.0,0.0,positif
+q0160,synthetic_hadith,hybrid,kain kafan Nabi tiga helai kain putih dari Yaman,0.03948753948753949,77:30,0.0,0.0,0.0,positif
+q0161,synthetic_hadith,hybrid,hak tetamu jika penduduk tidak melayan dengan baik,0.04098360655737705,24:49,0.0,0.0,0.0,positif
+q0162,synthetic_hadith,hybrid,melihat Tuhan seperti melihat bulan purnama dan jaga solat Subuh dan Asar,0.03634425276216321,6:96,0.0,0.0,0.0,positif
+q0163,synthetic_hadith,hybrid,Madinah seperti relau yang membuang kekotoran,0.04404202995752292,44:46,0.0,0.0,0.0,positif
+q0164,synthetic_hadith,hybrid,pemberian seumur hidup menjadi milik penerima dan warisnya,0.03604302983253854,3:109,0.0,0.0,0.0,positif
+q0165,synthetic_hadith,hybrid,sedekah daging kambing dari Nusaibah yang sudah sampai ke tempatnya,0.044763513513513514,56:83,0.0,0.0,0.0,positif
+q0166,synthetic_hadith,hybrid,anak dinisbahkan kepada pemilik tempat tidur dan perintah Saudah berhijab,0.03278688524590164,56:34,0.0,0.0,0.0,positif
+q0167,synthetic_hadith,hybrid,Abu Bakar mendukung Hasan yang mirip Nabi,0.042887895346911745,Bukhari 3543,0.0,0.0,0.0,positif
+q0168,synthetic_hadith,hybrid,larangan menyewakan tanah pertanian,0.039929742388758786,33:27,0.0,0.0,0.0,positif
+q0169,synthetic_hadith,hybrid,Uqbah meletakkan isi perut unta atas belakang Nabi ketika sujud,0.03278688524590164,37:103,0.0,0.0,0.0,positif
+q0170,synthetic_hadith,hybrid,sujud sahwi kerana terlupa duduk tahiyat awal,0.03833333333333334,26:46,0.0,0.0,0.0,positif
+q0171,synthetic_hadith,hybrid,ayat mata terbeliak dan hati sampai ke kerongkong berlaku semasa perang Khandaq,0.039618788291354665,56:83,0.0,0.0,0.0,positif
+q0172,synthetic_hadith,hybrid,asal usul nama Ansar,0.03397362385321101,Bukhari 17,0.0,0.0,0.0,positif
+q0173,manual,hybrid,berbuat baik kepada ibu bapa,0.04891591750396616,19:14,0.42857142857142855,0.7142857142857143,0.3333333333333333,positif
+q0174,manual,hybrid,larangan mengumpat dan mengintip,0.03278688524590164,49:12,1.0,1.0,1.0,positif
+q0175,manual,hybrid,kemudahan selepas kesusahan,0.04771225838023,92:10,0.6666666666666666,0.6666666666666666,0.5,positif
+q0176,manual,hybrid,kelebihan bersedekah di jalan Allah,0.045979778526721235,42:53,0.0,0.0,0.0,positif
+q0177,manual,hybrid,larangan riba,0.046300398759415155,2:275,0.5,0.75,1.0,positif
+q0178,manual,hybrid,kewajipan berpuasa bulan Ramadan,0.04918032786885246,2:185,0.5,1.0,1.0,positif
+q0179,manual,hybrid,Allah tidak membebani melebihi kemampuan,0.03278688524590164,65:7,0.0,0.0,0.0,positif
+q0180,manual,hybrid,jangan berputus asa dari rahmat Allah,0.037658227848101265,10:95,0.5,1.0,0.5,positif
+q0181,manual,hybrid,berlaku adil walaupun terhadap diri sendiri,0.04643206256109482,75:15,0.0,0.0,0.0,positif
+q0182,manual,hybrid,larangan arak dan judi,0.04918032786885246,5:90,1.0,1.0,1.0,positif
+q0183,manual,hybrid,kewajipan menunaikan haji,0.044136460554371,2:197,0.5,0.5,0.2,positif
+q0184,manual,hybrid,suruhan menutup aurat bagi wanita,0.04574275362318841,33:59,1.0,1.0,1.0,positif
+q0185,manual,hybrid,hati menjadi tenang dengan mengingati Allah,0.04580520732883317,37:143,0.0,1.0,0.16666666666666666,positif
+q0186,manual,hybrid,tujuan manusia diciptakan,0.04891591750396616,86:5,0.0,0.0,0.0,positif
+q0187,manual,hybrid,setiap yang bernyawa pasti mati,0.04060150375939849,56:88,0.0,0.3333333333333333,0.16666666666666666,positif
+q0188,manual,hybrid,Allah dekat dan memperkenankan doa,0.041898939039741054,12:34,0.0,0.0,0.0,positif
+q0189,manual,hybrid,larangan membunuh tanpa hak,0.04240226986128626,25:68,0.0,0.3333333333333333,0.1,positif
+q0190,manual,hybrid,jangan makan harta anak yatim,0.04771225838023,4:2,0.0,0.6666666666666666,0.16666666666666666,positif
+q0191,manual,hybrid,periksa dahulu berita yang dibawa orang fasik,0.03911753800519095,4:138,1.0,1.0,0.5,positif
+q0192,manual,hybrid,amalan bergantung pada niat,0.03278688524590164,86:9,0.0,0.0,0.0,positif
+q0193,manual,hybrid,muslim sejati tidak menyakiti orang lain dengan lidah dan tangan,0.03278688524590164,6:7,0.0,0.0,0.0,positif
+q0194,negative,hybrid,resepi nasi lemak sambal sotong,0.0369281045751634,1:4,,,,negative
+q0195,negative,hybrid,cara tukar tayar kereta,0.04103370001746115,79:2,,,,negative
+q0196,negative,hybrid,keputusan perlawanan bola sepak semalam,0.03278688524590164,20:60,,,,negative
+q0197,negative,hybrid,harga emas hari ini,0.04813947436898257,9:35,,,,negative
+q0198,negative,hybrid,cara install python di windows,0.03278688524590164,26:155,,,,negative
+q0199,negative,hybrid,laptop terbaik untuk pelajar universiti,0.03278688524590164,25:47,,,,negative
+q0200,negative,hybrid,jadual tren KTM Komuter,0.03466703206357906,1:4,,,,negative
+q0201,negative,hybrid,cara menulis resume untuk fresh graduate,0.047379032258064516,82:11,,,,negative
+q0202,negative,hybrid,tips menanam cili dalam pasu,0.035873015873015876,53:46,,,,negative
+q0203,negative,hybrid,how to fix a leaking tap,0.04865990111891751,Muslim 663,,,,negative
+q0204,negative,hybrid,best budget smartphone 2026,0.03278688524590164,18:44,,,,negative
+q0205,negative,hybrid,cara renew lesen memandu,0.03571428571428571,79:2,,,,negative
