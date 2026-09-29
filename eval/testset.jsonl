@@ -1,15 +1,206 @@
-{"qid": "q0000", "query": "berbuat baik kepada ibu bapa", "type": "manual", "relevant": ["quran:17:23", "quran:17:24", "quran:4:36", "quran:2:83", "quran:31:14", "quran:46:15", "quran:29:8"]}
-{"qid": "q0001", "query": "larangan mengumpat dan mengintip", "type": "manual", "relevant": ["quran:49:12"]}
-{"qid": "q0002", "query": "kemudahan selepas kesusahan", "type": "manual", "relevant": ["quran:94:5", "quran:94:6", "quran:65:7"]}
-{"qid": "q0003", "query": "resepi nasi lemak sambal sotong", "type": "negative", "relevant": []}
-{"qid": "q0004", "query": "cara tukar tayar kereta", "type": "negative", "relevant": []}
-{"qid": "q0005", "query": "keputusan perlawanan bola sepak semalam", "type": "negative", "relevant": []}
-{"qid": "q0006", "query": "harga emas hari ini", "type": "negative", "relevant": []}
-{"qid": "q0007", "query": "cara install python di windows", "type": "negative", "relevant": []}
-{"qid": "q0008", "query": "laptop terbaik untuk pelajar universiti", "type": "negative", "relevant": []}
-{"qid": "q0009", "query": "jadual tren KTM Komuter", "type": "negative", "relevant": []}
-{"qid": "q0010", "query": "cara menulis resume untuk fresh graduate", "type": "negative", "relevant": []}
-{"qid": "q0011", "query": "tips menanam cili dalam pasu", "type": "negative", "relevant": []}
-{"qid": "q0012", "query": "how to fix a leaking tap", "type": "negative", "relevant": []}
-{"qid": "q0013", "query": "best budget smartphone 2026", "type": "negative", "relevant": []}
-{"qid": "q0014", "query": "cara renew lesen memandu", "type": "negative", "relevant": []}
+{"qid": "q0000", "query": "ciri orang bertakwa yang membawa dan membenarkan kebenaran", "type": "synthetic_quran", "relevant": ["quran:39:33"]}
+{"qid": "q0001", "query": "manusia tidak boleh lari dari kuasa Allah walau di mana berada", "type": "synthetic_quran", "relevant": ["quran:42:31"]}
+{"qid": "q0002", "query": "jangan membuat tandingan atau perumpamaan bagi Allah", "type": "synthetic_quran", "relevant": ["quran:16:74"]}
+{"qid": "q0003", "query": "orang paling zalim ialah yang mereka-reka dusta atas nama Allah", "type": "synthetic_quran", "relevant": ["quran:10:17"]}
+{"qid": "q0004", "query": "kisah tuan kebun yang mahu memetik hasil pada awal pagi", "type": "synthetic_quran", "relevant": ["quran:68:22"]}
+{"qid": "q0005", "query": "malaikat turun membawa wahyu kepada hamba pilihan Allah", "type": "synthetic_quran", "relevant": ["quran:16:2"]}
+{"qid": "q0006", "query": "Firaun dan binaan kukuh yang dikuasainya", "type": "synthetic_quran", "relevant": ["quran:89:10"]}
+{"qid": "q0007", "query": "syurga Adn tempat Allah reda kepada mereka dan mereka reda kepada-Nya", "type": "synthetic_quran", "relevant": ["quran:98:8"]}
+{"qid": "q0008", "query": "Allah memberi makan dan rasa aman kepada kaum Quraisy", "type": "synthetic_quran", "relevant": ["quran:106:4"]}
+{"qid": "q0009", "query": "Allah beri pendengaran penglihatan dan hati tapi manusia jarang bersyukur", "type": "synthetic_quran", "relevant": ["quran:23:78"]}
+{"qid": "q0010", "query": "penyesalan orang yang terima buku amalan dengan tangan kiri", "type": "synthetic_quran", "relevant": ["quran:69:25"]}
+{"qid": "q0011", "query": "golongan kafir yang bersatu akan kalah dan lari", "type": "synthetic_quran", "relevant": ["quran:54:45"]}
+{"qid": "q0012", "query": "kesejahteraan ke atas Nabi Isa semasa lahir mati dan dibangkitkan", "type": "synthetic_quran", "relevant": ["quran:19:33"]}
+{"qid": "q0013", "query": "Nabi Lut menegur kaumnya kerana perbuatan keji yang belum pernah dilakukan", "type": "synthetic_quran", "relevant": ["quran:7:80"]}
+{"qid": "q0014", "query": "orang yang menukar petunjuk dengan kesesatan dan keampunan dengan azab", "type": "synthetic_quran", "relevant": ["quran:2:175"]}
+{"qid": "q0015", "query": "Allah yang mencipta langit dan bumi mampu menghidupkan orang mati", "type": "synthetic_quran", "relevant": ["quran:46:33"]}
+{"qid": "q0016", "query": "suruhan mengembara dan melihat nasib umat terdahulu", "type": "synthetic_quran", "relevant": ["quran:30:42"]}
+{"qid": "q0017", "query": "orang kafir sentiasa berpaling setiap kali datang tanda dari Tuhan", "type": "synthetic_quran", "relevant": ["quran:6:4"]}
+{"qid": "q0018", "query": "no one will bear the sins of another person", "type": "synthetic_quran", "relevant": ["quran:53:38"]}
+{"qid": "q0019", "query": "teguran kepada Nabi kerana berpaling dari orang buta yang mahu belajar", "type": "synthetic_quran", "relevant": ["quran:80:3"]}
+{"qid": "q0020", "query": "jangan takut Aku bersama kamu mendengar dan melihat", "type": "synthetic_quran", "relevant": ["quran:20:46"]}
+{"qid": "q0021", "query": "belum tiba masa hati orang beriman khusyuk sebelum hati menjadi keras", "type": "synthetic_quran", "relevant": ["quran:57:16"]}
+{"qid": "q0022", "query": "kiamat datang secara tiba-tiba ketika manusia lalai", "type": "synthetic_quran", "relevant": ["quran:43:66"]}
+{"qid": "q0023", "query": "Musa dan Harun diutus kepada Firaun sebagai utusan Tuhan sekalian alam", "type": "synthetic_quran", "relevant": ["quran:26:16"]}
+{"qid": "q0024", "query": "memberi makan kerana Allah tanpa mengharap balasan atau terima kasih", "type": "synthetic_quran", "relevant": ["quran:76:9"]}
+{"qid": "q0025", "query": "separuh mahar jika bercerai sebelum bersama isteri", "type": "synthetic_quran", "relevant": ["quran:2:237"]}
+{"qid": "q0026", "query": "manusia dikembalikan ke dalam tanah dan dikeluarkan semula", "type": "synthetic_quran", "relevant": ["quran:71:18"]}
+{"qid": "q0027", "query": "Nabi Yaakub bersabar dengan sebaik-baiknya selepas kehilangan anaknya lagi", "type": "synthetic_quran", "relevant": ["quran:12:83"]}
+{"qid": "q0028", "query": "tetamu Nabi Ibrahim tidak menyentuh makanan yang dihidangkan", "type": "synthetic_quran", "relevant": ["quran:11:70"]}
+{"qid": "q0029", "query": "air hujan yang mencurah diturunkan dari awan", "type": "synthetic_quran", "relevant": ["quran:78:14"]}
+{"qid": "q0030", "query": "tugas Rasul hanya menyampaikan dengan jelas maka taatlah", "type": "synthetic_quran", "relevant": ["quran:5:92"]}
+{"qid": "q0031", "query": "orang berdosa sanggup menebus diri dengan semua penghuni bumi", "type": "synthetic_quran", "relevant": ["quran:70:14"]}
+{"qid": "q0032", "query": "abang-abang Yusuf memujuk ayah mereka supaya mempercayai mereka", "type": "synthetic_quran", "relevant": ["quran:12:11"]}
+{"qid": "q0033", "query": "Nabi Ibrahim bersumpah akan bertindak terhadap berhala-berhala", "type": "synthetic_quran", "relevant": ["quran:21:57"]}
+{"qid": "q0034", "query": "Maryam yang menjaga kehormatannya dan ditiupkan roh", "type": "synthetic_quran", "relevant": ["quran:21:91"]}
+{"qid": "q0035", "query": "women cut their hands when they saw Prophet Yusuf", "type": "synthetic_quran", "relevant": ["quran:12:31"]}
+{"qid": "q0036", "query": "kamu tahu penciptaan pertama kenapa tidak mengambil pengajaran", "type": "synthetic_quran", "relevant": ["quran:56:62"]}
+{"qid": "q0037", "query": "Al-Quran bukan dibawa turun oleh syaitan", "type": "synthetic_quran", "relevant": ["quran:26:210"]}
+{"qid": "q0038", "query": "tunaikan janji dengan Allah dan jangan langgar sumpah", "type": "synthetic_quran", "relevant": ["quran:16:91"]}
+{"qid": "q0039", "query": "menyerahkan segala urusan kepada Allah yang melihat hamba-Nya", "type": "synthetic_quran", "relevant": ["quran:40:44"]}
+{"qid": "q0040", "query": "yang disembah selain Allah hanyalah berhala dan syaitan", "type": "synthetic_quran", "relevant": ["quran:4:117"]}
+{"qid": "q0041", "query": "orang ramai hampir berhimpit mengerumuni Nabi ketika beribadah", "type": "synthetic_quran", "relevant": ["quran:72:19"]}
+{"qid": "q0042", "query": "Musa suruh kaumnya minta tolong kepada Allah dan bersabar kerana bumi milik Allah", "type": "synthetic_quran", "relevant": ["quran:7:128"]}
+{"qid": "q0043", "query": "Nabi mengadu kepada Allah kaumnya tidak mahu beriman", "type": "synthetic_quran", "relevant": ["quran:43:88"]}
+{"qid": "q0044", "query": "rujuk atau lepaskan isteri dengan baik jangan tahan untuk menyakiti", "type": "synthetic_quran", "relevant": ["quran:2:231"]}
+{"qid": "q0045", "query": "dosa yang dilakukan hanya memudaratkan diri sendiri", "type": "synthetic_quran", "relevant": ["quran:4:111"]}
+{"qid": "q0046", "query": "perjanjian dengan musyrik di Masjidil Haram selagi mereka jujur", "type": "synthetic_quran", "relevant": ["quran:9:7"]}
+{"qid": "q0047", "query": "tinggalkan orang yang hanya mahukan kehidupan dunia", "type": "synthetic_quran", "relevant": ["quran:53:29"]}
+{"qid": "q0048", "query": "angin yang membinasakan menjadikan semua yang dilanggarnya hancur", "type": "synthetic_quran", "relevant": ["quran:51:42"]}
+{"qid": "q0049", "query": "amaran kepada orang yang mendakwa Allah mempunyai anak", "type": "synthetic_quran", "relevant": ["quran:18:4"]}
+{"qid": "q0050", "query": "orang murtad selepas jelas petunjuk kerana diperdaya syaitan", "type": "synthetic_quran", "relevant": ["quran:47:25"]}
+{"qid": "q0051", "query": "Zakariya finds food with Maryam in the prayer chamber", "type": "synthetic_quran", "relevant": ["quran:3:37"]}
+{"qid": "q0052", "query": "Bani Israil disuruh masuk pintu kota dengan merendah diri dan memohon ampun", "type": "synthetic_quran", "relevant": ["quran:7:161"]}
+{"qid": "q0053", "query": "setiap umat ada ajal yang tidak boleh dicepatkan atau dilambatkan", "type": "synthetic_quran", "relevant": ["quran:10:49"]}
+{"qid": "q0054", "query": "adakah kamu sangka Allah mencipta kamu sia-sia", "type": "synthetic_quran", "relevant": ["quran:23:115"]}
+{"qid": "q0055", "query": "tuan kebun sangka mereka sesat jalan bila lihat kebun musnah", "type": "synthetic_quran", "relevant": ["quran:68:26"]}
+{"qid": "q0056", "query": "pemuda bernama Ibrahim yang mencela berhala", "type": "synthetic_quran", "relevant": ["quran:21:60"]}
+{"qid": "q0057", "query": "kaum Firaun merayu Musa berdoa supaya bala diangkat", "type": "synthetic_quran", "relevant": ["quran:43:49"]}
+{"qid": "q0058", "query": "Allah tidak memerlukan bantuan makhluk untuk mencipta langit dan bumi", "type": "synthetic_quran", "relevant": ["quran:18:51"]}
+{"qid": "q0059", "query": "jangan sekutukan Allah nanti tercela dan tidak ditolong", "type": "synthetic_quran", "relevant": ["quran:17:22"]}
+{"qid": "q0060", "query": "bertasbih pada waktu malam dan ketika bintang terbenam", "type": "synthetic_quran", "relevant": ["quran:52:49"]}
+{"qid": "q0061", "query": "Allah menolong orang Islam di Badar ketika mereka lemah", "type": "synthetic_quran", "relevant": ["quran:3:123"]}
+{"qid": "q0062", "query": "surah tentang datangnya pertolongan Allah dan kemenangan", "type": "synthetic_quran", "relevant": ["quran:110:1"]}
+{"qid": "q0063", "query": "seruan kepada semua manusia supaya menyembah Tuhan yang mencipta mereka", "type": "synthetic_quran", "relevant": ["quran:2:21"]}
+{"qid": "q0064", "query": "sembah Allah dengan ikhlas kerana Al-Quran diturunkan dengan kebenaran", "type": "synthetic_quran", "relevant": ["quran:39:2"]}
+{"qid": "q0065", "query": "doa Allah akan menghimpunkan manusia pada hari yang tiada keraguan", "type": "synthetic_quran", "relevant": ["quran:3:9"]}
+{"qid": "q0066", "query": "orang yang menunaikan janji Allah dan tidak merosakkan perjanjian", "type": "synthetic_quran", "relevant": ["quran:13:20"]}
+{"qid": "q0067", "query": "diuji sekali dua kali setiap tahun tetapi tetap tidak bertaubat", "type": "synthetic_quran", "relevant": ["quran:9:126"]}
+{"qid": "q0068", "query": "balasan neraka bagi yang memperolok ayat Allah dan rasul", "type": "synthetic_quran", "relevant": ["quran:18:106"]}
+{"qid": "q0069", "query": "taubat yang sebenar diikuti dengan amal soleh", "type": "synthetic_quran", "relevant": ["quran:25:71"]}
+{"qid": "q0070", "query": "pada hari kiamat tiada siapa boleh beri manfaat atau mudarat kepada kawannya", "type": "synthetic_quran", "relevant": ["quran:34:42"]}
+{"qid": "q0071", "query": "mereka kata Allah ada anak sedangkan Dia Maha Kaya", "type": "synthetic_quran", "relevant": ["quran:10:68"]}
+{"qid": "q0072", "query": "syurga dengan pasangan yang suci dan naungan yang teduh", "type": "synthetic_quran", "relevant": ["quran:4:57"]}
+{"qid": "q0073", "query": "Nabi tidak tahu perbincangan malaikat di alam tinggi tanpa wahyu", "type": "synthetic_quran", "relevant": ["quran:38:69"]}
+{"qid": "q0074", "query": "siapa yang menciptakan manusia daripada air mani", "type": "synthetic_quran", "relevant": ["quran:56:59"]}
+{"qid": "q0075", "query": "rasul terdahulu juga diejek lalu Allah beri tempoh kemudian mengazab", "type": "synthetic_quran", "relevant": ["quran:13:32"]}
+{"qid": "q0076", "query": "Nabi keluar awal pagi menyusun tentera di medan Uhud", "type": "synthetic_quran", "relevant": ["quran:3:121"]}
+{"qid": "q0077", "query": "hanya orang rugi yang rasa aman dari rancangan Allah", "type": "synthetic_quran", "relevant": ["quran:7:99"]}
+{"qid": "q0078", "query": "Maryam hairan bagaimana dapat anak tanpa disentuh lelaki", "type": "synthetic_quran", "relevant": ["quran:19:20"]}
+{"qid": "q0079", "query": "orang yang enggan bila disuruh sembahyang", "type": "synthetic_quran", "relevant": ["quran:77:48"]}
+{"qid": "q0080", "query": "mereka menisbahkan kepada Allah apa yang mereka sendiri benci", "type": "synthetic_quran", "relevant": ["quran:16:62"]}
+{"qid": "q0081", "query": "Allah mengampunkan dan menyeksa sesiapa yang Dia kehendaki", "type": "synthetic_quran", "relevant": ["quran:48:14"]}
+{"qid": "q0082", "query": "syaitan dihalang daripada mendengar wahyu", "type": "synthetic_quran", "relevant": ["quran:26:212"]}
+{"qid": "q0083", "query": "tiada seksaan yang setanding seksaan Allah pada hari itu", "type": "synthetic_quran", "relevant": ["quran:89:25"]}
+{"qid": "q0084", "query": "hujan menghidupkan tanah mati begitu juga kebangkitan dari kubur", "type": "synthetic_quran", "relevant": ["quran:50:11"]}
+{"qid": "q0085", "query": "hujah diulang-ulang dalam Al-Quran tetapi kebanyakan manusia tetap kufur", "type": "synthetic_quran", "relevant": ["quran:25:50"]}
+{"qid": "q0086", "query": "kaum dibinasakan angin tujuh malam lapan hari bergelimpangan seperti batang kurma", "type": "synthetic_quran", "relevant": ["quran:69:7"]}
+{"qid": "q0087", "query": "manusia dicipta dari satu diri dengan tempat tetap dan tempat simpanan", "type": "synthetic_quran", "relevant": ["quran:6:98"]}
+{"qid": "q0088", "query": "pembesar Firaun menuduh Musa mahu mengusir mereka dari negeri", "type": "synthetic_quran", "relevant": ["quran:7:110"]}
+{"qid": "q0089", "query": "diperintah menyembah Tuhan negeri Makkah yang dimuliakan", "type": "synthetic_quran", "relevant": ["quran:27:91"]}
+{"qid": "q0090", "query": "Nabi Ibrahim yang menyempurnakan segala perintah", "type": "synthetic_quran", "relevant": ["quran:53:37"]}
+{"qid": "q0091", "query": "syurga diwarisi kerana amalan yang dikerjakan", "type": "synthetic_quran", "relevant": ["quran:43:72"]}
+{"qid": "q0092", "query": "Allah bertanya di mana sekutu-sekutu-Ku pada hari kiamat", "type": "synthetic_quran", "relevant": ["quran:16:27"]}
+{"qid": "q0093", "query": "Nabi Soleh dan pengikutnya diselamatkan dari azab", "type": "synthetic_quran", "relevant": ["quran:11:66"]}
+{"qid": "q0094", "query": "Allah menghidupkan dan mematikan dan tiada pelindung selain-Nya", "type": "synthetic_quran", "relevant": ["quran:9:116"]}
+{"qid": "q0095", "query": "golongan yang terdahulu dalam kebaikan", "type": "synthetic_quran", "relevant": ["quran:56:10"]}
+{"qid": "q0096", "query": "kalau dikembalikan ke dunia pun mereka akan ulang kesalahan yang sama", "type": "synthetic_quran", "relevant": ["quran:6:28"]}
+{"qid": "q0097", "query": "kaum Thamud berpecah dua puak selepas seruan Nabi Soleh", "type": "synthetic_quran", "relevant": ["quran:27:45"]}
+{"qid": "q0098", "query": "wanita beriman disuruh melabuhkan pakaian supaya tidak diganggu", "type": "synthetic_quran", "relevant": ["quran:33:59"]}
+{"qid": "q0099", "query": "keadaan golongan kiri pada hari kiamat", "type": "synthetic_quran", "relevant": ["quran:56:41"]}
+{"qid": "q0100", "query": "Prophet Shuaib tells his people to give full measure and weight", "type": "synthetic_quran", "relevant": ["quran:7:85"]}
+{"qid": "q0101", "query": "humans are created hasty", "type": "synthetic_quran", "relevant": ["quran:21:37"]}
+{"qid": "q0102", "query": "ujian takut lapar dan kehilangan harta serta berita gembira untuk orang sabar", "type": "synthetic_quran", "relevant": ["quran:2:155"]}
+{"qid": "q0103", "query": "langit dan bumi tidak dicipta dengan sia-sia", "type": "synthetic_quran", "relevant": ["quran:38:27"]}
+{"qid": "q0104", "query": "penghuni neraka terpaksa minum dan maut datang dari semua arah tapi tidak mati", "type": "synthetic_quran", "relevant": ["quran:14:17"]}
+{"qid": "q0105", "query": "binatang ternak dijadikan untuk ditunggang dan dimakan", "type": "synthetic_quran", "relevant": ["quran:40:79"]}
+{"qid": "q0106", "query": "ahli kitab yang soleh menyuruh kebaikan dan bersegera beramal", "type": "synthetic_quran", "relevant": ["quran:3:114"]}
+{"qid": "q0107", "query": "tafsiran mimpi dua sahabat Nabi Yusuf dalam penjara", "type": "synthetic_quran", "relevant": ["quran:12:41"]}
+{"qid": "q0108", "query": "perhiasan dunia sebagai ujian siapa paling baik amalannya", "type": "synthetic_quran", "relevant": ["quran:18:7"]}
+{"qid": "q0109", "query": "manusia sangat tidak bersyukur kepada Tuhannya", "type": "synthetic_quran", "relevant": ["quran:100:6"]}
+{"qid": "q0110", "query": "the army of the elephant that tried to destroy the Kaaba", "type": "synthetic_quran", "relevant": ["quran:105:1"]}
+{"qid": "q0111", "query": "Musa minta kaumnya membiarkannya jika tidak mahu beriman", "type": "synthetic_quran", "relevant": ["quran:44:21"]}
+{"qid": "q0112", "query": "seeking protection from the evil of the envious", "type": "synthetic_quran", "relevant": ["quran:113:5"]}
+{"qid": "q0113", "query": "sembahan palsu akan mengingkari penyembahnya dan menjadi musuh", "type": "synthetic_quran", "relevant": ["quran:19:82"]}
+{"qid": "q0114", "query": "Musa sees a fire and tells his family", "type": "synthetic_quran", "relevant": ["quran:20:10"]}
+{"qid": "q0115", "query": "Firaun perintah bunuh anak lelaki orang beriman", "type": "synthetic_quran", "relevant": ["quran:40:25"]}
+{"qid": "q0116", "query": "doa minta pasangan dan zuriat yang menyejukkan mata", "type": "synthetic_quran", "relevant": ["quran:25:74"]}
+{"qid": "q0117", "query": "orang kafir diberi tempoh hidup supaya bertambah dosa", "type": "synthetic_quran", "relevant": ["quran:3:178"]}
+{"qid": "q0118", "query": "orang yang mencintai sekutu seperti mencintai Allah", "type": "synthetic_quran", "relevant": ["quran:2:165"]}
+{"qid": "q0119", "query": "bila disuruh sujud kepada Ar-Rahman mereka bertanya siapa Ar-Rahman", "type": "synthetic_quran", "relevant": ["quran:25:60"]}
+{"qid": "q0120", "query": "nabi takut kaumnya ditimpa azab hari yang dahsyat", "type": "synthetic_quran", "relevant": ["quran:26:135"]}
+{"qid": "q0121", "query": "soalan tentang arak dan judi yang dosanya lebih besar dari manfaat", "type": "synthetic_quran", "relevant": ["quran:2:219"]}
+{"qid": "q0122", "query": "shirk is the sin Allah does not forgive", "type": "synthetic_quran", "relevant": ["quran:4:48"]}
+{"qid": "q0123", "query": "datang kepada Allah seorang diri seperti mula dicipta tanpa harta", "type": "synthetic_quran", "relevant": ["quran:6:94"]}
+{"qid": "q0124", "query": "Adam dan Hawa makan buah pohon larangan lalu terdedah aurat", "type": "synthetic_quran", "relevant": ["quran:20:121"]}
+{"qid": "q0125", "query": "penyembah memanggil sekutu mereka tetapi tidak disahut", "type": "synthetic_quran", "relevant": ["quran:28:64"]}
+{"qid": "q0126", "query": "taat kepada Allah dan Rasul kerana Allah tidak suka orang kafir", "type": "synthetic_quran", "relevant": ["quran:3:32"]}
+{"qid": "q0127", "query": "khabar gembira kelahiran Nabi Ishak", "type": "synthetic_quran", "relevant": ["quran:37:112"]}
+{"qid": "q0128", "query": "larangan jual buah kurma sebelum masak dan jual perak secara bertangguh", "type": "synthetic_hadith", "relevant": ["bukhari:2248"]}
+{"qid": "q0129", "query": "Nabi menjamakkan Maghrib dan Isyak di Muzdalifah", "type": "synthetic_hadith", "relevant": ["muslim:3116"]}
+{"qid": "q0130", "query": "bawa anak panah dalam masjid mesti pegang mata panahnya", "type": "synthetic_hadith", "relevant": ["bukhari:7074"]}
+{"qid": "q0131", "query": "solat sunat empat rakaat sebelum Zohor dan dua rakaat sebelum Subuh", "type": "synthetic_hadith", "relevant": ["bukhari:1182"]}
+{"qid": "q0132", "query": "perumpamaan ilmu dan petunjuk seperti hujan yang jatuh atas pelbagai tanah", "type": "synthetic_hadith", "relevant": ["muslim:5953"]}
+{"qid": "q0133", "query": "sesiapa yang dihisab secara terperinci akan binasa", "type": "synthetic_hadith", "relevant": ["muslim:7228"]}
+{"qid": "q0134", "query": "do not curse time because Allah is time", "type": "synthetic_hadith", "relevant": ["muslim:5865"]}
+{"qid": "q0135", "query": "mandi sebelum solat Jumaat dan teguran Umar kepada Uthman", "type": "synthetic_hadith", "relevant": ["muslim:1956"]}
+{"qid": "q0136", "query": "Ibnu Masud tahu di mana setiap ayat Al-Quran diturunkan", "type": "synthetic_hadith", "relevant": ["muslim:6333"]}
+{"qid": "q0137", "query": "makmum tidak turun sujud sehingga dahi Nabi sampai ke lantai", "type": "synthetic_hadith", "relevant": ["bukhari:811"]}
+{"qid": "q0138", "query": "jual buah kurma hanya bila sudah merah atau kuning", "type": "synthetic_hadith", "relevant": ["bukhari:2197"]}
+{"qid": "q0139", "query": "women are like glass vessels drive the camels gently", "type": "synthetic_hadith", "relevant": ["muslim:6040"]}
+{"qid": "q0140", "query": "zikir tiada tuhan selain Allah yang memenangkan tentera-Nya", "type": "synthetic_hadith", "relevant": ["muslim:6910"]}
+{"qid": "q0141", "query": "mengeluarkan Yahudi dan Nasrani dari Semenanjung Arab", "type": "synthetic_hadith", "relevant": ["muslim:4594"]}
+{"qid": "q0142", "query": "kisah orang sakit yang minum susu unta lalu membunuh penggembala", "type": "synthetic_hadith", "relevant": ["bukhari:5685"]}
+{"qid": "q0143", "query": "Aisha's lost necklace and the revelation of tayammum", "type": "synthetic_hadith", "relevant": ["bukhari:3773"]}
+{"qid": "q0144", "query": "Nabi tawaf menunggang unta dan bertakbir di Hajarul Aswad", "type": "synthetic_hadith", "relevant": ["bukhari:1632"]}
+{"qid": "q0145", "query": "Nabi sujud sehingga anak kambing boleh lalu di bawah lengannya", "type": "synthetic_hadith", "relevant": ["muslim:1107"]}
+{"qid": "q0146", "query": "nazar berjalan kaki tanpa kasut ke Kaabah", "type": "synthetic_hadith", "relevant": ["muslim:4250"]}
+{"qid": "q0147", "query": "kenapa Nabi tidak bertahallul selepas umrah kerana membawa binatang korban", "type": "synthetic_hadith", "relevant": ["muslim:2984"]}
+{"qid": "q0148", "query": "help your brother whether he is an oppressor or oppressed", "type": "synthetic_hadith", "relevant": ["bukhari:6952"]}
+{"qid": "q0149", "query": "cara solat ketika dalam bahaya dengan dua saf", "type": "synthetic_hadith", "relevant": ["muslim:1947"]}
+{"qid": "q0150", "query": "Nabi menukar nama Barrah kepada Zainab", "type": "synthetic_hadith", "relevant": ["bukhari:6192"]}
+{"qid": "q0151", "query": "kesan minyak wangi di rambut Nabi ketika bertalbiah", "type": "synthetic_hadith", "relevant": ["muslim:2834"]}
+{"qid": "q0152", "query": "Nabi membaca surah Qaf dalam solat", "type": "synthetic_hadith", "relevant": ["muslim:1028"]}
+{"qid": "q0153", "query": "solat ketika berdepan musuh boleh sambil berdiri atau menunggang", "type": "synthetic_hadith", "relevant": ["bukhari:943"]}
+{"qid": "q0154", "query": "orang berihram yang tiada kain boleh memakai seluar dan khuf", "type": "synthetic_hadith", "relevant": ["muslim:2794"]}
+{"qid": "q0155", "query": "two people punished in their graves for urine and spreading gossip", "type": "synthetic_hadith", "relevant": ["bukhari:6055"]}
+{"qid": "q0156", "query": "khutbah hari Nahar darah harta dan maruah kamu adalah suci", "type": "synthetic_hadith", "relevant": ["bukhari:1739"]}
+{"qid": "q0157", "query": "lelaki menggigit tangan orang lalu giginya tercabut tanpa pampasan", "type": "synthetic_hadith", "relevant": ["bukhari:2266"]}
+{"qid": "q0158", "query": "Nabi suruh lelaki menunggang unta korbannya", "type": "synthetic_hadith", "relevant": ["bukhari:2755"]}
+{"qid": "q0159", "query": "Nabi berkata kepada wanita Ansar kamu antara orang paling aku sayang", "type": "synthetic_hadith", "relevant": ["muslim:6418"]}
+{"qid": "q0160", "query": "kain kafan Nabi tiga helai kain putih dari Yaman", "type": "synthetic_hadith", "relevant": ["bukhari:1264"]}
+{"qid": "q0161", "query": "hak tetamu jika penduduk tidak melayan dengan baik", "type": "synthetic_hadith", "relevant": ["muslim:4516"]}
+{"qid": "q0162", "query": "melihat Tuhan seperti melihat bulan purnama dan jaga solat Subuh dan Asar", "type": "synthetic_hadith", "relevant": ["bukhari:573"]}
+{"qid": "q0163", "query": "Madinah seperti relau yang membuang kekotoran", "type": "synthetic_hadith", "relevant": ["muslim:3352"]}
+{"qid": "q0164", "query": "pemberian seumur hidup menjadi milik penerima dan warisnya", "type": "synthetic_hadith", "relevant": ["muslim:4190"]}
+{"qid": "q0165", "query": "sedekah daging kambing dari Nusaibah yang sudah sampai ke tempatnya", "type": "synthetic_hadith", "relevant": ["bukhari:1446"]}
+{"qid": "q0166", "query": "anak dinisbahkan kepada pemilik tempat tidur dan perintah Saudah berhijab", "type": "synthetic_hadith", "relevant": ["bukhari:2533"]}
+{"qid": "q0167", "query": "Abu Bakar mendukung Hasan yang mirip Nabi", "type": "synthetic_hadith", "relevant": ["bukhari:3542"]}
+{"qid": "q0168", "query": "larangan menyewakan tanah pertanian", "type": "synthetic_hadith", "relevant": ["muslim:3919"]}
+{"qid": "q0169", "query": "Uqbah meletakkan isi perut unta atas belakang Nabi ketika sujud", "type": "synthetic_hadith", "relevant": ["bukhari:3185"]}
+{"qid": "q0170", "query": "sujud sahwi kerana terlupa duduk tahiyat awal", "type": "synthetic_hadith", "relevant": ["bukhari:1225"]}
+{"qid": "q0171", "query": "ayat mata terbeliak dan hati sampai ke kerongkong berlaku semasa perang Khandaq", "type": "synthetic_hadith", "relevant": ["bukhari:4103"]}
+{"qid": "q0172", "query": "asal usul nama Ansar", "type": "synthetic_hadith", "relevant": ["bukhari:3776"]}
+{"qid": "q0173", "query": "berbuat baik kepada ibu bapa", "type": "manual", "relevant": ["quran:17:23", "quran:17:24", "quran:4:36", "quran:2:83", "quran:31:14", "quran:46:15", "quran:29:8"]}
+{"qid": "q0174", "query": "larangan mengumpat dan mengintip", "type": "manual", "relevant": ["quran:49:12"]}
+{"qid": "q0175", "query": "kemudahan selepas kesusahan", "type": "manual", "relevant": ["quran:94:5", "quran:94:6", "quran:65:7"]}
+{"qid": "q0176", "query": "kelebihan bersedekah di jalan Allah", "type": "manual", "relevant": ["quran:2:261", "quran:2:262", "quran:2:274"]}
+{"qid": "q0177", "query": "larangan riba", "type": "manual", "relevant": ["quran:2:275", "quran:2:276", "quran:2:278", "quran:3:130"]}
+{"qid": "q0178", "query": "kewajipan berpuasa bulan Ramadan", "type": "manual", "relevant": ["quran:2:183", "quran:2:185"]}
+{"qid": "q0179", "query": "Allah tidak membebani melebihi kemampuan", "type": "manual", "relevant": ["quran:2:286", "quran:23:62"]}
+{"qid": "q0180", "query": "jangan berputus asa dari rahmat Allah", "type": "manual", "relevant": ["quran:39:53", "quran:12:87"]}
+{"qid": "q0181", "query": "berlaku adil walaupun terhadap diri sendiri", "type": "manual", "relevant": ["quran:4:135", "quran:5:8"]}
+{"qid": "q0182", "query": "larangan arak dan judi", "type": "manual", "relevant": ["quran:5:90", "quran:5:91", "quran:2:219"]}
+{"qid": "q0183", "query": "kewajipan menunaikan haji", "type": "manual", "relevant": ["quran:3:97", "quran:22:27"]}
+{"qid": "q0184", "query": "suruhan menutup aurat bagi wanita", "type": "manual", "relevant": ["quran:24:31", "quran:33:59"]}
+{"qid": "q0185", "query": "hati menjadi tenang dengan mengingati Allah", "type": "manual", "relevant": ["quran:13:28"]}
+{"qid": "q0186", "query": "tujuan manusia diciptakan", "type": "manual", "relevant": ["quran:51:56"]}
+{"qid": "q0187", "query": "setiap yang bernyawa pasti mati", "type": "manual", "relevant": ["quran:3:185", "quran:21:35", "quran:29:57"]}
+{"qid": "q0188", "query": "Allah dekat dan memperkenankan doa", "type": "manual", "relevant": ["quran:2:186", "quran:40:60"]}
+{"qid": "q0189", "query": "larangan membunuh tanpa hak", "type": "manual", "relevant": ["quran:5:32", "quran:17:33", "quran:4:93"]}
+{"qid": "q0190", "query": "jangan makan harta anak yatim", "type": "manual", "relevant": ["quran:4:10", "quran:17:34", "quran:6:152"]}
+{"qid": "q0191", "query": "periksa dahulu berita yang dibawa orang fasik", "type": "manual", "relevant": ["quran:49:6"]}
+{"qid": "q0192", "query": "amalan bergantung pada niat", "type": "manual", "relevant": ["bukhari:1"]}
+{"qid": "q0193", "query": "muslim sejati tidak menyakiti orang lain dengan lidah dan tangan", "type": "manual", "relevant": ["bukhari:10"]}
+{"qid": "q0194", "query": "resepi nasi lemak sambal sotong", "type": "negative", "relevant": []}
+{"qid": "q0195", "query": "cara tukar tayar kereta", "type": "negative", "relevant": []}
+{"qid": "q0196", "query": "keputusan perlawanan bola sepak semalam", "type": "negative", "relevant": []}
+{"qid": "q0197", "query": "harga emas hari ini", "type": "negative", "relevant": []}
+{"qid": "q0198", "query": "cara install python di windows", "type": "negative", "relevant": []}
+{"qid": "q0199", "query": "laptop terbaik untuk pelajar universiti", "type": "negative", "relevant": []}
+{"qid": "q0200", "query": "jadual tren KTM Komuter", "type": "negative", "relevant": []}
+{"qid": "q0201", "query": "cara menulis resume untuk fresh graduate", "type": "negative", "relevant": []}
+{"qid": "q0202", "query": "tips menanam cili dalam pasu", "type": "negative", "relevant": []}
+{"qid": "q0203", "query": "how to fix a leaking tap", "type": "negative", "relevant": []}
+{"qid": "q0204", "query": "best budget smartphone 2026", "type": "negative", "relevant": []}
+{"qid": "q0205", "query": "cara renew lesen memandu", "type": "negative", "relevant": []}
