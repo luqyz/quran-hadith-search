@@ -7,6 +7,7 @@ CORPUS_PATH = ROOT / "data" / "processed" / "corpus.parquet"
 INDEX_DIR = ROOT / "data" / "index"
 UNITS_PATH = INDEX_DIR / "units.parquet"
 MT_PATH = INDEX_DIR / "hadith_ms_mt.parquet"
+MT_LANG = "ms_mt"   # unit terjemahan mesin: untuk BM25 sahaja, tidak di-embed
 
 DEFAULT_MODEL = "intfloat/multilingual-e5-base"
 

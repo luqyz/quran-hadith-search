@@ -1,8 +1,7 @@
 """
-Nilai kaedah carian terhadap testset.
+Nilai kaedah carian terhadap testset, secara berasingan untuk Quran dan hadis.
 
-    python src/eval/run_eval.py --model intfloat/multilingual-e5-base
-    python src/eval/run_eval.py --methods hybrid --w-bm25 2 --tag w2 --model intfloat/multilingual-e5-base
+    python src/eval/run_eval.py --model intfloat/multilingual-e5-base --tag sections
 """
 import argparse
 import json
@@ -15,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "retrieval"))
 import pandas as pd
 
 from common import DEFAULT_MODEL, ROOT, model_slug
-from search import METHODS, Searcher
+from search import METHODS, SECTIONS, Searcher, section_of
 
 EVAL_DIR = ROOT / "eval"
 TESTSET_PATH = EVAL_DIR / "testset.jsonl"
@@ -49,22 +48,31 @@ def main() -> None:
 
     searcher = Searcher(args.model, use_dense=any(m != "bm25" for m in args.methods),
                         rrf_k=args.rrf_k, w_bm25=args.w_bm25, w_dense=args.w_dense)
+
+    bm25_top_cache = {}
     rows = []
     for method in args.methods:
         for q in testset:
-            res = searcher.search(q["query"], method, args.k)
-            ranked = res["doc_id"].tolist()
             relevant = set(q["relevant"])
-            row = {"qid": q["qid"], "type": q["type"], "method": method,
-                   "query": q["query"], "top_score": res["score"].iloc[0],
-                   "top_ref": res["ref"].iloc[0]}
-            if relevant:
-                row.update({
-                    "recall@5": recall_at_k(ranked, relevant, 5),
-                    f"recall@{args.k}": recall_at_k(ranked, relevant, args.k),
-                    f"mrr@{args.k}": rr_at_k(ranked, relevant, args.k),
-                })
-            rows.append(row)
+            # Soalan positif dinilai dalam bahagian jawapannya; negatif dalam kedua-dua bahagian
+            sections = sorted({section_of(d) for d in relevant}) if relevant else list(SECTIONS)
+            for sec in sections:
+                res = searcher.search(q["query"], method, args.k, section=sec)
+                ranked = res["doc_id"].tolist()
+                key = (q["query"], sec)
+                if key not in bm25_top_cache:
+                    bm25_top_cache[key] = searcher.top_bm25(q["query"], sec)
+                row = {"qid": q["qid"], "type": q["type"], "method": method, "section": sec,
+                       "query": q["query"], "top_ref": res["ref"].iloc[0],
+                       "top_score": res["score"].iloc[0], "bm25_top": bm25_top_cache[key]}
+                rel_sec = {d for d in relevant if section_of(d) == sec}
+                if rel_sec:
+                    row.update({
+                        "recall@5": recall_at_k(ranked, rel_sec, 5),
+                        f"recall@{args.k}": recall_at_k(ranked, rel_sec, args.k),
+                        f"mrr@{args.k}": rr_at_k(ranked, rel_sec, args.k),
+                    })
+                rows.append(row)
         print(f"[{method}] selesai {len(testset)} soalan")
 
     df = pd.DataFrame(rows)
@@ -72,17 +80,17 @@ def main() -> None:
 
     print(f"\n=== Keputusan (rrf_k={args.rrf_k}, w_bm25={args.w_bm25}, w_dense={args.w_dense}) ===")
     pos = df[df.type != "negative"]
-    if pos.empty:
-        print("(tiada soalan positif dalam testset)")
-    else:
-        summary = pos.groupby(["type", "method"])[metric_cols].mean().round(3)
-        overall = pos.groupby("method")[metric_cols].mean().round(3)
-        overall.index = pd.MultiIndex.from_product([["SEMUA"], overall.index])
-        print(pd.concat([summary, overall]).to_string())
+    summary = pos.groupby(["type", "section", "method"])[metric_cols].mean().round(3)
+    overall = pos.groupby(["section", "method"])[metric_cols].mean().round(3)
+    overall.index = pd.MultiIndex.from_tuples([("SEMUA", *i) for i in overall.index],
+                                              names=summary.index.names)
+    print(pd.concat([summary, overall]).to_string())
 
-    print("\n=== Skor teratas: positif vs negatif (untuk threshold) ===")
-    df["kategori"] = df["type"].where(df.type == "negative", "positif")
-    print(df.groupby(["method", "kategori"])["top_score"].describe()[["mean", "min", "max"]].round(4).to_string())
+    print("\n=== Skor BM25 teratas: positif vs negatif (untuk threshold) ===")
+    th = df[df.method == args.methods[0]].copy()
+    th["kategori"] = th["type"].where(th.type == "negative", "positif")
+    print(th.groupby(["section", "kategori"])["bm25_top"]
+          .describe()[["mean", "min", "max"]].round(2).to_string())
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d_%H%M")
@@ -94,4 +102,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-    

@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 
-from common import DEFAULT_MODEL, UNITS_PATH, emb_path, passage_prefix
+from common import DEFAULT_MODEL, MT_LANG, UNITS_PATH, emb_path, passage_prefix
 
 
 def main() -> None:
@@ -22,6 +22,7 @@ def main() -> None:
     args = parser.parse_args()
 
     units = pd.read_parquet(UNITS_PATH)
+    units = units[units["lang"] != MT_LANG]   # terjemahan mesin untuk BM25 sahaja
     texts = (passage_prefix(args.model) + units["text"]).tolist()
     if args.limit:
         texts = texts[:args.limit]
