@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CORPUS_PATH = ROOT / "data" / "processed" / "corpus.parquet"
 INDEX_DIR = ROOT / "data" / "index"
 UNITS_PATH = INDEX_DIR / "units.parquet"
+MT_PATH = INDEX_DIR / "hadith_ms_mt.parquet"
 
 DEFAULT_MODEL = "intfloat/multilingual-e5-base"
 

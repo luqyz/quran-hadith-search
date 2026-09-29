@@ -1,11 +1,14 @@
 """
 Tukar corpus kepada unit carian.
 
-    python src/retrieval/units.py
+    python src/retrieval/units.py            # guna terjemahan hadis jika ada
+    python src/retrieval/units.py --no-mt    # abaikan terjemahan (baseline)
 """
+import argparse
+
 import pandas as pd
 
-from common import CORPUS_PATH, INDEX_DIR, UNITS_PATH
+from common import CORPUS_PATH, INDEX_DIR, MT_PATH, UNITS_PATH
 
 CHUNK_WORDS = 150
 CHUNK_OVERLAP = 30
@@ -28,11 +31,10 @@ def chunk_words(text: str, size: int = CHUNK_WORDS, overlap: int = CHUNK_OVERLAP
     return chunks
 
 
-def build_units(corpus: pd.DataFrame) -> pd.DataFrame:
+def build_units(corpus: pd.DataFrame, mt: pd.DataFrame | None = None) -> pd.DataFrame:
     rows = []
     for doc in corpus.itertuples(index=False):
         if doc.source == "quran":
-            # Satu unit per bahasa supaya soalan BM padan dengan teks BM
             for lang in ("ms", "en"):
                 text = getattr(doc, f"text_{lang}")
                 if has_text(text):
@@ -42,6 +44,15 @@ def build_units(corpus: pd.DataFrame) -> pd.DataFrame:
             for i, chunk in enumerate(chunk_words(doc.text_en)):
                 rows.append({"doc_id": doc.id, "source": doc.source,
                              "lang": "en", "chunk_no": i, "text": chunk})
+
+    # Unit terjemahan mesin ditambah DI HUJUNG supaya unit_id asal tidak berubah.
+    # Ia hanya untuk carian; teks yang dipaparkan tetap dari corpus asal.
+    if mt is not None:
+        for r in mt.itertuples(index=False):
+            if has_text(r.text_ms_mt):
+                rows.append({"doc_id": r.doc_id, "source": r.doc_id.split(":")[0],
+                             "lang": "ms_mt", "chunk_no": r.chunk_no, "text": r.text_ms_mt})
+
     # Nota: chapter_title sengaja TIDAK dimasukkan (elak kebocoran semasa evaluation)
     units = pd.DataFrame(rows)
     units.insert(0, "unit_id", range(len(units)))
@@ -49,20 +60,24 @@ def build_units(corpus: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
-    corpus = pd.read_parquet(CORPUS_PATH)
-    units = build_units(corpus)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--no-mt", action="store_true", help="abaikan terjemahan mesin hadis")
+    args = parser.parse_args()
 
+    corpus = pd.read_parquet(CORPUS_PATH)
+    mt = None
+    if not args.no_mt and MT_PATH.exists():
+        mt = pd.read_parquet(MT_PATH)
+        print(f"Guna terjemahan hadis: {MT_PATH.name} ({len(mt):,} unit)")
+    else:
+        print("Tanpa terjemahan hadis")
+
+    units = build_units(corpus, mt)
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
     units.to_parquet(UNITS_PATH, index=False)
 
-    print("=== Unit mengikut sumber & bahasa ===")
+    print("\n=== Unit mengikut sumber & bahasa ===")
     print(units.groupby(["source", "lang"]).size().to_string())
-
-    chunks_per_doc = units[units.source != "quran"].groupby("doc_id").size()
-    print(f"\nHadis dipecah jadi >1 chunk: {(chunks_per_doc > 1).sum()} "
-          f"(maks {chunks_per_doc.max()} chunk)")
-    print("\nPanjang unit (perkataan):")
-    print(units["text"].str.split().str.len().describe().round(1).to_string())
     print(f"\nDisimpan: {UNITS_PATH} ({len(units):,} unit)")
 
 
