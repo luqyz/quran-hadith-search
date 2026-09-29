@@ -192,15 +192,56 @@
 {"qid": "q0191", "query": "periksa dahulu berita yang dibawa orang fasik", "type": "manual", "relevant": ["quran:49:6"]}
 {"qid": "q0192", "query": "amalan bergantung pada niat", "type": "manual", "relevant": ["bukhari:1"]}
 {"qid": "q0193", "query": "muslim sejati tidak menyakiti orang lain dengan lidah dan tangan", "type": "manual", "relevant": ["bukhari:10"]}
-{"qid": "q0194", "query": "resepi nasi lemak sambal sotong", "type": "negative", "relevant": []}
-{"qid": "q0195", "query": "cara tukar tayar kereta", "type": "negative", "relevant": []}
-{"qid": "q0196", "query": "keputusan perlawanan bola sepak semalam", "type": "negative", "relevant": []}
-{"qid": "q0197", "query": "harga emas hari ini", "type": "negative", "relevant": []}
-{"qid": "q0198", "query": "cara install python di windows", "type": "negative", "relevant": []}
-{"qid": "q0199", "query": "laptop terbaik untuk pelajar universiti", "type": "negative", "relevant": []}
-{"qid": "q0200", "query": "jadual tren KTM Komuter", "type": "negative", "relevant": []}
-{"qid": "q0201", "query": "cara menulis resume untuk fresh graduate", "type": "negative", "relevant": []}
-{"qid": "q0202", "query": "tips menanam cili dalam pasu", "type": "negative", "relevant": []}
-{"qid": "q0203", "query": "how to fix a leaking tap", "type": "negative", "relevant": []}
-{"qid": "q0204", "query": "best budget smartphone 2026", "type": "negative", "relevant": []}
-{"qid": "q0205", "query": "cara renew lesen memandu", "type": "negative", "relevant": []}
+{"qid": "q0194", "query": "Islam dibina atas lima perkara", "type": "manual", "relevant": ["bukhari:8"]}
+{"qid": "q0195", "query": "yang halal jelas dan yang haram jelas dan di antaranya perkara syubhah", "type": "manual", "relevant": ["bukhari:52"]}
+{"qid": "q0196", "query": "tidak sempurna iman sehingga mengasihi saudaranya seperti diri sendiri", "type": "manual", "relevant": ["bukhari:13"]}
+{"qid": "q0197", "query": "berkata yang baik atau diam", "type": "manual", "relevant": ["bukhari:6018"]}
+{"qid": "q0198", "query": "orang yang kuat ialah yang dapat menahan marah", "type": "manual", "relevant": ["bukhari:6114"]}
+{"qid": "q0199", "query": "nasihat Nabi jangan marah", "type": "manual", "relevant": ["bukhari:6116"]}
+{"qid": "q0200", "query": "orang beriman seperti satu tubuh", "type": "manual", "relevant": ["bukhari:6011"]}
+{"qid": "q0201", "query": "sebaik-baik kamu ialah yang belajar dan mengajar Al-Quran", "type": "manual", "relevant": ["bukhari:5027"]}
+{"qid": "q0202", "query": "dua nikmat yang ramai manusia terleka iaitu sihat dan masa lapang", "type": "manual", "relevant": ["bukhari:6412"]}
+{"qid": "q0203", "query": "hiduplah di dunia seperti orang asing atau pengembara", "type": "manual", "relevant": ["bukhari:6416"]}
+{"qid": "q0204", "query": "menyambung silaturahim melapangkan rezeki", "type": "manual", "relevant": ["bukhari:2067", "bukhari:5986"]}
+{"qid": "q0205", "query": "sabar pada saat pertama ditimpa musibah", "type": "manual", "relevant": ["bukhari:1283", "bukhari:1302", "bukhari:7154"]}
+{"qid": "q0206", "query": "seorang muslim bersaudara dengan muslim lain dan tidak menzaliminya", "type": "manual", "relevant": ["bukhari:2442"]}
+{"qid": "q0207", "query": "resepi nasi lemak sambal sotong", "type": "negative", "relevant": []}
+{"qid": "q0208", "query": "cara tukar tayar kereta", "type": "negative", "relevant": []}
+{"qid": "q0209", "query": "keputusan perlawanan bola sepak semalam", "type": "negative", "relevant": []}
+{"qid": "q0210", "query": "harga emas hari ini", "type": "negative", "relevant": []}
+{"qid": "q0211", "query": "cara install python di windows", "type": "negative", "relevant": []}
+{"qid": "q0212", "query": "laptop terbaik untuk pelajar universiti", "type": "negative", "relevant": []}
+{"qid": "q0213", "query": "jadual tren KTM Komuter", "type": "negative", "relevant": []}
+{"qid": "q0214", "query": "cara menulis resume untuk fresh graduate", "type": "negative", "relevant": []}
+{"qid": "q0215", "query": "tips menanam cili dalam pasu", "type": "negative", "relevant": []}
+{"qid": "q0216", "query": "how to fix a leaking tap", "type": "negative", "relevant": []}
+{"qid": "q0217", "query": "best budget smartphone 2026", "type": "negative", "relevant": []}
+{"qid": "q0218", "query": "cara renew lesen memandu", "type": "negative", "relevant": []}
+{"qid": "q0219", "query": "cara membuat kek coklat", "type": "negative", "relevant": []}
+{"qid": "q0220", "query": "harga tiket penerbangan ke Langkawi", "type": "negative", "relevant": []}
+{"qid": "q0221", "query": "cara memohon PTPTN", "type": "negative", "relevant": []}
+{"qid": "q0222", "query": "senarai universiti awam di Malaysia", "type": "negative", "relevant": []}
+{"qid": "q0223", "query": "how to train a neural network", "type": "negative", "relevant": []}
+{"qid": "q0224", "query": "keputusan SPM tahun ini", "type": "negative", "relevant": []}
+{"qid": "q0225", "query": "cara menjaga kucing yang sakit", "type": "negative", "relevant": []}
+{"qid": "q0226", "query": "tempat menarik di Cameron Highlands", "type": "negative", "relevant": []}
+{"qid": "q0227", "query": "kadar pertukaran ringgit ke dolar", "type": "negative", "relevant": []}
+{"qid": "q0228", "query": "cara reset router wifi", "type": "negative", "relevant": []}
+{"qid": "q0229", "query": "resepi rendang daging", "type": "negative", "relevant": []}
+{"qid": "q0230", "query": "cara menghilangkan jerawat", "type": "negative", "relevant": []}
+{"qid": "q0231", "query": "what is the capital of Australia", "type": "negative", "relevant": []}
+{"qid": "q0232", "query": "tutorial Excel pivot table", "type": "negative", "relevant": []}
+{"qid": "q0233", "query": "cara buka akaun Shopee", "type": "negative", "relevant": []}
+{"qid": "q0234", "query": "ramalan cuaca esok", "type": "negative", "relevant": []}
+{"qid": "q0235", "query": "waktu solat Kuching hari ini", "type": "negative_hard", "relevant": []}
+{"qid": "q0236", "query": "tarikh Hari Raya Aidilfitri tahun depan", "type": "negative_hard", "relevant": []}
+{"qid": "q0237", "query": "cara daftar haji Tabung Haji", "type": "negative_hard", "relevant": []}
+{"qid": "q0238", "query": "masjid terdekat dengan saya", "type": "negative_hard", "relevant": []}
+{"qid": "q0239", "query": "jadual kuliah maghrib minggu ini", "type": "negative_hard", "relevant": []}
+{"qid": "q0240", "query": "harga pakej umrah 2026", "type": "negative_hard", "relevant": []}
+{"qid": "q0241", "query": "cara bayar zakat pendapatan secara online", "type": "negative_hard", "relevant": []}
+{"qid": "q0242", "query": "resepi bubur lambuk Ramadan", "type": "negative_hard", "relevant": []}
+{"qid": "q0243", "query": "sejarah pembinaan Masjid Negara", "type": "negative_hard", "relevant": []}
+{"qid": "q0244", "query": "aplikasi Al-Quran terbaik untuk telefon", "type": "negative_hard", "relevant": []}
+{"qid": "q0245", "query": "berapa jauh Jeddah ke Makkah", "type": "negative_hard", "relevant": []}
+{"qid": "q0246", "query": "nama bayi lelaki Islam moden", "type": "negative_hard", "relevant": []}

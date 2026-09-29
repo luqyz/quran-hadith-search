@@ -5,9 +5,8 @@ Tukar corpus kepada unit carian.
     python src/retrieval/units.py --no-mt    # abaikan terjemahan (baseline)
 """
 import argparse
-
 import pandas as pd
-
+from mt_quality import suspect_reasons
 from common import CORPUS_PATH, CTX_MAX_WORDS, CTX_WINDOW, INDEX_DIR, MT_PATH, UNITS_PATH
 
 CHUNK_WORDS = 150
@@ -51,6 +50,7 @@ def with_context(text: str, lang: str, surah: int, ayah: int, lookup: dict) -> s
 def build_units(corpus: pd.DataFrame, mt: pd.DataFrame | None = None) -> pd.DataFrame:
     lookup = quran_lookup(corpus)
     rows = []
+    en_chunks = {}  # {(doc_id, chunk_no): chunk} untuk semak terjemahan mesin
     for doc in corpus.itertuples(index=False):
         if doc.source == "quran":
             surah, ayah = int(doc.book_no), int(doc.item_no)
@@ -64,15 +64,25 @@ def build_units(corpus: pd.DataFrame, mt: pd.DataFrame | None = None) -> pd.Data
             for i, chunk in enumerate(chunk_words(doc.text_en)):
                 rows.append({"doc_id": doc.id, "source": doc.source, "lang": "en",
                              "chunk_no": i, "text": chunk, "ctx_text": chunk})
+                en_chunks[(doc.id, i)] = chunk
 
     # Unit terjemahan mesin ditambah DI HUJUNG supaya unit_id asal tidak berubah.
     # Ia hanya untuk carian BM25; teks yang dipaparkan tetap dari corpus asal.
+        skipped = {}
     if mt is not None:
         for r in mt.itertuples(index=False):
-            if has_text(r.text_ms_mt):
-                rows.append({"doc_id": r.doc_id, "source": r.doc_id.split(":")[0],
-                             "lang": "ms_mt", "chunk_no": r.chunk_no,
-                             "text": r.text_ms_mt, "ctx_text": r.text_ms_mt})
+            if not has_text(r.text_ms_mt):
+                continue
+            reasons = suspect_reasons(en_chunks.get((r.doc_id, r.chunk_no), ""), r.text_ms_mt)
+            if reasons:
+                for reason in reasons:
+                    skipped[reason] = skipped.get(reason, 0) + 1
+                continue
+            rows.append({"doc_id": r.doc_id, "source": r.doc_id.split(":")[0],
+                         "lang": "ms_mt", "chunk_no": r.chunk_no,
+                         "text": r.text_ms_mt, "ctx_text": r.text_ms_mt})
+        if skipped:
+            print(f"Terjemahan meragukan ditapis: {skipped}")
 
     # Nota: chapter_title sengaja TIDAK dimasukkan (elak kebocoran semasa evaluation)
     units = pd.DataFrame(rows)
@@ -83,13 +93,15 @@ def build_units(corpus: pd.DataFrame, mt: pd.DataFrame | None = None) -> pd.Data
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--no-mt", action="store_true", help="abaikan terjemahan mesin hadis")
+    parser.add_argument("--mt-file", default=MT_PATH.name, help="nama fail terjemahan dalam data/index")
     args = parser.parse_args()
 
     corpus = pd.read_parquet(CORPUS_PATH)
+    mt_path = INDEX_DIR / args.mt_file
     mt = None
-    if not args.no_mt and MT_PATH.exists():
-        mt = pd.read_parquet(MT_PATH)
-        print(f"Guna terjemahan hadis: {MT_PATH.name} ({len(mt):,} unit)")
+    if not args.no_mt and mt_path.exists():
+        mt = pd.read_parquet(mt_path)
+        print(f"Guna terjemahan hadis: {mt_path.name} ({len(mt):,} unit)")
     else:
         print("Tanpa terjemahan hadis")
 

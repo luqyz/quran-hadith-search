@@ -11,7 +11,8 @@ import numpy as np
 import pandas as pd
 from rank_bm25 import BM25Okapi
 
-from common import (BM25_PARAMS, CORPUS_PATH, DEFAULT_MODEL, MT_LANG, UNITS_PATH, emb_path, query_prefix, tokenize)
+from common import (BM25_PARAMS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, MT_LANG,
+                    UNITS_PATH, emb_path, query_prefix, tokenize)
 
 METHODS = ["bm25", "dense", "hybrid"]
 SECTIONS = {"quran": ["quran"], "hadith": ["bukhari", "muslim"]}

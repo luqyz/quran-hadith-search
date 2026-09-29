@@ -81,7 +81,7 @@ def main() -> None:
     metric_cols = ["recall@5", f"recall@{args.k}", f"mrr@{args.k}"]
 
     print(f"\n=== Keputusan (rrf_k={args.rrf_k}, w_bm25={args.w_bm25}, w_dense={args.w_dense}) ===")
-    pos = df[df.type != "negative"]
+    pos = df[~df.type.str.startswith("negative")]
     summary = pos.groupby(["type", "section", "method"])[metric_cols].mean().round(3)
     overall = pos.groupby(["section", "method"])[metric_cols].mean().round(3)
     overall.index = pd.MultiIndex.from_tuples([("SEMUA", *i) for i in overall.index],
@@ -90,7 +90,7 @@ def main() -> None:
 
     print("\n=== Skor BM25 teratas: positif vs negatif (untuk threshold) ===")
     th = df[df.method == args.methods[0]].copy()
-    th["kategori"] = th["type"].where(th.type == "negative", "positif")
+    th["kategori"] = th["type"].where(th.type.str.startswith("negative"), "positif")
     print(th.groupby(["section", "kategori"])["bm25_top"]
           .describe()[["mean", "min", "max"]].round(2).to_string())
 

@@ -1,0 +1,862 @@
+﻿qid,type,method,section,query,top_ref,top_score,bm25_top,recall@5,recall@10,mrr@10
+q0000,synthetic_quran,bm25,quran,ciri orang bertakwa yang membawa dan membenarkan kebenaran,54:54,12.921758323392673,12.921758323392673,1.0,1.0,0.5
+q0001,synthetic_quran,bm25,quran,manusia tidak boleh lari dari kuasa Allah walau di mana berada,72:12,25.72937565900797,25.72937565900797,1.0,1.0,0.25
+q0002,synthetic_quran,bm25,quran,jangan membuat tandingan atau perumpamaan bagi Allah,4:128,11.560886014798035,11.560886014798035,0.0,0.0,0.0
+q0003,synthetic_quran,bm25,quran,orang paling zalim ialah yang mereka-reka dusta atas nama Allah,11:18,22.738592615829138,22.738592615829138,0.0,0.0,0.0
+q0004,synthetic_quran,bm25,quran,kisah tuan kebun yang mahu memetik hasil pada awal pagi,68:17,35.05898756814801,35.05898756814801,1.0,1.0,0.5
+q0005,synthetic_quran,bm25,quran,malaikat turun membawa wahyu kepada hamba pilihan Allah,16:2,20.21258832569392,20.21258832569392,1.0,1.0,1.0
+q0006,synthetic_quran,bm25,quran,Firaun dan binaan kukuh yang dikuasainya,51:47,16.176399692785278,16.176399692785278,1.0,1.0,0.5
+q0007,synthetic_quran,bm25,quran,syurga Adn tempat Allah reda kepada mereka dan mereka reda kepada-Nya,98:8,36.11737411650549,36.11737411650549,1.0,1.0,1.0
+q0008,synthetic_quran,bm25,quran,Allah memberi makan dan rasa aman kepada kaum Quraisy,106:1,20.639137628202608,20.639137628202608,0.0,0.0,0.0
+q0009,synthetic_quran,bm25,quran,Allah beri pendengaran penglihatan dan hati tapi manusia jarang bersyukur,23:78,25.698862969448474,25.698862969448474,1.0,1.0,1.0
+q0010,synthetic_quran,bm25,quran,penyesalan orang yang terima buku amalan dengan tangan kiri,84:10,15.925036711961996,15.925036711961996,0.0,0.0,0.0
+q0011,synthetic_quran,bm25,quran,golongan kafir yang bersatu akan kalah dan lari,54:45,19.048148678287006,19.048148678287006,1.0,1.0,1.0
+q0012,synthetic_quran,bm25,quran,kesejahteraan ke atas Nabi Isa semasa lahir mati dan dibangkitkan,19:33,19.75102695239387,19.75102695239387,1.0,1.0,1.0
+q0013,synthetic_quran,bm25,quran,Nabi Lut menegur kaumnya kerana perbuatan keji yang belum pernah dilakukan,29:28,35.453260089513826,35.453260089513826,1.0,1.0,0.5
+q0014,synthetic_quran,bm25,quran,orang yang menukar petunjuk dengan kesesatan dan keampunan dengan azab,2:175,25.740021400761353,25.740021400761353,1.0,1.0,1.0
+q0015,synthetic_quran,bm25,quran,Allah yang mencipta langit dan bumi mampu menghidupkan orang mati,30:50,17.970236878101893,17.970236878101893,1.0,1.0,0.3333333333333333
+q0016,synthetic_quran,bm25,quran,suruhan mengembara dan melihat nasib umat terdahulu,34:45,14.872570320106277,14.872570320106277,0.0,0.0,0.0
+q0017,synthetic_quran,bm25,quran,orang kafir sentiasa berpaling setiap kali datang tanda dari Tuhan,6:157,18.47503904791156,18.47503904791156,0.0,1.0,0.1
+q0018,synthetic_quran,bm25,quran,no one will bear the sins of another person,53:38,21.03609227247427,21.03609227247427,1.0,1.0,1.0
+q0019,synthetic_quran,bm25,quran,teguran kepada Nabi kerana berpaling dari orang buta yang mahu belajar,48:17,16.914466261754317,16.914466261754317,0.0,0.0,0.0
+q0020,synthetic_quran,bm25,quran,jangan takut Aku bersama kamu mendengar dan melihat,20:46,26.39809276935562,26.39809276935562,1.0,1.0,1.0
+q0021,synthetic_quran,bm25,quran,belum tiba masa hati orang beriman khusyuk sebelum hati menjadi keras,57:16,41.96038852143558,41.96038852143558,1.0,1.0,1.0
+q0022,synthetic_quran,bm25,quran,kiamat datang secara tiba-tiba ketika manusia lalai,16:4,21.445722445902778,21.445722445902778,0.0,1.0,0.16666666666666666
+q0023,synthetic_quran,bm25,quran,Musa dan Harun diutus kepada Firaun sebagai utusan Tuhan sekalian alam,26:16,27.11943908381107,27.11943908381107,1.0,1.0,1.0
+q0024,synthetic_quran,bm25,quran,memberi makan kerana Allah tanpa mengharap balasan atau terima kasih,76:9,35.457819131004825,35.457819131004825,1.0,1.0,1.0
+q0025,synthetic_quran,bm25,quran,separuh mahar jika bercerai sebelum bersama isteri,2:236,13.546037301804,13.546037301804,1.0,1.0,0.3333333333333333
+q0026,synthetic_quran,bm25,quran,manusia dikembalikan ke dalam tanah dan dikeluarkan semula,23:35,18.743553815377197,18.743553815377197,0.0,0.0,0.0
+q0027,synthetic_quran,bm25,quran,Nabi Yaakub bersabar dengan sebaik-baiknya selepas kehilangan anaknya lagi,2:132,19.210665767162777,19.210665767162777,0.0,0.0,0.0
+q0028,synthetic_quran,bm25,quran,tetamu Nabi Ibrahim tidak menyentuh makanan yang dihidangkan,51:24,17.30561673657765,17.30561673657765,1.0,1.0,0.3333333333333333
+q0029,synthetic_quran,bm25,quran,air hujan yang mencurah diturunkan dari awan,78:14,29.899386322087963,29.899386322087963,1.0,1.0,1.0
+q0030,synthetic_quran,bm25,quran,tugas Rasul hanya menyampaikan dengan jelas maka taatlah,5:92,25.540605312684644,25.540605312684644,1.0,1.0,1.0
+q0031,synthetic_quran,bm25,quran,orang berdosa sanggup menebus diri dengan semua penghuni bumi,13:18,15.530602989733351,15.530602989733351,0.0,0.0,0.0
+q0032,synthetic_quran,bm25,quran,abang-abang Yusuf memujuk ayah mereka supaya mempercayai mereka,12:51,19.95967585522303,19.95967585522303,1.0,1.0,0.5
+q0033,synthetic_quran,bm25,quran,Nabi Ibrahim bersumpah akan bertindak terhadap berhala-berhala,26:72,26.35123287029998,26.35123287029998,1.0,1.0,0.5
+q0034,synthetic_quran,bm25,quran,Maryam yang menjaga kehormatannya dan ditiupkan roh,70:29,15.853269845063545,15.853269845063545,1.0,1.0,0.2
+q0035,synthetic_quran,bm25,quran,women cut their hands when they saw Prophet Yusuf,12:31,23.550435926459656,23.550435926459656,1.0,1.0,1.0
+q0036,synthetic_quran,bm25,quran,kamu tahu penciptaan pertama kenapa tidak mengambil pengajaran,56:62,13.722817751377168,13.722817751377168,1.0,1.0,1.0
+q0037,synthetic_quran,bm25,quran,Al-Quran bukan dibawa turun oleh syaitan,26:210,30.757241226631677,30.757241226631677,1.0,1.0,1.0
+q0038,synthetic_quran,bm25,quran,tunaikan janji dengan Allah dan jangan langgar sumpah,12:80,13.460464207258802,13.460464207258802,0.0,0.0,0.0
+q0039,synthetic_quran,bm25,quran,menyerahkan segala urusan kepada Allah yang melihat hamba-Nya,40:44,18.532351837483365,18.532351837483365,1.0,1.0,1.0
+q0040,synthetic_quran,bm25,quran,yang disembah selain Allah hanyalah berhala dan syaitan,4:117,19.184499531947427,19.184499531947427,1.0,1.0,1.0
+q0041,synthetic_quran,bm25,quran,orang ramai hampir berhimpit mengerumuni Nabi ketika beribadah,72:19,15.224444560787841,15.224444560787841,1.0,1.0,1.0
+q0042,synthetic_quran,bm25,quran,Musa suruh kaumnya minta tolong kepada Allah dan bersabar kerana bumi milik Allah,7:128,17.870917123922307,17.870917123922307,1.0,1.0,1.0
+q0043,synthetic_quran,bm25,quran,Nabi mengadu kepada Allah kaumnya tidak mahu beriman,29:24,18.643776139650903,18.643776139650903,0.0,0.0,0.0
+q0044,synthetic_quran,bm25,quran,rujuk atau lepaskan isteri dengan baik jangan tahan untuk menyakiti,2:231,26.85564392574414,26.85564392574414,1.0,1.0,1.0
+q0045,synthetic_quran,bm25,quran,dosa yang dilakukan hanya memudaratkan diri sendiri,17:15,14.756136707041957,14.756136707041957,1.0,1.0,0.25
+q0046,synthetic_quran,bm25,quran,perjanjian dengan musyrik di Masjidil Haram selagi mereka jujur,9:7,24.153218645727513,24.153218645727513,1.0,1.0,1.0
+q0047,synthetic_quran,bm25,quran,tinggalkan orang yang hanya mahukan kehidupan dunia,57:20,16.126244397552064,16.126244397552064,0.0,0.0,0.0
+q0048,synthetic_quran,bm25,quran,angin yang membinasakan menjadikan semua yang dilanggarnya hancur,51:42,14.316076534299807,14.316076534299807,1.0,1.0,1.0
+q0049,synthetic_quran,bm25,quran,amaran kepada orang yang mendakwa Allah mempunyai anak,18:4,19.310376508341303,19.310376508341303,1.0,1.0,1.0
+q0050,synthetic_quran,bm25,quran,orang murtad selepas jelas petunjuk kerana diperdaya syaitan,7:30,13.71512625674779,13.71512625674779,0.0,0.0,0.0
+q0051,synthetic_quran,bm25,quran,Zakariya finds food with Maryam in the prayer chamber,3:37,17.0023381884348,17.0023381884348,1.0,1.0,1.0
+q0052,synthetic_quran,bm25,quran,Bani Israil disuruh masuk pintu kota dengan merendah diri dan memohon ampun,4:64,19.763815190309447,19.763815190309447,1.0,1.0,0.25
+q0053,synthetic_quran,bm25,quran,setiap umat ada ajal yang tidak boleh dicepatkan atau dilambatkan,10:61,14.113886613660426,14.113886613660426,0.0,0.0,0.0
+q0054,synthetic_quran,bm25,quran,adakah kamu sangka Allah mencipta kamu sia-sia,28:55,22.954668700255656,22.954668700255656,0.0,0.0,0.0
+q0055,synthetic_quran,bm25,quran,tuan kebun sangka mereka sesat jalan bila lihat kebun musnah,68:17,27.887713671221015,27.887713671221015,1.0,1.0,0.5
+q0056,synthetic_quran,bm25,quran,pemuda bernama Ibrahim yang mencela berhala,26:72,14.257785577362522,14.257785577362522,1.0,1.0,0.5
+q0057,synthetic_quran,bm25,quran,kaum Firaun merayu Musa berdoa supaya bala diangkat,43:49,14.642237050306186,14.642237050306186,1.0,1.0,1.0
+q0058,synthetic_quran,bm25,quran,Allah tidak memerlukan bantuan makhluk untuk mencipta langit dan bumi,18:51,25.47646121638299,25.47646121638299,1.0,1.0,1.0
+q0059,synthetic_quran,bm25,quran,jangan sekutukan Allah nanti tercela dan tidak ditolong,3:64,12.349513731154273,12.349513731154273,0.0,0.0,0.0
+q0060,synthetic_quran,bm25,quran,bertasbih pada waktu malam dan ketika bintang terbenam,52:49,36.89490017614023,36.89490017614023,1.0,1.0,1.0
+q0061,synthetic_quran,bm25,quran,Allah menolong orang Islam di Badar ketika mereka lemah,3:123,19.331357628079797,19.331357628079797,1.0,1.0,1.0
+q0062,synthetic_quran,bm25,quran,surah tentang datangnya pertolongan Allah dan kemenangan,48:18,13.562776280981602,13.562776280981602,1.0,1.0,0.25
+q0063,synthetic_quran,bm25,quran,seruan kepada semua manusia supaya menyembah Tuhan yang mencipta mereka,18:14,17.55569687181178,17.55569687181178,0.0,0.0,0.0
+q0064,synthetic_quran,bm25,quran,sembah Allah dengan ikhlas kerana Al-Quran diturunkan dengan kebenaran,25:32,22.580685962694517,22.580685962694517,0.0,0.0,0.0
+q0065,synthetic_quran,bm25,quran,doa Allah akan menghimpunkan manusia pada hari yang tiada keraguan,4:87,20.948674395321802,20.948674395321802,1.0,1.0,0.5
+q0066,synthetic_quran,bm25,quran,orang yang menunaikan janji Allah dan tidak merosakkan perjanjian,9:4,14.668988155484179,14.668988155484179,1.0,1.0,0.5
+q0067,synthetic_quran,bm25,quran,diuji sekali dua kali setiap tahun tetapi tetap tidak bertaubat,9:126,25.83406464788114,25.83406464788114,1.0,1.0,1.0
+q0068,synthetic_quran,bm25,quran,balasan neraka bagi yang memperolok ayat Allah dan rasul,41:28,18.66816496624184,18.66816496624184,0.0,1.0,0.16666666666666666
+q0069,synthetic_quran,bm25,quran,taubat yang sebenar diikuti dengan amal soleh,25:71,19.144232741448334,19.144232741448334,1.0,1.0,1.0
+q0070,synthetic_quran,bm25,quran,pada hari kiamat tiada siapa boleh beri manfaat atau mudarat kepada kawannya,34:42,20.805571829721025,20.805571829721025,1.0,1.0,1.0
+q0071,synthetic_quran,bm25,quran,mereka kata Allah ada anak sedangkan Dia Maha Kaya,10:68,21.755991540251806,21.755991540251806,1.0,1.0,1.0
+q0072,synthetic_quran,bm25,quran,syurga dengan pasangan yang suci dan naungan yang teduh,4:57,27.06239362318015,27.06239362318015,1.0,1.0,1.0
+q0073,synthetic_quran,bm25,quran,Nabi tidak tahu perbincangan malaikat di alam tinggi tanpa wahyu,38:69,20.41896609392773,20.41896609392773,1.0,1.0,1.0
+q0074,synthetic_quran,bm25,quran,siapa yang menciptakan manusia daripada air mani,75:38,16.791223078080687,16.791223078080687,0.0,0.0,0.0
+q0075,synthetic_quran,bm25,quran,rasul terdahulu juga diejek lalu Allah beri tempoh kemudian mengazab,13:32,20.13515124470028,20.13515124470028,1.0,1.0,1.0
+q0076,synthetic_quran,bm25,quran,Nabi keluar awal pagi menyusun tentera di medan Uhud,3:121,25.88108895747318,25.88108895747318,1.0,1.0,1.0
+q0077,synthetic_quran,bm25,quran,hanya orang rugi yang rasa aman dari rancangan Allah,7:99,26.17056679829626,26.17056679829626,1.0,1.0,1.0
+q0078,synthetic_quran,bm25,quran,Maryam hairan bagaimana dapat anak tanpa disentuh lelaki,19:20,23.062326718241863,23.062326718241863,1.0,1.0,1.0
+q0079,synthetic_quran,bm25,quran,orang yang enggan bila disuruh sembahyang,77:48,12.197625392426914,12.197625392426914,1.0,1.0,1.0
+q0080,synthetic_quran,bm25,quran,mereka menisbahkan kepada Allah apa yang mereka sendiri benci,4:19,16.734992774885445,16.734992774885445,0.0,0.0,0.0
+q0081,synthetic_quran,bm25,quran,Allah mengampunkan dan menyeksa sesiapa yang Dia kehendaki,3:129,20.91954895228278,20.91954895228278,1.0,1.0,0.5
+q0082,synthetic_quran,bm25,quran,syaitan dihalang daripada mendengar wahyu,26:212,24.307017864815986,24.307017864815986,1.0,1.0,1.0
+q0083,synthetic_quran,bm25,quran,tiada seksaan yang setanding seksaan Allah pada hari itu,54:42,19.056190906573114,19.056190906573114,1.0,1.0,0.5
+q0084,synthetic_quran,bm25,quran,hujan menghidupkan tanah mati begitu juga kebangkitan dari kubur,30:19,19.802264135183187,19.802264135183187,0.0,0.0,0.0
+q0085,synthetic_quran,bm25,quran,hujah diulang-ulang dalam Al-Quran tetapi kebanyakan manusia tetap kufur,25:50,29.17037748088005,29.17037748088005,1.0,1.0,1.0
+q0086,synthetic_quran,bm25,quran,kaum dibinasakan angin tujuh malam lapan hari bergelimpangan seperti batang kurma,69:7,49.90521791124951,49.90521791124951,1.0,1.0,1.0
+q0087,synthetic_quran,bm25,quran,manusia dicipta dari satu diri dengan tempat tetap dan tempat simpanan,6:98,29.195731808554477,29.195731808554477,1.0,1.0,1.0
+q0088,synthetic_quran,bm25,quran,pembesar Firaun menuduh Musa mahu mengusir mereka dari negeri,20:57,16.198892911927707,16.198892911927707,0.0,0.0,0.0
+q0089,synthetic_quran,bm25,quran,diperintah menyembah Tuhan negeri Makkah yang dimuliakan,27:91,17.316434264734152,17.316434264734152,1.0,1.0,1.0
+q0090,synthetic_quran,bm25,quran,Nabi Ibrahim yang menyempurnakan segala perintah,37:103,15.700527032748106,15.700527032748106,1.0,1.0,0.2
+q0091,synthetic_quran,bm25,quran,syurga diwarisi kerana amalan yang dikerjakan,4:146,12.379444470042555,12.379444470042555,0.0,0.0,0.0
+q0092,synthetic_quran,bm25,quran,Allah bertanya di mana sekutu-sekutu-Ku pada hari kiamat,28:62,32.41232877629595,32.41232877629595,1.0,1.0,0.3333333333333333
+q0093,synthetic_quran,bm25,quran,Nabi Soleh dan pengikutnya diselamatkan dari azab,27:57,14.914438831545857,14.914438831545857,0.0,0.0,0.0
+q0094,synthetic_quran,bm25,quran,Allah menghidupkan dan mematikan dan tiada pelindung selain-Nya,9:116,24.57227073213448,24.57227073213448,1.0,1.0,1.0
+q0095,synthetic_quran,bm25,quran,golongan yang terdahulu dalam kebaikan,7:38,11.370805616387,11.370805616387,0.0,0.0,0.0
+q0096,synthetic_quran,bm25,quran,kalau dikembalikan ke dunia pun mereka akan ulang kesalahan yang sama,6:28,19.80781500902106,19.80781500902106,1.0,1.0,1.0
+q0097,synthetic_quran,bm25,quran,kaum Thamud berpecah dua puak selepas seruan Nabi Soleh,27:45,25.729255855400382,25.729255855400382,1.0,1.0,1.0
+q0098,synthetic_quran,bm25,quran,wanita beriman disuruh melabuhkan pakaian supaya tidak diganggu,33:59,21.716065525963963,21.716065525963963,1.0,1.0,1.0
+q0099,synthetic_quran,bm25,quran,keadaan golongan kiri pada hari kiamat,56:41,14.827759719568688,14.827759719568688,1.0,1.0,1.0
+q0100,synthetic_quran,bm25,quran,Prophet Shuaib tells his people to give full measure and weight,11:85,28.241781280216117,28.241781280216117,0.0,1.0,0.14285714285714285
+q0101,synthetic_quran,bm25,quran,humans are created hasty,17:11,9.803665325041486,9.803665325041486,0.0,0.0,0.0
+q0102,synthetic_quran,bm25,quran,ujian takut lapar dan kehilangan harta serta berita gembira untuk orang sabar,2:155,25.126355205195637,25.126355205195637,1.0,1.0,1.0
+q0103,synthetic_quran,bm25,quran,langit dan bumi tidak dicipta dengan sia-sia,3:191,25.16300904450631,25.16300904450631,0.0,0.0,0.0
+q0104,synthetic_quran,bm25,quran,penghuni neraka terpaksa minum dan maut datang dari semua arah tapi tidak mati,14:17,27.800401280911437,27.800401280911437,1.0,1.0,1.0
+q0105,synthetic_quran,bm25,quran,binatang ternak dijadikan untuk ditunggang dan dimakan,6:142,21.69202887318215,21.69202887318215,0.0,0.0,0.0
+q0106,synthetic_quran,bm25,quran,ahli kitab yang soleh menyuruh kebaikan dan bersegera beramal,5:48,17.91500803198717,17.91500803198717,0.0,0.0,0.0
+q0107,synthetic_quran,bm25,quran,tafsiran mimpi dua sahabat Nabi Yusuf dalam penjara,12:42,20.22481991979636,20.22481991979636,0.0,0.0,0.0
+q0108,synthetic_quran,bm25,quran,perhiasan dunia sebagai ujian siapa paling baik amalannya,18:46,19.743638394151418,19.743638394151418,1.0,1.0,0.5
+q0109,synthetic_quran,bm25,quran,manusia sangat tidak bersyukur kepada Tuhannya,100:6,23.315794112656395,23.315794112656395,1.0,1.0,1.0
+q0110,synthetic_quran,bm25,quran,the army of the elephant that tried to destroy the Kaaba,68:17,16.176587590908273,16.176587590908273,1.0,1.0,0.3333333333333333
+q0111,synthetic_quran,bm25,quran,Musa minta kaumnya membiarkannya jika tidak mahu beriman,6:109,16.135327962770077,16.135327962770077,0.0,0.0,0.0
+q0112,synthetic_quran,bm25,quran,seeking protection from the evil of the envious,13:22,15.682426863475095,15.682426863475095,0.0,0.0,0.0
+q0113,synthetic_quran,bm25,quran,sembahan palsu akan mengingkari penyembahnya dan menjadi musuh,19:82,17.005584167876727,17.005584167876727,1.0,1.0,1.0
+q0114,synthetic_quran,bm25,quran,Musa sees a fire and tells his family,28:29,19.674270150128066,19.674270150128066,1.0,1.0,0.5
+q0115,synthetic_quran,bm25,quran,Firaun perintah bunuh anak lelaki orang beriman,7:127,17.4286059772852,17.4286059772852,1.0,1.0,0.25
+q0116,synthetic_quran,bm25,quran,doa minta pasangan dan zuriat yang menyejukkan mata,42:11,18.138949697751315,18.138949697751315,0.0,0.0,0.0
+q0117,synthetic_quran,bm25,quran,orang kafir diberi tempoh hidup supaya bertambah dosa,3:178,22.677375421961493,22.677375421961493,1.0,1.0,1.0
+q0118,synthetic_quran,bm25,quran,orang yang mencintai sekutu seperti mencintai Allah,2:165,22.916833992071716,22.916833992071716,1.0,1.0,1.0
+q0119,synthetic_quran,bm25,quran,bila disuruh sujud kepada Ar-Rahman mereka bertanya siapa Ar-Rahman,25:60,46.64542495339,46.64542495339,1.0,1.0,1.0
+q0120,synthetic_quran,bm25,quran,nabi takut kaumnya ditimpa azab hari yang dahsyat,7:59,19.39779238125558,19.39779238125558,1.0,1.0,0.5
+q0121,synthetic_quran,bm25,quran,soalan tentang arak dan judi yang dosanya lebih besar dari manfaat,2:219,28.311113368873176,28.311113368873176,1.0,1.0,1.0
+q0122,synthetic_quran,bm25,quran,shirk is the sin Allah does not forgive,4:48,18.75852017539809,18.75852017539809,1.0,1.0,1.0
+q0123,synthetic_quran,bm25,quran,datang kepada Allah seorang diri seperti mula dicipta tanpa harta,19:80,18.03775770709675,18.03775770709675,0.0,0.0,0.0
+q0124,synthetic_quran,bm25,quran,Adam dan Hawa makan buah pohon larangan lalu terdedah aurat,20:121,22.86362995921533,22.86362995921533,1.0,1.0,1.0
+q0125,synthetic_quran,bm25,quran,penyembah memanggil sekutu mereka tetapi tidak disahut,7:139,12.946720486926234,12.946720486926234,1.0,1.0,0.3333333333333333
+q0126,synthetic_quran,bm25,quran,taat kepada Allah dan Rasul kerana Allah tidak suka orang kafir,24:47,18.672682397191505,18.672682397191505,1.0,1.0,0.2
+q0127,synthetic_quran,bm25,quran,khabar gembira kelahiran Nabi Ishak,19:97,11.548239674561696,11.548239674561696,0.0,0.0,0.0
+q0128,synthetic_hadith,bm25,hadith,larangan jual buah kurma sebelum masak dan jual perak secara bertangguh,Bukhari 2196,33.245073159876085,33.245073159876085,0.0,1.0,0.14285714285714285
+q0129,synthetic_hadith,bm25,hadith,Nabi menjamakkan Maghrib dan Isyak di Muzdalifah,Bukhari 1172,12.72331718942709,12.72331718942709,0.0,0.0,0.0
+q0130,synthetic_hadith,bm25,hadith,bawa anak panah dalam masjid mesti pegang mata panahnya,Bukhari 7073,30.394904446752236,30.394904446752236,0.0,0.0,0.0
+q0131,synthetic_hadith,bm25,hadith,solat sunat empat rakaat sebelum Zohor dan dua rakaat sebelum Subuh,Bukhari 1182,43.98983388326136,43.98983388326136,1.0,1.0,1.0
+q0132,synthetic_hadith,bm25,hadith,perumpamaan ilmu dan petunjuk seperti hujan yang jatuh atas pelbagai tanah,Bukhari 79,31.146537720158328,31.146537720158328,1.0,1.0,0.5
+q0133,synthetic_hadith,bm25,hadith,sesiapa yang dihisab secara terperinci akan binasa,Bukhari 3192,18.74764214288326,18.74764214288326,0.0,0.0,0.0
+q0134,synthetic_hadith,bm25,hadith,do not curse time because Allah is time,Muslim 5866,31.73871135680177,31.73871135680177,0.0,1.0,0.1
+q0135,synthetic_hadith,bm25,hadith,mandi sebelum solat Jumaat dan teguran Umar kepada Uthman,Bukhari 877,24.609097870862783,24.609097870862783,0.0,1.0,0.16666666666666666
+q0136,synthetic_hadith,bm25,hadith,Ibnu Masud tahu di mana setiap ayat Al-Quran diturunkan,Bukhari 4606,28.7329838199624,28.7329838199624,1.0,1.0,0.3333333333333333
+q0137,synthetic_hadith,bm25,hadith,makmum tidak turun sujud sehingga dahi Nabi sampai ke lantai,Bukhari 139,20.578445747688427,20.578445747688427,0.0,0.0,0.0
+q0138,synthetic_hadith,bm25,hadith,jual buah kurma hanya bila sudah merah atau kuning,Bukhari 2196,42.68801316004109,42.68801316004109,1.0,1.0,0.5
+q0139,synthetic_hadith,bm25,hadith,women are like glass vessels drive the camels gently,Bukhari 6210,47.715132831148956,47.715132831148956,1.0,1.0,0.25
+q0140,synthetic_hadith,bm25,hadith,zikir tiada tuhan selain Allah yang memenangkan tentera-Nya,Muslim 842,24.279558414263743,24.279558414263743,0.0,0.0,0.0
+q0141,synthetic_hadith,bm25,hadith,mengeluarkan Yahudi dan Nasrani dari Semenanjung Arab,Muslim 4594,37.20932338897785,37.20932338897785,1.0,1.0,1.0
+q0142,synthetic_hadith,bm25,hadith,kisah orang sakit yang minum susu unta lalu membunuh penggembala,Bukhari 6805,28.138762180024454,28.138762180024454,0.0,0.0,0.0
+q0143,synthetic_hadith,bm25,hadith,Aisha's lost necklace and the revelation of tayammum,Bukhari 5882,32.33990791821157,32.33990791821157,1.0,1.0,0.3333333333333333
+q0144,synthetic_hadith,bm25,hadith,Nabi tawaf menunggang unta dan bertakbir di Hajarul Aswad,Bukhari 1607,23.93045866119312,23.93045866119312,0.0,1.0,0.1
+q0145,synthetic_hadith,bm25,hadith,Nabi sujud sehingga anak kambing boleh lalu di bawah lengannya,Bukhari 390,18.85216388021617,18.85216388021617,0.0,0.0,0.0
+q0146,synthetic_hadith,bm25,hadith,nazar berjalan kaki tanpa kasut ke Kaabah,Bukhari 5856,18.259993701053634,18.259993701053634,1.0,1.0,0.5
+q0147,synthetic_hadith,bm25,hadith,kenapa Nabi tidak bertahallul selepas umrah kerana membawa binatang korban,Muslim 5017,20.09086567122506,20.09086567122506,0.0,0.0,0.0
+q0148,synthetic_hadith,bm25,hadith,help your brother whether he is an oppressor or oppressed,Bukhari 2443,55.479160450058835,55.479160450058835,1.0,1.0,0.3333333333333333
+q0149,synthetic_hadith,bm25,hadith,cara solat ketika dalam bahaya dengan dua saf,Muslim 1576,21.99407790705603,21.99407790705603,0.0,0.0,0.0
+q0150,synthetic_hadith,bm25,hadith,Nabi menukar nama Barrah kepada Zainab,Bukhari 6192,39.710413025443046,39.710413025443046,1.0,1.0,1.0
+q0151,synthetic_hadith,bm25,hadith,kesan minyak wangi di rambut Nabi ketika bertalbiah,Bukhari 885,25.587428538868703,25.587428538868703,0.0,0.0,0.0
+q0152,synthetic_hadith,bm25,hadith,Nabi membaca surah Qaf dalam solat,Muslim 2031,27.81079717956576,27.81079717956576,0.0,0.0,0.0
+q0153,synthetic_hadith,bm25,hadith,solat ketika berdepan musuh boleh sambil berdiri atau menunggang,Bukhari 943,27.68121858343351,27.68121858343351,1.0,1.0,1.0
+q0154,synthetic_hadith,bm25,hadith,orang berihram yang tiada kain boleh memakai seluar dan khuf,Bukhari 1843,37.779579211144686,37.779579211144686,0.0,0.0,0.0
+q0155,synthetic_hadith,bm25,hadith,two people punished in their graves for urine and spreading gossip,Bukhari 1378,27.337366649998224,27.337366649998224,1.0,1.0,0.5
+q0156,synthetic_hadith,bm25,hadith,khutbah hari Nahar darah harta dan maruah kamu adalah suci,Muslim 2951,27.049651416355307,27.049651416355307,0.0,0.0,0.0
+q0157,synthetic_hadith,bm25,hadith,lelaki menggigit tangan orang lalu giginya tercabut tanpa pampasan,Bukhari 6892,26.110283017718753,26.110283017718753,1.0,1.0,0.25
+q0158,synthetic_hadith,bm25,hadith,Nabi suruh lelaki menunggang unta korbannya,Bukhari 7555,17.930652520312048,17.930652520312048,0.0,0.0,0.0
+q0159,synthetic_hadith,bm25,hadith,Nabi berkata kepada wanita Ansar kamu antara orang paling aku sayang,Bukhari 5234,24.892443643535536,24.892443643535536,0.0,0.0,0.0
+q0160,synthetic_hadith,bm25,hadith,kain kafan Nabi tiga helai kain putih dari Yaman,Bukhari 1273,35.74269670132035,35.74269670132035,1.0,1.0,0.3333333333333333
+q0161,synthetic_hadith,bm25,hadith,hak tetamu jika penduduk tidak melayan dengan baik,Bukhari 2214,20.802887317251187,20.802887317251187,0.0,0.0,0.0
+q0162,synthetic_hadith,bm25,hadith,melihat Tuhan seperti melihat bulan purnama dan jaga solat Subuh dan Asar,Bukhari 7436,24.182378017822412,24.182378017822412,0.0,0.0,0.0
+q0163,synthetic_hadith,bm25,hadith,Madinah seperti relau yang membuang kekotoran,Muslim 3725,13.617492508931958,13.617492508931958,0.0,0.0,0.0
+q0164,synthetic_hadith,bm25,hadith,pemberian seumur hidup menjadi milik penerima dan warisnya,Muslim 4189,33.43964747757106,33.43964747757106,0.0,1.0,0.1
+q0165,synthetic_hadith,bm25,hadith,sedekah daging kambing dari Nusaibah yang sudah sampai ke tempatnya,Bukhari 1494,21.746344233691968,21.746344233691968,0.0,0.0,0.0
+q0166,synthetic_hadith,bm25,hadith,anak dinisbahkan kepada pemilik tempat tidur dan perintah Saudah berhijab,Bukhari 6750,29.094757431317852,29.094757431317852,0.0,0.0,0.0
+q0167,synthetic_hadith,bm25,hadith,Abu Bakar mendukung Hasan yang mirip Nabi,Muslim 2374,15.315167785001394,15.315167785001394,0.0,0.0,0.0
+q0168,synthetic_hadith,bm25,hadith,larangan menyewakan tanah pertanian,Muslim 3944,13.604994853446954,13.604994853446954,0.0,0.0,0.0
+q0169,synthetic_hadith,bm25,hadith,Uqbah meletakkan isi perut unta atas belakang Nabi ketika sujud,Bukhari 240,29.845679261730076,29.845679261730076,0.0,0.0,0.0
+q0170,synthetic_hadith,bm25,hadith,sujud sahwi kerana terlupa duduk tahiyat awal,Bukhari 792,16.316274011993745,16.316274011993745,0.0,0.0,0.0
+q0171,synthetic_hadith,bm25,hadith,ayat mata terbeliak dan hati sampai ke kerongkong berlaku semasa perang Khandaq,Bukhari 4103,23.238878526900606,23.238878526900606,1.0,1.0,1.0
+q0172,synthetic_hadith,bm25,hadith,asal usul nama Ansar,Bukhari 4920,19.229109318139024,19.229109318139024,1.0,1.0,0.5
+q0173,manual,bm25,quran,berbuat baik kepada ibu bapa,17:23,18.39069885534394,18.39069885534394,0.42857142857142855,0.7142857142857143,1.0
+q0174,manual,bm25,quran,larangan mengumpat dan mengintip,49:12,25.36780743783857,25.36780743783857,1.0,1.0,1.0
+q0175,manual,bm25,quran,kemudahan selepas kesusahan,92:10,13.279737982968452,13.279737982968452,0.0,0.0,0.0
+q0176,manual,bm25,quran,kelebihan bersedekah di jalan Allah,2:268,13.186133540786882,13.186133540786882,0.0,0.0,0.0
+q0177,manual,bm25,quran,larangan riba,2:275,16.370067546606947,16.370067546606947,0.75,1.0,1.0
+q0178,manual,bm25,quran,kewajipan berpuasa bulan Ramadan,2:185,27.08369975752241,27.08369975752241,0.5,1.0,1.0
+q0179,manual,bm25,quran,Allah tidak membebani melebihi kemampuan,65:7,9.440370075936755,9.440370075936755,0.0,0.0,0.0
+q0180,manual,bm25,quran,jangan berputus asa dari rahmat Allah,12:87,26.337367997549403,26.337367997549403,1.0,1.0,1.0
+q0181,manual,bm25,quran,berlaku adil walaupun terhadap diri sendiri,49:9,15.857027358652836,15.857027358652836,0.5,0.5,0.25
+q0182,manual,bm25,quran,larangan arak dan judi,5:90,15.134532696240257,15.134532696240257,1.0,1.0,1.0
+q0183,manual,bm25,quran,kewajipan menunaikan haji,3:97,13.73185909730903,13.73185909730903,0.5,0.5,1.0
+q0184,manual,bm25,quran,suruhan menutup aurat bagi wanita,7:26,13.341443792627741,13.341443792627741,1.0,1.0,0.5
+q0185,manual,bm25,quran,hati menjadi tenang dengan mengingati Allah,13:28,17.323626715202845,17.323626715202845,1.0,1.0,1.0
+q0186,manual,bm25,quran,tujuan manusia diciptakan,86:5,11.10343018365132,11.10343018365132,0.0,0.0,0.0
+q0187,manual,bm25,quran,setiap yang bernyawa pasti mati,79:6,12.996338075248076,12.996338075248076,0.3333333333333333,0.3333333333333333,0.5
+q0188,manual,bm25,quran,Allah dekat dan memperkenankan doa,27:62,14.167342663823325,14.167342663823325,0.0,0.0,0.0
+q0189,manual,bm25,quran,larangan membunuh tanpa hak,25:68,10.879956877069347,10.879956877069347,0.0,0.0,0.0
+q0190,manual,bm25,quran,jangan makan harta anak yatim,4:2,22.905531516368836,22.905531516368836,0.0,0.6666666666666666,0.16666666666666666
+q0191,manual,bm25,quran,periksa dahulu berita yang dibawa orang fasik,49:6,12.052267106237228,12.052267106237228,1.0,1.0,1.0
+q0192,manual,bm25,hadith,amalan bergantung pada niat,Bukhari 2529,13.876921131825416,13.876921131825416,0.0,0.0,0.0
+q0193,manual,bm25,hadith,muslim sejati tidak menyakiti orang lain dengan lidah dan tangan,Bukhari 10,25.936874372729662,25.936874372729662,1.0,1.0,1.0
+q0194,manual,bm25,hadith,Islam dibina atas lima perkara,Bukhari 3368,13.255802732826954,13.255802732826954,0.0,0.0,0.0
+q0195,manual,bm25,hadith,yang halal jelas dan yang haram jelas dan di antaranya perkara syubhah,Muslim 4097,36.83550631297801,36.83550631297801,0.0,0.0,0.0
+q0196,manual,bm25,hadith,tidak sempurna iman sehingga mengasihi saudaranya seperti diri sendiri,Muslim 171,20.01684529233358,20.01684529233358,1.0,1.0,0.3333333333333333
+q0197,manual,bm25,hadith,berkata yang baik atau diam,Bukhari 6475,17.158333269092537,17.158333269092537,1.0,1.0,0.25
+q0198,manual,bm25,hadith,orang yang kuat ialah yang dapat menahan marah,Bukhari 6114,35.8444308976573,35.8444308976573,1.0,1.0,1.0
+q0199,manual,bm25,hadith,nasihat Nabi jangan marah,Bukhari 4005,15.551120884741902,15.551120884741902,1.0,1.0,0.5
+q0200,manual,bm25,hadith,orang beriman seperti satu tubuh,Bukhari 6011,25.227742915108543,25.227742915108543,1.0,1.0,1.0
+q0201,manual,bm25,hadith,sebaik-baik kamu ialah yang belajar dan mengajar Al-Quran,Bukhari 6098,30.104118314346206,30.104118314346206,0.0,0.0,0.0
+q0202,manual,bm25,hadith,dua nikmat yang ramai manusia terleka iaitu sihat dan masa lapang,Bukhari 6412,36.81182699251744,36.81182699251744,1.0,1.0,1.0
+q0203,manual,bm25,hadith,hiduplah di dunia seperti orang asing atau pengembara,Bukhari 4431,18.484619027262948,18.484619027262948,0.0,0.0,0.0
+q0204,manual,bm25,hadith,menyambung silaturahim melapangkan rezeki,Muslim 7408,11.135426602989558,11.135426602989558,0.0,0.0,0.0
+q0205,manual,bm25,hadith,sabar pada saat pertama ditimpa musibah,Bukhari 7154,26.598653694048053,26.598653694048053,0.6666666666666666,0.6666666666666666,1.0
+q0206,manual,bm25,hadith,seorang muslim bersaudara dengan muslim lain dan tidak menzaliminya,Bukhari 2723,22.787855475055892,22.787855475055892,0.0,0.0,0.0
+q0207,negative,bm25,quran,resepi nasi lemak sambal sotong,6:146,7.997615262449739,7.997615262449739,,,
+q0207,negative,bm25,hadith,resepi nasi lemak sambal sotong,Bukhari 5539,12.68831913868374,12.68831913868374,,,
+q0208,negative,bm25,quran,cara tukar tayar kereta,4:2,8.416679269627547,8.416679269627547,,,
+q0208,negative,bm25,hadith,cara tukar tayar kereta,Muslim 2484,12.15596071375979,12.15596071375979,,,
+q0209,negative,bm25,quran,keputusan perlawanan bola sepak semalam,20:60,9.40198093150269,9.40198093150269,,,
+q0209,negative,bm25,hadith,keputusan perlawanan bola sepak semalam,Bukhari 7000,9.839749491107236,9.839749491107236,,,
+q0210,negative,bm25,quran,harga emas hari ini,17:93,9.062155196752327,9.062155196752327,,,
+q0210,negative,bm25,hadith,harga emas hari ini,Bukhari 2177,14.6179048136336,14.6179048136336,,,
+q0211,negative,bm25,quran,cara install python di windows,26:155,8.532359883611255,8.532359883611255,,,
+q0211,negative,bm25,hadith,cara install python di windows,Muslim 6948,9.593049893638254,9.593049893638254,,,
+q0212,negative,bm25,quran,laptop terbaik untuk pelajar universiti,8:7,4.263786099884465,4.263786099884465,,,
+q0212,negative,bm25,hadith,laptop terbaik untuk pelajar universiti,Bukhari 1520,13.166686076534777,13.166686076534777,,,
+q0213,negative,bm25,quran,jadual tren KTM Komuter,112:3,0.0,0.0,,,
+q0213,negative,bm25,hadith,jadual tren KTM Komuter,Muslim 7550,0.0,0.0,,,
+q0214,negative,bm25,quran,cara menulis resume untuk fresh graduate,18:109,9.019275826279603,9.019275826279603,,,
+q0214,negative,bm25,hadith,cara menulis resume untuk fresh graduate,Bukhari 4991,12.217016486665074,12.217016486665074,,,
+q0215,negative,bm25,quran,tips menanam cili dalam pasu,12:47,8.981415829322447,8.981415829322447,,,
+q0215,negative,bm25,hadith,tips menanam cili dalam pasu,Muslim 458,13.01465009303501,13.01465009303501,,,
+q0216,negative,bm25,quran,how to fix a leaking tap,5:75,9.79661342761533,9.79661342761533,,,
+q0216,negative,bm25,hadith,how to fix a leaking tap,Muslim 663,13.823207539000432,13.823207539000432,,,
+q0217,negative,bm25,quran,best budget smartphone 2026,18:44,6.872470871209476,6.872470871209476,,,
+q0217,negative,bm25,hadith,best budget smartphone 2026,Bukhari 6098,8.190365127972271,8.190365127972271,,,
+q0218,negative,bm25,quran,cara renew lesen memandu,46:30,8.50581789443493,8.50581789443493,,,
+q0218,negative,bm25,hadith,cara renew lesen memandu,Muslim 1842,9.950860465345588,9.950860465345588,,,
+q0219,negative,bm25,quran,cara membuat kek coklat,2:180,9.76339977958933,9.76339977958933,,,
+q0219,negative,bm25,hadith,cara membuat kek coklat,Muslim 5478,14.19951030170406,14.19951030170406,,,
+q0220,negative,bm25,quran,harga tiket penerbangan ke Langkawi,51:1,9.513349305903397,9.513349305903397,,,
+q0220,negative,bm25,hadith,harga tiket penerbangan ke Langkawi,Muslim 4105,11.457076244639492,11.457076244639492,,,
+q0221,negative,bm25,quran,cara memohon PTPTN,10:12,8.39757150544342,8.39757150544342,,,
+q0221,negative,bm25,hadith,cara memohon PTPTN,Bukhari 4903,12.842246718561427,12.842246718561427,,,
+q0222,negative,bm25,quran,senarai universiti awam di Malaysia,20:6,3.533964022591993,3.533964022591993,,,
+q0222,negative,bm25,hadith,senarai universiti awam di Malaysia,Muslim 189,11.360155455199791,11.360155455199791,,,
+q0223,negative,bm25,quran,how to train a neural network,5:75,9.79661342761533,9.79661342761533,,,
+q0223,negative,bm25,hadith,how to train a neural network,Muslim 7511,7.40590117938792,7.40590117938792,,,
+q0224,negative,bm25,quran,keputusan SPM tahun ini,28:27,10.150774614292871,10.150774614292871,,,
+q0224,negative,bm25,hadith,keputusan SPM tahun ini,Muslim 756,12.79931222672351,12.79931222672351,,,
+q0225,negative,bm25,quran,cara menjaga kucing yang sakit,4:102,9.574137671355986,9.574137671355986,,,
+q0225,negative,bm25,hadith,cara menjaga kucing yang sakit,Muslim 6679,14.882877509652095,14.882877509652095,,,
+q0226,negative,bm25,quran,tempat menarik di Cameron Highlands,28:30,13.93762464254442,13.93762464254442,,,
+q0226,negative,bm25,hadith,tempat menarik di Cameron Highlands,Bukhari 249,14.297863035662642,14.297863035662642,,,
+q0227,negative,bm25,quran,kadar pertukaran ringgit ke dolar,23:80,8.095587836069226,8.095587836069226,,,
+q0227,negative,bm25,hadith,kadar pertukaran ringgit ke dolar,Muslim 447,15.78911613357745,15.78911613357745,,,
+q0228,negative,bm25,quran,cara reset router wifi,26:155,6.527686557875343,6.527686557875343,,,
+q0228,negative,bm25,hadith,cara reset router wifi,Bukhari 4991,9.338338800132808,9.338338800132808,,,
+q0229,negative,bm25,quran,resepi rendang daging,23:14,9.714542470407741,9.714542470407741,,,
+q0229,negative,bm25,hadith,resepi rendang daging,Bukhari 4219,9.637427323844337,9.637427323844337,,,
+q0230,negative,bm25,quran,cara menghilangkan jerawat,88:7,7.780296219705903,7.780296219705903,,,
+q0230,negative,bm25,hadith,cara menghilangkan jerawat,Muslim 1220,16.237461682777685,16.237461682777685,,,
+q0231,negative,bm25,quran,what is the capital of Australia,58:7,9.110074354466496,9.110074354466496,,,
+q0231,negative,bm25,hadith,what is the capital of Australia,Bukhari 6591,18.093874527653792,18.093874527653792,,,
+q0232,negative,bm25,quran,tutorial Excel pivot table,5:112,8.242579246151612,8.242579246151612,,,
+q0232,negative,bm25,hadith,tutorial Excel pivot table,Muslim 5039,11.178753272363151,11.178753272363151,,,
+q0233,negative,bm25,quran,cara buka akaun Shopee,26:155,6.527686557875343,6.527686557875343,,,
+q0233,negative,bm25,hadith,cara buka akaun Shopee,Bukhari 270,10.19002795873204,10.19002795873204,,,
+q0234,negative,bm25,quran,ramalan cuaca esok,12:12,8.068415144279673,8.068415144279673,,,
+q0234,negative,bm25,hadith,ramalan cuaca esok,Muslim 5801,13.311037612121694,13.311037612121694,,,
+q0235,negative_hard,bm25,quran,waktu solat Kuching hari ini,40:39,11.820982433487139,11.820982433487139,,,
+q0235,negative_hard,bm25,hadith,waktu solat Kuching hari ini,Muslim 1014,16.33997970535387,16.33997970535387,,,
+q0236,negative_hard,bm25,quran,tarikh Hari Raya Aidilfitri tahun depan,22:47,10.250933726564064,10.250933726564064,,,
+q0236,negative_hard,bm25,hadith,tarikh Hari Raya Aidilfitri tahun depan,Bukhari 3177,19.1096205477557,19.1096205477557,,,
+q0237,negative_hard,bm25,quran,cara daftar haji Tabung Haji,2:197,18.097023477536148,18.097023477536148,,,
+q0237,negative_hard,bm25,hadith,cara daftar haji Tabung Haji,Bukhari 4404,18.47481999822619,18.47481999822619,,,
+q0238,negative_hard,bm25,quran,masjid terdekat dengan saya,2:114,11.176292996102209,11.176292996102209,,,
+q0238,negative_hard,bm25,hadith,masjid terdekat dengan saya,Bukhari 1636,14.134936640279129,14.134936640279129,,,
+q0239,negative_hard,bm25,quran,jadual kuliah maghrib minggu ini,2:187,5.908809983967589,5.908809983967589,,,
+q0239,negative_hard,bm25,hadith,jadual kuliah maghrib minggu ini,Muslim 2761,12.598190965475759,12.598190965475759,,,
+q0240,negative_hard,bm25,quran,harga pakej umrah 2026,12:20,8.209270479239473,8.209270479239473,,,
+q0240,negative_hard,bm25,hadith,harga pakej umrah 2026,Muslim 4104,10.322451492381383,10.322451492381383,,,
+q0241,negative_hard,bm25,quran,cara bayar zakat pendapatan secara online,13:22,10.206633452691333,10.206633452691333,,,
+q0241,negative_hard,bm25,hadith,cara bayar zakat pendapatan secara online,Bukhari 5761,14.129138800067226,14.129138800067226,,,
+q0242,negative_hard,bm25,quran,resepi bubur lambuk Ramadan,2:185,11.268640372643517,11.268640372643517,,,
+q0242,negative_hard,bm25,hadith,resepi bubur lambuk Ramadan,Bukhari 2022,8.612985509787917,8.612985509787917,,,
+q0243,negative_hard,bm25,quran,sejarah pembinaan Masjid Negara,2:114,9.33585809326428,9.33585809326428,,,
+q0243,negative_hard,bm25,hadith,sejarah pembinaan Masjid Negara,Bukhari 429,17.439016341846333,17.439016341846333,,,
+q0244,negative_hard,bm25,quran,aplikasi Al-Quran terbaik untuk telefon,10:37,13.07744489873258,13.07744489873258,,,
+q0244,negative_hard,bm25,hadith,aplikasi Al-Quran terbaik untuk telefon,Bukhari 5027,16.533486780644616,16.533486780644616,,,
+q0245,negative_hard,bm25,quran,berapa jauh Jeddah ke Makkah,50:36,10.77718334371423,10.77718334371423,,,
+q0245,negative_hard,bm25,hadith,berapa jauh Jeddah ke Makkah,Muslim 7290,18.070628568646832,18.070628568646832,,,
+q0246,negative_hard,bm25,quran,nama bayi lelaki Islam moden,33:35,16.787245182065398,16.787245182065398,,,
+q0246,negative_hard,bm25,hadith,nama bayi lelaki Islam moden,Bukhari 5102,15.437662261743322,15.437662261743322,,,
+q0000,synthetic_quran,dense,quran,ciri orang bertakwa yang membawa dan membenarkan kebenaran,39:33,0.8902362585067749,12.921758323392673,1.0,1.0,1.0
+q0001,synthetic_quran,dense,quran,manusia tidak boleh lari dari kuasa Allah walau di mana berada,37:8,0.8607017993927002,25.72937565900797,0.0,0.0,0.0
+q0002,synthetic_quran,dense,quran,jangan membuat tandingan atau perumpamaan bagi Allah,26:213,0.8791516423225403,11.560886014798035,0.0,0.0,0.0
+q0003,synthetic_quran,dense,quran,orang paling zalim ialah yang mereka-reka dusta atas nama Allah,40:63,0.8744168281555176,22.738592615829138,0.0,0.0,0.0
+q0004,synthetic_quran,dense,quran,kisah tuan kebun yang mahu memetik hasil pada awal pagi,68:21,0.8474027514457703,35.05898756814801,1.0,1.0,0.5
+q0005,synthetic_quran,dense,quran,malaikat turun membawa wahyu kepada hamba pilihan Allah,97:4,0.8675901889801025,20.21258832569392,0.0,0.0,0.0
+q0006,synthetic_quran,dense,quran,Firaun dan binaan kukuh yang dikuasainya,81:20,0.8773036003112793,16.176399692785278,0.0,0.0,0.0
+q0007,synthetic_quran,dense,quran,syurga Adn tempat Allah reda kepada mereka dan mereka reda kepada-Nya,47:6,0.8970097303390503,36.11737411650549,0.0,0.0,0.0
+q0008,synthetic_quran,dense,quran,Allah memberi makan dan rasa aman kepada kaum Quraisy,106:4,0.8728697299957275,20.639137628202608,1.0,1.0,1.0
+q0009,synthetic_quran,dense,quran,Allah beri pendengaran penglihatan dan hati tapi manusia jarang bersyukur,23:78,0.9016892910003662,25.698862969448474,1.0,1.0,1.0
+q0010,synthetic_quran,dense,quran,penyesalan orang yang terima buku amalan dengan tangan kiri,84:7,0.8536343574523926,15.925036711961996,1.0,1.0,0.5
+q0011,synthetic_quran,dense,quran,golongan kafir yang bersatu akan kalah dan lari,54:45,0.8858094811439514,19.048148678287006,1.0,1.0,1.0
+q0012,synthetic_quran,dense,quran,kesejahteraan ke atas Nabi Isa semasa lahir mati dan dibangkitkan,19:15,0.8848534822463989,19.75102695239387,0.0,0.0,0.0
+q0013,synthetic_quran,dense,quran,Nabi Lut menegur kaumnya kerana perbuatan keji yang belum pernah dilakukan,29:28,0.8893448114395142,35.453260089513826,1.0,1.0,0.5
+q0014,synthetic_quran,dense,quran,orang yang menukar petunjuk dengan kesesatan dan keampunan dengan azab,70:17,0.8840852975845337,25.740021400761353,0.0,0.0,0.0
+q0015,synthetic_quran,dense,quran,Allah yang mencipta langit dan bumi mampu menghidupkan orang mati,29:44,0.8790591359138489,17.970236878101893,0.0,0.0,0.0
+q0016,synthetic_quran,dense,quran,suruhan mengembara dan melihat nasib umat terdahulu,56:14,0.8554390072822571,14.872570320106277,0.0,0.0,0.0
+q0017,synthetic_quran,dense,quran,orang kafir sentiasa berpaling setiap kali datang tanda dari Tuhan,10:97,0.873255729675293,18.47503904791156,1.0,1.0,0.25
+q0018,synthetic_quran,dense,quran,no one will bear the sins of another person,53:38,0.8748183846473694,21.03609227247427,1.0,1.0,1.0
+q0019,synthetic_quran,dense,quran,teguran kepada Nabi kerana berpaling dari orang buta yang mahu belajar,80:1,0.891883909702301,16.914466261754317,0.0,0.0,0.0
+q0020,synthetic_quran,dense,quran,jangan takut Aku bersama kamu mendengar dan melihat,20:46,0.8848226070404053,26.39809276935562,1.0,1.0,1.0
+q0021,synthetic_quran,dense,quran,belum tiba masa hati orang beriman khusyuk sebelum hati menjadi keras,26:201,0.8698565363883972,41.96038852143558,1.0,1.0,0.5
+q0022,synthetic_quran,dense,quran,kiamat datang secara tiba-tiba ketika manusia lalai,103:1,0.8872641324996948,21.445722445902778,1.0,1.0,0.2
+q0023,synthetic_quran,dense,quran,Musa dan Harun diutus kepada Firaun sebagai utusan Tuhan sekalian alam,51:38,0.8801732659339905,27.11943908381107,0.0,1.0,0.14285714285714285
+q0024,synthetic_quran,dense,quran,memberi makan kerana Allah tanpa mengharap balasan atau terima kasih,36:35,0.8701175451278687,35.457819131004825,1.0,1.0,0.5
+q0025,synthetic_quran,dense,quran,separuh mahar jika bercerai sebelum bersama isteri,2:237,0.8430713415145874,13.546037301804,1.0,1.0,1.0
+q0026,synthetic_quran,dense,quran,manusia dikembalikan ke dalam tanah dan dikeluarkan semula,70:17,0.8476787805557251,18.743553815377197,1.0,1.0,0.3333333333333333
+q0027,synthetic_quran,dense,quran,Nabi Yaakub bersabar dengan sebaik-baiknya selepas kehilangan anaknya lagi,19:88,0.8552150726318359,19.210665767162777,0.0,0.0,0.0
+q0028,synthetic_quran,dense,quran,tetamu Nabi Ibrahim tidak menyentuh makanan yang dihidangkan,53:17,0.8686434030532837,17.30561673657765,0.0,0.0,0.0
+q0029,synthetic_quran,dense,quran,air hujan yang mencurah diturunkan dari awan,16:65,0.8525476455688477,29.899386322087963,1.0,1.0,0.2
+q0030,synthetic_quran,dense,quran,tugas Rasul hanya menyampaikan dengan jelas maka taatlah,43:43,0.874950647354126,25.540605312684644,0.0,0.0,0.0
+q0031,synthetic_quran,dense,quran,orang berdosa sanggup menebus diri dengan semua penghuni bumi,70:14,0.8537261486053467,15.530602989733351,1.0,1.0,1.0
+q0032,synthetic_quran,dense,quran,abang-abang Yusuf memujuk ayah mereka supaya mempercayai mereka,12:7,0.8794382214546204,19.95967585522303,1.0,1.0,0.3333333333333333
+q0033,synthetic_quran,dense,quran,Nabi Ibrahim bersumpah akan bertindak terhadap berhala-berhala,11:76,0.8697105050086975,26.35123287029998,0.0,0.0,0.0
+q0034,synthetic_quran,dense,quran,Maryam yang menjaga kehormatannya dan ditiupkan roh,3:43,0.8730142116546631,15.853269845063545,0.0,0.0,0.0
+q0035,synthetic_quran,dense,quran,women cut their hands when they saw Prophet Yusuf,12:35,0.8739223480224609,23.550435926459656,0.0,1.0,0.16666666666666666
+q0036,synthetic_quran,dense,quran,kamu tahu penciptaan pertama kenapa tidak mengambil pengajaran,56:62,0.9063146114349365,13.722817751377168,1.0,1.0,1.0
+q0037,synthetic_quran,dense,quran,Al-Quran bukan dibawa turun oleh syaitan,81:25,0.9259147047996521,30.757241226631677,0.0,0.0,0.0
+q0038,synthetic_quran,dense,quran,tunaikan janji dengan Allah dan jangan langgar sumpah,13:20,0.8914012908935547,13.460464207258802,0.0,0.0,0.0
+q0039,synthetic_quran,dense,quran,menyerahkan segala urusan kepada Allah yang melihat hamba-Nya,50:8,0.8642507791519165,18.532351837483365,0.0,0.0,0.0
+q0040,synthetic_quran,dense,quran,yang disembah selain Allah hanyalah berhala dan syaitan,4:117,0.8890050649642944,19.184499531947427,1.0,1.0,1.0
+q0041,synthetic_quran,dense,quran,orang ramai hampir berhimpit mengerumuni Nabi ketika beribadah,72:19,0.8539086580276489,15.224444560787841,1.0,1.0,1.0
+q0042,synthetic_quran,dense,quran,Musa suruh kaumnya minta tolong kepada Allah dan bersabar kerana bumi milik Allah,7:128,0.9115195274353027,17.870917123922307,1.0,1.0,1.0
+q0043,synthetic_quran,dense,quran,Nabi mengadu kepada Allah kaumnya tidak mahu beriman,10:96,0.8922146558761597,18.643776139650903,1.0,1.0,0.25
+q0044,synthetic_quran,dense,quran,rujuk atau lepaskan isteri dengan baik jangan tahan untuk menyakiti,26:181,0.8599725961685181,26.85564392574414,0.0,0.0,0.0
+q0045,synthetic_quran,dense,quran,dosa yang dilakukan hanya memudaratkan diri sendiri,37:39,0.8381025791168213,14.756136707041957,1.0,1.0,0.5
+q0046,synthetic_quran,dense,quran,perjanjian dengan musyrik di Masjidil Haram selagi mereka jujur,10:82,0.8599013090133667,24.153218645727513,0.0,0.0,0.0
+q0047,synthetic_quran,dense,quran,tinggalkan orang yang hanya mahukan kehidupan dunia,53:29,0.8528101444244385,16.126244397552064,1.0,1.0,1.0
+q0048,synthetic_quran,dense,quran,angin yang membinasakan menjadikan semua yang dilanggarnya hancur,69:6,0.8554682731628418,14.316076534299807,0.0,0.0,0.0
+q0049,synthetic_quran,dense,quran,amaran kepada orang yang mendakwa Allah mempunyai anak,19:88,0.8689483404159546,19.310376508341303,1.0,1.0,0.3333333333333333
+q0050,synthetic_quran,dense,quran,orang murtad selepas jelas petunjuk kerana diperdaya syaitan,47:25,0.8816903233528137,13.71512625674779,1.0,1.0,1.0
+q0051,synthetic_quran,dense,quran,Zakariya finds food with Maryam in the prayer chamber,19:2,0.8309891223907471,17.0023381884348,1.0,1.0,0.3333333333333333
+q0052,synthetic_quran,dense,quran,Bani Israil disuruh masuk pintu kota dengan merendah diri dan memohon ampun,26:53,0.8487781882286072,19.763815190309447,1.0,1.0,0.25
+q0053,synthetic_quran,dense,quran,setiap umat ada ajal yang tidak boleh dicepatkan atau dilambatkan,7:34,0.8677618503570557,14.113886613660426,0.0,0.0,0.0
+q0054,synthetic_quran,dense,quran,adakah kamu sangka Allah mencipta kamu sia-sia,23:115,0.8819019794464111,22.954668700255656,1.0,1.0,1.0
+q0055,synthetic_quran,dense,quran,tuan kebun sangka mereka sesat jalan bila lihat kebun musnah,21:12,0.858311116695404,27.887713671221015,0.0,0.0,0.0
+q0056,synthetic_quran,dense,quran,pemuda bernama Ibrahim yang mencela berhala,21:60,0.8563774824142456,14.257785577362522,1.0,1.0,1.0
+q0057,synthetic_quran,dense,quran,kaum Firaun merayu Musa berdoa supaya bala diangkat,20:60,0.8757627606391907,14.642237050306186,0.0,0.0,0.0
+q0058,synthetic_quran,dense,quran,Allah tidak memerlukan bantuan makhluk untuk mencipta langit dan bumi,3:5,0.8861480951309204,25.47646121638299,0.0,0.0,0.0
+q0059,synthetic_quran,dense,quran,jangan sekutukan Allah nanti tercela dan tidak ditolong,17:22,0.8881949186325073,12.349513731154273,1.0,1.0,1.0
+q0060,synthetic_quran,dense,quran,bertasbih pada waktu malam dan ketika bintang terbenam,52:49,0.9024275541305542,36.89490017614023,1.0,1.0,1.0
+q0061,synthetic_quran,dense,quran,Allah menolong orang Islam di Badar ketika mereka lemah,3:123,0.8625134229660034,19.331357628079797,1.0,1.0,1.0
+q0062,synthetic_quran,dense,quran,surah tentang datangnya pertolongan Allah dan kemenangan,110:1,0.8775147199630737,13.562776280981602,1.0,1.0,1.0
+q0063,synthetic_quran,dense,quran,seruan kepada semua manusia supaya menyembah Tuhan yang mencipta mereka,96:1,0.8830407857894897,17.55569687181178,1.0,1.0,0.3333333333333333
+q0064,synthetic_quran,dense,quran,sembah Allah dengan ikhlas kerana Al-Quran diturunkan dengan kebenaran,55:1,0.8845087289810181,22.580685962694517,0.0,0.0,0.0
+q0065,synthetic_quran,dense,quran,doa Allah akan menghimpunkan manusia pada hari yang tiada keraguan,3:9,0.8773593902587891,20.948674395321802,1.0,1.0,1.0
+q0066,synthetic_quran,dense,quran,orang yang menunaikan janji Allah dan tidak merosakkan perjanjian,13:20,0.9318569302558899,14.668988155484179,1.0,1.0,1.0
+q0067,synthetic_quran,dense,quran,diuji sekali dua kali setiap tahun tetapi tetap tidak bertaubat,9:126,0.8765661716461182,25.83406464788114,1.0,1.0,1.0
+q0068,synthetic_quran,dense,quran,balasan neraka bagi yang memperolok ayat Allah dan rasul,58:20,0.8767947554588318,18.66816496624184,1.0,1.0,0.5
+q0069,synthetic_quran,dense,quran,taubat yang sebenar diikuti dengan amal soleh,25:71,0.8777368068695068,19.144232741448334,1.0,1.0,1.0
+q0070,synthetic_quran,dense,quran,pada hari kiamat tiada siapa boleh beri manfaat atau mudarat kepada kawannya,69:35,0.896539568901062,20.805571829721025,0.0,0.0,0.0
+q0071,synthetic_quran,dense,quran,mereka kata Allah ada anak sedangkan Dia Maha Kaya,16:57,0.871468186378479,21.755991540251806,1.0,1.0,0.5
+q0072,synthetic_quran,dense,quran,syurga dengan pasangan yang suci dan naungan yang teduh,85:1,0.8730300664901733,27.06239362318015,0.0,0.0,0.0
+q0073,synthetic_quran,dense,quran,Nabi tidak tahu perbincangan malaikat di alam tinggi tanpa wahyu,38:69,0.891421377658844,20.41896609392773,1.0,1.0,1.0
+q0074,synthetic_quran,dense,quran,siapa yang menciptakan manusia daripada air mani,75:39,0.8468131422996521,16.791223078080687,0.0,1.0,0.16666666666666666
+q0075,synthetic_quran,dense,quran,rasul terdahulu juga diejek lalu Allah beri tempoh kemudian mengazab,79:25,0.8916025161743164,20.13515124470028,0.0,0.0,0.0
+q0076,synthetic_quran,dense,quran,Nabi keluar awal pagi menyusun tentera di medan Uhud,19:11,0.8739422559738159,25.88108895747318,0.0,1.0,0.16666666666666666
+q0077,synthetic_quran,dense,quran,hanya orang rugi yang rasa aman dari rancangan Allah,37:160,0.8700454235076904,26.17056679829626,0.0,0.0,0.0
+q0078,synthetic_quran,dense,quran,Maryam hairan bagaimana dapat anak tanpa disentuh lelaki,19:20,0.8689095973968506,23.062326718241863,1.0,1.0,1.0
+q0079,synthetic_quran,dense,quran,orang yang enggan bila disuruh sembahyang,107:5,0.8716878890991211,12.197625392426914,1.0,1.0,0.25
+q0080,synthetic_quran,dense,quran,mereka menisbahkan kepada Allah apa yang mereka sendiri benci,47:28,0.8689177632331848,16.734992774885445,0.0,1.0,0.125
+q0081,synthetic_quran,dense,quran,Allah mengampunkan dan menyeksa sesiapa yang Dia kehendaki,29:21,0.8992975950241089,20.91954895228278,0.0,0.0,0.0
+q0082,synthetic_quran,dense,quran,syaitan dihalang daripada mendengar wahyu,26:211,0.8608424663543701,24.307017864815986,1.0,1.0,0.2
+q0083,synthetic_quran,dense,quran,tiada seksaan yang setanding seksaan Allah pada hari itu,89:25,0.8934378027915955,19.056190906573114,1.0,1.0,1.0
+q0084,synthetic_quran,dense,quran,hujan menghidupkan tanah mati begitu juga kebangkitan dari kubur,43:11,0.8750523328781128,19.802264135183187,1.0,1.0,0.5
+q0085,synthetic_quran,dense,quran,hujah diulang-ulang dalam Al-Quran tetapi kebanyakan manusia tetap kufur,26:223,0.896287202835083,29.17037748088005,0.0,0.0,0.0
+q0086,synthetic_quran,dense,quran,kaum dibinasakan angin tujuh malam lapan hari bergelimpangan seperti batang kurma,69:7,0.9016556739807129,49.90521791124951,1.0,1.0,1.0
+q0087,synthetic_quran,dense,quran,manusia dicipta dari satu diri dengan tempat tetap dan tempat simpanan,16:4,0.8635881543159485,29.195731808554477,0.0,1.0,0.1111111111111111
+q0088,synthetic_quran,dense,quran,pembesar Firaun menuduh Musa mahu mengusir mereka dari negeri,20:60,0.8822673559188843,16.198892911927707,0.0,0.0,0.0
+q0089,synthetic_quran,dense,quran,diperintah menyembah Tuhan negeri Makkah yang dimuliakan,19:2,0.8800914883613586,17.316434264734152,0.0,0.0,0.0
+q0090,synthetic_quran,dense,quran,Nabi Ibrahim yang menyempurnakan segala perintah,41:2,0.8704981803894043,15.700527032748106,1.0,1.0,0.5
+q0091,synthetic_quran,dense,quran,syurga diwarisi kerana amalan yang dikerjakan,43:72,0.8893147706985474,12.379444470042555,1.0,1.0,1.0
+q0092,synthetic_quran,dense,quran,Allah bertanya di mana sekutu-sekutu-Ku pada hari kiamat,28:62,0.8869897127151489,32.41232877629595,0.0,1.0,0.1
+q0093,synthetic_quran,dense,quran,Nabi Soleh dan pengikutnya diselamatkan dari azab,26:169,0.8676770925521851,14.914438831545857,0.0,0.0,0.0
+q0094,synthetic_quran,dense,quran,Allah menghidupkan dan mematikan dan tiada pelindung selain-Nya,3:2,0.8922877311706543,24.57227073213448,0.0,1.0,0.125
+q0095,synthetic_quran,dense,quran,golongan yang terdahulu dalam kebaikan,56:12,0.8676133155822754,11.370805616387,0.0,0.0,0.0
+q0096,synthetic_quran,dense,quran,kalau dikembalikan ke dunia pun mereka akan ulang kesalahan yang sama,39:47,0.8477734923362732,19.80781500902106,0.0,1.0,0.16666666666666666
+q0097,synthetic_quran,dense,quran,kaum Thamud berpecah dua puak selepas seruan Nabi Soleh,51:43,0.8773897290229797,25.729255855400382,1.0,1.0,0.25
+q0098,synthetic_quran,dense,quran,wanita beriman disuruh melabuhkan pakaian supaya tidak diganggu,55:56,0.8538607954978943,21.716065525963963,1.0,1.0,0.2
+q0099,synthetic_quran,dense,quran,keadaan golongan kiri pada hari kiamat,44:40,0.8620914220809937,14.827759719568688,1.0,1.0,0.2
+q0100,synthetic_quran,dense,quran,Prophet Shuaib tells his people to give full measure and weight,25:1,0.8574162125587463,28.241781280216117,0.0,1.0,0.1111111111111111
+q0101,synthetic_quran,dense,quran,humans are created hasty,21:37,0.8728954792022705,9.803665325041486,1.0,1.0,1.0
+q0102,synthetic_quran,dense,quran,ujian takut lapar dan kehilangan harta serta berita gembira untuk orang sabar,2:155,0.8835775852203369,25.126355205195637,1.0,1.0,1.0
+q0103,synthetic_quran,dense,quran,langit dan bumi tidak dicipta dengan sia-sia,44:29,0.8843954801559448,25.16300904450631,0.0,0.0,0.0
+q0104,synthetic_quran,dense,quran,penghuni neraka terpaksa minum dan maut datang dari semua arah tapi tidak mati,87:12,0.8693464994430542,27.800401280911437,0.0,0.0,0.0
+q0105,synthetic_quran,dense,quran,binatang ternak dijadikan untuk ditunggang dan dimakan,40:79,0.8354505896568298,21.69202887318215,1.0,1.0,1.0
+q0106,synthetic_quran,dense,quran,ahli kitab yang soleh menyuruh kebaikan dan bersegera beramal,23:61,0.8914763927459717,17.91500803198717,0.0,0.0,0.0
+q0107,synthetic_quran,dense,quran,tafsiran mimpi dua sahabat Nabi Yusuf dalam penjara,12:36,0.8626335859298706,20.22481991979636,0.0,1.0,0.16666666666666666
+q0108,synthetic_quran,dense,quran,perhiasan dunia sebagai ujian siapa paling baik amalannya,18:7,0.8386878371238708,19.743638394151418,1.0,1.0,1.0
+q0109,synthetic_quran,dense,quran,manusia sangat tidak bersyukur kepada Tuhannya,70:28,0.8666765093803406,23.315794112656395,0.0,0.0,0.0
+q0110,synthetic_quran,dense,quran,the army of the elephant that tried to destroy the Kaaba,105:1,0.8075311779975891,16.176587590908273,1.0,1.0,1.0
+q0111,synthetic_quran,dense,quran,Musa minta kaumnya membiarkannya jika tidak mahu beriman,10:84,0.8680659532546997,16.135327962770077,0.0,0.0,0.0
+q0112,synthetic_quran,dense,quran,seeking protection from the evil of the envious,92:17,0.8767492175102234,15.682426863475095,0.0,0.0,0.0
+q0113,synthetic_quran,dense,quran,sembahan palsu akan mengingkari penyembahnya dan menjadi musuh,70:17,0.8731133937835693,17.005584167876727,0.0,0.0,0.0
+q0114,synthetic_quran,dense,quran,Musa sees a fire and tells his family,28:29,0.8692352771759033,19.674270150128066,0.0,0.0,0.0
+q0115,synthetic_quran,dense,quran,Firaun perintah bunuh anak lelaki orang beriman,40:45,0.8473570942878723,17.4286059772852,0.0,0.0,0.0
+q0116,synthetic_quran,dense,quran,doa minta pasangan dan zuriat yang menyejukkan mata,2:43,0.868728518486023,18.138949697751315,0.0,0.0,0.0
+q0117,synthetic_quran,dense,quran,orang kafir diberi tempoh hidup supaya bertambah dosa,4:138,0.8793980479240417,22.677375421961493,0.0,0.0,0.0
+q0118,synthetic_quran,dense,quran,orang yang mencintai sekutu seperti mencintai Allah,2:165,0.8469232320785522,22.916833992071716,1.0,1.0,1.0
+q0119,synthetic_quran,dense,quran,bila disuruh sujud kepada Ar-Rahman mereka bertanya siapa Ar-Rahman,26:92,0.8786451816558838,46.64542495339,1.0,1.0,0.2
+q0120,synthetic_quran,dense,quran,nabi takut kaumnya ditimpa azab hari yang dahsyat,76:7,0.8963320851325989,19.39779238125558,0.0,0.0,0.0
+q0121,synthetic_quran,dense,quran,soalan tentang arak dan judi yang dosanya lebih besar dari manfaat,22:13,0.8482372164726257,28.311113368873176,1.0,1.0,0.5
+q0122,synthetic_quran,dense,quran,shirk is the sin Allah does not forgive,4:48,0.8430522680282593,18.75852017539809,1.0,1.0,1.0
+q0123,synthetic_quran,dense,quran,datang kepada Allah seorang diri seperti mula dicipta tanpa harta,112:2,0.8650144338607788,18.03775770709675,0.0,0.0,0.0
+q0124,synthetic_quran,dense,quran,Adam dan Hawa makan buah pohon larangan lalu terdedah aurat,20:121,0.8771088123321533,22.86362995921533,1.0,1.0,1.0
+q0125,synthetic_quran,dense,quran,penyembah memanggil sekutu mereka tetapi tidak disahut,77:48,0.8645758628845215,12.946720486926234,0.0,1.0,0.125
+q0126,synthetic_quran,dense,quran,taat kepada Allah dan Rasul kerana Allah tidak suka orang kafir,3:32,0.9053177833557129,18.672682397191505,1.0,1.0,1.0
+q0127,synthetic_quran,dense,quran,khabar gembira kelahiran Nabi Ishak,37:112,0.8664089441299438,11.548239674561696,1.0,1.0,1.0
+q0128,synthetic_hadith,dense,hadith,larangan jual buah kurma sebelum masak dan jual perak secara bertangguh,Muslim 3875,0.8514820337295532,33.245073159876085,0.0,0.0,0.0
+q0129,synthetic_hadith,dense,hadith,Nabi menjamakkan Maghrib dan Isyak di Muzdalifah,Muslim 3110,0.8828538060188293,12.72331718942709,0.0,0.0,0.0
+q0130,synthetic_hadith,dense,hadith,bawa anak panah dalam masjid mesti pegang mata panahnya,Bukhari 5904,0.838257908821106,30.394904446752236,0.0,0.0,0.0
+q0131,synthetic_hadith,dense,hadith,solat sunat empat rakaat sebelum Zohor dan dua rakaat sebelum Subuh,Muslim 5370,0.8637962937355042,43.98983388326136,0.0,1.0,0.14285714285714285
+q0132,synthetic_hadith,dense,hadith,perumpamaan ilmu dan petunjuk seperti hujan yang jatuh atas pelbagai tanah,Muslim 5491,0.839935839176178,31.146537720158328,1.0,1.0,0.5
+q0133,synthetic_hadith,dense,hadith,sesiapa yang dihisab secara terperinci akan binasa,Muslim 7228,0.8308970332145691,18.74764214288326,1.0,1.0,1.0
+q0134,synthetic_hadith,dense,hadith,do not curse time because Allah is time,Muslim 5864,0.8688838481903076,31.73871135680177,0.0,0.0,0.0
+q0135,synthetic_hadith,dense,hadith,mandi sebelum solat Jumaat dan teguran Umar kepada Uthman,Muslim 1753,0.8656539916992188,24.609097870862783,0.0,0.0,0.0
+q0136,synthetic_hadith,dense,hadith,Ibnu Masud tahu di mana setiap ayat Al-Quran diturunkan,Muslim 436,0.8653856515884399,28.7329838199624,0.0,0.0,0.0
+q0137,synthetic_hadith,dense,hadith,makmum tidak turun sujud sehingga dahi Nabi sampai ke lantai,Bukhari 5904,0.866216778755188,20.578445747688427,0.0,0.0,0.0
+q0138,synthetic_hadith,dense,hadith,jual buah kurma hanya bila sudah merah atau kuning,Muslim 3901,0.8446213603019714,42.68801316004109,0.0,0.0,0.0
+q0139,synthetic_hadith,dense,hadith,women are like glass vessels drive the camels gently,Bukhari 6210,0.847620964050293,47.715132831148956,1.0,1.0,0.5
+q0140,synthetic_hadith,dense,hadith,zikir tiada tuhan selain Allah yang memenangkan tentera-Nya,Muslim 4539,0.8622574806213379,24.279558414263743,0.0,1.0,0.16666666666666666
+q0141,synthetic_hadith,dense,hadith,mengeluarkan Yahudi dan Nasrani dari Semenanjung Arab,Muslim 4594,0.8434609174728394,37.20932338897785,1.0,1.0,1.0
+q0142,synthetic_hadith,dense,hadith,kisah orang sakit yang minum susu unta lalu membunuh penggembala,Bukhari 6804,0.8385693430900574,28.138762180024454,1.0,1.0,0.5
+q0143,synthetic_hadith,dense,hadith,Aisha's lost necklace and the revelation of tayammum,Bukhari 5882,0.8901573419570923,32.33990791821157,1.0,1.0,0.5
+q0144,synthetic_hadith,dense,hadith,Nabi tawaf menunggang unta dan bertakbir di Hajarul Aswad,Muslim 2921,0.8839243650436401,23.93045866119312,0.0,0.0,0.0
+q0145,synthetic_hadith,dense,hadith,Nabi sujud sehingga anak kambing boleh lalu di bawah lengannya,Muslim 1611,0.875799834728241,18.85216388021617,1.0,1.0,0.3333333333333333
+q0146,synthetic_hadith,dense,hadith,nazar berjalan kaki tanpa kasut ke Kaabah,Bukhari 5406,0.8345721364021301,18.259993701053634,0.0,0.0,0.0
+q0147,synthetic_hadith,dense,hadith,kenapa Nabi tidak bertahallul selepas umrah kerana membawa binatang korban,Muslim 811,0.8740936517715454,20.09086567122506,0.0,0.0,0.0
+q0148,synthetic_hadith,dense,hadith,help your brother whether he is an oppressor or oppressed,Bukhari 6952,0.8801261186599731,55.479160450058835,1.0,1.0,1.0
+q0149,synthetic_hadith,dense,hadith,cara solat ketika dalam bahaya dengan dua saf,Bukhari 5857,0.8524832129478455,21.99407790705603,0.0,0.0,0.0
+q0150,synthetic_hadith,dense,hadith,Nabi menukar nama Barrah kepada Zainab,Muslim 4524,0.872639536857605,39.710413025443046,0.0,0.0,0.0
+q0151,synthetic_hadith,dense,hadith,kesan minyak wangi di rambut Nabi ketika bertalbiah,Muslim 6068,0.8695361614227295,25.587428538868703,1.0,1.0,0.2
+q0152,synthetic_hadith,dense,hadith,Nabi membaca surah Qaf dalam solat,Muslim 2214,0.8847475051879883,27.81079717956576,0.0,0.0,0.0
+q0153,synthetic_hadith,dense,hadith,solat ketika berdepan musuh boleh sambil berdiri atau menunggang,Bukhari 2559,0.843925952911377,27.68121858343351,0.0,0.0,0.0
+q0154,synthetic_hadith,dense,hadith,orang berihram yang tiada kain boleh memakai seluar dan khuf,Bukhari 5853,0.8579005002975464,37.779579211144686,0.0,0.0,0.0
+q0155,synthetic_hadith,dense,hadith,two people punished in their graves for urine and spreading gossip,Bukhari 1361,0.8354315757751465,27.337366649998224,0.0,1.0,0.1111111111111111
+q0156,synthetic_hadith,dense,hadith,khutbah hari Nahar darah harta dan maruah kamu adalah suci,Bukhari 2128,0.8544594049453735,27.049651416355307,0.0,0.0,0.0
+q0157,synthetic_hadith,dense,hadith,lelaki menggigit tangan orang lalu giginya tercabut tanpa pampasan,Bukhari 1848,0.8785178065299988,26.110283017718753,0.0,0.0,0.0
+q0158,synthetic_hadith,dense,hadith,Nabi suruh lelaki menunggang unta korbannya,Bukhari 5846,0.8630767464637756,17.930652520312048,0.0,0.0,0.0
+q0159,synthetic_hadith,dense,hadith,Nabi berkata kepada wanita Ansar kamu antara orang paling aku sayang,Bukhari 5234,0.86865234375,24.892443643535536,0.0,0.0,0.0
+q0160,synthetic_hadith,dense,hadith,kain kafan Nabi tiga helai kain putih dari Yaman,Muslim 4406,0.8671180605888367,35.74269670132035,0.0,0.0,0.0
+q0161,synthetic_hadith,dense,hadith,hak tetamu jika penduduk tidak melayan dengan baik,Bukhari 2737,0.8111077547073364,20.802887317251187,1.0,1.0,0.5
+q0162,synthetic_hadith,dense,hadith,melihat Tuhan seperti melihat bulan purnama dan jaga solat Subuh dan Asar,Muslim 1556,0.8885989785194397,24.182378017822412,0.0,0.0,0.0
+q0163,synthetic_hadith,dense,hadith,Madinah seperti relau yang membuang kekotoran,Muslim 3736,0.8519786596298218,13.617492508931958,0.0,0.0,0.0
+q0164,synthetic_hadith,dense,hadith,pemberian seumur hidup menjadi milik penerima dan warisnya,Muslim 4201,0.8361821174621582,33.43964747757106,1.0,1.0,0.5
+q0165,synthetic_hadith,dense,hadith,sedekah daging kambing dari Nusaibah yang sudah sampai ke tempatnya,Bukhari 3860,0.8295035362243652,21.746344233691968,0.0,0.0,0.0
+q0166,synthetic_hadith,dense,hadith,anak dinisbahkan kepada pemilik tempat tidur dan perintah Saudah berhijab,Bukhari 6750,0.8724238276481628,29.094757431317852,0.0,0.0,0.0
+q0167,synthetic_hadith,dense,hadith,Abu Bakar mendukung Hasan yang mirip Nabi,Muslim 2303,0.8659896850585938,15.315167785001394,0.0,0.0,0.0
+q0168,synthetic_hadith,dense,hadith,larangan menyewakan tanah pertanian,Muslim 3916,0.832536518573761,13.604994853446954,1.0,1.0,0.5
+q0169,synthetic_hadith,dense,hadith,Uqbah meletakkan isi perut unta atas belakang Nabi ketika sujud,Muslim 1611,0.8888442516326904,29.845679261730076,0.0,0.0,0.0
+q0170,synthetic_hadith,dense,hadith,sujud sahwi kerana terlupa duduk tahiyat awal,Bukhari 5864,0.8353220224380493,16.316274011993745,0.0,0.0,0.0
+q0171,synthetic_hadith,dense,hadith,ayat mata terbeliak dan hati sampai ke kerongkong berlaku semasa perang Khandaq,Bukhari 1004,0.8597179651260376,23.238878526900606,1.0,1.0,0.3333333333333333
+q0172,synthetic_hadith,dense,hadith,asal usul nama Ansar,Muslim 236,0.8285704255104065,19.229109318139024,1.0,1.0,0.3333333333333333
+q0173,manual,dense,quran,berbuat baik kepada ibu bapa,19:14,0.8289483189582825,18.39069885534394,0.14285714285714285,0.2857142857142857,0.25
+q0174,manual,dense,quran,larangan mengumpat dan mengintip,53:17,0.8279091119766235,25.36780743783857,0.0,0.0,0.0
+q0175,manual,dense,quran,kemudahan selepas kesusahan,84:10,0.8184694051742554,13.279737982968452,0.0,0.3333333333333333,0.16666666666666666
+q0176,manual,dense,quran,kelebihan bersedekah di jalan Allah,42:53,0.8525868058204651,13.186133540786882,0.0,0.3333333333333333,0.16666666666666666
+q0177,manual,dense,quran,larangan riba,5:96,0.8185113668441772,16.370067546606947,0.25,0.75,0.5
+q0178,manual,dense,quran,kewajipan berpuasa bulan Ramadan,2:185,0.8798750638961792,27.08369975752241,0.5,0.5,1.0
+q0179,manual,dense,quran,Allah tidak membebani melebihi kemampuan,27:26,0.8701930046081543,9.440370075936755,0.0,0.0,0.0
+q0180,manual,dense,quran,jangan berputus asa dari rahmat Allah,26:213,0.8603371381759644,26.337367997549403,0.0,0.0,0.0
+q0181,manual,dense,quran,berlaku adil walaupun terhadap diri sendiri,92:8,0.8257864713668823,15.857027358652836,0.0,0.0,0.0
+q0182,manual,dense,quran,larangan arak dan judi,5:90,0.8358789086341858,15.134532696240257,0.6666666666666666,1.0,1.0
+q0183,manual,dense,quran,kewajipan menunaikan haji,2:197,0.8453003168106079,13.73185909730903,0.0,0.5,0.16666666666666666
+q0184,manual,dense,quran,suruhan menutup aurat bagi wanita,55:56,0.8267642855644226,13.341443792627741,0.5,1.0,0.25
+q0185,manual,dense,quran,hati menjadi tenang dengan mengingati Allah,37:143,0.8597556352615356,17.323626715202845,0.0,0.0,0.0
+q0186,manual,dense,quran,tujuan manusia diciptakan,95:4,0.8312952518463135,11.10343018365132,0.0,0.0,0.0
+q0187,manual,dense,quran,setiap yang bernyawa pasti mati,75:28,0.8734490275382996,12.996338075248076,0.3333333333333333,0.3333333333333333,0.5
+q0188,manual,dense,quran,Allah dekat dan memperkenankan doa,81:20,0.8590604066848755,14.167342663823325,0.0,0.0,0.0
+q0189,manual,dense,quran,larangan membunuh tanpa hak,17:33,0.8168572187423706,10.879956877069347,0.3333333333333333,0.3333333333333333,1.0
+q0190,manual,dense,quran,jangan makan harta anak yatim,4:2,0.8483062982559204,22.905531516368836,0.0,0.6666666666666666,0.16666666666666666
+q0191,manual,dense,quran,periksa dahulu berita yang dibawa orang fasik,37:73,0.869215726852417,12.052267106237228,0.0,0.0,0.0
+q0192,manual,dense,hadith,amalan bergantung pada niat,Muslim 2878,0.8368268609046936,13.876921131825416,0.0,0.0,0.0
+q0193,manual,dense,hadith,muslim sejati tidak menyakiti orang lain dengan lidah dan tangan,Bukhari 10,0.8457090258598328,25.936874372729662,1.0,1.0,1.0
+q0194,manual,dense,hadith,Islam dibina atas lima perkara,Muslim 1282,0.8390113115310669,13.255802732826954,1.0,1.0,0.3333333333333333
+q0195,manual,dense,hadith,yang halal jelas dan yang haram jelas dan di antaranya perkara syubhah,Muslim 2539,0.8688571453094482,36.83550631297801,0.0,0.0,0.0
+q0196,manual,dense,hadith,tidak sempurna iman sehingga mengasihi saudaranya seperti diri sendiri,Bukhari 13,0.856981635093689,20.01684529233358,1.0,1.0,1.0
+q0197,manual,dense,hadith,berkata yang baik atau diam,Bukhari 4204,0.8150795698165894,17.158333269092537,0.0,0.0,0.0
+q0198,manual,dense,hadith,orang yang kuat ialah yang dapat menahan marah,Bukhari 6114,0.8312618732452393,35.8444308976573,1.0,1.0,1.0
+q0199,manual,dense,hadith,nasihat Nabi jangan marah,Muslim 3822,0.8570639491081238,15.551120884741902,0.0,0.0,0.0
+q0200,manual,dense,hadith,orang beriman seperti satu tubuh,Muslim 1593,0.8365535736083984,25.227742915108543,0.0,0.0,0.0
+q0201,manual,dense,hadith,sebaik-baik kamu ialah yang belajar dan mengajar Al-Quran,Bukhari 5027,0.8673856854438782,30.104118314346206,1.0,1.0,1.0
+q0202,manual,dense,hadith,dua nikmat yang ramai manusia terleka iaitu sihat dan masa lapang,Bukhari 6412,0.8590949177742004,36.81182699251744,1.0,1.0,1.0
+q0203,manual,dense,hadith,hiduplah di dunia seperti orang asing atau pengembara,Muslim 7417,0.8054357767105103,18.484619027262948,1.0,1.0,0.25
+q0204,manual,dense,hadith,menyambung silaturahim melapangkan rezeki,Muslim 1901,0.8422384858131409,11.135426602989558,0.0,0.0,0.0
+q0205,manual,dense,hadith,sabar pada saat pertama ditimpa musibah,Bukhari 1302,0.8546168804168701,26.598653694048053,1.0,1.0,1.0
+q0206,manual,dense,hadith,seorang muslim bersaudara dengan muslim lain dan tidak menzaliminya,Muslim 3813,0.8662056922912598,22.787855475055892,0.0,1.0,0.125
+q0207,negative,dense,quran,resepi nasi lemak sambal sotong,78:36,0.8128104209899902,7.997615262449739,,,
+q0207,negative,dense,hadith,resepi nasi lemak sambal sotong,Muslim 2555,0.8249149918556213,12.68831913868374,,,
+q0208,negative,dense,quran,cara tukar tayar kereta,37:1,0.7858471870422363,8.416679269627547,,,
+q0208,negative,dense,hadith,cara tukar tayar kereta,Muslim 4858,0.803934633731842,12.15596071375979,,,
+q0209,negative,dense,quran,keputusan perlawanan bola sepak semalam,52:49,0.7969399690628052,9.40198093150269,,,
+q0209,negative,dense,hadith,keputusan perlawanan bola sepak semalam,Bukhari 241,0.7946904301643372,9.839749491107236,,,
+q0210,negative,dense,quran,harga emas hari ini,9:35,0.800649106502533,9.062155196752327,,,
+q0210,negative,dense,hadith,harga emas hari ini,Bukhari 1447,0.7939358949661255,14.6179048136336,,,
+q0211,negative,dense,quran,cara install python di windows,88:19,0.7677866220474243,8.532359883611255,,,
+q0211,negative,dense,hadith,cara install python di windows,Bukhari 3674,0.7526760697364807,9.593049893638254,,,
+q0212,negative,dense,quran,laptop terbaik untuk pelajar universiti,55:1,0.798741340637207,4.263786099884465,,,
+q0212,negative,dense,hadith,laptop terbaik untuk pelajar universiti,Bukhari 5356,0.7711427211761475,13.166686076534777,,,
+q0213,negative,dense,quran,jadual tren KTM Komuter,81:19,0.7988384962081909,0.0,,,
+q0213,negative,dense,hadith,jadual tren KTM Komuter,Bukhari 4204,0.8362860679626465,0.0,,,
+q0214,negative,dense,quran,cara menulis resume untuk fresh graduate,2:282,0.7927635312080383,9.019275826279603,,,
+q0214,negative,dense,hadith,cara menulis resume untuk fresh graduate,Muslim 1812,0.7880656719207764,12.217016486665074,,,
+q0215,negative,dense,quran,tips menanam cili dalam pasu,4:138,0.8090227842330933,8.981415829322447,,,
+q0215,negative,dense,hadith,tips menanam cili dalam pasu,Muslim 5412,0.8127374649047852,13.01465009303501,,,
+q0216,negative,dense,quran,how to fix a leaking tap,83:27,0.7846577167510986,9.79661342761533,,,
+q0216,negative,dense,hadith,how to fix a leaking tap,Muslim 697,0.791919469833374,13.823207539000432,,,
+q0217,negative,dense,quran,best budget smartphone 2026,83:26,0.785106897354126,6.872470871209476,,,
+q0217,negative,dense,hadith,best budget smartphone 2026,Muslim 5974,0.775824785232544,8.190365127972271,,,
+q0218,negative,dense,quran,cara renew lesen memandu,84:10,0.7877378463745117,8.50581789443493,,,
+q0218,negative,dense,hadith,cara renew lesen memandu,Bukhari 1444,0.7818508744239807,9.950860465345588,,,
+q0219,negative,dense,quran,cara membuat kek coklat,6:141,0.7743512988090515,9.76339977958933,,,
+q0219,negative,dense,hadith,cara membuat kek coklat,Bukhari 235,0.7695779800415039,14.19951030170406,,,
+q0220,negative,dense,quran,harga tiket penerbangan ke Langkawi,51:1,0.7784305810928345,9.513349305903397,,,
+q0220,negative,dense,hadith,harga tiket penerbangan ke Langkawi,Bukhari 1444,0.7760297060012817,11.457076244639492,,,
+q0221,negative,dense,quran,cara memohon PTPTN,17:110,0.8139231204986572,8.39757150544342,,,
+q0221,negative,dense,hadith,cara memohon PTPTN,Bukhari 835,0.7999523878097534,12.842246718561427,,,
+q0222,negative,dense,quran,senarai universiti awam di Malaysia,55:1,0.770809531211853,3.533964022591993,,,
+q0222,negative,dense,hadith,senarai universiti awam di Malaysia,Muslim 4767,0.7880874276161194,11.360155455199791,,,
+q0223,negative,dense,quran,how to train a neural network,55:5,0.808051586151123,9.79661342761533,,,
+q0223,negative,dense,hadith,how to train a neural network,Bukhari 835,0.7930151224136353,7.40590117938792,,,
+q0224,negative,dense,quran,keputusan SPM tahun ini,41:2,0.803879976272583,10.150774614292871,,,
+q0224,negative,dense,hadith,keputusan SPM tahun ini,Muslim 6150,0.8256235122680664,12.79931222672351,,,
+q0225,negative,dense,quran,cara menjaga kucing yang sakit,12:12,0.8208094835281372,9.574137671355986,,,
+q0225,negative,dense,hadith,cara menjaga kucing yang sakit,Bukhari 2365,0.795479416847229,14.882877509652095,,,
+q0226,negative,dense,quran,tempat menarik di Cameron Highlands,55:76,0.7681140899658203,13.93762464254442,,,
+q0226,negative,dense,hadith,tempat menarik di Cameron Highlands,Muslim 3283,0.7630143165588379,14.297863035662642,,,
+q0227,negative,dense,quran,kadar pertukaran ringgit ke dolar,2:267,0.7911276817321777,8.095587836069226,,,
+q0227,negative,dense,hadith,kadar pertukaran ringgit ke dolar,Muslim 4069,0.8225885629653931,15.78911613357745,,,
+q0228,negative,dense,quran,cara reset router wifi,89:27,0.7685608863830566,6.527686557875343,,,
+q0228,negative,dense,hadith,cara reset router wifi,Bukhari 6295,0.77992844581604,9.338338800132808,,,
+q0229,negative,dense,quran,resepi rendang daging,56:22,0.807258665561676,9.714542470407741,,,
+q0229,negative,dense,hadith,resepi rendang daging,Muslim 5364,0.8066260814666748,9.637427323844337,,,
+q0230,negative,dense,quran,cara menghilangkan jerawat,53:59,0.808619499206543,7.780296219705903,,,
+q0230,negative,dense,hadith,cara menghilangkan jerawat,Bukhari 5624,0.8049657344818115,16.237461682777685,,,
+q0231,negative,dense,quran,what is the capital of Australia,22:48,0.7671430110931396,9.110074354466496,,,
+q0231,negative,dense,hadith,what is the capital of Australia,Bukhari 6591,0.7807385921478271,18.093874527653792,,,
+q0232,negative,dense,quran,tutorial Excel pivot table,96:3,0.7910211682319641,8.242579246151612,,,
+q0232,negative,dense,hadith,tutorial Excel pivot table,Muslim 4059,0.7910455465316772,11.178753272363151,,,
+q0233,negative,dense,quran,cara buka akaun Shopee,78:36,0.8109637498855591,6.527686557875343,,,
+q0233,negative,dense,hadith,cara buka akaun Shopee,Bukhari 1444,0.8066075444221497,10.19002795873204,,,
+q0234,negative,dense,quran,ramalan cuaca esok,59:18,0.8026676177978516,8.068415144279673,,,
+q0234,negative,dense,hadith,ramalan cuaca esok,Muslim 3174,0.807086706161499,13.311037612121694,,,
+q0235,negative_hard,dense,quran,waktu solat Kuching hari ini,44:40,0.8249447345733643,11.820982433487139,,,
+q0235,negative_hard,dense,hadith,waktu solat Kuching hari ini,Muslim 6124,0.8252063989639282,16.33997970535387,,,
+q0236,negative_hard,dense,quran,tarikh Hari Raya Aidilfitri tahun depan,44:40,0.821304202079773,10.250933726564064,,,
+q0236,negative_hard,dense,hadith,tarikh Hari Raya Aidilfitri tahun depan,Muslim 2746,0.8216086626052856,19.1096205477557,,,
+q0237,negative_hard,dense,quran,cara daftar haji Tabung Haji,73:20,0.8221953511238098,18.097023477536148,,,
+q0237,negative_hard,dense,hadith,cara daftar haji Tabung Haji,Bukhari 1444,0.8325121402740479,18.47481999822619,,,
+q0238,negative_hard,dense,quran,masjid terdekat dengan saya,27:31,0.8230395317077637,11.176292996102209,,,
+q0238,negative_hard,dense,hadith,masjid terdekat dengan saya,Muslim 3370,0.8159365653991699,14.134936640279129,,,
+q0239,negative_hard,dense,quran,jadual kuliah maghrib minggu ini,55:1,0.8161333203315735,5.908809983967589,,,
+q0239,negative_hard,dense,hadith,jadual kuliah maghrib minggu ini,Muslim 1901,0.8357733488082886,12.598190965475759,,,
+q0240,negative_hard,dense,quran,harga pakej umrah 2026,7:32,0.8075947165489197,8.209270479239473,,,
+q0240,negative_hard,dense,hadith,harga pakej umrah 2026,Bukhari 1503,0.8086315393447876,10.322451492381383,,,
+q0241,negative_hard,dense,quran,cara bayar zakat pendapatan secara online,78:36,0.8173437118530273,10.206633452691333,,,
+q0241,negative_hard,dense,hadith,cara bayar zakat pendapatan secara online,Bukhari 46,0.8147242069244385,14.129138800067226,,,
+q0242,negative_hard,dense,quran,resepi bubur lambuk Ramadan,78:36,0.828035831451416,11.268640372643517,,,
+q0242,negative_hard,dense,hadith,resepi bubur lambuk Ramadan,Muslim 5376,0.8392176032066345,8.612985509787917,,,
+q0243,negative_hard,dense,quran,sejarah pembinaan Masjid Negara,52:1,0.8059391975402832,9.33585809326428,,,
+q0243,negative_hard,dense,hadith,sejarah pembinaan Masjid Negara,Bukhari 4204,0.8319523930549622,17.439016341846333,,,
+q0244,negative_hard,dense,quran,aplikasi Al-Quran terbaik untuk telefon,55:1,0.8470780849456787,13.07744489873258,,,
+q0244,negative_hard,dense,hadith,aplikasi Al-Quran terbaik untuk telefon,Muslim 1768,0.8355044722557068,16.533486780644616,,,
+q0245,negative_hard,dense,quran,berapa jauh Jeddah ke Makkah,17:1,0.793097734451294,10.77718334371423,,,
+q0245,negative_hard,dense,hadith,berapa jauh Jeddah ke Makkah,Bukhari 3926,0.7869772911071777,18.070628568646832,,,
+q0246,negative_hard,dense,quran,nama bayi lelaki Islam moden,19:7,0.8181530833244324,16.787245182065398,,,
+q0246,negative_hard,dense,hadith,nama bayi lelaki Islam moden,Muslim 5588,0.8140106201171875,15.437662261743322,,,
+q0000,synthetic_quran,hybrid,quran,ciri orang bertakwa yang membawa dan membenarkan kebenaran,39:33,0.03252247488101534,12.921758323392673,1.0,1.0,1.0
+q0001,synthetic_quran,hybrid,quran,manusia tidak boleh lari dari kuasa Allah walau di mana berada,22:8,0.025460793502030614,25.72937565900797,1.0,1.0,0.3333333333333333
+q0002,synthetic_quran,hybrid,quran,jangan membuat tandingan atau perumpamaan bagi Allah,10:95,0.023225957049486462,11.560886014798035,0.0,0.0,0.0
+q0003,synthetic_quran,hybrid,quran,orang paling zalim ialah yang mereka-reka dusta atas nama Allah,3:94,0.03200204813108039,22.738592615829138,0.0,0.0,0.0
+q0004,synthetic_quran,hybrid,quran,kisah tuan kebun yang mahu memetik hasil pada awal pagi,68:22,0.03225806451612903,35.05898756814801,1.0,1.0,1.0
+q0005,synthetic_quran,hybrid,quran,malaikat turun membawa wahyu kepada hamba pilihan Allah,97:4,0.03252247488101534,20.21258832569392,1.0,1.0,0.5
+q0006,synthetic_quran,hybrid,quran,Firaun dan binaan kukuh yang dikuasainya,11:97,0.030303030303030304,16.176399692785278,1.0,1.0,0.5
+q0007,synthetic_quran,hybrid,quran,syurga Adn tempat Allah reda kepada mereka dan mereka reda kepada-Nya,47:6,0.02420594262295082,36.11737411650549,0.0,0.0,0.0
+q0008,synthetic_quran,hybrid,quran,Allah memberi makan dan rasa aman kepada kaum Quraisy,76:8,0.03076923076923077,20.639137628202608,1.0,1.0,0.25
+q0009,synthetic_quran,hybrid,quran,Allah beri pendengaran penglihatan dan hati tapi manusia jarang bersyukur,23:78,0.03278688524590164,25.698862969448474,1.0,1.0,1.0
+q0010,synthetic_quran,hybrid,quran,penyesalan orang yang terima buku amalan dengan tangan kiri,84:10,0.03009207275993712,15.925036711961996,1.0,1.0,0.5
+q0011,synthetic_quran,hybrid,quran,golongan kafir yang bersatu akan kalah dan lari,54:45,0.03278688524590164,19.048148678287006,1.0,1.0,1.0
+q0012,synthetic_quran,hybrid,quran,kesejahteraan ke atas Nabi Isa semasa lahir mati dan dibangkitkan,19:33,0.03009207275993712,19.75102695239387,1.0,1.0,1.0
+q0013,synthetic_quran,hybrid,quran,Nabi Lut menegur kaumnya kerana perbuatan keji yang belum pernah dilakukan,29:28,0.03278688524590164,35.453260089513826,1.0,1.0,0.5
+q0014,synthetic_quran,hybrid,quran,orang yang menukar petunjuk dengan kesesatan dan keampunan dengan azab,47:17,0.026262626262626265,25.740021400761353,1.0,1.0,0.3333333333333333
+q0015,synthetic_quran,hybrid,quran,Allah yang mencipta langit dan bumi mampu menghidupkan orang mati,29:44,0.032018442622950824,17.970236878101893,0.0,0.0,0.0
+q0016,synthetic_quran,hybrid,quran,suruhan mengembara dan melihat nasib umat terdahulu,56:13,0.03200204813108039,14.872570320106277,0.0,0.0,0.0
+q0017,synthetic_quran,hybrid,quran,orang kafir sentiasa berpaling setiap kali datang tanda dari Tuhan,6:4,0.029910714285714284,18.47503904791156,1.0,1.0,1.0
+q0018,synthetic_quran,hybrid,quran,no one will bear the sins of another person,53:38,0.03278688524590164,21.03609227247427,1.0,1.0,1.0
+q0019,synthetic_quran,hybrid,quran,teguran kepada Nabi kerana berpaling dari orang buta yang mahu belajar,53:29,0.025657894736842105,16.914466261754317,0.0,0.0,0.0
+q0020,synthetic_quran,hybrid,quran,jangan takut Aku bersama kamu mendengar dan melihat,20:46,0.03278688524590164,26.39809276935562,1.0,1.0,1.0
+q0021,synthetic_quran,hybrid,quran,belum tiba masa hati orang beriman khusyuk sebelum hati menjadi keras,57:16,0.03252247488101534,41.96038852143558,1.0,1.0,1.0
+q0022,synthetic_quran,hybrid,quran,kiamat datang secara tiba-tiba ketika manusia lalai,43:66,0.030536130536130537,21.445722445902778,1.0,1.0,1.0
+q0023,synthetic_quran,hybrid,quran,Musa dan Harun diutus kepada Firaun sebagai utusan Tuhan sekalian alam,7:104,0.03200204813108039,27.11943908381107,1.0,1.0,0.3333333333333333
+q0024,synthetic_quran,hybrid,quran,memberi makan kerana Allah tanpa mengharap balasan atau terima kasih,76:9,0.03252247488101534,35.457819131004825,1.0,1.0,1.0
+q0025,synthetic_quran,hybrid,quran,separuh mahar jika bercerai sebelum bersama isteri,2:237,0.032266458495966696,13.546037301804,1.0,1.0,1.0
+q0026,synthetic_quran,hybrid,quran,manusia dikembalikan ke dalam tanah dan dikeluarkan semula,71:18,0.02886002886002886,18.743553815377197,1.0,1.0,1.0
+q0027,synthetic_quran,hybrid,quran,Nabi Yaakub bersabar dengan sebaik-baiknya selepas kehilangan anaknya lagi,2:132,0.03047794966520434,19.210665767162777,0.0,1.0,0.16666666666666666
+q0028,synthetic_quran,hybrid,quran,tetamu Nabi Ibrahim tidak menyentuh makanan yang dihidangkan,51:24,0.03252247488101534,17.30561673657765,0.0,1.0,0.1111111111111111
+q0029,synthetic_quran,hybrid,quran,air hujan yang mencurah diturunkan dari awan,24:43,0.03225806451612903,29.899386322087963,1.0,1.0,0.5
+q0030,synthetic_quran,hybrid,quran,tugas Rasul hanya menyampaikan dengan jelas maka taatlah,64:12,0.028629032258064516,25.540605312684644,1.0,1.0,0.3333333333333333
+q0031,synthetic_quran,hybrid,quran,orang berdosa sanggup menebus diri dengan semua penghuni bumi,14:49,0.026881720430107527,15.530602989733351,1.0,1.0,0.2
+q0032,synthetic_quran,hybrid,quran,abang-abang Yusuf memujuk ayah mereka supaya mempercayai mereka,12:11,0.03200204813108039,19.95967585522303,1.0,1.0,1.0
+q0033,synthetic_quran,hybrid,quran,Nabi Ibrahim bersumpah akan bertindak terhadap berhala-berhala,21:57,0.024676040805073064,26.35123287029998,1.0,1.0,1.0
+q0034,synthetic_quran,hybrid,quran,Maryam yang menjaga kehormatannya dan ditiupkan roh,66:12,0.031024531024531024,15.853269845063545,1.0,1.0,0.2
+q0035,synthetic_quran,hybrid,quran,women cut their hands when they saw Prophet Yusuf,12:50,0.03200204813108039,23.550435926459656,1.0,1.0,0.5
+q0036,synthetic_quran,hybrid,quran,kamu tahu penciptaan pertama kenapa tidak mengambil pengajaran,56:62,0.03278688524590164,13.722817751377168,1.0,1.0,1.0
+q0037,synthetic_quran,hybrid,quran,Al-Quran bukan dibawa turun oleh syaitan,81:25,0.02938045560996381,30.757241226631677,0.0,1.0,0.125
+q0038,synthetic_quran,hybrid,quran,tunaikan janji dengan Allah dan jangan langgar sumpah,16:91,0.027031963470319637,13.460464207258802,1.0,1.0,1.0
+q0039,synthetic_quran,hybrid,quran,menyerahkan segala urusan kepada Allah yang melihat hamba-Nya,3:109,0.027252906976744186,18.532351837483365,0.0,1.0,0.1111111111111111
+q0040,synthetic_quran,hybrid,quran,yang disembah selain Allah hanyalah berhala dan syaitan,4:117,0.03278688524590164,19.184499531947427,1.0,1.0,1.0
+q0041,synthetic_quran,hybrid,quran,orang ramai hampir berhimpit mengerumuni Nabi ketika beribadah,72:19,0.03278688524590164,15.224444560787841,1.0,1.0,1.0
+q0042,synthetic_quran,hybrid,quran,Musa suruh kaumnya minta tolong kepada Allah dan bersabar kerana bumi milik Allah,7:128,0.03278688524590164,17.870917123922307,1.0,1.0,1.0
+q0043,synthetic_quran,hybrid,quran,Nabi mengadu kepada Allah kaumnya tidak mahu beriman,43:88,0.028283227848101264,18.643776139650903,1.0,1.0,1.0
+q0044,synthetic_quran,hybrid,quran,rujuk atau lepaskan isteri dengan baik jangan tahan untuk menyakiti,2:231,0.028021349599695006,26.85564392574414,1.0,1.0,1.0
+q0045,synthetic_quran,hybrid,quran,dosa yang dilakukan hanya memudaratkan diri sendiri,4:111,0.031754032258064516,14.756136707041957,1.0,1.0,1.0
+q0046,synthetic_quran,hybrid,quran,perjanjian dengan musyrik di Masjidil Haram selagi mereka jujur,9:7,0.026919758412424506,24.153218645727513,1.0,1.0,1.0
+q0047,synthetic_quran,hybrid,quran,tinggalkan orang yang hanya mahukan kehidupan dunia,53:29,0.029051670471052088,16.126244397552064,1.0,1.0,1.0
+q0048,synthetic_quran,hybrid,quran,angin yang membinasakan menjadikan semua yang dilanggarnya hancur,51:42,0.027757078986587184,14.316076534299807,1.0,1.0,1.0
+q0049,synthetic_quran,hybrid,quran,amaran kepada orang yang mendakwa Allah mempunyai anak,18:4,0.032266458495966696,19.310376508341303,1.0,1.0,1.0
+q0050,synthetic_quran,hybrid,quran,orang murtad selepas jelas petunjuk kerana diperdaya syaitan,43:37,0.03225806451612903,13.71512625674779,0.0,1.0,0.16666666666666666
+q0051,synthetic_quran,hybrid,quran,Zakariya finds food with Maryam in the prayer chamber,3:37,0.032266458495966696,17.0023381884348,1.0,1.0,1.0
+q0052,synthetic_quran,hybrid,quran,Bani Israil disuruh masuk pintu kota dengan merendah diri dan memohon ampun,2:58,0.03125763125763126,19.763815190309447,1.0,1.0,0.5
+q0053,synthetic_quran,hybrid,quran,setiap umat ada ajal yang tidak boleh dicepatkan atau dilambatkan,7:34,0.02938045560996381,14.113886613660426,1.0,1.0,0.3333333333333333
+q0054,synthetic_quran,hybrid,quran,adakah kamu sangka Allah mencipta kamu sia-sia,52:35,0.025849212924606464,22.954668700255656,1.0,1.0,0.5
+q0055,synthetic_quran,hybrid,quran,tuan kebun sangka mereka sesat jalan bila lihat kebun musnah,68:26,0.027623285131627734,27.887713671221015,1.0,1.0,1.0
+q0056,synthetic_quran,hybrid,quran,pemuda bernama Ibrahim yang mencela berhala,21:60,0.03252247488101534,14.257785577362522,1.0,1.0,1.0
+q0057,synthetic_quran,hybrid,quran,kaum Firaun merayu Musa berdoa supaya bala diangkat,10:75,0.031009615384615385,14.642237050306186,0.0,1.0,0.125
+q0058,synthetic_quran,hybrid,quran,Allah tidak memerlukan bantuan makhluk untuk mencipta langit dan bumi,18:51,0.0287391216352965,25.47646121638299,1.0,1.0,1.0
+q0059,synthetic_quran,hybrid,quran,jangan sekutukan Allah nanti tercela dan tidak ditolong,17:22,0.03009207275993712,12.349513731154273,1.0,1.0,1.0
+q0060,synthetic_quran,hybrid,quran,bertasbih pada waktu malam dan ketika bintang terbenam,52:49,0.03278688524590164,36.89490017614023,1.0,1.0,1.0
+q0061,synthetic_quran,hybrid,quran,Allah menolong orang Islam di Badar ketika mereka lemah,3:123,0.03278688524590164,19.331357628079797,1.0,1.0,1.0
+q0062,synthetic_quran,hybrid,quran,surah tentang datangnya pertolongan Allah dan kemenangan,110:1,0.032018442622950824,13.562776280981602,1.0,1.0,1.0
+q0063,synthetic_quran,hybrid,quran,seruan kepada semua manusia supaya menyembah Tuhan yang mencipta mereka,2:21,0.027236652236652236,17.55569687181178,1.0,1.0,1.0
+q0064,synthetic_quran,hybrid,quran,sembah Allah dengan ikhlas kerana Al-Quran diturunkan dengan kebenaran,39:2,0.024922600619195046,22.580685962694517,1.0,1.0,1.0
+q0065,synthetic_quran,hybrid,quran,doa Allah akan menghimpunkan manusia pada hari yang tiada keraguan,3:9,0.03252247488101534,20.948674395321802,1.0,1.0,1.0
+q0066,synthetic_quran,hybrid,quran,orang yang menunaikan janji Allah dan tidak merosakkan perjanjian,13:20,0.03252247488101534,14.668988155484179,1.0,1.0,1.0
+q0067,synthetic_quran,hybrid,quran,diuji sekali dua kali setiap tahun tetapi tetap tidak bertaubat,9:126,0.03278688524590164,25.83406464788114,1.0,1.0,1.0
+q0068,synthetic_quran,hybrid,quran,balasan neraka bagi yang memperolok ayat Allah dan rasul,18:106,0.03128054740957967,18.66816496624184,1.0,1.0,1.0
+q0069,synthetic_quran,hybrid,quran,taubat yang sebenar diikuti dengan amal soleh,25:71,0.03278688524590164,19.144232741448334,1.0,1.0,1.0
+q0070,synthetic_quran,hybrid,quran,pada hari kiamat tiada siapa boleh beri manfaat atau mudarat kepada kawannya,2:123,0.02661064425770308,20.805571829721025,0.0,0.0,0.0
+q0071,synthetic_quran,hybrid,quran,mereka kata Allah ada anak sedangkan Dia Maha Kaya,10:68,0.03252247488101534,21.755991540251806,1.0,1.0,1.0
+q0072,synthetic_quran,hybrid,quran,syurga dengan pasangan yang suci dan naungan yang teduh,36:56,0.022707979626485568,27.06239362318015,0.0,1.0,0.16666666666666666
+q0073,synthetic_quran,hybrid,quran,Nabi tidak tahu perbincangan malaikat di alam tinggi tanpa wahyu,38:69,0.03278688524590164,20.41896609392773,1.0,1.0,1.0
+q0074,synthetic_quran,hybrid,quran,siapa yang menciptakan manusia daripada air mani,86:6,0.0315136476426799,16.791223078080687,0.0,0.0,0.0
+q0075,synthetic_quran,hybrid,quran,rasul terdahulu juga diejek lalu Allah beri tempoh kemudian mengazab,39:25,0.02946912242686891,20.13515124470028,1.0,1.0,0.5
+q0076,synthetic_quran,hybrid,quran,Nabi keluar awal pagi menyusun tentera di medan Uhud,3:121,0.031544957774465976,25.88108895747318,1.0,1.0,1.0
+q0077,synthetic_quran,hybrid,quran,hanya orang rugi yang rasa aman dari rancangan Allah,7:99,0.03009207275993712,26.17056679829626,1.0,1.0,1.0
+q0078,synthetic_quran,hybrid,quran,Maryam hairan bagaimana dapat anak tanpa disentuh lelaki,19:20,0.03278688524590164,23.062326718241863,1.0,1.0,1.0
+q0079,synthetic_quran,hybrid,quran,orang yang enggan bila disuruh sembahyang,77:48,0.032018442622950824,12.197625392426914,1.0,1.0,1.0
+q0080,synthetic_quran,hybrid,quran,mereka menisbahkan kepada Allah apa yang mereka sendiri benci,6:24,0.02813852813852814,16.734992774885445,1.0,1.0,0.3333333333333333
+q0081,synthetic_quran,hybrid,quran,Allah mengampunkan dan menyeksa sesiapa yang Dia kehendaki,3:129,0.03009207275993712,20.91954895228278,1.0,1.0,0.5
+q0082,synthetic_quran,hybrid,quran,syaitan dihalang daripada mendengar wahyu,26:212,0.03177805800756621,24.307017864815986,1.0,1.0,1.0
+q0083,synthetic_quran,hybrid,quran,tiada seksaan yang setanding seksaan Allah pada hari itu,89:25,0.03252247488101534,19.056190906573114,1.0,1.0,1.0
+q0084,synthetic_quran,hybrid,quran,hujan menghidupkan tanah mati begitu juga kebangkitan dari kubur,43:11,0.031099324975891997,19.802264135183187,1.0,1.0,0.3333333333333333
+q0085,synthetic_quran,hybrid,quran,hujah diulang-ulang dalam Al-Quran tetapi kebanyakan manusia tetap kufur,17:89,0.030621785881252923,29.17037748088005,1.0,1.0,0.5
+q0086,synthetic_quran,hybrid,quran,kaum dibinasakan angin tujuh malam lapan hari bergelimpangan seperti batang kurma,69:7,0.03278688524590164,49.90521791124951,1.0,1.0,1.0
+q0087,synthetic_quran,hybrid,quran,manusia dicipta dari satu diri dengan tempat tetap dan tempat simpanan,6:98,0.030886196246139225,29.195731808554477,1.0,1.0,1.0
+q0088,synthetic_quran,hybrid,quran,pembesar Firaun menuduh Musa mahu mengusir mereka dari negeri,7:127,0.031009615384615385,16.198892911927707,0.0,0.0,0.0
+q0089,synthetic_quran,hybrid,quran,diperintah menyembah Tuhan negeri Makkah yang dimuliakan,36:27,0.020135566188197767,17.316434264734152,1.0,1.0,0.2
+q0090,synthetic_quran,hybrid,quran,Nabi Ibrahim yang menyempurnakan segala perintah,53:37,0.0315136476426799,15.700527032748106,1.0,1.0,1.0
+q0091,synthetic_quran,hybrid,quran,syurga diwarisi kerana amalan yang dikerjakan,76:12,0.02862400327131466,12.379444470042555,1.0,1.0,0.3333333333333333
+q0092,synthetic_quran,hybrid,quran,Allah bertanya di mana sekutu-sekutu-Ku pada hari kiamat,28:62,0.03278688524590164,32.41232877629595,1.0,1.0,0.3333333333333333
+q0093,synthetic_quran,hybrid,quran,Nabi Soleh dan pengikutnya diselamatkan dari azab,40:45,0.025240384615384616,14.914438831545857,0.0,0.0,0.0
+q0094,synthetic_quran,hybrid,quran,Allah menghidupkan dan mematikan dan tiada pelindung selain-Nya,44:8,0.031754032258064516,24.57227073213448,1.0,1.0,0.5
+q0095,synthetic_quran,hybrid,quran,golongan yang terdahulu dalam kebaikan,56:39,0.02325858778625954,11.370805616387,0.0,0.0,0.0
+q0096,synthetic_quran,hybrid,quran,kalau dikembalikan ke dunia pun mereka akan ulang kesalahan yang sama,6:28,0.031544957774465976,19.80781500902106,1.0,1.0,1.0
+q0097,synthetic_quran,hybrid,quran,kaum Thamud berpecah dua puak selepas seruan Nabi Soleh,27:45,0.032018442622950824,25.729255855400382,1.0,1.0,1.0
+q0098,synthetic_quran,hybrid,quran,wanita beriman disuruh melabuhkan pakaian supaya tidak diganggu,33:59,0.03177805800756621,21.716065525963963,1.0,1.0,1.0
+q0099,synthetic_quran,hybrid,quran,keadaan golongan kiri pada hari kiamat,56:41,0.03177805800756621,14.827759719568688,1.0,1.0,1.0
+q0100,synthetic_quran,hybrid,quran,Prophet Shuaib tells his people to give full measure and weight,7:85,0.029418126757516764,28.241781280216117,1.0,1.0,1.0
+q0101,synthetic_quran,hybrid,quran,humans are created hasty,7:179,0.029877369007803793,9.803665325041486,0.0,1.0,0.16666666666666666
+q0102,synthetic_quran,hybrid,quran,ujian takut lapar dan kehilangan harta serta berita gembira untuk orang sabar,2:155,0.03278688524590164,25.126355205195637,1.0,1.0,1.0
+q0103,synthetic_quran,hybrid,quran,langit dan bumi tidak dicipta dengan sia-sia,44:29,0.026597524255603883,25.16300904450631,0.0,0.0,0.0
+q0104,synthetic_quran,hybrid,quran,penghuni neraka terpaksa minum dan maut datang dari semua arah tapi tidak mati,20:74,0.031754032258064516,27.800401280911437,1.0,1.0,0.25
+q0105,synthetic_quran,hybrid,quran,binatang ternak dijadikan untuk ditunggang dan dimakan,6:142,0.03252247488101534,21.69202887318215,1.0,1.0,0.5
+q0106,synthetic_quran,hybrid,quran,ahli kitab yang soleh menyuruh kebaikan dan bersegera beramal,13:29,0.026153846153846153,17.91500803198717,0.0,0.0,0.0
+q0107,synthetic_quran,hybrid,quran,tafsiran mimpi dua sahabat Nabi Yusuf dalam penjara,12:42,0.03177805800756621,20.22481991979636,0.0,0.0,0.0
+q0108,synthetic_quran,hybrid,quran,perhiasan dunia sebagai ujian siapa paling baik amalannya,18:7,0.03252247488101534,19.743638394151418,1.0,1.0,1.0
+q0109,synthetic_quran,hybrid,quran,manusia sangat tidak bersyukur kepada Tuhannya,27:73,0.029957522915269395,23.315794112656395,1.0,1.0,0.3333333333333333
+q0110,synthetic_quran,hybrid,quran,the army of the elephant that tried to destroy the Kaaba,105:1,0.032266458495966696,16.176587590908273,1.0,1.0,1.0
+q0111,synthetic_quran,hybrid,quran,Musa minta kaumnya membiarkannya jika tidak mahu beriman,10:84,0.03252247488101534,16.135327962770077,0.0,0.0,0.0
+q0112,synthetic_quran,hybrid,quran,seeking protection from the evil of the envious,38:55,0.021748135874067938,15.682426863475095,0.0,0.0,0.0
+q0113,synthetic_quran,hybrid,quran,sembahan palsu akan mengingkari penyembahnya dan menjadi musuh,43:67,0.027346637102734665,17.005584167876727,1.0,1.0,0.3333333333333333
+q0114,synthetic_quran,hybrid,quran,Musa sees a fire and tells his family,28:29,0.03278688524590164,19.674270150128066,1.0,1.0,0.3333333333333333
+q0115,synthetic_quran,hybrid,quran,Firaun perintah bunuh anak lelaki orang beriman,40:28,0.030017921146953404,17.4286059772852,1.0,1.0,0.5
+q0116,synthetic_quran,hybrid,quran,doa minta pasangan dan zuriat yang menyejukkan mata,14:40,0.02878726010616578,18.138949697751315,1.0,1.0,0.5
+q0117,synthetic_quran,hybrid,quran,orang kafir diberi tempoh hidup supaya bertambah dosa,3:178,0.02921395544346364,22.677375421961493,1.0,1.0,1.0
+q0118,synthetic_quran,hybrid,quran,orang yang mencintai sekutu seperti mencintai Allah,2:165,0.03278688524590164,22.916833992071716,1.0,1.0,1.0
+q0119,synthetic_quran,hybrid,quran,bila disuruh sujud kepada Ar-Rahman mereka bertanya siapa Ar-Rahman,25:60,0.03177805800756621,46.64542495339,1.0,1.0,1.0
+q0120,synthetic_quran,hybrid,quran,nabi takut kaumnya ditimpa azab hari yang dahsyat,70:27,0.03125,19.39779238125558,0.0,0.0,0.0
+q0121,synthetic_quran,hybrid,quran,soalan tentang arak dan judi yang dosanya lebih besar dari manfaat,2:219,0.03252247488101534,28.311113368873176,1.0,1.0,1.0
+q0122,synthetic_quran,hybrid,quran,shirk is the sin Allah does not forgive,4:48,0.03278688524590164,18.75852017539809,1.0,1.0,1.0
+q0123,synthetic_quran,hybrid,quran,datang kepada Allah seorang diri seperti mula dicipta tanpa harta,19:80,0.02459016393442623,18.03775770709675,0.0,0.0,0.0
+q0124,synthetic_quran,hybrid,quran,Adam dan Hawa makan buah pohon larangan lalu terdedah aurat,20:121,0.03278688524590164,22.86362995921533,1.0,1.0,1.0
+q0125,synthetic_quran,hybrid,quran,penyembah memanggil sekutu mereka tetapi tidak disahut,28:64,0.03057889822595705,12.946720486926234,1.0,1.0,1.0
+q0126,synthetic_quran,hybrid,quran,taat kepada Allah dan Rasul kerana Allah tidak suka orang kafir,3:32,0.03177805800756621,18.672682397191505,1.0,1.0,1.0
+q0127,synthetic_quran,hybrid,quran,khabar gembira kelahiran Nabi Ishak,37:112,0.029906956136464335,11.548239674561696,1.0,1.0,1.0
+q0128,synthetic_hadith,hybrid,hadith,larangan jual buah kurma sebelum masak dan jual perak secara bertangguh,Muslim 3875,0.029906956136464335,33.245073159876085,0.0,0.0,0.0
+q0129,synthetic_hadith,hybrid,hadith,Nabi menjamakkan Maghrib dan Isyak di Muzdalifah,Bukhari 1004,0.026356857985087564,12.72331718942709,0.0,0.0,0.0
+q0130,synthetic_hadith,hybrid,hadith,bawa anak panah dalam masjid mesti pegang mata panahnya,Muslim 6661,0.025794938351719664,30.394904446752236,0.0,0.0,0.0
+q0131,synthetic_hadith,hybrid,hadith,solat sunat empat rakaat sebelum Zohor dan dua rakaat sebelum Subuh,Bukhari 1182,0.03131881575727918,43.98983388326136,1.0,1.0,1.0
+q0132,synthetic_hadith,hybrid,hadith,perumpamaan ilmu dan petunjuk seperti hujan yang jatuh atas pelbagai tanah,Muslim 5953,0.03225806451612903,31.146537720158328,1.0,1.0,1.0
+q0133,synthetic_hadith,hybrid,hadith,sesiapa yang dihisab secara terperinci akan binasa,Muslim 7228,0.01639344262295082,18.74764214288326,1.0,1.0,1.0
+q0134,synthetic_hadith,hybrid,hadith,do not curse time because Allah is time,Muslim 5864,0.032266458495966696,31.73871135680177,0.0,1.0,0.125
+q0135,synthetic_hadith,hybrid,hadith,mandi sebelum solat Jumaat dan teguran Umar kepada Uthman,Bukhari 877,0.032266458495966696,24.609097870862783,0.0,0.0,0.0
+q0136,synthetic_hadith,hybrid,hadith,Ibnu Masud tahu di mana setiap ayat Al-Quran diturunkan,Bukhari 4723,0.027777777777777776,28.7329838199624,0.0,1.0,0.16666666666666666
+q0137,synthetic_hadith,hybrid,hadith,makmum tidak turun sujud sehingga dahi Nabi sampai ke lantai,Bukhari 139,0.01639344262295082,20.578445747688427,0.0,0.0,0.0
+q0138,synthetic_hadith,hybrid,hadith,jual buah kurma hanya bila sudah merah atau kuning,Muslim 3865,0.0315136476426799,42.68801316004109,1.0,1.0,0.25
+q0139,synthetic_hadith,hybrid,hadith,women are like glass vessels drive the camels gently,Bukhari 6210,0.03278688524590164,47.715132831148956,1.0,1.0,0.3333333333333333
+q0140,synthetic_hadith,hybrid,hadith,zikir tiada tuhan selain Allah yang memenangkan tentera-Nya,Muslim 4539,0.01639344262295082,24.279558414263743,0.0,0.0,0.0
+q0141,synthetic_hadith,hybrid,hadith,mengeluarkan Yahudi dan Nasrani dari Semenanjung Arab,Muslim 4594,0.03278688524590164,37.20932338897785,1.0,1.0,1.0
+q0142,synthetic_hadith,hybrid,hadith,kisah orang sakit yang minum susu unta lalu membunuh penggembala,Bukhari 6805,0.032266458495966696,28.138762180024454,0.0,0.0,0.0
+q0143,synthetic_hadith,hybrid,hadith,Aisha's lost necklace and the revelation of tayammum,Bukhari 5882,0.03278688524590164,32.33990791821157,1.0,1.0,0.5
+q0144,synthetic_hadith,hybrid,hadith,Nabi tawaf menunggang unta dan bertakbir di Hajarul Aswad,Muslim 2921,0.01639344262295082,23.93045866119312,0.0,0.0,0.0
+q0145,synthetic_hadith,hybrid,hadith,Nabi sujud sehingga anak kambing boleh lalu di bawah lengannya,Muslim 1107,0.023685515873015872,18.85216388021617,1.0,1.0,1.0
+q0146,synthetic_hadith,hybrid,hadith,nazar berjalan kaki tanpa kasut ke Kaabah,Muslim 3391,0.03149801587301587,18.259993701053634,0.0,1.0,0.14285714285714285
+q0147,synthetic_hadith,hybrid,hadith,kenapa Nabi tidak bertahallul selepas umrah kerana membawa binatang korban,Bukhari 2353,0.02188034188034188,20.09086567122506,0.0,0.0,0.0
+q0148,synthetic_hadith,hybrid,hadith,help your brother whether he is an oppressor or oppressed,Bukhari 6952,0.032266458495966696,55.479160450058835,1.0,1.0,1.0
+q0149,synthetic_hadith,hybrid,hadith,cara solat ketika dalam bahaya dengan dua saf,Muslim 1576,0.03252247488101534,21.99407790705603,0.0,0.0,0.0
+q0150,synthetic_hadith,hybrid,hadith,Nabi menukar nama Barrah kepada Zainab,Muslim 4524,0.01639344262295082,39.710413025443046,1.0,1.0,0.5
+q0151,synthetic_hadith,hybrid,hadith,kesan minyak wangi di rambut Nabi ketika bertalbiah,Muslim 2837,0.031009615384615385,25.587428538868703,1.0,1.0,0.25
+q0152,synthetic_hadith,hybrid,hadith,Nabi membaca surah Qaf dalam solat,Muslim 2031,0.01639344262295082,27.81079717956576,0.0,0.0,0.0
+q0153,synthetic_hadith,hybrid,hadith,solat ketika berdepan musuh boleh sambil berdiri atau menunggang,Bukhari 943,0.026702720973466286,27.68121858343351,1.0,1.0,1.0
+q0154,synthetic_hadith,hybrid,hadith,orang berihram yang tiada kain boleh memakai seluar dan khuf,Bukhari 5853,0.03252247488101534,37.779579211144686,0.0,0.0,0.0
+q0155,synthetic_hadith,hybrid,hadith,two people punished in their graves for urine and spreading gossip,Bukhari 1361,0.032266458495966696,27.337366649998224,1.0,1.0,0.2
+q0156,synthetic_hadith,hybrid,hadith,khutbah hari Nahar darah harta dan maruah kamu adalah suci,Bukhari 6043,0.02699859747545582,27.049651416355307,0.0,0.0,0.0
+q0157,synthetic_hadith,hybrid,hadith,lelaki menggigit tangan orang lalu giginya tercabut tanpa pampasan,Bukhari 1848,0.03177805800756621,26.110283017718753,1.0,1.0,0.2
+q0158,synthetic_hadith,hybrid,hadith,Nabi suruh lelaki menunggang unta korbannya,Bukhari 5551,0.022664979970482817,17.930652520312048,0.0,0.0,0.0
+q0159,synthetic_hadith,hybrid,hadith,Nabi berkata kepada wanita Ansar kamu antara orang paling aku sayang,Bukhari 5234,0.03278688524590164,24.892443643535536,0.0,0.0,0.0
+q0160,synthetic_hadith,hybrid,hadith,kain kafan Nabi tiga helai kain putih dari Yaman,Bukhari 1273,0.029906956136464335,35.74269670132035,0.0,1.0,0.16666666666666666
+q0161,synthetic_hadith,hybrid,hadith,hak tetamu jika penduduk tidak melayan dengan baik,Bukhari 2461,0.03200204813108039,20.802887317251187,1.0,1.0,0.5
+q0162,synthetic_hadith,hybrid,hadith,melihat Tuhan seperti melihat bulan purnama dan jaga solat Subuh dan Asar,Bukhari 7436,0.023856129190115,24.182378017822412,0.0,0.0,0.0
+q0163,synthetic_hadith,hybrid,hadith,Madinah seperti relau yang membuang kekotoran,Muslim 3725,0.01639344262295082,13.617492508931958,0.0,0.0,0.0
+q0164,synthetic_hadith,hybrid,hadith,pemberian seumur hidup menjadi milik penerima dan warisnya,Muslim 4188,0.030536130536130537,33.43964747757106,1.0,1.0,0.5
+q0165,synthetic_hadith,hybrid,hadith,sedekah daging kambing dari Nusaibah yang sudah sampai ke tempatnya,Bukhari 955,0.0233999494055148,21.746344233691968,0.0,0.0,0.0
+q0166,synthetic_hadith,hybrid,hadith,anak dinisbahkan kepada pemilik tempat tidur dan perintah Saudah berhijab,Bukhari 6750,0.03278688524590164,29.094757431317852,0.0,0.0,0.0
+q0167,synthetic_hadith,hybrid,hadith,Abu Bakar mendukung Hasan yang mirip Nabi,Bukhari 3543,0.023799640237996404,15.315167785001394,0.0,0.0,0.0
+q0168,synthetic_hadith,hybrid,hadith,larangan menyewakan tanah pertanian,Muslim 3944,0.030886196246139225,13.604994853446954,1.0,1.0,0.2
+q0169,synthetic_hadith,hybrid,hadith,Uqbah meletakkan isi perut unta atas belakang Nabi ketika sujud,Muslim 1117,0.023561507936507936,29.845679261730076,0.0,0.0,0.0
+q0170,synthetic_hadith,hybrid,hadith,sujud sahwi kerana terlupa duduk tahiyat awal,Bukhari 5864,0.01639344262295082,16.316274011993745,0.0,0.0,0.0
+q0171,synthetic_hadith,hybrid,hadith,ayat mata terbeliak dan hati sampai ke kerongkong berlaku semasa perang Khandaq,Bukhari 4103,0.032266458495966696,23.238878526900606,1.0,1.0,1.0
+q0172,synthetic_hadith,hybrid,hadith,asal usul nama Ansar,Bukhari 3776,0.03200204813108039,19.229109318139024,1.0,1.0,1.0
+q0173,manual,hybrid,quran,berbuat baik kepada ibu bapa,17:23,0.032018442622950824,18.39069885534394,0.42857142857142855,0.5714285714285714,1.0
+q0174,manual,hybrid,quran,larangan mengumpat dan mengintip,49:12,0.027757078986587184,25.36780743783857,1.0,1.0,1.0
+q0175,manual,hybrid,quran,kemudahan selepas kesusahan,94:6,0.028484848484848488,13.279737982968452,0.6666666666666666,0.6666666666666666,1.0
+q0176,manual,hybrid,quran,kelebihan bersedekah di jalan Allah,42:53,0.02938045560996381,13.186133540786882,0.0,0.0,0.0
+q0177,manual,hybrid,quran,larangan riba,2:275,0.03252247488101534,16.370067546606947,0.75,1.0,1.0
+q0178,manual,hybrid,quran,kewajipan berpuasa bulan Ramadan,2:185,0.03278688524590164,27.08369975752241,1.0,1.0,1.0
+q0179,manual,hybrid,quran,Allah tidak membebani melebihi kemampuan,10:62,0.018547008547008546,9.440370075936755,0.0,0.0,0.0
+q0180,manual,hybrid,quran,jangan berputus asa dari rahmat Allah,10:95,0.02797067901234568,26.337367997549403,0.5,1.0,0.3333333333333333
+q0181,manual,hybrid,quran,berlaku adil walaupun terhadap diri sendiri,41:46,0.022116324535679376,15.857027358652836,0.0,0.5,0.1111111111111111
+q0182,manual,hybrid,quran,larangan arak dan judi,5:90,0.03278688524590164,15.134532696240257,1.0,1.0,1.0
+q0183,manual,hybrid,quran,kewajipan menunaikan haji,2:197,0.032266458495966696,13.73185909730903,0.5,0.5,0.5
+q0184,manual,hybrid,quran,suruhan menutup aurat bagi wanita,24:31,0.03128054740957967,13.341443792627741,1.0,1.0,1.0
+q0185,manual,hybrid,quran,hati menjadi tenang dengan mengingati Allah,37:143,0.029906956136464335,17.323626715202845,0.0,1.0,0.1
+q0186,manual,hybrid,quran,tujuan manusia diciptakan,86:5,0.03252247488101534,11.10343018365132,0.0,0.0,0.0
+q0187,manual,hybrid,quran,setiap yang bernyawa pasti mati,39:30,0.02797339593114241,12.996338075248076,0.6666666666666666,0.6666666666666666,0.5
+q0188,manual,hybrid,quran,Allah dekat dan memperkenankan doa,12:34,0.029083245521601686,14.167342663823325,0.0,0.0,0.0
+q0189,manual,hybrid,quran,larangan membunuh tanpa hak,25:68,0.032266458495966696,10.879956877069347,0.3333333333333333,0.3333333333333333,0.2
+q0190,manual,hybrid,quran,jangan makan harta anak yatim,4:2,0.03278688524590164,22.905531516368836,0.3333333333333333,1.0,0.2
+q0191,manual,hybrid,quran,periksa dahulu berita yang dibawa orang fasik,4:138,0.02565284178187404,12.052267106237228,1.0,1.0,0.5
+q0192,manual,hybrid,hadith,amalan bergantung pada niat,Muslim 4284,0.02341091602014428,13.876921131825416,0.0,0.0,0.0
+q0193,manual,hybrid,hadith,muslim sejati tidak menyakiti orang lain dengan lidah dan tangan,Bukhari 10,0.03278688524590164,25.936874372729662,1.0,1.0,1.0
+q0194,manual,hybrid,hadith,Islam dibina atas lima perkara,Muslim 112,0.031054405392392875,13.255802732826954,1.0,1.0,0.25
+q0195,manual,hybrid,hadith,yang halal jelas dan yang haram jelas dan di antaranya perkara syubhah,Muslim 4097,0.01639344262295082,36.83550631297801,0.0,0.0,0.0
+q0196,manual,hybrid,hadith,tidak sempurna iman sehingga mengasihi saudaranya seperti diri sendiri,Bukhari 13,0.032266458495966696,20.01684529233358,1.0,1.0,1.0
+q0197,manual,hybrid,hadith,berkata yang baik atau diam,Bukhari 6475,0.032266458495966696,17.158333269092537,0.0,1.0,0.14285714285714285
+q0198,manual,hybrid,hadith,orang yang kuat ialah yang dapat menahan marah,Bukhari 6114,0.03278688524590164,35.8444308976573,1.0,1.0,1.0
+q0199,manual,hybrid,hadith,nasihat Nabi jangan marah,Bukhari 6116,0.025057603686635944,15.551120884741902,1.0,1.0,1.0
+q0200,manual,hybrid,hadith,orang beriman seperti satu tubuh,Muslim 6585,0.03200204813108039,25.227742915108543,1.0,1.0,0.3333333333333333
+q0201,manual,hybrid,hadith,sebaik-baik kamu ialah yang belajar dan mengajar Al-Quran,Bukhari 5027,0.03047794966520434,30.104118314346206,1.0,1.0,1.0
+q0202,manual,hybrid,hadith,dua nikmat yang ramai manusia terleka iaitu sihat dan masa lapang,Bukhari 6412,0.03278688524590164,36.81182699251744,1.0,1.0,1.0
+q0203,manual,hybrid,hadith,hiduplah di dunia seperti orang asing atau pengembara,Bukhari 6416,0.02797067901234568,18.484619027262948,1.0,1.0,1.0
+q0204,manual,hybrid,hadith,menyambung silaturahim melapangkan rezeki,Muslim 7408,0.01639344262295082,11.135426602989558,0.0,0.0,0.0
+q0205,manual,hybrid,hadith,sabar pada saat pertama ditimpa musibah,Bukhari 7154,0.03252247488101534,26.598653694048053,0.6666666666666666,0.6666666666666666,1.0
+q0206,manual,hybrid,hadith,seorang muslim bersaudara dengan muslim lain dan tidak menzaliminya,Muslim 6541,0.02967032967032967,22.787855475055892,1.0,1.0,0.2
+q0207,negative,hybrid,quran,resepi nasi lemak sambal sotong,78:36,0.01639344262295082,7.997615262449739,,,
+q0207,negative,hybrid,hadith,resepi nasi lemak sambal sotong,Bukhari 5403,0.022988505747126436,12.68831913868374,,,
+q0208,negative,hybrid,quran,cara tukar tayar kereta,79:2,0.02552166934189406,8.416679269627547,,,
+q0208,negative,hybrid,hadith,cara tukar tayar kereta,Bukhari 2419,0.022642390289449112,12.15596071375979,,,
+q0209,negative,hybrid,quran,keputusan perlawanan bola sepak semalam,111:1,0.017162944582299423,9.40198093150269,,,
+q0209,negative,hybrid,hadith,keputusan perlawanan bola sepak semalam,Muslim 4156,0.025326537113730486,9.839749491107236,,,
+q0210,negative,hybrid,quran,harga emas hari ini,9:35,0.03252247488101534,9.062155196752327,,,
+q0210,negative,hybrid,hadith,harga emas hari ini,Bukhari 2177,0.03252247488101534,14.6179048136336,,,
+q0211,negative,hybrid,quran,cara install python di windows,56:71,0.02557875991581674,8.532359883611255,,,
+q0211,negative,hybrid,hadith,cara install python di windows,Muslim 2422,0.017771964917679642,9.593049893638254,,,
+q0212,negative,hybrid,quran,laptop terbaik untuk pelajar universiti,55:1,0.01639344262295082,4.263786099884465,,,
+q0212,negative,hybrid,hadith,laptop terbaik untuk pelajar universiti,Bukhari 5027,0.02832415420928403,13.166686076534777,,,
+q0213,negative,hybrid,quran,jadual tren KTM Komuter,81:19,0.01639344262295082,0.0,,,
+q0213,negative,hybrid,hadith,jadual tren KTM Komuter,Muslim 7550,0.01639344262295082,0.0,,,
+q0214,negative,hybrid,quran,cara menulis resume untuk fresh graduate,82:11,0.03128054740957967,9.019275826279603,,,
+q0214,negative,hybrid,hadith,cara menulis resume untuk fresh graduate,Bukhari 2419,0.027637721755368813,12.217016486665074,,,
+q0215,negative,hybrid,quran,tips menanam cili dalam pasu,40:72,0.02854251012145749,8.981415829322447,,,
+q0215,negative,hybrid,hadith,tips menanam cili dalam pasu,Muslim 5412,0.01639344262295082,13.01465009303501,,,
+q0216,negative,hybrid,quran,how to fix a leaking tap,83:27,0.01639344262295082,9.79661342761533,,,
+q0216,negative,hybrid,hadith,how to fix a leaking tap,Muslim 663,0.032266458495966696,13.823207539000432,,,
+q0217,negative,hybrid,quran,best budget smartphone 2026,17:34,0.022394282310899342,6.872470871209476,,,
+q0217,negative,hybrid,hadith,best budget smartphone 2026,Bukhari 6053,0.02260536398467433,8.190365127972271,,,
+q0218,negative,hybrid,quran,cara renew lesen memandu,48:23,0.022658227848101266,8.50581789443493,,,
+q0218,negative,hybrid,hadith,cara renew lesen memandu,Bukhari 6160,0.026856524873828405,9.950860465345588,,,
+q0219,negative,hybrid,quran,cara membuat kek coklat,56:71,0.023809523809523808,9.76339977958933,,,
+q0219,negative,hybrid,hadith,cara membuat kek coklat,Muslim 5170,0.020182648401826486,14.19951030170406,,,
+q0220,negative,hybrid,quran,harga tiket penerbangan ke Langkawi,51:1,0.03278688524590164,9.513349305903397,,,
+q0220,negative,hybrid,hadith,harga tiket penerbangan ke Langkawi,Bukhari 2284,0.02010888654724271,11.457076244639492,,,
+q0221,negative,hybrid,quran,cara memohon PTPTN,4:106,0.025937081659973226,8.39757150544342,,,
+q0221,negative,hybrid,hadith,cara memohon PTPTN,Bukhari 1269,0.027443609022556388,12.842246718561427,,,
+q0222,negative,hybrid,quran,senarai universiti awam di Malaysia,24:61,0.027623285131627734,3.533964022591993,,,
+q0222,negative,hybrid,hadith,senarai universiti awam di Malaysia,Muslim 4767,0.01639344262295082,11.360155455199791,,,
+q0223,negative,hybrid,quran,how to train a neural network,6:24,0.022007452258965998,9.79661342761533,,,
+q0223,negative,hybrid,hadith,how to train a neural network,Bukhari 7297,0.022119617738644903,7.40590117938792,,,
+q0224,negative,hybrid,quran,keputusan SPM tahun ini,43:79,0.025388291517323774,10.150774614292871,,,
+q0224,negative,hybrid,hadith,keputusan SPM tahun ini,Muslim 6150,0.01639344262295082,12.79931222672351,,,
+q0225,negative,hybrid,quran,cara menjaga kucing yang sakit,24:61,0.02862400327131466,9.574137671355986,,,
+q0225,negative,hybrid,hadith,cara menjaga kucing yang sakit,Muslim 6677,0.03149801587301587,14.882877509652095,,,
+q0226,negative,hybrid,quran,tempat menarik di Cameron Highlands,61:12,0.02340153452685422,13.93762464254442,,,
+q0226,negative,hybrid,hadith,tempat menarik di Cameron Highlands,Muslim 2951,0.02325863113264688,14.297863035662642,,,
+q0227,negative,hybrid,quran,kadar pertukaran ringgit ke dolar,73:20,0.026356857985087564,8.095587836069226,,,
+q0227,negative,hybrid,hadith,kadar pertukaran ringgit ke dolar,Bukhari 2179,0.02964426877470356,15.78911613357745,,,
+q0228,negative,hybrid,quran,cara reset router wifi,48:23,0.020853698273053112,6.527686557875343,,,
+q0228,negative,hybrid,hadith,cara reset router wifi,Bukhari 2419,0.026129032258064518,9.338338800132808,,,
+q0229,negative,hybrid,quran,resepi rendang daging,23:14,0.03252247488101534,9.714542470407741,,,
+q0229,negative,hybrid,hadith,resepi rendang daging,Bukhari 4218,0.026992753623188405,9.637427323844337,,,
+q0230,negative,hybrid,quran,cara menghilangkan jerawat,79:1,0.024725274725274724,7.780296219705903,,,
+q0230,negative,hybrid,hadith,cara menghilangkan jerawat,Muslim 5712,0.01767228630582668,16.237461682777685,,,
+q0231,negative,hybrid,quran,what is the capital of Australia,42:22,0.02138752926154501,9.110074354466496,,,
+q0231,negative,hybrid,hadith,what is the capital of Australia,Bukhari 6591,0.03278688524590164,18.093874527653792,,,
+q0232,negative,hybrid,quran,tutorial Excel pivot table,1:6,0.01768756795940558,8.242579246151612,,,
+q0232,negative,hybrid,hadith,tutorial Excel pivot table,Muslim 139,0.027313266443701224,11.178753272363151,,,
+q0233,negative,hybrid,quran,cara buka akaun Shopee,4:86,0.01721981014055486,6.527686557875343,,,
+q0233,negative,hybrid,hadith,cara buka akaun Shopee,Bukhari 2188,0.020451554115622154,10.19002795873204,,,
+q0234,negative,hybrid,quran,ramalan cuaca esok,59:18,0.032266458495966696,8.068415144279673,,,
+q0234,negative,hybrid,hadith,ramalan cuaca esok,Muslim 3174,0.029551337359792925,13.311037612121694,,,
+q0235,negative_hard,hybrid,quran,waktu solat Kuching hari ini,68:24,0.026022913256955812,11.820982433487139,,,
+q0235,negative_hard,hybrid,hadith,waktu solat Kuching hari ini,Muslim 1555,0.027783137179239824,16.33997970535387,,,
+q0236,negative_hard,hybrid,quran,tarikh Hari Raya Aidilfitri tahun depan,12:49,0.02878726010616578,10.250933726564064,,,
+q0236,negative_hard,hybrid,hadith,tarikh Hari Raya Aidilfitri tahun depan,Muslim 2746,0.030679156908665108,19.1096205477557,,,
+q0237,negative_hard,hybrid,quran,cara daftar haji Tabung Haji,2:197,0.032018442622950824,18.097023477536148,,,
+q0237,negative_hard,hybrid,hadith,cara daftar haji Tabung Haji,Bukhari 1691,0.017324133793310333,18.47481999822619,,,
+q0238,negative_hard,hybrid,quran,masjid terdekat dengan saya,72:18,0.029437229437229435,11.176292996102209,,,
+q0238,negative_hard,hybrid,hadith,masjid terdekat dengan saya,Muslim 3384,0.02027027027027027,14.134936640279129,,,
+q0239,negative_hard,hybrid,quran,jadual kuliah maghrib minggu ini,2:187,0.029051670471052088,5.908809983967589,,,
+q0239,negative_hard,hybrid,hadith,jadual kuliah maghrib minggu ini,Muslim 2762,0.02821869488536155,12.598190965475759,,,
+q0240,negative_hard,hybrid,quran,harga pakej umrah 2026,2:196,0.027637721755368813,8.209270479239473,,,
+q0240,negative_hard,hybrid,hadith,harga pakej umrah 2026,Muslim 2307,0.02239819004524887,10.322451492381383,,,
+q0241,negative_hard,hybrid,quran,cara bayar zakat pendapatan secara online,23:72,0.030090497737556562,10.206633452691333,,,
+q0241,negative_hard,hybrid,hadith,cara bayar zakat pendapatan secara online,Bukhari 46,0.02921395544346364,14.129138800067226,,,
+q0242,negative_hard,hybrid,quran,resepi bubur lambuk Ramadan,2:185,0.031544957774465976,11.268640372643517,,,
+q0242,negative_hard,hybrid,hadith,resepi bubur lambuk Ramadan,Muslim 2762,0.026860955056179775,8.612985509787917,,,
+q0243,negative_hard,hybrid,quran,sejarah pembinaan Masjid Negara,9:108,0.030834914611005692,9.33585809326428,,,
+q0243,negative_hard,hybrid,hadith,sejarah pembinaan Masjid Negara,Bukhari 3366,0.022539288668320924,17.439016341846333,,,
+q0244,negative_hard,hybrid,quran,aplikasi Al-Quran terbaik untuk telefon,55:2,0.0229242700729927,13.07744489873258,,,
+q0244,negative_hard,hybrid,hadith,aplikasi Al-Quran terbaik untuk telefon,Bukhari 7277,0.02505896226415094,16.533486780644616,,,
+q0245,negative_hard,hybrid,quran,berapa jauh Jeddah ke Makkah,17:1,0.030679156908665108,10.77718334371423,,,
+q0245,negative_hard,hybrid,hadith,berapa jauh Jeddah ke Makkah,Muslim 7290,0.02921395544346364,18.070628568646832,,,
+q0246,negative_hard,hybrid,quran,nama bayi lelaki Islam moden,33:35,0.030886196246139225,16.787245182065398,,,
+q0246,negative_hard,hybrid,hadith,nama bayi lelaki Islam moden,Bukhari 3114,0.028949545078577336,15.437662261743322,,,

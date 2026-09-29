@@ -31,6 +31,38 @@ NEGATIVE_QUERIES = [
     "how to fix a leaking tap",
     "best budget smartphone 2026",
     "cara renew lesen memandu",
+    "cara membuat kek coklat",
+    "harga tiket penerbangan ke Langkawi",
+    "cara memohon PTPTN",
+    "senarai universiti awam di Malaysia",
+    "how to train a neural network",
+    "keputusan SPM tahun ini",
+    "cara menjaga kucing yang sakit",
+    "tempat menarik di Cameron Highlands",
+    "kadar pertukaran ringgit ke dolar",
+    "cara reset router wifi",
+    "resepi rendang daging",
+    "cara menghilangkan jerawat",
+    "what is the capital of Australia",
+    "tutorial Excel pivot table",
+    "cara buka akaun Shopee",
+    "ramalan cuaca esok",
+]
+
+# Berbau agama tetapi tidak boleh dijawab oleh teks Quran/hadis
+NEGATIVE_HARD_QUERIES = [
+    "waktu solat Kuching hari ini",
+    "tarikh Hari Raya Aidilfitri tahun depan",
+    "cara daftar haji Tabung Haji",
+    "masjid terdekat dengan saya",
+    "jadual kuliah maghrib minggu ini",
+    "harga pakej umrah 2026",
+    "cara bayar zakat pendapatan secara online",
+    "resepi bubur lambuk Ramadan",
+    "sejarah pembinaan Masjid Negara",
+    "aplikasi Al-Quran terbaik untuk telefon",
+    "berapa jauh Jeddah ke Makkah",
+    "nama bayi lelaki Islam moden",
 ]
 
 
@@ -68,6 +100,8 @@ def main() -> None:
 
     for q in NEGATIVE_QUERIES:
         rows.append({"query": q, "type": "negative", "relevant": []})
+    for q in NEGATIVE_HARD_QUERIES:
+        rows.append({"query": q, "type": "negative_hard", "relevant": []})
 
     
 
