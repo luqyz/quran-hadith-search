@@ -5,6 +5,9 @@ USER user
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH \
     HF_HOME=/home/user/.cache/huggingface
+
+# Cipta folder aplikasi sebagai 'user' (bukan root) supaya API boleh menulis fail index
+RUN mkdir -p $HOME/app
 WORKDIR $HOME/app
 
 # PyTorch versi CPU (jauh lebih kecil daripada versi CUDA)
