@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /search_logs/{doc} {
+      allow create: if request.resource.data.keys().hasOnly(
+                         ['q', 'notice', 'quran_confident', 'hadith_confident', 'ts'])
+                    && request.resource.data.q is string
+                    && request.resource.data.q.size() <= 200
+                    && (request.resource.data.notice == null || request.resource.data.notice is string)
+                    && request.resource.data.quran_confident is bool
+                    && request.resource.data.hadith_confident is bool
+                    && request.resource.data.ts == request.time;
+      allow read, update, delete: if false;
+    }
+  }
+}

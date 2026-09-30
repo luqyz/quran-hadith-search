@@ -1,0 +1,8 @@
+sentence-transformers>=3.0
+rank_bm25>=0.2.2
+fastapi>=0.110
+uvicorn>=0.29
+pandas>=2.0
+pyarrow>=14.0
+numpy
+huggingface_hub

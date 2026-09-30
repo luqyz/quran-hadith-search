@@ -1,9 +1,10 @@
 """
 API carian Quran & hadis.
 
-    uvicorn api:app --app-dir src/app --port 8000
-    # kemudian buka http://localhost:8000/docs
+Tempatan:  uvicorn api:app --app-dir src/app --port 8000
+Deploy:    Hugging Face Space (Docker); fail index dimuat turun dari repo dataset peribadi.
 """
+import os
 import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -12,13 +13,33 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "retrieval"))
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 
-from common import BM25_THRESHOLDS
+from common import (BM25_THRESHOLDS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, ROOT,
+                    UNITS_PATH, emb_path)
 from intent import detect_intent
 from search import SECTIONS, Searcher
 
 COLLECTION_NAMES = {"bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim"}
+REQUIRED_FILES = [CORPUS_PATH, UNITS_PATH, emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
+ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 state = {}
+
+
+def ensure_artifacts() -> None:
+    """Muat turun fail index yang tiada dari repo dataset (ARTIFACT_REPO)."""
+    missing = [p for p in REQUIRED_FILES if not p.exists()]
+    if not missing:
+        return
+    repo = os.environ.get("ARTIFACT_REPO")
+    if not repo:
+        raise RuntimeError(f"Fail index tiada dan ARTIFACT_REPO tidak ditetapkan: {missing}")
+    from huggingface_hub import hf_hub_download
+    for p in missing:
+        rel = p.relative_to(ROOT).as_posix()
+        print(f"Memuat turun {rel} dari {repo}...", flush=True)
+        hf_hub_download(repo_id=repo, filename=rel, repo_type="dataset",
+                        local_dir=ROOT, token=os.environ.get("HF_TOKEN"))
 
 
 def clean(value):
@@ -57,13 +78,20 @@ def format_hadith(doc_id, row, corpus) -> dict:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    ensure_artifacts()
     state["searcher"] = Searcher()
     yield
     state.clear()
 
 
 app = FastAPI(title="Carian Quran & Hadis", lifespan=lifespan)
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=ALLOWED_ORIGINS,
+                   allow_methods=["GET"], allow_headers=["*"])
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse("/docs")
 
 
 @app.get("/health")

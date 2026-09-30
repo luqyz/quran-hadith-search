@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carian Al-Quran & Hadis</title>
+  <meta name="description" content="Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian dalam Bahasa Melayu atau Inggeris.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Carian Al-Quran & Hadis</h1>
+      <p class="tagline">Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian, dalam Bahasa Melayu atau Inggeris.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="search-form" role="search">
+      <input id="q" type="search" placeholder="Contoh: sabar ketika ditimpa musibah"
+             minlength="2" maxlength="200" required autocomplete="off" aria-label="Soalan carian">
+      <button type="submit">Cari</button>
+    </form>
+
+    <div class="examples">
+      <span class="muted small">Cuba:</span>
+      <button type="button" data-q="berbuat baik kepada ibu bapa">berbuat baik kepada ibu bapa</button>
+      <button type="button" data-q="kelebihan bersedekah">kelebihan bersedekah</button>
+      <button type="button" data-q="larangan mengumpat">larangan mengumpat</button>
+      <button type="button" data-q="menahan marah">menahan marah</button>
+      <button type="button" data-q="patience during hardship">patience during hardship</button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div id="notice" class="notice" hidden></div>
+    <div id="results" class="results"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap small">
+      <p><strong>Penting:</strong> Ini ialah alat carian teks, bukan sumber tafsiran atau fatwa. Hasil dipilih secara automatik dan mungkin tidak lengkap atau kurang tepat. Rujuk ilmuwan yang berautoriti untuk memahami maksud dan hukum.</p>
+      <p>Sumber: teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari dan Sahih Muslim (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api.</p>
+      <p>Soalan carian direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
+      <p><a href="https://github.com/luqyz/quran-hadith-search" target="_blank" rel="noopener">Kod sumber</a></p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
