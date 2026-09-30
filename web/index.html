@@ -3,50 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carian Al-Quran & Hadis</title>
-  <meta name="description" content="Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian dalam Bahasa Melayu atau Inggeris.">
+  <meta name="color-scheme" content="light dark">
+  <title>ayat. | Carian Al-Quran & Hadis</title>
+  <meta name="description" content="Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian, dalam Bahasa Melayu atau Inggeris.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>۞</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <h1>Carian Al-Quran & Hadis</h1>
-      <p class="tagline">Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian, dalam Bahasa Melayu atau Inggeris.</p>
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <div class="pattern"></div>
+  </div>
+
+    <header class="topbar glass">
+    <a class="brand" href="./">ayat<span>.</span></a>
+    <div class="topbar-right">
+      <nav>
+        <a href="#about">Tentang</a>
+        <!-- <a href="https://github.com/luqyz/quran-hadith-search" target="_blank" rel="noopener">GitHub</a> -->
+      </nav>
+      <button type="button" id="theme-toggle" class="theme-btn" aria-label="Tukar tema">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+      </button>
     </div>
   </header>
 
-  <main class="wrap">
-    <form id="search-form" role="search">
-      <input id="q" type="search" placeholder="Contoh: sabar ketika ditimpa musibah"
-             minlength="2" maxlength="200" required autocomplete="off" aria-label="Soalan carian">
-      <button type="submit">Cari</button>
-    </form>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Al-Quran · Hadis Sahih</p>
+      <h1>Cari <em>dalil</em> dengan soalan harian anda.</h1>
+      <p class="lead">Taip dalam Bahasa Melayu atau Inggeris. Kami cari ayat Al-Quran serta hadis daripada Sahih al-Bukhari dan Sahih Muslim.</p>
 
-    <div class="examples">
-      <span class="muted small">Cuba:</span>
-      <button type="button" data-q="berbuat baik kepada ibu bapa">berbuat baik kepada ibu bapa</button>
-      <button type="button" data-q="kelebihan bersedekah">kelebihan bersedekah</button>
-      <button type="button" data-q="larangan mengumpat">larangan mengumpat</button>
-      <button type="button" data-q="menahan marah">menahan marah</button>
-      <button type="button" data-q="patience during hardship">patience during hardship</button>
-    </div>
+      <form id="search-form" class="search glass" role="search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+        </svg>
+        <input id="q" type="search" placeholder="Contoh: sabar ketika ditimpa musibah"
+               minlength="2" maxlength="200" required autocomplete="off" aria-label="Soalan carian">
+        <kbd class="hint" aria-hidden="true">/</kbd>
+        <button type="submit">Cari</button>
+      </form>
+
+      <div class="chips">
+        <button type="button" class="chip glass" data-q="berbuat baik kepada ibu bapa">berbuat baik kepada ibu bapa</button>
+        <button type="button" class="chip glass" data-q="kelebihan bersedekah">kelebihan bersedekah</button>
+        <button type="button" class="chip glass" data-q="larangan mengumpat">larangan mengumpat</button>
+        <button type="button" class="chip glass" data-q="menahan marah">menahan marah</button>
+        <button type="button" class="chip glass" data-q="patience during hardship">patience during hardship</button>
+      </div>
+    </section>
 
     <p id="status" class="status" role="status" aria-live="polite"></p>
-    <div id="notice" class="notice" hidden></div>
+    <div id="notice" class="notice glass" hidden></div>
+
+    <div id="tabs" class="tabs glass" role="tablist" hidden>
+      <button type="button" role="tab" aria-selected="true" data-tab="quran">Al-Quran <span class="count" id="count-quran"></span></button>
+      <button type="button" role="tab" aria-selected="false" data-tab="hadith">Hadis <span class="count" id="count-hadith"></span></button>
+    </div>
+
     <div id="results" class="results"></div>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap small">
+  <footer id="about" class="footer">
+    <div class="footer-card glass">
+      <h2>Tentang ayat.</h2>
       <p><strong>Penting:</strong> Ini ialah alat carian teks, bukan sumber tafsiran atau fatwa. Hasil dipilih secara automatik dan mungkin tidak lengkap atau kurang tepat. Rujuk ilmuwan yang berautoriti untuk memahami maksud dan hukum.</p>
-      <p>Sumber: teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari dan Sahih Muslim (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api.</p>
-      <p>Soalan carian direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
-      <p><a href="https://github.com/luqyz/quran-hadith-search" target="_blank" rel="noopener">Kod sumber</a></p>
+      <p><strong>Cara ia berfungsi:</strong> carian hibrid yang menggabungkan padanan kata kunci (BM25) dan carian makna (embedding multilingual), dengan Al-Quran dan hadis dicari secara berasingan.</p>
+      <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari dan Sahih Muslim (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api.</p>
+      <p><strong>Privasi:</strong> soalan carian direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
     </div>
+    <p class="fineprint">Dibina oleh <a href="https://github.com/luqyz" target="_blank" rel="noopener">luqyz</a> · Kod sumber terbuka di GitHub</p>
   </footer>
+
+  <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
 
   <script src="config.js"></script>
   <script type="module" src="app.js"></script>

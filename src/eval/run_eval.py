@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "retrieval"))
 import pandas as pd
 
 from common import DEFAULT_MODEL, ROOT, model_slug
-from search import METHODS, SECTIONS, Searcher, section_of
+from search import METHODS, SECTIONS, STEM_CHOICES, Searcher, section_of
 
 EVAL_DIR = ROOT / "eval"
 TESTSET_PATH = EVAL_DIR / "testset.jsonl"
@@ -43,6 +43,7 @@ def main() -> None:
     parser.add_argument("--emb-variant", default="ctx", choices=["", "ctx"])
     parser.add_argument("--quran-stop", choices=["none", "intent", "full"])
     parser.add_argument("--hadith-stop", choices=["none", "intent", "full"])
+    parser.add_argument("--stem", choices=list(STEM_CHOICES))
     parser.add_argument("--tag", default="", help="label tambahan untuk nama fail keputusan")
     args = parser.parse_args()
 
@@ -52,8 +53,9 @@ def main() -> None:
     stop_modes = {k: v for k, v in [("quran", args.quran_stop), ("hadith", args.hadith_stop)] if v}
     searcher = Searcher(args.model, use_dense=any(m != "bm25" for m in args.methods),
                         rrf_k=args.rrf_k, w_bm25=args.w_bm25, w_dense=args.w_dense,
-                        emb_variant=args.emb_variant, stop_modes=stop_modes)
-    print(f"Stopword: {searcher.stop_modes}")
+                        emb_variant=args.emb_variant, stop_modes=stop_modes,
+                        stem=STEM_CHOICES[args.stem] if args.stem else None)
+    print(f"Stopword: {searcher.stop_modes} | Stemming: {searcher.stem}")
 
     bm25_top_cache = {}
     rows = []

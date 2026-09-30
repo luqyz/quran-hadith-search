@@ -1,4 +1,5 @@
 """Tetapan & fungsi kongsi untuk retrieval."""
+from functools import lru_cache
 import re
 from pathlib import Path
 
@@ -86,3 +87,40 @@ def query_tokens(query: str, mode: str = "full") -> list[str]:
     tokens = tokenize(query)
     kept = [t for t in tokens if t not in stop]
     return kept or tokens
+
+# ---------- Stemming BM (eksperimen) ----------
+MS_LANGS = {"ms", "ms_mt"}
+STEM_SECTIONS = {"quran": True, "hadith": False}   # dikemas kini selepas eksperimen
+
+_stemmer = None
+
+
+def _get_stemmer():
+    global _stemmer
+    if _stemmer is None:
+        from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+        _stemmer = StemmerFactory().create_stemmer()
+    return _stemmer
+
+
+@lru_cache(maxsize=None)
+def stem_word(word: str) -> str:
+    """Kata dasar BM (contoh: kemarahannya -> marah). Perkataan pendek atau bukan huruf tidak diubah."""
+    if len(word) <= 3 or not word.isalpha():
+        return word
+    return _get_stemmer().stem(word) or word
+
+
+def stem_tokens(tokens: list[str]) -> list[str]:
+    return [stem_word(t) for t in tokens]
+
+
+def expand_with_stems(tokens: list[str]) -> list[str]:
+    """Token asal + kata dasar yang berbeza, supaya soalan padan dengan unit BM (di-stem) dan English (tidak)."""
+    out, seen = list(tokens), set(tokens)
+    for t in tokens:
+        s = stem_word(t)
+        if s not in seen:
+            out.append(s)
+            seen.add(s)
+    return out

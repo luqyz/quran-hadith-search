@@ -6,8 +6,10 @@ Tukar corpus kepada unit carian.
 """
 import argparse
 import pandas as pd
+import time
 from mt_quality import suspect_reasons
-from common import CORPUS_PATH, CTX_MAX_WORDS, CTX_WINDOW, INDEX_DIR, MT_PATH, UNITS_PATH
+from common import (CORPUS_PATH, CTX_MAX_WORDS, CTX_WINDOW, INDEX_DIR, MS_LANGS, MT_PATH,
+                    UNITS_PATH, stem_tokens, tokenize)
 
 CHUNK_WORDS = 150
 CHUNK_OVERLAP = 30
@@ -106,6 +108,13 @@ def main() -> None:
         print("Tanpa terjemahan hadis")
 
     units = build_units(corpus, mt)
+    print("Mengira kata dasar untuk unit BM...")
+    start = time.time()
+    is_ms = units["lang"].isin(MS_LANGS)
+    units["bm25_text"] = units["text"]
+    units.loc[is_ms, "bm25_text"] = units.loc[is_ms, "text"].map(
+        lambda s: " ".join(stem_tokens(tokenize(s))))
+    print(f"  siap dalam {time.time() - start:.0f}s")
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
     units.to_parquet(UNITS_PATH, index=False)
 

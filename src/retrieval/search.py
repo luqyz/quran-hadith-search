@@ -1,8 +1,8 @@
 """
 Carian berasingan untuk Quran dan hadis: BM25, dense dan hybrid (RRF).
 
-    python src/retrieval/search.py "sabar ketika diuji"
-    python src/retrieval/search.py "sabar ketika diuji" --method all --k 3
+    python src/retrieval/search.py "menahan marah"
+    python src/retrieval/search.py "menahan marah" --method all --k 5 --stem both
 """
 import argparse
 import textwrap
@@ -12,10 +12,17 @@ import pandas as pd
 from rank_bm25 import BM25Okapi
 
 from common import (BM25_PARAMS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, MT_LANG,
-                    QUERY_STOP_MODE, UNITS_PATH, emb_path, query_prefix, query_tokens, tokenize)
+                    QUERY_STOP_MODE, STEM_SECTIONS, UNITS_PATH, emb_path, expand_with_stems,
+                    query_prefix, query_tokens, tokenize)
 
 METHODS = ["bm25", "dense", "hybrid"]
 SECTIONS = {"quran": ["quran"], "hadith": ["bukhari", "muslim"]}
+STEM_CHOICES = {
+    "none": {"quran": False, "hadith": False},
+    "quran": {"quran": True, "hadith": False},
+    "hadith": {"quran": False, "hadith": True},
+    "both": {"quran": True, "hadith": True},
+}
 QCACHE_MAX = 1000
 
 
@@ -28,11 +35,12 @@ class Section:
     """Index BM25 & dense untuk satu bahagian (Quran atau hadis)."""
 
     def __init__(self, units_sec: pd.DataFrame, emb_rows: np.ndarray, emb: np.ndarray | None,
-                 flags: pd.DataFrame | None = None, k1: float = 1.5, b: float = 0.75):
+                 flags: pd.DataFrame | None = None, field: str = "text",
+                 k1: float = 1.5, b: float = 0.75):
         codes, uniques = pd.factorize(units_sec["doc_id"])
         self.doc_ids = uniques.to_numpy()
         self.codes = codes
-        self.tokens = [tokenize(t) for t in units_sec["text"]]
+        self.tokens = [tokenize(t) for t in units_sec[field]]
         self.set_bm25(k1, b)
 
         # Dokumen yang diabaikan: rujukan silang (semua kaedah), muqatta'ah (dense sahaja)
@@ -77,13 +85,15 @@ class Searcher:
                  rrf_k: int = 60, rrf_depth: int = 100,
                  w_bm25: float = 1.0, w_dense: float = 1.0,
                  emb_variant: str = DEFAULT_EMB_VARIANT,
-                 stop_modes: dict | None = None):
+                 stop_modes: dict | None = None,
+                 stem: dict | None = None):
         units = pd.read_parquet(UNITS_PATH)
         self.corpus = pd.read_parquet(CORPUS_PATH).set_index("id")
         self.rrf_k = rrf_k
         self.rrf_depth = rrf_depth
         self.weights = {"bm25": w_bm25, "dense": w_dense}
         self.stop_modes = {**QUERY_STOP_MODE, **(stop_modes or {})}
+        self.stem = {**STEM_SECTIONS, **(stem or {})}
 
         # Embedding hanya wujud untuk unit bukan terjemahan mesin, mengikut susunan asal
         dense_mask = (units["lang"] != MT_LANG).to_numpy()
@@ -109,7 +119,14 @@ class Searcher:
         self.sections = {}
         for name, sources in SECTIONS.items():
             idx = np.flatnonzero(units["source"].isin(sources).to_numpy())
-            self.sections[name] = Section(units.iloc[idx], emb_row[idx], emb, flags,
+            field = "text"
+            if self.stem.get(name):
+                if "bm25_text" in units.columns:
+                    field = "bm25_text"
+                else:
+                    print(f"AMARAN: kolum bm25_text tiada; stemming {name} dimatikan. Jalankan units.py.")
+                    self.stem[name] = False
+            self.sections[name] = Section(units.iloc[idx], emb_row[idx], emb, flags, field=field,
                                           **BM25_PARAMS.get(name, {}))
 
         self._qcache: dict[str, np.ndarray] = {}
@@ -124,10 +141,16 @@ class Searcher:
                 [query_prefix(self.model_name) + query], normalize_embeddings=True)[0]
         return self._qcache[query]
 
+    def bm25_query_tokens(self, query: str, section: str) -> list[str]:
+        tokens = query_tokens(query, self.stop_modes[section])
+        if self.stem.get(section):
+            tokens = expand_with_stems(tokens)
+        return tokens
+
     def doc_scores(self, query: str, method: str, section: str) -> np.ndarray:
         sec = self.sections[section]
         if method == "bm25":
-            return sec.bm25_scores(query_tokens(query, self.stop_modes[section]))
+            return sec.bm25_scores(self.bm25_query_tokens(query, section))
         return sec.dense_scores(self._qvec(query))
 
     def top_bm25(self, query: str, section: str) -> float:
@@ -177,10 +200,14 @@ def main() -> None:
     parser.add_argument("--method", choices=METHODS + ["all"], default="hybrid")
     parser.add_argument("--k", type=int, default=5)
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--stem", choices=list(STEM_CHOICES))
     args = parser.parse_args()
 
     methods = METHODS if args.method == "all" else [args.method]
-    searcher = Searcher(args.model, use_dense=any(m != "bm25" for m in methods))
+    searcher = Searcher(args.model, use_dense=any(m != "bm25" for m in methods),
+                        stem=STEM_CHOICES[args.stem] if args.stem else None)
+    for sec in SECTIONS:
+        print(f"[{sec}] token BM25: {searcher.bm25_query_tokens(args.query, sec)}")
     for m in methods:
         for sec in SECTIONS:
             print(f"\n=== {m.upper()} | {sec.upper()} "
