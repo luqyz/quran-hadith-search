@@ -41,15 +41,19 @@ def main() -> None:
     parser.add_argument("--w-bm25", type=float, default=1.0)
     parser.add_argument("--w-dense", type=float, default=1.0)
     parser.add_argument("--emb-variant", default="ctx", choices=["", "ctx"])
+    parser.add_argument("--quran-stop", choices=["none", "intent", "full"])
+    parser.add_argument("--hadith-stop", choices=["none", "intent", "full"])
     parser.add_argument("--tag", default="", help="label tambahan untuk nama fail keputusan")
     args = parser.parse_args()
 
     with open(TESTSET_PATH, encoding="utf-8") as f:
         testset = [json.loads(line) for line in f]
 
+    stop_modes = {k: v for k, v in [("quran", args.quran_stop), ("hadith", args.hadith_stop)] if v}
     searcher = Searcher(args.model, use_dense=any(m != "bm25" for m in args.methods),
-                    rrf_k=args.rrf_k, w_bm25=args.w_bm25, w_dense=args.w_dense,
-                    emb_variant=args.emb_variant)
+                        rrf_k=args.rrf_k, w_bm25=args.w_bm25, w_dense=args.w_dense,
+                        emb_variant=args.emb_variant, stop_modes=stop_modes)
+    print(f"Stopword: {searcher.stop_modes}")
 
     bm25_top_cache = {}
     rows = []

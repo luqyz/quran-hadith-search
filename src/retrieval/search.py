@@ -2,7 +2,7 @@
 Carian berasingan untuk Quran dan hadis: BM25, dense dan hybrid (RRF).
 
     python src/retrieval/search.py "sabar ketika diuji"
-    python src/retrieval/search.py "sabar ketika diuji" --method hybrid --k 3
+    python src/retrieval/search.py "sabar ketika diuji" --method all --k 3
 """
 import argparse
 import textwrap
@@ -12,10 +12,11 @@ import pandas as pd
 from rank_bm25 import BM25Okapi
 
 from common import (BM25_PARAMS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, MT_LANG,
-                    UNITS_PATH, emb_path, query_prefix, tokenize)
+                    QUERY_STOP_MODE, UNITS_PATH, emb_path, query_prefix, query_tokens, tokenize)
 
 METHODS = ["bm25", "dense", "hybrid"]
 SECTIONS = {"quran": ["quran"], "hadith": ["bukhari", "muslim"]}
+QCACHE_MAX = 1000
 
 
 def section_of(doc_id: str) -> str:
@@ -27,12 +28,23 @@ class Section:
     """Index BM25 & dense untuk satu bahagian (Quran atau hadis)."""
 
     def __init__(self, units_sec: pd.DataFrame, emb_rows: np.ndarray, emb: np.ndarray | None,
-                 k1: float = 1.5, b: float = 0.75):
+                 flags: pd.DataFrame | None = None, k1: float = 1.5, b: float = 0.75):
         codes, uniques = pd.factorize(units_sec["doc_id"])
         self.doc_ids = uniques.to_numpy()
         self.codes = codes
         self.tokens = [tokenize(t) for t in units_sec["text"]]
         self.set_bm25(k1, b)
+
+        # Dokumen yang diabaikan: rujukan silang (semua kaedah), muqatta'ah (dense sahaja)
+        n = len(self.doc_ids)
+        self.exclude_all = np.zeros(n, dtype=bool)
+        self.exclude_dense = np.zeros(n, dtype=bool)
+        if flags is not None:
+            f = flags.reindex(self.doc_ids)
+            if "is_xref" in f.columns:
+                self.exclude_all = f["is_xref"].astype("boolean").fillna(False).to_numpy(dtype=bool)
+            if "is_muqattaat" in f.columns:
+                self.exclude_dense = f["is_muqattaat"].astype("boolean").fillna(False).to_numpy(dtype=bool)
 
         self.emb = None
         if emb is not None:
@@ -43,9 +55,12 @@ class Section:
     def set_bm25(self, k1: float, b: float) -> None:
         self.bm25 = BM25Okapi(self.tokens, k1=k1, b=b)
 
-    def _aggregate(self, unit_scores: np.ndarray, codes: np.ndarray) -> np.ndarray:
+    def _aggregate(self, unit_scores: np.ndarray, codes: np.ndarray, dense: bool = False) -> np.ndarray:
         out = np.full(len(self.doc_ids), -np.inf)
         np.maximum.at(out, codes, unit_scores)
+        out[self.exclude_all] = -np.inf
+        if dense:
+            out[self.exclude_dense] = -np.inf
         return out
 
     def bm25_scores(self, tokens: list[str]) -> np.ndarray:
@@ -54,18 +69,21 @@ class Section:
     def dense_scores(self, qvec: np.ndarray) -> np.ndarray:
         if self.emb is None:
             raise RuntimeError("Dense tidak dimuatkan (use_dense=False).")
-        return self._aggregate(self.emb @ qvec, self.dense_codes)
+        return self._aggregate(self.emb @ qvec, self.dense_codes, dense=True)
 
 
 class Searcher:
     def __init__(self, model_name: str = DEFAULT_MODEL, use_dense: bool = True,
                  rrf_k: int = 60, rrf_depth: int = 100,
-                 w_bm25: float = 1.0, w_dense: float = 1.0, emb_variant: str = DEFAULT_EMB_VARIANT):
+                 w_bm25: float = 1.0, w_dense: float = 1.0,
+                 emb_variant: str = DEFAULT_EMB_VARIANT,
+                 stop_modes: dict | None = None):
         units = pd.read_parquet(UNITS_PATH)
         self.corpus = pd.read_parquet(CORPUS_PATH).set_index("id")
         self.rrf_k = rrf_k
         self.rrf_depth = rrf_depth
         self.weights = {"bm25": w_bm25, "dense": w_dense}
+        self.stop_modes = {**QUERY_STOP_MODE, **(stop_modes or {})}
 
         # Embedding hanya wujud untuk unit bukan terjemahan mesin, mengikut susunan asal
         dense_mask = (units["lang"] != MT_LANG).to_numpy()
@@ -85,10 +103,13 @@ class Searcher:
             from sentence_transformers import SentenceTransformer
             self.model = SentenceTransformer(model_name)
 
+        flag_cols = [c for c in ("is_xref", "is_muqattaat") if c in self.corpus.columns]
+        flags = self.corpus[flag_cols] if flag_cols else None
+
         self.sections = {}
         for name, sources in SECTIONS.items():
             idx = np.flatnonzero(units["source"].isin(sources).to_numpy())
-            self.sections[name] = Section(units.iloc[idx], emb_row[idx], emb,
+            self.sections[name] = Section(units.iloc[idx], emb_row[idx], emb, flags,
                                           **BM25_PARAMS.get(name, {}))
 
         self._qcache: dict[str, np.ndarray] = {}
@@ -96,6 +117,8 @@ class Searcher:
     def _qvec(self, query: str) -> np.ndarray:
         if self.model is None:
             raise RuntimeError("Dense tidak dimuatkan (use_dense=False).")
+        if len(self._qcache) > QCACHE_MAX:
+            self._qcache.clear()
         if query not in self._qcache:
             self._qcache[query] = self.model.encode(
                 [query_prefix(self.model_name) + query], normalize_embeddings=True)[0]
@@ -104,7 +127,7 @@ class Searcher:
     def doc_scores(self, query: str, method: str, section: str) -> np.ndarray:
         sec = self.sections[section]
         if method == "bm25":
-            return sec.bm25_scores(tokenize(query))
+            return sec.bm25_scores(query_tokens(query, self.stop_modes[section]))
         return sec.dense_scores(self._qvec(query))
 
     def top_bm25(self, query: str, section: str) -> float:

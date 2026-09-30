@@ -5,3 +5,5 @@ matplotlib>=3.8
 jupyter
 rank_bm25>=0.2.2
 sentence-transformers>=3.0
+fastapi>=0.110
+uvicorn>=0.29

@@ -49,3 +49,40 @@ BM25_PARAMS = {
     "quran": {"k1": 1.2, "b": 0.3},
     "hadith": {"k1": 1.5, "b": 0.75},
 }
+
+# Threshold keyakinan: skor BM25 teratas bawah nilai ini = "mungkin kurang berkaitan"
+# (dipilih dengan src/eval/pick_thresholds.py)
+BM25_THRESHOLDS = {"quran": 10.0, "hadith": 11.0}
+
+# Perkataan fungsi (termasuk kata ganti) yang diabaikan oleh BM25 pada soalan
+FUNCTION_WORDS = {
+    "yang", "dan", "di", "ke", "dari", "daripada", "dalam", "pada", "untuk", "dengan",
+    "ini", "itu", "ada", "adalah", "ialah", "akan", "telah", "sudah", "juga", "atau",
+    "tetapi", "kerana", "sebab", "bagi", "oleh", "ketika", "semasa", "apabila", "bila",
+    "kita", "kami", "saya", "aku", "kamu", "mereka", "nya", "lah", "pun",
+    "the", "a", "an", "of", "in", "on", "at", "to", "for", "and", "or", "is", "are", "was",
+}
+
+# Perkataan yang menerangkan JENIS soalan, bukan topiknya
+INTENT_WORDS = {
+    "apa", "apakah", "bagaimana", "kenapa", "mengapa", "siapa", "adakah", "tentang",
+    "mengenai", "hukum", "ayat", "hadis", "hadith", "quran", "surah", "maksud", "dalil",
+    "what", "how", "why", "who", "about", "does", "do", "verse", "verses", "ruling", "regarding",
+}
+
+STOPWORD_MODES = {
+    "none": set(),
+    "intent": INTENT_WORDS,
+    "full": FUNCTION_WORDS | INTENT_WORDS,
+}
+
+# Tetapan lalai per bahagian (dikemas kini selepas ablation)
+QUERY_STOP_MODE = {"quran": "intent", "hadith": "full"}
+
+
+def query_tokens(query: str, mode: str = "full") -> list[str]:
+    """Token soalan untuk BM25; jika semua dibuang, guna token asal."""
+    stop = STOPWORD_MODES[mode]
+    tokens = tokenize(query)
+    kept = [t for t in tokens if t not in stop]
+    return kept or tokens

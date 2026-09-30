@@ -23,13 +23,23 @@ UNCLASSIFIED = "Tidak diklasifikasikan"
 COLUMNS = [
     "id", "source", "ref", "book_no", "item_no", "chapter_title",
     "text_ar", "text_ms", "text_en", "grade", "grade_source", "book_inferred",
+    "is_xref", "is_muqattaat",
 ]
+
 
 TAG_RE = re.compile(r"<[^>]+>")
 WS_RE = re.compile(r"\s+")
 INVISIBLE_RE = re.compile(r"[\ufeff\u200b-\u200f]")
 AR_DIACRITICS_RE = re.compile(r"[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]")
 AR_ALIF_RE = re.compile(r"[\u0622\u0623\u0625\u0671]")
+XREF_RE = re.compile(
+    r"^(?:narrated [^:]{0,60}:\s*)?(?:as above|see (?:the )?previous|see translation for hadith"
+    r"|same as (?:the )?previous)"
+    r"|(?:has been|was) (?:narrated|transmitted|reported)\b.{0,120}?"
+    r"(?:same chain|another chain|chain of transmitters|similar)",
+    re.IGNORECASE,
+)
+XREF_MAX_WORDS = 40
 
 
 def clean_text(text):
@@ -47,6 +57,18 @@ def ar_skeleton(text: str) -> str:
     text = AR_DIACRITICS_RE.sub("", text)
     return AR_ALIF_RE.sub("\u0627", text)
 
+def is_xref(text) -> bool:
+    """Rujukan silang tanpa kandungan sendiri (contohnya 'As above', nota rantaian perawi)."""
+    return (isinstance(text, str) and len(text.split()) < XREF_MAX_WORDS
+            and bool(XREF_RE.search(text)))
+
+
+def is_muqattaat(text_ar) -> bool:
+    """Ayat yang terdiri daripada huruf muqatta'ah sahaja (contohnya الم, يس, حم)."""
+    if not isinstance(text_ar, str):
+        return False
+    tokens = text_ar.split()
+    return len(tokens) == 1 and len(ar_skeleton(tokens[0])) <= 5
 
 def load_json(path: Path):
     if not path.exists():
@@ -125,6 +147,8 @@ def build_quran() -> pd.DataFrame:
         "grade": None,
         "grade_source": None,
         "book_inferred": False,
+        "is_xref": False,
+        "is_muqattaat": df["text_ar"].apply(is_muqattaat),
     })
 
 
@@ -217,6 +241,8 @@ def build_hadith(collection: str) -> pd.DataFrame:
         "grade": grade_info.apply(lambda t: t[0]),
         "grade_source": grade_info.apply(lambda t: t[1]),
         "book_inferred": df["book_inferred"],
+        "is_xref": df["text"].apply(is_xref),
+        "is_muqattaat": False,
     })
 
 
@@ -242,6 +268,10 @@ def main() -> None:
     corpus["book_no"] = pd.to_numeric(corpus["book_no"], errors="coerce").astype("Int64")
 
     validate(corpus)
+
+    print("\n=== Bendera ===")
+    print("Rujukan silang hadis:", int(corpus["is_xref"].sum()))
+    print("Ayat muqatta'ah:", corpus.loc[corpus["is_muqattaat"], "ref"].tolist())
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     corpus.to_parquet(OUT_PATH, index=False)
