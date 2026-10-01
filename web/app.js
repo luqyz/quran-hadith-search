@@ -42,6 +42,9 @@ let nawawiList = null;
 let readerSurah = null;
 let readerAyahCount = 0;
 
+const DEFAULT_K = 5;
+const MORE_K = 10;
+
 const NOTICES = {
   fatwa:
     'Soalan anda kelihatan berkaitan <strong>hukum</strong>. Sistem ini hanya memaparkan teks Al-Quran dan hadis, bukan fatwa. ' +
@@ -104,6 +107,7 @@ function ensureSurahList() {
 }
 
 /* ---------- Kad hasil carian ---------- */
+
 const ICON_UP = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>`;
 const ICON_DOWN = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg>`;
 
@@ -265,7 +269,7 @@ async function copyText(text) {
 
 /* ---------- Carian ---------- */
 
-async function search(q) {
+async function search(q, k = DEFAULT_K) {
   lastQuery = q;
   document.body.classList.add("has-results");
   statusEl.textContent = "";
@@ -280,12 +284,16 @@ async function search(q) {
   }, 5000);
 
   try {
-    const res = await fetch(`${API_BASE}/search?` + new URLSearchParams({ q, k: 5 }));
+    const res = await fetch(`${API_BASE}/search?` + new URLSearchParams({ q, k }));
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     statusEl.textContent = "";
     render(data);
-    logSearch(data);
+    if (k < MORE_K) {
+      resultsEl.insertAdjacentHTML("beforeend",
+        `<div class="more-wrap"><button type="button" class="more-btn glass" data-more>Papar lebih banyak hasil</button></div>`);
+    }
+    if (k === DEFAULT_K) logSearch(data);   // log sekali sahaja untuk setiap carian
   } catch (e) {
     console.error(e);
     resultsEl.innerHTML = "";
@@ -663,6 +671,8 @@ tabsEl.addEventListener("click", (e) => {
 
 resultsEl.addEventListener("click", (e) => {
   const t = e.target;
+
+  if (t.closest("[data-more]")) return search(lastQuery, MORE_K);
 
   const copyBtn = t.closest("[data-copy]");
   if (copyBtn) return copyText(copyBtn.dataset.copy);
