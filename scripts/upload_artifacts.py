@@ -11,7 +11,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src" / "retrieval"
 
 from huggingface_hub import HfApi
 
-from common import CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, ROOT, UNITS_PATH, emb_path
+from common import (CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, ROOT, SURAHS_PATH,
+                    UNITS_PATH, emb_path)
 
 
 def main() -> None:
@@ -19,7 +20,7 @@ def main() -> None:
     parser.add_argument("--repo", required=True, help="contoh: username/quran-hadith-artifacts")
     args = parser.parse_args()
 
-    files = [CORPUS_PATH, UNITS_PATH, emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
+    files = [CORPUS_PATH, UNITS_PATH, SURAHS_PATH, emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
     missing = [f for f in files if not f.exists()]
     if missing:
         raise SystemExit(f"Fail tiada: {missing}")

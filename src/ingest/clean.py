@@ -14,6 +14,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "data" / "raw"
 OUT_PATH = ROOT / "data" / "processed" / "corpus.parquet"
+SURAHS_PATH = ROOT / "data" / "processed" / "surahs.json"
 
 QURAN_EDITIONS = {"ar": "quran-simple", "ms": "ms.basmeih", "en": "en.sahih"}
 HADITH_COLLECTIONS = ["bukhari", "muslim"]
@@ -247,6 +248,16 @@ def build_hadith(collection: str) -> pd.DataFrame:
 
 
 # ---------------- Main ----------------
+def build_surah_meta() -> list[dict]:
+    data = load_json(RAW_DIR / "quran" / f"{QURAN_EDITIONS['ar']}.json")
+    return [{
+        "number": s["number"],
+        "name_ar": s.get("name"),
+        "english_name": s.get("englishName"),
+        "translation": s.get("englishNameTranslation"),
+        "revelation": s.get("revelationType"),
+        "ayah_count": len(s["ayahs"]),
+    } for s in data["surahs"]]
 
 def validate(corpus: pd.DataFrame) -> None:
     assert corpus["id"].is_unique, "Ada id berulang!"
@@ -276,6 +287,10 @@ def main() -> None:
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     corpus.to_parquet(OUT_PATH, index=False)
     print(f"\nDisimpan: {OUT_PATH} ({len(corpus):,} baris)")
+
+    with open(SURAHS_PATH, "w", encoding="utf-8") as f:
+        json.dump(build_surah_meta(), f, ensure_ascii=False, indent=1)
+    print(f"Disimpan: {SURAHS_PATH}")
 
 
 if __name__ == "__main__":

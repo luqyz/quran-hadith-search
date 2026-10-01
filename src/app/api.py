@@ -2,8 +2,9 @@
 API carian Quran & hadis.
 
 Tempatan:  uvicorn api:app --app-dir src/app --port 8000
-Deploy:    Hugging Face Space (Docker); fail index dimuat turun dari repo dataset peribadi.
+Deploy:    Cloud Run; fail index dimuat turun dari repo dataset peribadi Hugging Face.
 """
+import json
 import os
 import sys
 from contextlib import asynccontextmanager
@@ -11,17 +12,18 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "retrieval"))
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, HTTPException, Query
+from fastapi import Path as PathParam
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
 from common import (BM25_THRESHOLDS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, ROOT,
-                    UNITS_PATH, emb_path)
+                    SURAHS_PATH, UNITS_PATH, emb_path)
 from intent import detect_intent
 from search import SECTIONS, Searcher
 
 COLLECTION_NAMES = {"bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim"}
-REQUIRED_FILES = [CORPUS_PATH, UNITS_PATH, emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
+REQUIRED_FILES = [CORPUS_PATH, UNITS_PATH, SURAHS_PATH, emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 state = {}
 
@@ -56,9 +58,12 @@ def ayah_brief(corpus, surah: int, ayah: int):
 
 def format_quran(doc_id, row, corpus) -> dict:
     surah, ayah = int(row.book_no), int(row.item_no)
+    meta = state.get("surahs", {}).get(surah, {})
     return {
         "id": doc_id, "ref": row.ref, "surah": surah, "ayah": ayah,
         "surah_name": row.chapter_title,
+        "surah_name_ar": meta.get("name_ar"),
+        "revelation": meta.get("revelation"),
         "text_ar": clean(row.text_ar), "text_ms": clean(row.text_ms), "text_en": clean(row.text_en),
         "context": {"prev": ayah_brief(corpus, surah, ayah - 1),
                     "next": ayah_brief(corpus, surah, ayah + 1)},
@@ -79,6 +84,8 @@ def format_hadith(doc_id, row, corpus) -> dict:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     ensure_artifacts()
+    with open(SURAHS_PATH, encoding="utf-8") as f:
+        state["surahs"] = {s["number"]: s for s in json.load(f)}
     state["searcher"] = Searcher()
     yield
     state.clear()
@@ -119,3 +126,34 @@ def search(q: str = Query(..., min_length=2, max_length=200),
         }
 
     return {"query": q, "notice": detect_intent(q), "sections": sections}
+
+
+@app.get("/surah/{number}")
+def surah(number: int = PathParam(..., ge=1, le=114)):
+    corpus = state["searcher"].corpus
+    rows = corpus[(corpus["source"] == "quran") & (corpus["book_no"] == number)].sort_values("item_no")
+    return {
+        "surah": state["surahs"].get(number),
+        "ayahs": [{"ayah": int(r.item_no), "ref": r.ref, "text_ar": clean(r.text_ar),
+                   "text_ms": clean(r.text_ms), "text_en": clean(r.text_en)}
+                  for r in rows.itertuples(index=False)],
+    }
+
+
+@app.get("/similar/{doc_id}")
+def similar(doc_id: str,
+            section: str = Query("quran", pattern="^(quran|hadith)$"),
+            k: int = Query(5, ge=1, le=10)):
+    searcher = state["searcher"]
+    try:
+        ids, scores = searcher.similar(doc_id, section, k)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Dokumen tidak dijumpai")
+    corpus = searcher.corpus
+    rows = corpus.loc[ids]
+    fmt = format_quran if section == "quran" else format_hadith
+    return {
+        "id": doc_id, "section": section,
+        "results": [{**fmt(d, r, corpus), "score": round(float(s), 4)}
+                    for d, r, s in zip(ids, rows.itertuples(index=False), scores)],
+    }

@@ -39,6 +39,7 @@ class Section:
                  k1: float = 1.5, b: float = 0.75):
         codes, uniques = pd.factorize(units_sec["doc_id"])
         self.doc_ids = uniques.to_numpy()
+        self.doc_index = {d: i for i, d in enumerate(self.doc_ids)}
         self.codes = codes
         self.tokens = [tokenize(t) for t in units_sec[field]]
         self.set_bm25(k1, b)
@@ -155,6 +156,38 @@ class Searcher:
 
     def top_bm25(self, query: str, section: str) -> float:
         return float(self.doc_scores(query, "bm25", section).max())
+
+    @staticmethod
+    def _neighbours(doc_id: str, n: int) -> list[str]:
+        parts = doc_id.split(":")
+        if parts[0] == "quran" and len(parts) == 3:
+            s, a = int(parts[1]), int(parts[2])
+            return [f"quran:{s}:{a + d}" for d in range(-n, n + 1)]
+        return [doc_id]
+
+    def similar(self, doc_id: str, target_section: str, k: int = 5, exclude_neighbours: int = 1):
+        """Dokumen dengan maksud paling dekat (embedding) dalam bahagian sasaran."""
+        try:
+            src = self.sections[section_of(doc_id)]
+        except StopIteration:
+            raise KeyError(doc_id)
+        if src.emb is None:
+            raise RuntimeError("Dense tidak dimuatkan.")
+        pos = src.doc_index[doc_id]
+        rows = np.flatnonzero(src.dense_codes == pos)
+        if len(rows) == 0:
+            raise KeyError(doc_id)
+        vec = src.emb[rows].mean(axis=0)
+        vec /= np.linalg.norm(vec)
+
+        tgt = self.sections[target_section]
+        scores = tgt.dense_scores(vec)
+        for nb in self._neighbours(doc_id, exclude_neighbours):
+            i = tgt.doc_index.get(nb)
+            if i is not None:
+                scores[i] = -np.inf
+        idx = self._top(scores, k)
+        return tgt.doc_ids[idx], scores[idx]
 
     @staticmethod
     def _top(scores: np.ndarray, n: int) -> np.ndarray:

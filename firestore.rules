@@ -12,5 +12,20 @@ service cloud.firestore {
                     && request.resource.data.ts == request.time;
       allow read, update, delete: if false;
     }
+
+    match /feedback/{doc} {
+      allow create: if request.resource.data.keys().hasOnly(
+                         ['q', 'doc_id', 'section', 'rank', 'vote', 'ts'])
+                    && request.resource.data.q is string
+                    && request.resource.data.q.size() <= 200
+                    && request.resource.data.doc_id is string
+                    && request.resource.data.doc_id.size() <= 40
+                    && request.resource.data.section in ['quran', 'hadith']
+                    && request.resource.data.rank is int
+                    && request.resource.data.rank >= 1 && request.resource.data.rank <= 10
+                    && request.resource.data.vote in [1, -1]
+                    && request.resource.data.ts == request.time;
+      allow read, update, delete: if false;
+    }
   }
 }

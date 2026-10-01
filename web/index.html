@@ -96,6 +96,22 @@
 
   <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
 
+    <audio id="player" preload="none"></audio>
+
+  <div id="reader" class="reader" hidden>
+    <div class="reader-backdrop" data-close></div>
+    <div class="reader-panel glass" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+      <header class="reader-head">
+        <div>
+          <h2 id="reader-title"></h2>
+          <p id="reader-meta" class="muted"></p>
+        </div>
+        <button type="button" class="icon-btn" data-close aria-label="Tutup">✕</button>
+      </header>
+      <div id="reader-body" class="reader-body"></div>
+    </div>
+  </div>
+  
   <script src="config.js"></script>
   <script type="module" src="app.js"></script>
 </body>
