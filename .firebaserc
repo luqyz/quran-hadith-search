@@ -2,6 +2,14 @@
   "projects": {
     "default": "ayat-f43d2"
   },
-  "targets": {},
+  "targets": {
+    "ayat-f43d2": {
+      "hosting": {
+        "main": [
+          "ayat"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

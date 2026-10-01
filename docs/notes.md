@@ -115,6 +115,25 @@ Metrik hybrid kecuali dinyatakan. "SEMUA" = semua soalan positif dalam bahagian 
 Soalan manual Quran (recall@10): 0.478 (v1 BM25) → 0.566 (v3b) → 0.644 (v4) → **0.766 (v7)**.
 Soalan manual hadis (recall@10): 0.778 (v4) → 0.844 (v5) → **0.875 (v7)**.
 
+### v7c (1 Okt 2026)
+- **Kata dasar ejaan Malaysia** ditambah ke kamus Sastrawi (kahwin, taubat, derhaka, ugama, rosak, ...).
+  Sastrawi dibina untuk Bahasa Indonesia ("kawin"), jadi "berkahwin" tidak di-stem sebelum ini.
+  Metrik tidak berubah (test set tiada soalan berkaitan), tetapi carian "kahwin" untuk Quran
+  berubah dari tiada padanan BM25 kepada 5/5 ayat perkahwinan.
+- **Pepijat RRF:** dokumen dengan skor BM25 0 masih mendapat skor RRF bila BM25 jumpa < 100 padanan,
+  menyebabkan hasil rawak (contoh: Bukhari 18–21 untuk "kahwin"). Dibetulkan: hanya skor > 0 dikira.
+  Metrik tidak berubah kerana semua soalan test set cukup panjang untuk mendapat ≥ 100 padanan.
+- **Stemming hadis diuji semula** dengan kamus baharu: recall@10 −0.030 → ditolak semula.
+
+**Pengajaran:** tiga perubahan berturut-turut tidak menggerakkan metrik langsung, walaupun dua daripadanya
+membetulkan masalah sebenar yang jelas kelihatan. Test set tiada soalan satu perkataan atau perkataan
+berimbuhan khusus Malaysia. Kegagalan yang dijumpai dalam penggunaan sebenar mesti ditambah sebagai
+kes ujian.
+
+**Isu diketahui:** hadis dengan terjemahan Inggeris "See hadith" atau kosong (contoh: Bukhari 4910,
+Muslim 3452) boleh muncul secara rawak dalam hasil kerana kandungannya (teks Arab) tidak diindex.
+Dibiarkan buat masa ini; kerja masa depan: index teks Arab untuk hadis tanpa terjemahan.
+
 ---
 
 ## 6. Dapatan utama
