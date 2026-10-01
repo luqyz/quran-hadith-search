@@ -661,6 +661,130 @@ details[open] summary::after { transform: rotate(90deg); }
 .r-ayah .arabic { margin: 10px 0 6px; }
 .r-ayah .main { margin: 4px 0 0; }
 
+/* ---------- Perpustakaan surah ---------- */
+.library { padding-bottom: 40px; }
+.library-head {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8vh 0 18px;
+  text-align: center;
+}
+.library-head h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+.library-head h1 em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2) 55%, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.library-search { padding: 8px 20px; }
+
+.resume { display: flex; justify-content: center; margin: 4px 0 18px; }
+.resume-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.resume-btn:hover { border-color: var(--accent); }
+
+.surah-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.surah-card {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--text);
+  animation: rise 0.4s ease both;
+  animation-delay: calc(var(--i, 0) * 25ms);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.surah-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+.surah-no {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 10px;
+  transform: rotate(45deg);
+}
+.surah-no::before { content: none; }
+.surah-no { line-height: 1; }
+.surah-no > * { transform: rotate(-45deg); }
+
+.surah-names { display: grid; flex: 1; min-width: 0; }
+.surah-names strong { font-size: 0.98rem; }
+.surah-names .muted, .surah-side .muted { font-size: 0.78rem; }
+.surah-side { display: grid; justify-items: end; text-align: right; }
+.surah-ar { font-family: var(--arabic); font-size: 1.15rem; }
+
+/* ---------- Kawalan pembaca ---------- */
+.reader-tools { display: flex; align-items: center; gap: 8px; }
+
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+}
+.seg button {
+  cursor: pointer;
+  padding: 5px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.seg button[aria-pressed="true"] {
+  color: var(--on-accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.reader-body[data-lang="ms"] .t-en,
+.reader-body[data-lang="en"] .t-ms { display: none; }
+.reader-body[data-lang="en"] .t-en { color: var(--text); font-size: 1rem; }
+
+.r-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+}
+
+@media (max-width: 640px) {
+  .hide-sm { display: none; }
+  .reader { padding: 0; }
+  .reader-panel { max-height: 100vh; height: 100%; border-radius: 0; }
+  .reader-head { flex-wrap: wrap; padding: 14px 16px; }
+  .reader-body { padding: 8px 14px 20px; }
+}
+
 /* ---------- Kaki halaman ---------- */
 .footer {
   width: min(1180px, 100%);

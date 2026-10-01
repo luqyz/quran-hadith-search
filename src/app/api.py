@@ -105,6 +105,9 @@ def root():
 def health():
     return {"status": "ok", "ready": "searcher" in state}
 
+@app.get("/surahs")
+def surahs():
+    return [state["surahs"][n] for n in sorted(state["surahs"])]
 
 @app.get("/search")
 def search(q: str = Query(..., min_length=2, max_length=200),

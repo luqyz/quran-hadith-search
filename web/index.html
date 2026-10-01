@@ -4,13 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>ayat. | Carian Al-Quran & Hadis</title>
-  <meta name="description" content="Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian, dalam Bahasa Melayu atau Inggeris.">
+  <title>ayat. | Carian & Bacaan Al-Quran dan Hadis</title>
+  <meta name="description" content="Cari ayat Al-Quran dan hadis sahih menggunakan soalan harian, dan baca Al-Quran penuh dengan terjemahan Bahasa Melayu dan Inggeris.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>۞</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
+  <script>
     (function () {
       try {
         var t = localStorage.getItem("theme");
@@ -18,6 +15,9 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,12 +28,13 @@
     <div class="pattern"></div>
   </div>
 
-    <header class="topbar glass">
+  <header class="topbar glass">
     <a class="brand" href="./">ayat<span>.</span></a>
     <div class="topbar-right">
       <nav>
-        <a href="#about">Tentang</a>
-        <!-- <a href="https://github.com/luqyz/quran-hadith-search" target="_blank" rel="noopener">GitHub</a> -->
+        <a href="#">Cari</a>
+        <a href="#quran">Baca Al-Quran</a>
+        <a href="#about" class="hide-sm">Tentang</a>
       </nav>
       <button type="button" id="theme-toggle" class="theme-btn" aria-label="Tukar tema">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -48,55 +49,75 @@
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Al-Quran · Hadis Sahih</p>
-      <h1>Cari <em>dalil</em> dengan soalan harian anda.</h1>
-      <p class="lead">Taip dalam Bahasa Melayu atau Inggeris. Kami cari ayat Al-Quran serta hadis daripada Sahih al-Bukhari dan Sahih Muslim.</p>
+    <!-- ---------- Carian ---------- -->
+    <div id="view-search">
+      <section class="hero">
+        <p class="eyebrow">Al-Quran · Hadis Sahih</p>
+        <h1>Cari <em>dalil</em> dengan soalan harian anda.</h1>
+        <p class="lead">Taip dalam Bahasa Melayu atau Inggeris. Kami cari ayat Al-Quran serta hadis daripada Sahih al-Bukhari dan Sahih Muslim.</p>
 
-      <form id="search-form" class="search glass" role="search">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
-        </svg>
-        <input id="q" type="search" placeholder="Contoh: sabar ketika ditimpa musibah"
-               minlength="2" maxlength="200" required autocomplete="off" aria-label="Soalan carian">
-        <kbd class="hint" aria-hidden="true">/</kbd>
-        <button type="submit">Cari</button>
-      </form>
+        <form id="search-form" class="search glass" role="search">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input id="q" type="search" placeholder="Contoh: sabar ketika ditimpa musibah"
+                 minlength="2" maxlength="200" required autocomplete="off" aria-label="Soalan carian">
+          <kbd class="hint" aria-hidden="true">/</kbd>
+          <button type="submit">Cari</button>
+        </form>
 
-      <div class="chips">
-        <button type="button" class="chip glass" data-q="berbuat baik kepada ibu bapa">berbuat baik kepada ibu bapa</button>
-        <button type="button" class="chip glass" data-q="kelebihan bersedekah">kelebihan bersedekah</button>
-        <button type="button" class="chip glass" data-q="larangan mengumpat">larangan mengumpat</button>
-        <button type="button" class="chip glass" data-q="menahan marah">menahan marah</button>
-        <button type="button" class="chip glass" data-q="patience during hardship">patience during hardship</button>
+        <div class="chips">
+          <button type="button" class="chip glass" data-q="berbuat baik kepada ibu bapa">berbuat baik kepada ibu bapa</button>
+          <button type="button" class="chip glass" data-q="kelebihan bersedekah">kelebihan bersedekah</button>
+          <button type="button" class="chip glass" data-q="larangan mengumpat">larangan mengumpat</button>
+          <button type="button" class="chip glass" data-q="menahan marah">menahan marah</button>
+          <button type="button" class="chip glass" data-q="patience during hardship">patience during hardship</button>
+        </div>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <div id="notice" class="notice glass" hidden></div>
+
+      <div id="tabs" class="tabs glass" role="tablist" hidden>
+        <button type="button" role="tab" aria-selected="true" data-tab="quran">Al-Quran <span class="count" id="count-quran"></span></button>
+        <button type="button" role="tab" aria-selected="false" data-tab="hadith">Hadis <span class="count" id="count-hadith"></span></button>
       </div>
-    </section>
 
-    <p id="status" class="status" role="status" aria-live="polite"></p>
-    <div id="notice" class="notice glass" hidden></div>
-
-    <div id="tabs" class="tabs glass" role="tablist" hidden>
-      <button type="button" role="tab" aria-selected="true" data-tab="quran">Al-Quran <span class="count" id="count-quran"></span></button>
-      <button type="button" role="tab" aria-selected="false" data-tab="hadith">Hadis <span class="count" id="count-hadith"></span></button>
+      <div id="results" class="results"></div>
     </div>
 
-    <div id="results" class="results"></div>
+    <!-- ---------- Baca Al-Quran ---------- -->
+    <section id="view-library" class="library" hidden>
+      <header class="library-head">
+        <p class="eyebrow">114 Surah</p>
+        <h1>Baca <em>Al-Quran</em></h1>
+        <p class="lead">Teks Arab dengan terjemahan Bahasa Melayu (Abdullah Basmeih) dan Inggeris (Sahih International).</p>
+        <div class="search glass library-search">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input id="surah-filter" type="search" placeholder="Cari surah: nama atau nombor" autocomplete="off" aria-label="Cari surah">
+        </div>
+      </header>
+      <div id="resume" class="resume" hidden></div>
+      <div id="surah-grid" class="surah-grid"></div>
+    </section>
   </main>
 
   <footer id="about" class="footer">
     <div class="footer-card glass">
       <h2>Tentang ayat.</h2>
-      <p><strong>Penting:</strong> Ini ialah alat carian teks, bukan sumber tafsiran atau fatwa. Hasil dipilih secara automatik dan mungkin tidak lengkap atau kurang tepat. Rujuk ilmuwan yang berautoriti untuk memahami maksud dan hukum.</p>
-      <p><strong>Cara ia berfungsi:</strong> carian hibrid yang menggabungkan padanan kata kunci (BM25) dan carian makna (embedding multilingual), dengan Al-Quran dan hadis dicari secara berasingan.</p>
-      <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari dan Sahih Muslim (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api.</p>
-      <p><strong>Privasi:</strong> soalan carian direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
+      <p><strong>Penting:</strong> Ini ialah alat carian dan bacaan teks, bukan sumber tafsiran atau fatwa. Hasil carian dipilih secara automatik dan mungkin tidak lengkap atau kurang tepat. Rujuk ilmuwan yang berautoriti untuk memahami maksud dan hukum.</p>
+      <p><strong>Cara carian berfungsi:</strong> carian hibrid yang menggabungkan padanan kata kunci (BM25) dan carian makna (embedding multilingual), dengan Al-Quran dan hadis dicari secara berasingan.</p>
+      <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari dan Sahih Muslim (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api. Audio bacaan: everyayah.com (Mishary Rashid Alafasy). Tafsir: Quran.com.</p>
+      <p><strong>Privasi:</strong> soalan carian dan maklum balas 👍/👎 direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
     </div>
     <p class="fineprint">Dibina oleh <a href="https://github.com/luqyz" target="_blank" rel="noopener">luqyz</a> · Kod sumber terbuka di GitHub</p>
   </footer>
 
   <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
 
-    <audio id="player" preload="none"></audio>
+  <audio id="player" preload="none"></audio>
 
   <div id="reader" class="reader" hidden>
     <div class="reader-backdrop" data-close></div>
@@ -106,12 +127,19 @@
           <h2 id="reader-title"></h2>
           <p id="reader-meta" class="muted"></p>
         </div>
-        <button type="button" class="icon-btn" data-close aria-label="Tutup">✕</button>
+        <div class="reader-tools">
+          <div class="seg" id="lang-toggle" role="group" aria-label="Pilih terjemahan">
+            <button type="button" data-lang="ms">BM</button>
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="both">BM + EN</button>
+          </div>
+          <button type="button" class="icon-btn" data-close aria-label="Tutup">✕</button>
+        </div>
       </header>
-      <div id="reader-body" class="reader-body"></div>
+      <div id="reader-body" class="reader-body" data-lang="ms"></div>
     </div>
   </div>
-  
+
   <script src="config.js"></script>
   <script type="module" src="app.js"></script>
 </body>

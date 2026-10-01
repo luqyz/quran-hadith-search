@@ -25,14 +25,21 @@ const reader = $("#reader");
 const readerTitle = $("#reader-title");
 const readerMeta = $("#reader-meta");
 const readerBody = $("#reader-body");
+const langToggle = $("#lang-toggle");
+const viewSearch = $("#view-search");
+const viewLibrary = $("#view-library");
+const surahGrid = $("#surah-grid");
+const surahFilter = $("#surah-filter");
+const resumeEl = $("#resume");
 
 let activeTab = "quran";
 let lastQuery = "";
+let surahList = null;
 
 const NOTICES = {
   fatwa:
     'Soalan anda kelihatan berkaitan <strong>hukum</strong>. Sistem ini hanya memaparkan teks Al-Quran dan hadis, bukan fatwa. ' +
-    'Untuk keputusan hukum, rujuk <a href="https://efatwa.muftiwp.gov.my/" target="_blank" rel="noopener">portal e-Fatwa</a> atau pejabat mufti negeri anda.',
+    'Untuk keputusan hukum, rujuk <a href="https://www.e-fatwa.gov.my" target="_blank" rel="noopener">portal e-Fatwa</a> atau pejabat mufti negeri anda.',
   current_info:
     "Soalan anda kelihatan meminta maklumat semasa (contohnya tarikh, harga atau waktu). " +
     "Sistem ini mencari teks Al-Quran dan hadis sahaja, jadi hasil di bawah mungkin tidak menjawab soalan tersebut.",
@@ -49,7 +56,21 @@ const shorten = (s, n) => {
 
 const revelationLabel = (r) => (r === "Meccan" ? "Makkiyah" : r === "Medinan" ? "Madaniyah" : "");
 
-/* ---------- Kad ---------- */
+const storage = {
+  get(key, fallback = null) {
+    try {
+      const v = localStorage.getItem(key);
+      return v === null ? fallback : JSON.parse(v);
+    } catch {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+  },
+};
+
+/* ---------- Kad hasil carian ---------- */
 
 function voteButtons(section, id, i) {
   return `
@@ -110,8 +131,6 @@ function hadithCard(r, i) {
       <div class="tools">${voteButtons("hadith", r.id, i)}</div>
     </article>`;
 }
-
-/* ---------- Bahagian ---------- */
 
 function sectionHtml(key, title, unit, sec, cardFn, note) {
   const n = sec.results.length;
@@ -239,7 +258,9 @@ function run(q) {
   input.blur();
   const url = new URL(window.location);
   url.searchParams.set("q", q);
+  url.hash = "";
   history.replaceState(null, "", url);
+  route();
   window.scrollTo({ top: 0 });
   search(q);
 }
@@ -280,9 +301,20 @@ player.addEventListener("ended", () => setPlayBtn(playingBtn, false));
 
 /* ---------- Pembaca surah ---------- */
 
-async function openReader(s, a) {
+let readerLang = storage.get("readerLang", "ms");
+
+function applyReaderLang() {
+  readerBody.dataset.lang = readerLang;
+  langToggle.querySelectorAll("[data-lang]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.lang === readerLang)));
+}
+
+async function openReader(s, a = 1, highlight = true) {
+  s = Number(s);
+  a = Number(a);
   reader.hidden = false;
   document.body.classList.add("no-scroll");
+  applyReaderLang();
   readerTitle.textContent = "Memuatkan surah...";
   readerMeta.textContent = "";
   readerBody.innerHTML = `<div class="card skeleton"><span></span><span></span><span class="short"></span></div>`;
@@ -292,24 +324,35 @@ async function openReader(s, a) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const m = data.surah || {};
-    readerTitle.innerHTML = `${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
+    readerTitle.innerHTML = `${s}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
     readerMeta.textContent = [m.translation, revelationLabel(m.revelation), m.ayah_count && `${m.ayah_count} ayat`]
       .filter(Boolean).join(" · ");
 
-    const bismillah = Number(s) !== 1 && Number(s) !== 9
+    const bismillah = s !== 1 && s !== 9
       ? `<p class="arabic bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>` : "";
-    readerBody.innerHTML = bismillah + data.ayahs.map((x) => `
-      <div class="r-ayah${String(x.ayah) === String(a) ? " is-target" : ""}" id="r-${x.ayah}">
+    const ayahs = data.ayahs.map((x) => `
+      <div class="r-ayah${highlight && x.ayah === a ? " is-target" : ""}" id="r-${x.ayah}">
         <div class="r-head">
           <span class="mini-ref">${esc(x.ref)}</span>
           <button type="button" class="tool" data-play="${s}:${x.ayah}">▶ Dengar</button>
         </div>
         ${x.text_ar ? `<p class="arabic" lang="ar" dir="rtl">${esc(x.text_ar)}</p>` : ""}
-        ${x.text_ms ? `<p class="main">${esc(x.text_ms)}</p>` : ""}
+        ${x.text_ms ? `<p class="main t-ms">${esc(x.text_ms)}</p>` : ""}
+        ${x.text_en ? `<p class="sub t-en">${esc(x.text_en)}</p>` : ""}
       </div>`).join("");
+    const nav = `
+      <nav class="r-nav">
+        ${s > 1 ? `<button type="button" class="tool" data-open-surah="${s - 1}">← Surah sebelum</button>` : "<span></span>"}
+        ${s < 114 ? `<button type="button" class="tool" data-open-surah="${s + 1}">Surah seterusnya →</button>` : ""}
+      </nav>`;
+    readerBody.innerHTML = bismillah + ayahs + nav;
 
-    const target = document.getElementById(`r-${a}`);
+    storage.set("lastRead", { s, name: m.english_name || `Surah ${s}` });
+    renderResume();
+
+    const target = highlight ? document.getElementById(`r-${a}`) : null;
     if (target) target.scrollIntoView({ block: "center" });
+    else readerBody.scrollTop = 0;
   } catch (e) {
     console.error(e);
     readerTitle.textContent = "Gagal memuatkan surah";
@@ -321,6 +364,72 @@ function closeReader() {
   reader.hidden = true;
   document.body.classList.remove("no-scroll");
 }
+
+/* ---------- Senarai surah ---------- */
+
+const normalize = (s) =>
+  String(s ?? "").toLowerCase().replace(/[^a-z0-9]/g, "").replace(/(.)\1+/g, "$1").replace(/h$/, "");
+
+function renderSurahs(filter = "") {
+  if (!surahList) return;
+  const f = normalize(filter);
+  const items = surahList.filter((s) =>
+    !f || String(s.number) === filter.trim() ||
+    normalize(s.english_name).includes(f) || normalize(s.translation).includes(f));
+  surahGrid.innerHTML = items.length ? items.map((s, i) => `
+    <button type="button" class="surah-card glass" data-open-surah="${s.number}" style="--i:${Math.min(i, 20)}">
+      <span class="surah-no">${s.number}</span>
+      <span class="surah-names">
+        <strong>${esc(s.english_name)}</strong>
+        <span class="muted">${esc(s.translation)}</span>
+      </span>
+      <span class="surah-side">
+        <span class="surah-ar" lang="ar">${esc(s.name_ar)}</span>
+        <span class="muted">${revelationLabel(s.revelation)} · ${s.ayah_count} ayat</span>
+      </span>
+    </button>`).join("") : `<p class="muted">Tiada surah sepadan.</p>`;
+}
+
+function renderResume() {
+  const last = storage.get("lastRead");
+  if (!last) {
+    resumeEl.hidden = true;
+    return;
+  }
+  resumeEl.hidden = false;
+  resumeEl.innerHTML =
+    `<button type="button" class="resume-btn glass" data-open-surah="${last.s}">` +
+    `Sambung bacaan: <strong>${esc(last.name)}</strong> →</button>`;
+}
+
+async function loadLibrary() {
+  renderResume();
+  if (surahList) return;
+  surahGrid.innerHTML = `<div class="card glass skeleton"><span></span><span class="short"></span></div>`.repeat(6);
+  try {
+    const res = await fetch(`${API_BASE}/surahs`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    surahList = await res.json();
+    renderSurahs(surahFilter.value);
+  } catch (e) {
+    console.error(e);
+    surahGrid.innerHTML = `<p class="muted">Gagal memuatkan senarai surah. Pelayan mungkin sedang dimulakan; cuba lagi sebentar lagi.</p>`;
+  }
+}
+
+/* ---------- Navigasi ---------- */
+
+function route() {
+  const library = location.hash === "#quran";
+  viewSearch.hidden = library;
+  viewLibrary.hidden = !library;
+  if (library) {
+    loadLibrary();
+    window.scrollTo({ top: 0 });
+  }
+}
+
+window.addEventListener("hashchange", route);
 
 /* ---------- Ayat serupa ---------- */
 
@@ -393,7 +502,7 @@ resultsEl.addEventListener("click", async (e) => {
   const readBtn = t.closest("[data-read]");
   if (readBtn) {
     const [s, a] = readBtn.dataset.read.split(":");
-    return openReader(s, a);
+    return openReader(s, a, true);
   }
 
   const simBtn = t.closest("[data-similar]");
@@ -403,8 +512,26 @@ resultsEl.addEventListener("click", async (e) => {
   if (voteBtn) return vote(voteBtn);
 });
 
+viewLibrary.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-open-surah]");
+  if (btn) openReader(btn.dataset.openSurah, 1, false);
+});
+
+surahFilter.addEventListener("input", () => renderSurahs(surahFilter.value));
+
 reader.addEventListener("click", (e) => {
   if (e.target.closest("[data-close]")) return closeReader();
+
+  const langBtn = e.target.closest("[data-lang]");
+  if (langBtn) {
+    readerLang = langBtn.dataset.lang;
+    storage.set("readerLang", readerLang);
+    return applyReaderLang();
+  }
+
+  const navBtn = e.target.closest("[data-open-surah]");
+  if (navBtn) return openReader(navBtn.dataset.openSurah, 1, false);
+
   const playBtn = e.target.closest("[data-play]");
   if (playBtn) togglePlay(playBtn);
 });
@@ -414,9 +541,9 @@ document.addEventListener("keydown", (e) => {
     closeReader();
     return;
   }
-  if (e.key === "/" && document.activeElement !== input && reader.hidden) {
+  if (e.key === "/" && reader.hidden && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
     e.preventDefault();
-    input.focus();
+    (location.hash === "#quran" ? surahFilter : input).focus();
   }
 });
 
@@ -446,6 +573,7 @@ updateThemeLabel();
 
 /* ---------- Mula ---------- */
 
+route();
 const initial = new URLSearchParams(window.location.search).get("q");
-if (initial) run(initial);
+if (initial && location.hash !== "#quran") run(initial);
 else fetch(`${API_BASE}/health`).catch(() => {});
