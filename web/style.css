@@ -600,6 +600,19 @@ details[open] summary::after { transform: rotate(90deg); }
 .similar-item:hover { border-color: var(--accent); }
 .small { font-size: 0.85rem; }
 
+.ico { display: block; width: 15px; height: 15px; }
+.vote .tool { padding: 6px 9px; }
+.vote .tool.chosen { color: var(--accent); }
+.vote .tool.chosen .ico { fill: color-mix(in srgb, var(--accent) 25%, transparent); }
+
+.ico-inline {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  color: var(--accent);
+}
+
 /* ---------- Pembaca surah ---------- */
 .no-scroll { overflow: hidden; }
 
@@ -784,6 +797,23 @@ details[open] summary::after { transform: rotate(90deg); }
   .reader-head { flex-wrap: wrap; padding: 14px 16px; }
   .reader-body { padding: 8px 14px 20px; }
 }
+
+.r-ayah.is-playing-ayah {
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+#surah-play.is-playing {
+  color: var(--on-accent);
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+@media (max-width: 640px) {
+  .reader-tools { flex-wrap: wrap; }
+}
+
+.reader[data-mode="nawawi"] #surah-play,
+.reader[data-mode="nawawi"] #lang-toggle { display: none; }
+.reader[data-mode="nawawi"] .r-ayah { border-bottom: 0; }
 
 /* ---------- Kaki halaman ---------- */
 .footer {

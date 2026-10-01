@@ -24,7 +24,8 @@ HADITH_URLS = [
     "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/{edition}.min.json",
     "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/{edition}.json",
 ]
-HADITH_EDITIONS = ["eng-bukhari", "ara-bukhari", "eng-muslim", "ara-muslim"]
+HADITH_EDITIONS = ["eng-bukhari", "ara-bukhari", "eng-muslim", "ara-muslim",
+                   "eng-nawawi", "ara-nawawi"]
 
 
 def fetch_json(url: str, retries: int = 3, timeout: int = 120) -> dict:

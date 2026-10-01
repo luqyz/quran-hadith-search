@@ -17,13 +17,14 @@ from fastapi import Path as PathParam
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
-from common import (BM25_THRESHOLDS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, ROOT,
-                    SURAHS_PATH, UNITS_PATH, emb_path)
+from common import (BM25_THRESHOLDS, CORPUS_PATH, DEFAULT_EMB_VARIANT, DEFAULT_MODEL, NAWAWI_PATH,
+                    ROOT, SURAHS_PATH, UNITS_PATH, emb_path)
 from intent import detect_intent
 from search import SECTIONS, Searcher
 
 COLLECTION_NAMES = {"bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim"}
-REQUIRED_FILES = [CORPUS_PATH, UNITS_PATH, SURAHS_PATH, emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
+REQUIRED_FILES = [CORPUS_PATH, UNITS_PATH, SURAHS_PATH, NAWAWI_PATH,
+                  emb_path(DEFAULT_MODEL, DEFAULT_EMB_VARIANT)]
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 state = {}
 
@@ -86,6 +87,8 @@ async def lifespan(app: FastAPI):
     ensure_artifacts()
     with open(SURAHS_PATH, encoding="utf-8") as f:
         state["surahs"] = {s["number"]: s for s in json.load(f)}
+    with open(NAWAWI_PATH, encoding="utf-8") as f:
+        state["nawawi"] = json.load(f)
     state["searcher"] = Searcher()
     yield
     state.clear()
@@ -108,6 +111,10 @@ def health():
 @app.get("/surahs")
 def surahs():
     return [state["surahs"][n] for n in sorted(state["surahs"])]
+
+@app.get("/nawawi")
+def nawawi():
+    return state["nawawi"]
 
 @app.get("/search")
 def search(q: str = Query(..., min_length=2, max_length=200),

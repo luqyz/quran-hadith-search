@@ -16,6 +16,54 @@ RAW_DIR = ROOT / "data" / "raw"
 OUT_PATH = ROOT / "data" / "processed" / "corpus.parquet"
 SURAHS_PATH = ROOT / "data" / "processed" / "surahs.json"
 
+NAWAWI_PATH = ROOT / "data" / "processed" / "nawawi.json"
+
+# (tajuk ringkas BM, sumber riwayat). Tajuk ialah ringkasan editorial, bukan terjemahan.
+NAWAWI_META = {
+    1: ("Amalan bergantung pada niat", "Bukhari & Muslim"),
+    2: ("Islam, Iman dan Ihsan", "Muslim"),
+    3: ("Rukun Islam", "Bukhari & Muslim"),
+    4: ("Penciptaan manusia dan takdir", "Bukhari & Muslim"),
+    5: ("Perkara baharu dalam agama ditolak", "Bukhari & Muslim"),
+    6: ("Halal dan haram itu jelas", "Bukhari & Muslim"),
+    7: ("Agama itu nasihat", "Muslim"),
+    8: ("Kehormatan nyawa dan harta", "Bukhari & Muslim"),
+    9: ("Lakukan perintah sekadar mampu", "Bukhari & Muslim"),
+    10: ("Allah hanya menerima yang baik", "Muslim"),
+    11: ("Tinggalkan yang meragukan", "Tirmidhi & An-Nasa'i"),
+    12: ("Tinggalkan perkara yang tidak berfaedah", "Tirmidhi"),
+    13: ("Mengasihi saudara seperti diri sendiri", "Bukhari & Muslim"),
+    14: ("Kehormatan darah seorang Muslim", "Bukhari & Muslim"),
+    15: ("Berkata baik atau diam", "Bukhari & Muslim"),
+    16: ("Jangan marah", "Bukhari"),
+    17: ("Ihsan dalam segala perkara", "Muslim"),
+    18: ("Takwa dan akhlak yang baik", "Tirmidhi"),
+    19: ("Jagalah Allah, Allah akan menjagamu", "Tirmidhi"),
+    20: ("Sifat malu", "Bukhari"),
+    21: ("Beriman dan istiqamah", "Muslim"),
+    22: ("Jalan ke syurga melalui amalan wajib", "Muslim"),
+    23: ("Kebersihan sebahagian daripada iman", "Muslim"),
+    24: ("Pengharaman kezaliman (hadis qudsi)", "Muslim"),
+    25: ("Pintu-pintu sedekah", "Muslim"),
+    26: ("Setiap sendi bersedekah", "Bukhari & Muslim"),
+    27: ("Kebaikan dan dosa", "Muslim; Ahmad & Ad-Darimi"),
+    28: ("Berpegang teguh pada sunnah", "Abu Dawud & Tirmidhi"),
+    29: ("Amalan yang memasukkan ke syurga", "Tirmidhi"),
+    30: ("Batasan-batasan Allah", "Ad-Daraqutni"),
+    31: ("Zuhud", "Ibn Majah"),
+    32: ("Tiada mudarat dan membalas mudarat", "Ibn Majah & Ad-Daraqutni"),
+    33: ("Beban bukti ke atas pendakwa", "Al-Bayhaqi"),
+    34: ("Mencegah kemungkaran", "Muslim"),
+    35: ("Persaudaraan Islam", "Muslim"),
+    36: ("Membantu sesama Muslim dan menuntut ilmu", "Muslim"),
+    37: ("Pencatatan kebaikan dan kejahatan", "Bukhari & Muslim"),
+    38: ("Wali Allah dan amalan sunat", "Bukhari"),
+    39: ("Kemaafan atas silap, lupa dan paksaan", "Ibn Majah & Al-Bayhaqi"),
+    40: ("Hidup di dunia seperti orang asing", "Bukhari"),
+    41: ("Mengikut ajaran Nabi", "Kitab al-Hujjah"),
+    42: ("Keluasan keampunan Allah", "Tirmidhi"),
+}
+
 QURAN_EDITIONS = {"ar": "quran-simple", "ms": "ms.basmeih", "en": "en.sahih"}
 HADITH_COLLECTIONS = ["bukhari", "muslim"]
 EXPECTED_AYAH_COUNT = 6236
@@ -259,6 +307,24 @@ def build_surah_meta() -> list[dict]:
         "ayah_count": len(s["ayahs"]),
     } for s in data["surahs"]]
 
+def build_nawawi() -> list[dict]:
+    en = load_json(RAW_DIR / "hadith" / "eng-nawawi.json")["hadiths"]
+    ar = {h["hadithnumber"]: h.get("text") for h in load_json(RAW_DIR / "hadith" / "ara-nawawi.json")["hadiths"]}
+    out = []
+    for h in en:
+        n = int(h["hadithnumber"])
+        if n not in NAWAWI_META:
+            continue
+        title, sources = NAWAWI_META[n]
+        out.append({
+            "number": n,
+            "title_ms": title,
+            "sources": sources,
+            "text_ar": clean_text(ar.get(h["hadithnumber"])),
+            "text_en": clean_text(h.get("text")),
+        })
+    return sorted(out, key=lambda x: x["number"])
+
 def validate(corpus: pd.DataFrame) -> None:
     assert corpus["id"].is_unique, "Ada id berulang!"
     print("\n=== Bilangan mengikut sumber ===")
@@ -291,6 +357,11 @@ def main() -> None:
     with open(SURAHS_PATH, "w", encoding="utf-8") as f:
         json.dump(build_surah_meta(), f, ensure_ascii=False, indent=1)
     print(f"Disimpan: {SURAHS_PATH}")
+
+    nawawi = build_nawawi()
+    with open(NAWAWI_PATH, "w", encoding="utf-8") as f:
+        json.dump(nawawi, f, ensure_ascii=False, indent=1)
+    print(f"Disimpan: {NAWAWI_PATH} ({len(nawawi)} hadis)")
 
 
 if __name__ == "__main__":

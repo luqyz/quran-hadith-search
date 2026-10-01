@@ -26,20 +26,26 @@ const readerTitle = $("#reader-title");
 const readerMeta = $("#reader-meta");
 const readerBody = $("#reader-body");
 const langToggle = $("#lang-toggle");
+const surahPlayBtn = $("#surah-play");
 const viewSearch = $("#view-search");
 const viewLibrary = $("#view-library");
+const viewArbain = $("#view-arbain");
 const surahGrid = $("#surah-grid");
 const surahFilter = $("#surah-filter");
 const resumeEl = $("#resume");
+const arbainGrid = $("#arbain-grid");
 
 let activeTab = "quran";
 let lastQuery = "";
 let surahList = null;
+let nawawiList = null;
+let readerSurah = null;
+let readerAyahCount = 0;
 
 const NOTICES = {
   fatwa:
     'Soalan anda kelihatan berkaitan <strong>hukum</strong>. Sistem ini hanya memaparkan teks Al-Quran dan hadis, bukan fatwa. ' +
-    'Untuk keputusan hukum, rujuk <a href="https://www.e-fatwa.gov.my" target="_blank" rel="noopener">portal e-Fatwa</a> atau pejabat mufti negeri anda.',
+    'Untuk keputusan hukum, rujuk <a href="https://efatwa.muftiwp.gov.my/" target="_blank" rel="noopener">portal e-Fatwa</a> atau pejabat mufti negeri anda.',
   current_info:
     "Soalan anda kelihatan meminta maklumat semasa (contohnya tarikh, harga atau waktu). " +
     "Sistem ini mencari teks Al-Quran dan hadis sahaja, jadi hasil di bawah mungkin tidak menjawab soalan tersebut.",
@@ -70,13 +76,42 @@ const storage = {
   },
 };
 
+/* ---------- Senarai surah (dikongsi oleh perpustakaan & audio) ---------- */
+
+let surahListPromise = null;
+let ayahOffsets = null;
+
+function ensureSurahList() {
+  if (surahList) return Promise.resolve(surahList);
+  if (!surahListPromise) {
+    surahListPromise = fetch(`${API_BASE}/surahs`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((list) => {
+        surahList = list;
+        ayahOffsets = [0];
+        for (const s of list) ayahOffsets.push(ayahOffsets[ayahOffsets.length - 1] + s.ayah_count);
+        return list;
+      })
+      .catch((e) => {
+        surahListPromise = null;
+        throw e;
+      });
+  }
+  return surahListPromise;
+}
+
 /* ---------- Kad hasil carian ---------- */
+const ICON_UP = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>`;
+const ICON_DOWN = `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg>`;
 
 function voteButtons(section, id, i) {
   return `
     <span class="vote" data-vote-for="${esc(id)}" data-section="${section}" data-rank="${i + 1}">
-      <button type="button" class="tool" data-vote="1" aria-label="Hasil ini berguna">👍</button>
-      <button type="button" class="tool" data-vote="-1" aria-label="Hasil ini tidak berguna">👎</button>
+      <button type="button" class="tool" data-vote="1" aria-label="Hasil ini berguna" title="Berguna">${ICON_UP}</button>
+      <button type="button" class="tool" data-vote="-1" aria-label="Hasil ini tidak berguna" title="Tidak berguna">${ICON_DOWN}</button>
     </span>`;
 }
 
@@ -165,6 +200,7 @@ function render(data) {
     sectionHtml("quran", "Al-Quran", "ayat", quran, quranCard) +
     sectionHtml("hadith", "Hadis", "hadis", hadith, hadithCard,
       "Terjemahan Bahasa Melayu untuk hadis belum tersedia; teks Inggeris yang sahih dipaparkan.");
+  updatePlayButtons();
 }
 
 function setTab(key) {
@@ -218,6 +254,15 @@ async function vote(btn) {
   }
 }
 
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast("Disalin ke papan klip");
+  } catch {
+    toast("Tidak dapat menyalin");
+  }
+}
+
 /* ---------- Carian ---------- */
 
 async function search(q) {
@@ -267,18 +312,51 @@ function run(q) {
 
 /* ---------- Audio ---------- */
 
-let playingKey = null;
-let playingBtn = null;
+// Nombor ayat global (1–6236) diperlukan oleh CDN audio
+const AUDIO_BASE = "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
+
+let playingKey = null;   // "surah:ayat" yang sedang dimainkan
+let surahQueue = null;   // { s, total } bila memainkan seluruh surah
 
 function audioUrl(s, a) {
-  const p = (n) => String(n).padStart(3, "0");
-  return `https://everyayah.com/data/Alafasy_128kbps/${p(s)}${p(a)}.mp3`;
+  return `${AUDIO_BASE}/${ayahOffsets[s - 1] + a}.mp3`;
 }
 
-function setPlayBtn(btn, playing) {
-  if (!btn) return;
-  btn.textContent = playing ? "❚❚ Henti" : "▶ Dengar";
-  btn.classList.toggle("is-playing", playing);
+function updatePlayButtons() {
+  const playing = Boolean(playingKey) && !player.paused;
+  document.querySelectorAll("[data-play]").forEach((b) => {
+    const on = playing && b.dataset.play === playingKey;
+    b.textContent = on ? "❚❚ Henti" : "▶ Dengar";
+    b.classList.toggle("is-playing", on);
+  });
+
+  readerBody.querySelectorAll(".is-playing-ayah").forEach((el) => el.classList.remove("is-playing-ayah"));
+  const surahOn = playing && surahQueue && surahQueue.s === readerSurah;
+  if (surahOn) {
+    const el = document.getElementById(`r-${playingKey.split(":")[1]}`);
+    if (el) {
+      el.classList.add("is-playing-ayah");
+      el.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }
+  surahPlayBtn.textContent = surahOn ? "❚❚ Henti surah" : "▶ Main surah";
+  surahPlayBtn.classList.toggle("is-playing", Boolean(surahOn));
+}
+
+async function playAyah(s, a) {
+  try {
+    await ensureSurahList();
+  } catch {
+    toast("Audio belum sedia. Cuba lagi sebentar lagi.");
+    return;
+  }
+  playingKey = `${s}:${a}`;
+  player.src = audioUrl(s, a);
+  player.play().catch(() => {
+    toast("Audio tidak dapat dimainkan");
+    surahQueue = null;
+    updatePlayButtons();
+  });
 }
 
 function togglePlay(btn) {
@@ -287,19 +365,42 @@ function togglePlay(btn) {
     player.pause();
     return;
   }
-  setPlayBtn(playingBtn, false);
-  playingKey = key;
-  playingBtn = btn;
-  const [s, a] = key.split(":");
-  player.src = audioUrl(s, a);
-  player.play().catch(() => toast("Audio tidak dapat dimainkan"));
+  surahQueue = null;
+  const [s, a] = key.split(":").map(Number);
+  playAyah(s, a);
 }
 
-player.addEventListener("play", () => setPlayBtn(playingBtn, true));
-player.addEventListener("pause", () => setPlayBtn(playingBtn, false));
-player.addEventListener("ended", () => setPlayBtn(playingBtn, false));
+function toggleSurah() {
+  if (surahQueue && !player.paused) {
+    surahQueue = null;
+    player.pause();
+    return;
+  }
+  if (!readerSurah) return;
+  surahQueue = { s: readerSurah, total: readerAyahCount };
+  playAyah(readerSurah, 1);
+}
 
-/* ---------- Pembaca surah ---------- */
+function stopAudio() {
+  surahQueue = null;
+  player.pause();
+}
+
+player.addEventListener("play", updatePlayButtons);
+player.addEventListener("pause", updatePlayButtons);
+player.addEventListener("ended", () => {
+  if (surahQueue && playingKey) {
+    const [s, a] = playingKey.split(":").map(Number);
+    if (s === surahQueue.s && a < surahQueue.total) {
+      playAyah(s, a + 1);
+      return;
+    }
+  }
+  surahQueue = null;
+  updatePlayButtons();
+});
+
+/* ---------- Pembaca (surah & hadis) ---------- */
 
 let readerLang = storage.get("readerLang", "ms");
 
@@ -309,11 +410,18 @@ function applyReaderLang() {
     b.setAttribute("aria-pressed", String(b.dataset.lang === readerLang)));
 }
 
+function showReader(mode) {
+  reader.dataset.mode = mode;
+  reader.hidden = false;
+  document.body.classList.add("no-scroll");
+}
+
 async function openReader(s, a = 1, highlight = true) {
   s = Number(s);
   a = Number(a);
-  reader.hidden = false;
-  document.body.classList.add("no-scroll");
+  if (surahQueue && surahQueue.s !== s) stopAudio();
+
+  showReader("quran");
   applyReaderLang();
   readerTitle.textContent = "Memuatkan surah...";
   readerMeta.textContent = "";
@@ -324,6 +432,8 @@ async function openReader(s, a = 1, highlight = true) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const m = data.surah || {};
+    readerSurah = s;
+    readerAyahCount = data.ayahs.length;
     readerTitle.innerHTML = `${s}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
     readerMeta.textContent = [m.translation, revelationLabel(m.revelation), m.ayah_count && `${m.ayah_count} ayat`]
       .filter(Boolean).join(" · ");
@@ -346,6 +456,7 @@ async function openReader(s, a = 1, highlight = true) {
         ${s < 114 ? `<button type="button" class="tool" data-open-surah="${s + 1}">Surah seterusnya →</button>` : ""}
       </nav>`;
     readerBody.innerHTML = bismillah + ayahs + nav;
+    updatePlayButtons();
 
     storage.set("lastRead", { s, name: m.english_name || `Surah ${s}` });
     renderResume();
@@ -355,17 +466,48 @@ async function openReader(s, a = 1, highlight = true) {
     else readerBody.scrollTop = 0;
   } catch (e) {
     console.error(e);
+    readerSurah = null;
     readerTitle.textContent = "Gagal memuatkan surah";
     readerBody.innerHTML = `<p class="muted">Sila cuba lagi sebentar lagi.</p>`;
   }
 }
 
+function openNawawi(n) {
+  n = Number(n);
+  const h = nawawiList?.find((x) => x.number === n);
+  if (!h) return;
+  if (surahQueue) stopAudio();
+  readerSurah = null;
+
+  showReader("nawawi");
+  readerTitle.textContent = `Hadis ${n}: ${h.title_ms}`;
+  readerMeta.textContent = `Hadis 40 Imam an-Nawawi · Riwayat: ${h.sources}`;
+  const copy = `${h.text_en}\n(Hadis 40 Imam an-Nawawi, no. ${n})`;
+  readerBody.innerHTML = `
+    <div class="r-ayah">
+      <div class="r-head">
+        <span class="mini-ref">Hadis ${n}</span>
+        <button type="button" class="tool" data-copy="${esc(copy)}">Salin</button>
+      </div>
+      ${h.text_ar ? `<p class="arabic" lang="ar" dir="rtl">${esc(h.text_ar)}</p>` : ""}
+      <p class="main">${esc(h.text_en)}</p>
+      <p class="note">Terjemahan Bahasa Melayu belum tersedia; terjemahan Inggeris dipaparkan. Tajuk ialah ringkasan.</p>
+    </div>
+    <nav class="r-nav">
+      ${n > 1 ? `<button type="button" class="tool" data-open-nawawi="${n - 1}">← Hadis sebelum</button>` : "<span></span>"}
+      ${n < nawawiList.length ? `<button type="button" class="tool" data-open-nawawi="${n + 1}">Hadis seterusnya →</button>` : ""}
+    </nav>`;
+  readerBody.scrollTop = 0;
+  updatePlayButtons();
+}
+
 function closeReader() {
+  if (surahQueue) stopAudio();
   reader.hidden = true;
   document.body.classList.remove("no-scroll");
 }
 
-/* ---------- Senarai surah ---------- */
+/* ---------- Perpustakaan surah ---------- */
 
 const normalize = (s) =>
   String(s ?? "").toLowerCase().replace(/[^a-z0-9]/g, "").replace(/(.)\1+/g, "$1").replace(/h$/, "");
@@ -378,7 +520,7 @@ function renderSurahs(filter = "") {
     normalize(s.english_name).includes(f) || normalize(s.translation).includes(f));
   surahGrid.innerHTML = items.length ? items.map((s, i) => `
     <button type="button" class="surah-card glass" data-open-surah="${s.number}" style="--i:${Math.min(i, 20)}">
-      <span class="surah-no">${s.number}</span>
+      <span class="surah-no"><span>${s.number}</span></span>
       <span class="surah-names">
         <strong>${esc(s.english_name)}</strong>
         <span class="muted">${esc(s.translation)}</span>
@@ -404,12 +546,13 @@ function renderResume() {
 
 async function loadLibrary() {
   renderResume();
-  if (surahList) return;
+  if (surahList) {
+    renderSurahs(surahFilter.value);
+    return;
+  }
   surahGrid.innerHTML = `<div class="card glass skeleton"><span></span><span class="short"></span></div>`.repeat(6);
   try {
-    const res = await fetch(`${API_BASE}/surahs`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    surahList = await res.json();
+    await ensureSurahList();
     renderSurahs(surahFilter.value);
   } catch (e) {
     console.error(e);
@@ -417,16 +560,52 @@ async function loadLibrary() {
   }
 }
 
+/* ---------- Hadis 40 ---------- */
+
+function renderArbain() {
+  arbainGrid.innerHTML = nawawiList.map((h, i) => `
+    <button type="button" class="surah-card glass" data-open-nawawi="${h.number}" style="--i:${Math.min(i, 20)}">
+      <span class="surah-no"><span>${h.number}</span></span>
+      <span class="surah-names">
+        <strong>${esc(h.title_ms)}</strong>
+        <span class="muted">Riwayat: ${esc(h.sources)}</span>
+      </span>
+    </button>`).join("");
+}
+
+async function loadArbain() {
+  if (nawawiList) {
+    renderArbain();
+    return;
+  }
+  arbainGrid.innerHTML = `<div class="card glass skeleton"><span></span><span class="short"></span></div>`.repeat(6);
+  try {
+    const res = await fetch(`${API_BASE}/nawawi`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    nawawiList = await res.json();
+    renderArbain();
+  } catch (e) {
+    console.error(e);
+    arbainGrid.innerHTML = `<p class="muted">Gagal memuatkan Hadis 40. Pelayan mungkin sedang dimulakan; cuba lagi sebentar lagi.</p>`;
+  }
+}
+
 /* ---------- Navigasi ---------- */
 
+function currentView() {
+  if (location.hash === "#quran") return "library";
+  if (location.hash === "#arbain") return "arbain";
+  return "search";
+}
+
 function route() {
-  const library = location.hash === "#quran";
-  viewSearch.hidden = library;
-  viewLibrary.hidden = !library;
-  if (library) {
-    loadLibrary();
-    window.scrollTo({ top: 0 });
-  }
+  const view = currentView();
+  viewSearch.hidden = view !== "search";
+  viewLibrary.hidden = view !== "library";
+  viewArbain.hidden = view !== "arbain";
+  if (view === "library") loadLibrary();
+  if (view === "arbain") loadArbain();
+  if (view !== "search") window.scrollTo({ top: 0 });
 }
 
 window.addEventListener("hashchange", route);
@@ -482,19 +661,11 @@ tabsEl.addEventListener("click", (e) => {
   if (btn) setTab(btn.dataset.tab);
 });
 
-resultsEl.addEventListener("click", async (e) => {
+resultsEl.addEventListener("click", (e) => {
   const t = e.target;
 
   const copyBtn = t.closest("[data-copy]");
-  if (copyBtn) {
-    try {
-      await navigator.clipboard.writeText(copyBtn.dataset.copy);
-      toast("Disalin ke papan klip");
-    } catch {
-      toast("Tidak dapat menyalin");
-    }
-    return;
-  }
+  if (copyBtn) return copyText(copyBtn.dataset.copy);
 
   const playBtn = t.closest("[data-play]");
   if (playBtn) return togglePlay(playBtn);
@@ -517,22 +688,36 @@ viewLibrary.addEventListener("click", (e) => {
   if (btn) openReader(btn.dataset.openSurah, 1, false);
 });
 
+viewArbain.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-open-nawawi]");
+  if (btn) openNawawi(btn.dataset.openNawawi);
+});
+
 surahFilter.addEventListener("input", () => renderSurahs(surahFilter.value));
 
-reader.addEventListener("click", (e) => {
-  if (e.target.closest("[data-close]")) return closeReader();
+surahPlayBtn.addEventListener("click", toggleSurah);
 
-  const langBtn = e.target.closest("[data-lang]");
+reader.addEventListener("click", (e) => {
+  const t = e.target;
+  if (t.closest("[data-close]")) return closeReader();
+
+  const langBtn = t.closest("#lang-toggle [data-lang]");
   if (langBtn) {
     readerLang = langBtn.dataset.lang;
     storage.set("readerLang", readerLang);
     return applyReaderLang();
   }
 
-  const navBtn = e.target.closest("[data-open-surah]");
-  if (navBtn) return openReader(navBtn.dataset.openSurah, 1, false);
+  const surahNav = t.closest("[data-open-surah]");
+  if (surahNav) return openReader(surahNav.dataset.openSurah, 1, false);
 
-  const playBtn = e.target.closest("[data-play]");
+  const hadithNav = t.closest("[data-open-nawawi]");
+  if (hadithNav) return openNawawi(hadithNav.dataset.openNawawi);
+
+  const copyBtn = t.closest("[data-copy]");
+  if (copyBtn) return copyText(copyBtn.dataset.copy);
+
+  const playBtn = t.closest("[data-play]");
   if (playBtn) togglePlay(playBtn);
 });
 
@@ -542,8 +727,10 @@ document.addEventListener("keydown", (e) => {
     return;
   }
   if (e.key === "/" && reader.hidden && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
+    const view = currentView();
+    if (view === "arbain") return;
     e.preventDefault();
-    (location.hash === "#quran" ? surahFilter : input).focus();
+    (view === "library" ? surahFilter : input).focus();
   }
 });
 
@@ -574,6 +761,6 @@ updateThemeLabel();
 /* ---------- Mula ---------- */
 
 route();
+ensureSurahList().catch(() => {});   // juga "mengejutkan" pelayan dan menyediakan audio
 const initial = new URLSearchParams(window.location.search).get("q");
-if (initial && location.hash !== "#quran") run(initial);
-else fetch(`${API_BASE}/health`).catch(() => {});
+if (initial && currentView() === "search") run(initial);

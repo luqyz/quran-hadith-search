@@ -8,6 +8,7 @@ CORPUS_PATH = ROOT / "data" / "processed" / "corpus.parquet"
 INDEX_DIR = ROOT / "data" / "index"
 UNITS_PATH = INDEX_DIR / "units.parquet"
 SURAHS_PATH = ROOT / "data" / "processed" / "surahs.json"
+NAWAWI_PATH = ROOT / "data" / "processed" / "nawawi.json"
 MT_PATH = INDEX_DIR / "hadith_ms_mt_v2.parquet"
 MT_LANG = "ms_mt"   # unit terjemahan mesin: untuk BM25 sahaja, tidak di-embed
 DEFAULT_EMB_VARIANT = "ctx"

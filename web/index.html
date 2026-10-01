@@ -33,7 +33,8 @@
     <div class="topbar-right">
       <nav>
         <a href="#">Cari</a>
-        <a href="#quran">Baca Al-Quran</a>
+        <a href="#quran">Al-Quran</a>
+        <a href="#arbain">Hadis 40</a>
         <a href="#about" class="hide-sm">Tentang</a>
       </nav>
       <button type="button" id="theme-toggle" class="theme-btn" aria-label="Tukar tema">
@@ -102,6 +103,16 @@
       <div id="resume" class="resume" hidden></div>
       <div id="surah-grid" class="surah-grid"></div>
     </section>
+
+        <!-- ---------- Hadis 40 ---------- -->
+    <section id="view-arbain" class="library" hidden>
+      <header class="library-head">
+        <p class="eyebrow">Al-Arba'in an-Nawawiyyah</p>
+        <h1>Hadis <em>40</em> Imam an-Nawawi</h1>
+        <p class="lead">42 hadis asas yang dihimpunkan oleh Imam an-Nawawi, dengan teks Arab dan terjemahan Inggeris. Tajuk dalam Bahasa Melayu ialah ringkasan.</p>
+      </header>
+      <div id="arbain-grid" class="surah-grid"></div>
+    </section>
   </main>
 
   <footer id="about" class="footer">
@@ -109,8 +120,12 @@
       <h2>Tentang ayat.</h2>
       <p><strong>Penting:</strong> Ini ialah alat carian dan bacaan teks, bukan sumber tafsiran atau fatwa. Hasil carian dipilih secara automatik dan mungkin tidak lengkap atau kurang tepat. Rujuk ilmuwan yang berautoriti untuk memahami maksud dan hukum.</p>
       <p><strong>Cara carian berfungsi:</strong> carian hibrid yang menggabungkan padanan kata kunci (BM25) dan carian makna (embedding multilingual), dengan Al-Quran dan hadis dicari secara berasingan.</p>
-      <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari dan Sahih Muslim (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api. Audio bacaan: everyayah.com (Mishary Rashid Alafasy). Tafsir: Quran.com.</p>
-      <p><strong>Privasi:</strong> soalan carian dan maklum balas 👍/👎 direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
+            <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari, Sahih Muslim dan Hadis 40 Imam an-Nawawi (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api. Audio bacaan: Mishary Rashid Alafasy melalui alquran.cloud. Tafsir: Quran.com.</p>
+            <p><strong>Privasi:</strong> soalan carian dan maklum balas
+        <svg class="ico-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="berguna"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+        /
+        <svg class="ico-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="tidak berguna"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/></svg>
+        direkodkan tanpa maklumat peribadi untuk penambahbaikan sistem.</p>
     </div>
     <p class="fineprint">Dibina oleh <a href="https://github.com/luqyz" target="_blank" rel="noopener">luqyz</a> · Kod sumber terbuka di GitHub</p>
   </footer>
@@ -128,6 +143,7 @@
           <p id="reader-meta" class="muted"></p>
         </div>
         <div class="reader-tools">
+          <button type="button" id="surah-play" class="tool">▶ Main surah</button>
           <div class="seg" id="lang-toggle" role="group" aria-label="Pilih terjemahan">
             <button type="button" data-lang="ms">BM</button>
             <button type="button" data-lang="en">EN</button>
