@@ -95,11 +95,22 @@ STEM_SECTIONS = {"quran": True, "hadith": False}   # dikemas kini selepas eksper
 _stemmer = None
 
 
+# Kata dasar ejaan Malaysia (atau ejaan lama Basmeih) yang tiada dalam kamus Sastrawi (Indonesia)
+MALAY_ROOTS = [
+    "kahwin", "fikir", "faham", "fasal", "ubat", "wang", "sedar", "sihat", "derhaka",
+    "taubat", "solat", "wuduk", "redha", "jiran", "ugama", "halau", "hurai", "baiki",
+    "cuai", "rosak", "sesat", "takbur", "sombong", "musnah", "tipu", "bohong",
+]
+
+
 def _get_stemmer():
     global _stemmer
     if _stemmer is None:
+        from Sastrawi.Dictionary.ArrayDictionary import ArrayDictionary
+        from Sastrawi.Stemmer.Stemmer import Stemmer
         from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-        _stemmer = StemmerFactory().create_stemmer()
+        words = list(StemmerFactory().get_words()) + MALAY_ROOTS
+        _stemmer = Stemmer(ArrayDictionary(words))
     return _stemmer
 
 

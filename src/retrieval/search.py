@@ -172,7 +172,13 @@ class Searcher:
         if method == "hybrid":
             fused = np.zeros(len(doc_ids))
             for m in ("bm25", "dense"):
-                top = self._top(self.doc_scores(query, m, section), self.rrf_depth)
+                scores = self.doc_scores(query, m, section)
+                top = self._top(scores, self.rrf_depth)
+                # Hanya dokumen yang benar-benar padan menyumbang kepada RRF
+                valid = np.isfinite(scores[top])
+                if m == "bm25":
+                    valid &= scores[top] > 0
+                top = top[valid]
                 ranks = np.arange(1, len(top) + 1)
                 fused[top] += self.weights[m] / (self.rrf_k + ranks)
             idx = self._top(fused, k)
