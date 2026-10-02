@@ -816,6 +816,19 @@ details[open] summary::after { transform: rotate(90deg); }
 .reader[data-mode="nawawi"] #lang-toggle { display: none; }
 .reader[data-mode="nawawi"] .r-ayah { border-bottom: 0; }
 
+.lib-toggle { margin-top: 20px; }
+
+.r-surah-head {
+  margin: 26px 0 6px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-weight: 700;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.reader-body > .r-surah-head:first-child { margin-top: 12px; }
+
 /* ---------- Kaki halaman ---------- */
 .footer {
   width: min(1180px, 100%);

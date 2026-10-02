@@ -35,15 +35,18 @@ const surahGrid = $("#surah-grid");
 const surahFilter = $("#surah-filter");
 const resumeEl = $("#resume");
 const arbainGrid = $("#arbain-grid");
+const libToggle = $("#lib-toggle");
 
 let activeTab = "quran";
 let lastQuery = "";
 let surahList = null;
+let juzList = null;
 let nawawiList = null;
-let readerSurah = null;
-let readerName = "";
-let readerAyahCount = 0;
-let readerPos = 1;        // ayat semasa dalam pembaca (dari skrol atau audio)
+let libMode = "surah";
+
+// Unit bacaan semasa: { kind: "surah" | "juz", n, name, keys: ["s:a", ...] }
+let readerUnit = null;
+let readerPos = null;     // kunci "s:a" ayat semasa (dari skrol atau audio)
 
 const DEFAULT_K = 5;
 const MORE_K = 10;
@@ -60,6 +63,8 @@ const NOTICES = {
     "Sistem ini mencari teks Al-Quran dan hadis sahaja, jadi hasil di bawah mungkin tidak menjawab soalan tersebut.",
 };
 
+const BISMILLAH = `<p class="arabic bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>`;
+
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -70,6 +75,9 @@ const shorten = (s, n) => {
 };
 
 const revelationLabel = (r) => (r === "Meccan" ? "Makkiyah" : r === "Medinan" ? "Madaniyah" : "");
+
+const parseKey = (k) => String(k).split(":").map(Number);
+const unitId = (u) => (u ? `${u.kind}:${u.n}` : null);
 
 const storage = {
   get(key, fallback = null) {
@@ -85,7 +93,9 @@ const storage = {
   },
 };
 
-/* ---------- Senarai surah (dikongsi oleh perpustakaan & audio) ---------- */
+libMode = storage.get("libMode", "surah") === "juz" ? "juz" : "surah";
+
+/* ---------- Senarai surah (dikongsi oleh perpustakaan, juz & audio) ---------- */
 
 let surahListPromise = null;
 let ayahOffsets = null;
@@ -111,6 +121,8 @@ function ensureSurahList() {
   }
   return surahListPromise;
 }
+
+const surahMeta = (s) => (surahList && surahList[s - 1]) || { english_name: `Surah ${s}`, name_ar: "" };
 
 /* ---------- Kad hasil carian ---------- */
 
@@ -329,18 +341,35 @@ function run(q) {
 let saveTimer;
 let posObserver = null;
 
+function getLastRead() {
+  const last = storage.get("lastRead");
+  if (!last) return null;
+  if (last.kind) return last;
+  // Format lama: { s, name, a }
+  return { kind: "surah", n: last.s, name: last.name, key: `${last.s}:${last.a || 1}` };
+}
+
+function posLabel(key) {
+  if (!key || !readerUnit) return "";
+  const [s, a] = parseKey(key);
+  return readerUnit.kind === "surah" ? `ayat ${a}` : `${s}:${a}`;
+}
+
+const atStart = () => !readerUnit || !readerPos || readerPos === readerUnit.keys[0];
+
 function saveReadPos() {
-  if (!readerSurah) return;
+  if (!readerUnit) return;
+  const unit = readerUnit;
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
-    storage.set("lastRead", { s: readerSurah, name: readerName, a: readerPos });
+    storage.set("lastRead", { kind: unit.kind, n: unit.n, name: unit.name, key: readerPos });
     renderResume();
   }, 400);
 }
 
-function setReadPos(a) {
-  if (!readerSurah || a === readerPos) return;
-  readerPos = a;
+function setReadPos(key) {
+  if (!readerUnit || !key || key === readerPos) return;
+  readerPos = key;
   saveReadPos();
   updateSurahButton();
 }
@@ -349,11 +378,12 @@ function setReadPos(a) {
 function watchReadPos() {
   if (posObserver) posObserver.disconnect();
   posObserver = new IntersectionObserver((entries) => {
-    if (readerBody.scrollTop < 40) return setReadPos(1);
+    if (!readerUnit) return;
+    if (readerBody.scrollTop < 40) return setReadPos(readerUnit.keys[0]);
     const hit = entries.find((en) => en.isIntersecting);
-    if (hit) setReadPos(Number(hit.target.id.slice(2)));
+    if (hit) setReadPos(hit.target.dataset.key);
   }, { root: readerBody, rootMargin: "-45% 0px -45% 0px" });
-  readerBody.querySelectorAll(".r-ayah[id]").forEach((el) => posObserver.observe(el));
+  readerBody.querySelectorAll(".r-ayah[data-key]").forEach((el) => posObserver.observe(el));
 }
 
 function stopWatchReadPos() {
@@ -367,29 +397,30 @@ function stopWatchReadPos() {
 const AUDIO_BASE = "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
 
 let playingKey = null;   // "surah:ayat" yang sedang (atau terakhir) dimainkan
-let surahQueue = null;   // { s, total } bila memainkan seluruh surah; kekal semasa dijeda
+let queue = null;        // { unit: "surah:2" | "juz:1", keys: [...] }; kekal semasa dijeda
 
 function audioUrl(s, a) {
   return `${AUDIO_BASE}/${ayahOffsets[s - 1] + a}.mp3`;
 }
 
-function surahInProgress() {
-  return Boolean(surahQueue && playingKey && readerSurah) && surahQueue.s === readerSurah &&
-    Number(playingKey.split(":")[0]) === readerSurah;
+function inProgress() {
+  return Boolean(queue && playingKey && readerUnit) &&
+    queue.unit === unitId(readerUnit) && queue.keys.includes(playingKey);
 }
 
 function updateSurahButton() {
+  if (!readerUnit) return;
   const playing = Boolean(playingKey) && !player.paused;
-  const inSurah = surahInProgress();
-  const current = inSurah ? Number(playingKey.split(":")[1]) : null;
+  const active = inProgress();
+  const what = readerUnit.kind === "juz" ? "juz" : "surah";
 
-  if (inSurah) {
-    surahPlayBtn.textContent = playing ? "❚❚ Jeda" : `▶ Sambung (ayat ${current})`;
+  if (active) {
+    surahPlayBtn.textContent = playing ? "❚❚ Jeda" : `▶ Sambung (${posLabel(playingKey)})`;
   } else {
-    surahPlayBtn.textContent = readerPos > 1 ? `▶ Main dari ayat ${readerPos}` : "▶ Main surah";
+    surahPlayBtn.textContent = atStart() ? `▶ Main ${what}` : `▶ Main dari ${posLabel(readerPos)}`;
   }
-  surahPlayBtn.classList.toggle("is-playing", inSurah && playing);
-  surahRestartBtn.hidden = !(inSurah || readerPos > 1);
+  surahPlayBtn.classList.toggle("is-playing", active && playing);
+  surahRestartBtn.hidden = !(active || !atStart());
 }
 
 function updatePlayButtons() {
@@ -401,8 +432,8 @@ function updatePlayButtons() {
   });
 
   readerBody.querySelectorAll(".is-playing-ayah").forEach((el) => el.classList.remove("is-playing-ayah"));
-  if (surahInProgress()) {
-    const el = document.getElementById(`r-${playingKey.split(":")[1]}`);
+  if (inProgress()) {
+    const el = readerBody.querySelector(`[data-key="${playingKey}"]`);
     if (el) {
       el.classList.add("is-playing-ayah");
       if (playing) el.scrollIntoView({ block: "center", behavior: "smooth" });
@@ -419,11 +450,11 @@ async function playAyah(s, a) {
     return;
   }
   playingKey = `${s}:${a}`;
-  if (surahQueue && s === readerSurah) setReadPos(a);
+  if (queue && readerUnit && queue.unit === unitId(readerUnit)) setReadPos(playingKey);
   player.src = audioUrl(s, a);
   player.play().catch(() => {
     toast("Audio tidak dapat dimainkan");
-    surahQueue = null;
+    queue = null;
     updatePlayButtons();
   });
 }
@@ -434,57 +465,60 @@ function togglePlay(btn) {
     player.pause();
     return;
   }
-  surahQueue = null;
-  const [s, a] = key.split(":").map(Number);
+  queue = null;
+  const [s, a] = parseKey(key);
   playAyah(s, a);
 }
 
-function startSurah(fromAyah) {
-  if (!readerSurah) return;
-  surahQueue = { s: readerSurah, total: readerAyahCount };
-  playAyah(readerSurah, Math.min(Math.max(fromAyah, 1), readerAyahCount));
+function startQueue(fromKey) {
+  if (!readerUnit) return;
+  const key = readerUnit.keys.includes(fromKey) ? fromKey : readerUnit.keys[0];
+  queue = { unit: unitId(readerUnit), keys: readerUnit.keys };
+  const [s, a] = parseKey(key);
+  playAyah(s, a);
 }
 
-function toggleSurah() {
-  if (!readerSurah) return;
-  if (surahInProgress()) {
+function toggleQueue() {
+  if (!readerUnit) return;
+  if (inProgress()) {
     if (!player.paused) player.pause();                                     // jeda
     else player.play().catch(() => toast("Audio tidak dapat dimainkan"));    // sambung
     return;
   }
-  startSurah(readerPos);   // main dari ayat terakhir dibaca (ayat 1 jika baru)
+  startQueue(readerPos);   // main dari ayat terakhir dibaca (awal jika baru)
 }
 
-function restartSurah() {
-  startSurah(1);
+function restartQueue() {
+  if (readerUnit) startQueue(readerUnit.keys[0]);
 }
 
 function stopAudio() {
-  surahQueue = null;
+  queue = null;
   player.pause();
 }
 
 player.addEventListener("play", updatePlayButtons);
 player.addEventListener("pause", updatePlayButtons);
 player.addEventListener("ended", () => {
-  if (surahQueue && playingKey) {
-    const [s, a] = playingKey.split(":").map(Number);
-    if (s === surahQueue.s && a < surahQueue.total) {
-      playAyah(s, a + 1);
+  if (queue && playingKey) {
+    const i = queue.keys.indexOf(playingKey);
+    if (i >= 0 && i < queue.keys.length - 1) {
+      const [s, a] = parseKey(queue.keys[i + 1]);
+      playAyah(s, a);
       return;
     }
-    // Surah habis didengar: kedudukan kembali ke awal
-    if (s === readerSurah) {
-      surahQueue = null;
-      readerPos = 0;
-      setReadPos(1);
+    // Surah/juz habis didengar: kedudukan kembali ke awal
+    if (readerUnit && queue.unit === unitId(readerUnit)) {
+      queue = null;
+      readerPos = null;
+      setReadPos(readerUnit.keys[0]);
     }
   }
-  surahQueue = null;
+  queue = null;
   updatePlayButtons();
 });
 
-/* ---------- Pembaca (surah & hadis) ---------- */
+/* ---------- Pembaca (surah, juz & hadis) ---------- */
 
 let readerLang = storage.get("readerLang", "ms");
 
@@ -500,58 +534,87 @@ function showReader(mode) {
   document.body.classList.add("no-scroll");
 }
 
-async function openReader(s, a = 1, highlight = true) {
-  s = Number(s);
-  a = Number(a);
-  if (surahQueue && surahQueue.s !== s) stopAudio();
-  stopWatchReadPos();
-
-  showReader("quran");
-  applyReaderLang();
-  readerTitle.textContent = "Memuatkan surah...";
-  readerMeta.textContent = "";
-  readerBody.innerHTML = `<div class="card skeleton"><span></span><span></span><span class="short"></span></div>`;
-
-  try {
-    const res = await fetch(`${DATA_BASE}/surah/${s}.json`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    const m = data.surah || {};
-    readerSurah = s;
-    readerName = m.english_name || `Surah ${s}`;
-    readerAyahCount = data.ayahs.length;
-    readerTitle.innerHTML = `${s}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
-    readerMeta.textContent = [m.translation, revelationLabel(m.revelation), m.ayah_count && `${m.ayah_count} ayat`]
-      .filter(Boolean).join(" · ");
-
-    // Kedudukan awal: ayat sasaran dari carian, ayat yang dijeda, atau kedudukan tersimpan
-    const last = storage.get("lastRead");
-    const pausedAyah = surahInProgress() ? Number(playingKey.split(":")[1]) : null;
-    const savedAyah = last && last.s === s && last.a ? Number(last.a) : 1;
-    readerPos = Math.min(highlight ? a : (pausedAyah || savedAyah), readerAyahCount) || 1;
-
-    const bismillah = s !== 1 && s !== 9
-      ? `<p class="arabic bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>` : "";
-    const ayahs = data.ayahs.map((x) => `
-      <div class="r-ayah${highlight && x.ayah === a ? " is-target" : ""}" id="r-${x.ayah}">
+function ayahHtml(ayahs, kind, targetKey) {
+  let prevS = null;
+  return ayahs.map((x) => {
+    const key = `${x.s}:${x.a}`;
+    let head = "";
+    if (kind === "juz" && x.s !== prevS) {
+      const m = surahMeta(x.s);
+      head += `<div class="r-surah-head">${x.s}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span></div>`;
+    }
+    if (x.a === 1 && x.s !== 1 && x.s !== 9) head += BISMILLAH;
+    prevS = x.s;
+    return head + `
+      <div class="r-ayah${key === targetKey ? " is-target" : ""}" data-key="${key}">
         <div class="r-head">
           <span class="mini-ref">${esc(x.ref)}</span>
-          <button type="button" class="tool" data-play="${s}:${x.ayah}">▶ Dengar</button>
+          <button type="button" class="tool" data-play="${key}">▶ Dengar</button>
         </div>
         ${x.text_ar ? `<p class="arabic" lang="ar" dir="rtl">${esc(x.text_ar)}</p>` : ""}
         ${x.text_ms ? `<p class="main t-ms">${esc(x.text_ms)}</p>` : ""}
         ${x.text_en ? `<p class="sub t-en">${esc(x.text_en)}</p>` : ""}
-      </div>`).join("");
-    const nav = `
-      <nav class="r-nav">
-        ${s > 1 ? `<button type="button" class="tool" data-open-surah="${s - 1}">← Surah sebelum</button>` : "<span></span>"}
-        ${s < 114 ? `<button type="button" class="tool" data-open-surah="${s + 1}">Surah seterusnya →</button>` : ""}
-      </nav>`;
-    readerBody.innerHTML = bismillah + ayahs + nav;
+      </div>`;
+  }).join("");
+}
+
+function navHtml(kind, n) {
+  const max = kind === "juz" ? 30 : 114;
+  const label = kind === "juz" ? "Juz" : "Surah";
+  return `
+    <nav class="r-nav">
+      ${n > 1 ? `<button type="button" class="tool" data-open-${kind}="${n - 1}">← ${label} sebelum</button>` : "<span></span>"}
+      ${n < max ? `<button type="button" class="tool" data-open-${kind}="${n + 1}">${label} seterusnya →</button>` : ""}
+    </nav>`;
+}
+
+async function openUnit(kind, n, targetKey = null, highlight = false) {
+  n = Number(n);
+  if (queue && queue.unit !== `${kind}:${n}`) stopAudio();
+  stopWatchReadPos();
+
+  showReader("quran");
+  applyReaderLang();
+  readerTitle.textContent = kind === "juz" ? "Memuatkan juz..." : "Memuatkan surah...";
+  readerMeta.textContent = "";
+  readerBody.innerHTML = `<div class="card skeleton"><span></span><span></span><span class="short"></span></div>`;
+
+  try {
+    await ensureSurahList();
+    const res = await fetch(kind === "juz" ? `${DATA_BASE}/juz/${n}.json` : `${DATA_BASE}/surah/${n}.json`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const ayahs = kind === "juz" ? data.ayahs : data.ayahs.map((x) => ({ ...x, s: n, a: x.ayah }));
+    const keys = ayahs.map((x) => `${x.s}:${x.a}`);
+
+    if (kind === "surah") {
+      const m = data.surah || surahMeta(n);
+      readerUnit = { kind, n, name: m.english_name || `Surah ${n}`, keys };
+      readerTitle.innerHTML = `${n}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
+      readerMeta.textContent = [m.translation, revelationLabel(m.revelation), m.ayah_count && `${m.ayah_count} ayat`]
+        .filter(Boolean).join(" · ");
+    } else {
+      const first = ayahs[0];
+      const last = ayahs[ayahs.length - 1];
+      readerUnit = { kind, n, name: `Juz ${n}`, keys };
+      readerTitle.textContent = `Juz ${n}`;
+      readerMeta.textContent =
+        `${surahMeta(first.s).english_name} ${first.s}:${first.a} – ` +
+        `${surahMeta(last.s).english_name} ${last.s}:${last.a} · ${keys.length} ayat`;
+    }
+
+    // Kedudukan awal: ayat sasaran dari carian, ayat yang dijeda, atau kedudukan tersimpan
+    const saved = getLastRead();
+    const pausedKey = inProgress() ? playingKey : null;
+    const savedKey = saved && saved.kind === kind && Number(saved.n) === n ? saved.key : null;
+    const start = (highlight && targetKey) || pausedKey || savedKey;
+    readerPos = keys.includes(start) ? start : keys[0];
+
+    readerBody.innerHTML = ayahHtml(ayahs, kind, highlight ? targetKey : null) + navHtml(kind, n);
     updatePlayButtons();
     saveReadPos();
 
-    const target = readerPos > 1 ? document.getElementById(`r-${readerPos}`) : null;
+    const target = readerPos !== keys[0] ? readerBody.querySelector(`[data-key="${readerPos}"]`) : null;
     if (target) target.scrollIntoView({ block: "center" });
     else readerBody.scrollTop = 0;
 
@@ -559,8 +622,8 @@ async function openReader(s, a = 1, highlight = true) {
     requestAnimationFrame(() => requestAnimationFrame(watchReadPos));
   } catch (e) {
     console.error(e);
-    readerSurah = null;
-    readerTitle.textContent = "Gagal memuatkan surah";
+    readerUnit = null;
+    readerTitle.textContent = kind === "juz" ? "Gagal memuatkan juz" : "Gagal memuatkan surah";
     readerBody.innerHTML = `<p class="muted">Sila semak sambungan internet dan cuba lagi.</p>`;
   }
 }
@@ -569,9 +632,9 @@ function openNawawi(n) {
   n = Number(n);
   const h = nawawiList?.find((x) => x.number === n);
   if (!h) return;
-  if (surahQueue) stopAudio();
+  if (queue) stopAudio();
   stopWatchReadPos();
-  readerSurah = null;
+  readerUnit = null;
 
   showReader("nawawi");
   readerTitle.textContent = `Hadis ${n}: ${h.title_ms}`;
@@ -596,13 +659,13 @@ function openNawawi(n) {
 }
 
 function closeReader() {
-  if (surahQueue) player.pause();   // jeda sahaja, supaya boleh disambung bila surah dibuka semula
+  if (queue) player.pause();   // jeda sahaja, supaya boleh disambung bila dibuka semula
   stopWatchReadPos();
   reader.hidden = true;
   document.body.classList.remove("no-scroll");
 }
 
-/* ---------- Perpustakaan surah ---------- */
+/* ---------- Perpustakaan (surah & juz) ---------- */
 
 const normalize = (s) =>
   String(s ?? "").toLowerCase().replace(/[^a-z0-9]/g, "").replace(/(.)\1+/g, "$1").replace(/h$/, "");
@@ -627,32 +690,77 @@ function renderSurahs(filter = "") {
     </button>`).join("") : `<p class="muted">Tiada surah sepadan.</p>`;
 }
 
+function renderJuz(filter = "") {
+  if (!juzList) return;
+  const f = normalize(filter);
+  const items = juzList.filter((j) =>
+    !f || String(j.number) === filter.trim() ||
+    j.surahs.some((s) => normalize(surahMeta(s).english_name).includes(f)));
+  surahGrid.innerHTML = items.length ? items.map((j, i) => `
+    <button type="button" class="surah-card glass" data-open-juz="${j.number}" style="--i:${Math.min(i, 20)}">
+      <span class="surah-no"><span>${j.number}</span></span>
+      <span class="surah-names">
+        <strong>Juz ${j.number}</strong>
+        <span class="muted">${esc(j.start.name)} ${j.start.s}:${j.start.a} – ${esc(j.end.name)} ${j.end.s}:${j.end.a}</span>
+      </span>
+      <span class="surah-side">
+        <span class="muted">${j.ayah_count} ayat</span>
+      </span>
+    </button>`).join("") : `<p class="muted">Tiada juz sepadan.</p>`;
+}
+
+function renderLibrary() {
+  if (libMode === "juz") renderJuz(surahFilter.value);
+  else renderSurahs(surahFilter.value);
+}
+
+function applyLibMode() {
+  libToggle.querySelectorAll("[data-lib]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.lib === libMode)));
+  surahFilter.placeholder = libMode === "juz"
+    ? "Cari juz: nombor atau nama surah"
+    : "Cari surah: nama atau nombor";
+}
+
 function renderResume() {
-  const last = storage.get("lastRead");
+  const last = getLastRead();
   if (!last) {
     resumeEl.hidden = true;
     return;
   }
-  const ayah = last.a > 1 ? `, ayat ${last.a}` : "";
+  let pos = "";
+  if (last.key) {
+    const [s, a] = parseKey(last.key);
+    if (last.kind === "juz") pos = `, ${s}:${a}`;
+    else if (a > 1) pos = `, ayat ${a}`;
+  }
   resumeEl.hidden = false;
   resumeEl.innerHTML =
-    `<button type="button" class="resume-btn glass" data-open-surah="${last.s}">` +
-    `Sambung bacaan: <strong>${esc(last.name)}${ayah}</strong> →</button>`;
+    `<button type="button" class="resume-btn glass" data-resume>` +
+    `Sambung bacaan: <strong>${esc(last.name)}${pos}</strong> →</button>`;
 }
 
 async function loadLibrary() {
   renderResume();
-  if (surahList) {
-    renderSurahs(surahFilter.value);
+  applyLibMode();
+  const needSurahs = !surahList;
+  const needJuz = libMode === "juz" && !juzList;
+  if (!needSurahs && !needJuz) {
+    renderLibrary();
     return;
   }
   surahGrid.innerHTML = `<div class="card glass skeleton"><span></span><span class="short"></span></div>`.repeat(6);
   try {
     await ensureSurahList();
-    renderSurahs(surahFilter.value);
+    if (libMode === "juz" && !juzList) {
+      const res = await fetch(`${DATA_BASE}/juz.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      juzList = await res.json();
+    }
+    renderLibrary();
   } catch (e) {
     console.error(e);
-    surahGrid.innerHTML = `<p class="muted">Gagal memuatkan senarai surah. Sila semak sambungan internet dan muat semula halaman.</p>`;
+    surahGrid.innerHTML = `<p class="muted">Gagal memuatkan senarai. Sila semak sambungan internet dan muat semula halaman.</p>`;
   }
 }
 
@@ -770,8 +878,8 @@ resultsEl.addEventListener("click", (e) => {
 
   const readBtn = t.closest("[data-read]");
   if (readBtn) {
-    const [s, a] = readBtn.dataset.read.split(":");
-    return openReader(s, a, true);
+    const [s, a] = parseKey(readBtn.dataset.read);
+    return openUnit("surah", s, `${s}:${a}`, true);
   }
 
   const simBtn = t.closest("[data-similar]");
@@ -782,8 +890,28 @@ resultsEl.addEventListener("click", (e) => {
 });
 
 viewLibrary.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-open-surah]");
-  if (btn) openReader(btn.dataset.openSurah, 1, false);
+  const t = e.target;
+
+  const libBtn = t.closest("[data-lib]");
+  if (libBtn) {
+    if (libBtn.dataset.lib === libMode) return;
+    libMode = libBtn.dataset.lib;
+    storage.set("libMode", libMode);
+    surahFilter.value = "";
+    return loadLibrary();
+  }
+
+  if (t.closest("[data-resume]")) {
+    const last = getLastRead();
+    if (last) openUnit(last.kind, last.n);
+    return;
+  }
+
+  const surahBtn = t.closest("[data-open-surah]");
+  if (surahBtn) return openUnit("surah", surahBtn.dataset.openSurah);
+
+  const juzBtn = t.closest("[data-open-juz]");
+  if (juzBtn) return openUnit("juz", juzBtn.dataset.openJuz);
 });
 
 viewArbain.addEventListener("click", (e) => {
@@ -791,10 +919,10 @@ viewArbain.addEventListener("click", (e) => {
   if (btn) openNawawi(btn.dataset.openNawawi);
 });
 
-surahFilter.addEventListener("input", () => renderSurahs(surahFilter.value));
+surahFilter.addEventListener("input", renderLibrary);
 
-surahPlayBtn.addEventListener("click", toggleSurah);
-surahRestartBtn.addEventListener("click", restartSurah);
+surahPlayBtn.addEventListener("click", toggleQueue);
+surahRestartBtn.addEventListener("click", restartQueue);
 
 reader.addEventListener("click", (e) => {
   const t = e.target;
@@ -808,7 +936,10 @@ reader.addEventListener("click", (e) => {
   }
 
   const surahNav = t.closest("[data-open-surah]");
-  if (surahNav) return openReader(surahNav.dataset.openSurah, 1, false);
+  if (surahNav) return openUnit("surah", surahNav.dataset.openSurah);
+
+  const juzNav = t.closest("[data-open-juz]");
+  if (juzNav) return openUnit("juz", juzNav.dataset.openJuz);
 
   const hadithNav = t.closest("[data-open-nawawi]");
   if (hadithNav) return openNawawi(hadithNav.dataset.openNawawi);
