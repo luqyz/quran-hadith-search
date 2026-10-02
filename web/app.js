@@ -362,7 +362,10 @@ function saveReadPos() {
   const unit = readerUnit;
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
-    storage.set("lastRead", { kind: unit.kind, n: unit.n, name: unit.name, key: readerPos });
+    storage.set("lastRead", {
+      kind: unit.kind, n: unit.n, name: unit.name,
+      key: readerPos, page: unit.pages?.[readerPos] ?? null,
+    });
     renderResume();
   }, 400);
 }
@@ -534,17 +537,30 @@ function showReader(mode) {
   document.body.classList.add("no-scroll");
 }
 
+function pageRange(ayahs) {
+  const pages = ayahs.map((x) => x.page).filter(Boolean);
+  if (!pages.length) return "";
+  const lo = Math.min(...pages);
+  const hi = Math.max(...pages);
+  return lo === hi ? `Halaman ${lo}` : `Halaman ${lo}–${hi}`;
+}
+
 function ayahHtml(ayahs, kind, targetKey) {
   let prevS = null;
+  let prevPage = null;
   return ayahs.map((x) => {
     const key = `${x.s}:${x.a}`;
     let head = "";
+    if (x.page && x.page !== prevPage) {
+      head += `<div class="r-page"><span>Halaman ${x.page}</span></div>`;
+    }
     if (kind === "juz" && x.s !== prevS) {
       const m = surahMeta(x.s);
       head += `<div class="r-surah-head">${x.s}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span></div>`;
     }
     if (x.a === 1 && x.s !== 1 && x.s !== 9) head += BISMILLAH;
     prevS = x.s;
+    prevPage = x.page;
     return head + `
       <div class="r-ayah${key === targetKey ? " is-target" : ""}" data-key="${key}">
         <div class="r-head">
@@ -586,21 +602,24 @@ async function openUnit(kind, n, targetKey = null, highlight = false) {
     const data = await res.json();
     const ayahs = kind === "juz" ? data.ayahs : data.ayahs.map((x) => ({ ...x, s: n, a: x.ayah }));
     const keys = ayahs.map((x) => `${x.s}:${x.a}`);
+    const pages = Object.fromEntries(ayahs.map((x) => [`${x.s}:${x.a}`, x.page || null]));
+    const range = pageRange(ayahs);
 
     if (kind === "surah") {
       const m = data.surah || surahMeta(n);
-      readerUnit = { kind, n, name: m.english_name || `Surah ${n}`, keys };
+      readerUnit = { kind, n, name: m.english_name || `Surah ${n}`, keys, pages };
       readerTitle.innerHTML = `${n}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
-      readerMeta.textContent = [m.translation, revelationLabel(m.revelation), m.ayah_count && `${m.ayah_count} ayat`]
-        .filter(Boolean).join(" · ");
+      readerMeta.textContent = [m.translation, revelationLabel(m.revelation),
+        m.ayah_count && `${m.ayah_count} ayat`, range].filter(Boolean).join(" · ");
     } else {
       const first = ayahs[0];
       const last = ayahs[ayahs.length - 1];
-      readerUnit = { kind, n, name: `Juz ${n}`, keys };
+      readerUnit = { kind, n, name: `Juz ${n}`, keys, pages };
       readerTitle.textContent = `Juz ${n}`;
-      readerMeta.textContent =
-        `${surahMeta(first.s).english_name} ${first.s}:${first.a} – ` +
-        `${surahMeta(last.s).english_name} ${last.s}:${last.a} · ${keys.length} ayat`;
+      readerMeta.textContent = [
+        `${surahMeta(first.s).english_name} ${first.s}:${first.a} – ${surahMeta(last.s).english_name} ${last.s}:${last.a}`,
+        `${keys.length} ayat`, range,
+      ].filter(Boolean).join(" · ");
     }
 
     // Kedudukan awal: ayat sasaran dari carian, ayat yang dijeda, atau kedudukan tersimpan
@@ -734,10 +753,11 @@ function renderResume() {
     if (last.kind === "juz") pos = `, ${s}:${a}`;
     else if (a > 1) pos = `, ayat ${a}`;
   }
+  const page = last.page ? ` · Halaman ${last.page}` : "";
   resumeEl.hidden = false;
   resumeEl.innerHTML =
     `<button type="button" class="resume-btn glass" data-resume>` +
-    `Sambung bacaan: <strong>${esc(last.name)}${pos}</strong> →</button>`;
+    `Sambung bacaan: <strong>${esc(last.name)}${pos}</strong>${page} →</button>`;
 }
 
 async function loadLibrary() {

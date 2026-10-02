@@ -829,6 +829,26 @@ details[open] summary::after { transform: rotate(90deg); }
 }
 .reader-body > .r-surah-head:first-child { margin-top: 12px; }
 
+.r-page {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.r-page::before,
+.r-page::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--gold) 35%, transparent);
+}
+.reader-body > .r-page:first-child { margin-top: 10px; }
+
 /* ---------- Kaki halaman ---------- */
 .footer {
   width: min(1180px, 100%);
