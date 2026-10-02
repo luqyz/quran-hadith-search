@@ -2,7 +2,13 @@
   "hosting": {
     "target": "main",
     "public": "web",
-    "ignore": ["firebase.json", "**/.*"]
+    "ignore": ["firebase.json", "**/.*"],
+    "headers": [
+      {
+        "source": "/data/**",
+        "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+      }
+    ]
   },
   "firestore": {
     "rules": "firestore.rules"

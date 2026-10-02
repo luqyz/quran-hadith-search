@@ -812,6 +812,7 @@ details[open] summary::after { transform: rotate(90deg); }
 }
 
 .reader[data-mode="nawawi"] #surah-play,
+.reader[data-mode="nawawi"] #surah-restart,
 .reader[data-mode="nawawi"] #lang-toggle { display: none; }
 .reader[data-mode="nawawi"] .r-ayah { border-bottom: 0; }
 

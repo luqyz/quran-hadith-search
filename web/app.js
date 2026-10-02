@@ -27,6 +27,7 @@ const readerMeta = $("#reader-meta");
 const readerBody = $("#reader-body");
 const langToggle = $("#lang-toggle");
 const surahPlayBtn = $("#surah-play");
+const surahRestartBtn = $("#surah-restart");
 const viewSearch = $("#view-search");
 const viewLibrary = $("#view-library");
 const viewArbain = $("#view-arbain");
@@ -40,10 +41,15 @@ let lastQuery = "";
 let surahList = null;
 let nawawiList = null;
 let readerSurah = null;
+let readerName = "";
 let readerAyahCount = 0;
+let readerPos = 1;        // ayat semasa dalam pembaca (dari skrol atau audio)
 
 const DEFAULT_K = 5;
 const MORE_K = 10;
+
+// Data bacaan dihidangkan sebagai fail statik oleh Firebase Hosting (dijana oleh scripts/export_static.py)
+const DATA_BASE = "data";
 
 const NOTICES = {
   fatwa:
@@ -87,7 +93,7 @@ let ayahOffsets = null;
 function ensureSurahList() {
   if (surahList) return Promise.resolve(surahList);
   if (!surahListPromise) {
-    surahListPromise = fetch(`${API_BASE}/surahs`)
+    surahListPromise = fetch(`${DATA_BASE}/surahs.json`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
@@ -318,16 +324,72 @@ function run(q) {
   search(q);
 }
 
+/* ---------- Kedudukan bacaan (disimpan dalam pelayar) ---------- */
+
+let saveTimer;
+let posObserver = null;
+
+function saveReadPos() {
+  if (!readerSurah) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    storage.set("lastRead", { s: readerSurah, name: readerName, a: readerPos });
+    renderResume();
+  }, 400);
+}
+
+function setReadPos(a) {
+  if (!readerSurah || a === readerPos) return;
+  readerPos = a;
+  saveReadPos();
+  updateSurahButton();
+}
+
+// Ikut ayat yang berada di tengah skrin semasa pengguna membaca
+function watchReadPos() {
+  if (posObserver) posObserver.disconnect();
+  posObserver = new IntersectionObserver((entries) => {
+    if (readerBody.scrollTop < 40) return setReadPos(1);
+    const hit = entries.find((en) => en.isIntersecting);
+    if (hit) setReadPos(Number(hit.target.id.slice(2)));
+  }, { root: readerBody, rootMargin: "-45% 0px -45% 0px" });
+  readerBody.querySelectorAll(".r-ayah[id]").forEach((el) => posObserver.observe(el));
+}
+
+function stopWatchReadPos() {
+  if (posObserver) posObserver.disconnect();
+  posObserver = null;
+}
+
 /* ---------- Audio ---------- */
 
 // Nombor ayat global (1–6236) diperlukan oleh CDN audio
 const AUDIO_BASE = "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
 
-let playingKey = null;   // "surah:ayat" yang sedang dimainkan
-let surahQueue = null;   // { s, total } bila memainkan seluruh surah
+let playingKey = null;   // "surah:ayat" yang sedang (atau terakhir) dimainkan
+let surahQueue = null;   // { s, total } bila memainkan seluruh surah; kekal semasa dijeda
 
 function audioUrl(s, a) {
   return `${AUDIO_BASE}/${ayahOffsets[s - 1] + a}.mp3`;
+}
+
+function surahInProgress() {
+  return Boolean(surahQueue && playingKey && readerSurah) && surahQueue.s === readerSurah &&
+    Number(playingKey.split(":")[0]) === readerSurah;
+}
+
+function updateSurahButton() {
+  const playing = Boolean(playingKey) && !player.paused;
+  const inSurah = surahInProgress();
+  const current = inSurah ? Number(playingKey.split(":")[1]) : null;
+
+  if (inSurah) {
+    surahPlayBtn.textContent = playing ? "❚❚ Jeda" : `▶ Sambung (ayat ${current})`;
+  } else {
+    surahPlayBtn.textContent = readerPos > 1 ? `▶ Main dari ayat ${readerPos}` : "▶ Main surah";
+  }
+  surahPlayBtn.classList.toggle("is-playing", inSurah && playing);
+  surahRestartBtn.hidden = !(inSurah || readerPos > 1);
 }
 
 function updatePlayButtons() {
@@ -339,16 +401,14 @@ function updatePlayButtons() {
   });
 
   readerBody.querySelectorAll(".is-playing-ayah").forEach((el) => el.classList.remove("is-playing-ayah"));
-  const surahOn = playing && surahQueue && surahQueue.s === readerSurah;
-  if (surahOn) {
+  if (surahInProgress()) {
     const el = document.getElementById(`r-${playingKey.split(":")[1]}`);
     if (el) {
       el.classList.add("is-playing-ayah");
-      el.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (playing) el.scrollIntoView({ block: "center", behavior: "smooth" });
     }
   }
-  surahPlayBtn.textContent = surahOn ? "❚❚ Henti surah" : "▶ Main surah";
-  surahPlayBtn.classList.toggle("is-playing", Boolean(surahOn));
+  updateSurahButton();
 }
 
 async function playAyah(s, a) {
@@ -359,6 +419,7 @@ async function playAyah(s, a) {
     return;
   }
   playingKey = `${s}:${a}`;
+  if (surahQueue && s === readerSurah) setReadPos(a);
   player.src = audioUrl(s, a);
   player.play().catch(() => {
     toast("Audio tidak dapat dimainkan");
@@ -378,15 +439,24 @@ function togglePlay(btn) {
   playAyah(s, a);
 }
 
-function toggleSurah() {
-  if (surahQueue && !player.paused) {
-    surahQueue = null;
-    player.pause();
-    return;
-  }
+function startSurah(fromAyah) {
   if (!readerSurah) return;
   surahQueue = { s: readerSurah, total: readerAyahCount };
-  playAyah(readerSurah, 1);
+  playAyah(readerSurah, Math.min(Math.max(fromAyah, 1), readerAyahCount));
+}
+
+function toggleSurah() {
+  if (!readerSurah) return;
+  if (surahInProgress()) {
+    if (!player.paused) player.pause();                                     // jeda
+    else player.play().catch(() => toast("Audio tidak dapat dimainkan"));    // sambung
+    return;
+  }
+  startSurah(readerPos);   // main dari ayat terakhir dibaca (ayat 1 jika baru)
+}
+
+function restartSurah() {
+  startSurah(1);
 }
 
 function stopAudio() {
@@ -402,6 +472,12 @@ player.addEventListener("ended", () => {
     if (s === surahQueue.s && a < surahQueue.total) {
       playAyah(s, a + 1);
       return;
+    }
+    // Surah habis didengar: kedudukan kembali ke awal
+    if (s === readerSurah) {
+      surahQueue = null;
+      readerPos = 0;
+      setReadPos(1);
     }
   }
   surahQueue = null;
@@ -428,6 +504,7 @@ async function openReader(s, a = 1, highlight = true) {
   s = Number(s);
   a = Number(a);
   if (surahQueue && surahQueue.s !== s) stopAudio();
+  stopWatchReadPos();
 
   showReader("quran");
   applyReaderLang();
@@ -436,15 +513,22 @@ async function openReader(s, a = 1, highlight = true) {
   readerBody.innerHTML = `<div class="card skeleton"><span></span><span></span><span class="short"></span></div>`;
 
   try {
-    const res = await fetch(`${API_BASE}/surah/${s}`);
+    const res = await fetch(`${DATA_BASE}/surah/${s}.json`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const m = data.surah || {};
     readerSurah = s;
+    readerName = m.english_name || `Surah ${s}`;
     readerAyahCount = data.ayahs.length;
     readerTitle.innerHTML = `${s}. ${esc(m.english_name)} <span class="ar-name" lang="ar">${esc(m.name_ar)}</span>`;
     readerMeta.textContent = [m.translation, revelationLabel(m.revelation), m.ayah_count && `${m.ayah_count} ayat`]
       .filter(Boolean).join(" · ");
+
+    // Kedudukan awal: ayat sasaran dari carian, ayat yang dijeda, atau kedudukan tersimpan
+    const last = storage.get("lastRead");
+    const pausedAyah = surahInProgress() ? Number(playingKey.split(":")[1]) : null;
+    const savedAyah = last && last.s === s && last.a ? Number(last.a) : 1;
+    readerPos = Math.min(highlight ? a : (pausedAyah || savedAyah), readerAyahCount) || 1;
 
     const bismillah = s !== 1 && s !== 9
       ? `<p class="arabic bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>` : "";
@@ -465,18 +549,19 @@ async function openReader(s, a = 1, highlight = true) {
       </nav>`;
     readerBody.innerHTML = bismillah + ayahs + nav;
     updatePlayButtons();
+    saveReadPos();
 
-    storage.set("lastRead", { s, name: m.english_name || `Surah ${s}` });
-    renderResume();
-
-    const target = highlight ? document.getElementById(`r-${a}`) : null;
+    const target = readerPos > 1 ? document.getElementById(`r-${readerPos}`) : null;
     if (target) target.scrollIntoView({ block: "center" });
     else readerBody.scrollTop = 0;
+
+    // Mula mengikut skrol selepas skrol awal selesai
+    requestAnimationFrame(() => requestAnimationFrame(watchReadPos));
   } catch (e) {
     console.error(e);
     readerSurah = null;
     readerTitle.textContent = "Gagal memuatkan surah";
-    readerBody.innerHTML = `<p class="muted">Sila cuba lagi sebentar lagi.</p>`;
+    readerBody.innerHTML = `<p class="muted">Sila semak sambungan internet dan cuba lagi.</p>`;
   }
 }
 
@@ -485,6 +570,7 @@ function openNawawi(n) {
   const h = nawawiList?.find((x) => x.number === n);
   if (!h) return;
   if (surahQueue) stopAudio();
+  stopWatchReadPos();
   readerSurah = null;
 
   showReader("nawawi");
@@ -510,7 +596,8 @@ function openNawawi(n) {
 }
 
 function closeReader() {
-  if (surahQueue) stopAudio();
+  if (surahQueue) player.pause();   // jeda sahaja, supaya boleh disambung bila surah dibuka semula
+  stopWatchReadPos();
   reader.hidden = true;
   document.body.classList.remove("no-scroll");
 }
@@ -546,10 +633,11 @@ function renderResume() {
     resumeEl.hidden = true;
     return;
   }
+  const ayah = last.a > 1 ? `, ayat ${last.a}` : "";
   resumeEl.hidden = false;
   resumeEl.innerHTML =
     `<button type="button" class="resume-btn glass" data-open-surah="${last.s}">` +
-    `Sambung bacaan: <strong>${esc(last.name)}</strong> →</button>`;
+    `Sambung bacaan: <strong>${esc(last.name)}${ayah}</strong> →</button>`;
 }
 
 async function loadLibrary() {
@@ -564,7 +652,7 @@ async function loadLibrary() {
     renderSurahs(surahFilter.value);
   } catch (e) {
     console.error(e);
-    surahGrid.innerHTML = `<p class="muted">Gagal memuatkan senarai surah. Pelayan mungkin sedang dimulakan; cuba lagi sebentar lagi.</p>`;
+    surahGrid.innerHTML = `<p class="muted">Gagal memuatkan senarai surah. Sila semak sambungan internet dan muat semula halaman.</p>`;
   }
 }
 
@@ -588,13 +676,13 @@ async function loadArbain() {
   }
   arbainGrid.innerHTML = `<div class="card glass skeleton"><span></span><span class="short"></span></div>`.repeat(6);
   try {
-    const res = await fetch(`${API_BASE}/nawawi`);
+    const res = await fetch(`${DATA_BASE}/nawawi.json`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     nawawiList = await res.json();
     renderArbain();
   } catch (e) {
     console.error(e);
-    arbainGrid.innerHTML = `<p class="muted">Gagal memuatkan Hadis 40. Pelayan mungkin sedang dimulakan; cuba lagi sebentar lagi.</p>`;
+    arbainGrid.innerHTML = `<p class="muted">Gagal memuatkan Hadis 40. Sila semak sambungan internet dan muat semula halaman.</p>`;
   }
 }
 
@@ -706,6 +794,7 @@ viewArbain.addEventListener("click", (e) => {
 surahFilter.addEventListener("input", () => renderSurahs(surahFilter.value));
 
 surahPlayBtn.addEventListener("click", toggleSurah);
+surahRestartBtn.addEventListener("click", restartSurah);
 
 reader.addEventListener("click", (e) => {
   const t = e.target;
@@ -771,6 +860,7 @@ updateThemeLabel();
 /* ---------- Mula ---------- */
 
 route();
-ensureSurahList().catch(() => {});   // juga "mengejutkan" pelayan dan menyediakan audio
+ensureSurahList().catch(() => {});            // sediakan audio & perpustakaan (fail statik)
+fetch(`${API_BASE}/health`).catch(() => {});  // "kejutkan" pelayan carian lebih awal
 const initial = new URLSearchParams(window.location.search).get("q");
 if (initial && currentView() === "search") run(initial);
