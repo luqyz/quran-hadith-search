@@ -963,7 +963,7 @@ async function loadMathurat() {
     mathurat = await res.json();
     if (mathurat.source) {
       $("#mathurat-source").textContent =
-        `Zikir dan doa pagi dan petang himpunan Imam Hasan al-Banna. Rujukan teks: ${mathurat.source}.`;
+        `Zikir dan doa pagi dan petang himpunan Imam Hasan al-Banna.`;
     }
     renderMathurat();
   } catch (e) {
