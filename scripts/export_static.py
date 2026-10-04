@@ -16,6 +16,7 @@ from common import CORPUS_PATH, NAWAWI_PATH, ROOT, SURAHS_PATH
 
 OUT_DIR = ROOT / "web" / "data"
 RAW_AR = ROOT / "data" / "raw" / "quran" / "quran-simple.json"   # mengandungi juz & halaman setiap ayat
+MATHURAT_SRC = ROOT / "content" / "mathurat.json"
 
 
 def clean(value):
@@ -38,6 +39,44 @@ def load_ayah_meta() -> dict:
     return {(s["number"], a["numberInSurah"]): (a["juz"], a["page"])
             for s in obj["surahs"] for a in s["ayahs"]}
 
+def parse_ref(ref: str):
+    """'2:255-257' -> (2, 255, 257); '1:1' -> (1, 1, 1)."""
+    s, rest = ref.split(":")
+    a1, _, a2 = rest.partition("-")
+    return int(s), int(a1), int(a2 or a1)
+
+
+def build_mathurat(by_surah: dict) -> None:
+    if not MATHURAT_SRC.exists():
+        print("Tiada content/mathurat.json; Al-Ma'thurat dilangkau.")
+        return
+    with open(MATHURAT_SRC, encoding="utf-8") as f:
+        src = json.load(f)
+
+    ids = [it["id"] for it in src["items"]]
+    dupes = {i for i in ids if ids.count(i) > 1}
+    assert not dupes, f"id berulang dalam mathurat.json: {dupes}"
+
+    items, skipped = [], []
+    for it in src["items"]:
+        it = {**it, "repeat": int(it.get("repeat", 1))}
+        if it["type"] == "quran":
+            s, a1, a2 = parse_ref(it["ref"])
+            ayahs = [x for x in by_surah[s] if a1 <= x["ayah"] <= a2]
+            assert len(ayahs) == a2 - a1 + 1, f"Rujukan tak sah: {it['ref']}"
+            it["ayahs"] = [{"key": f"{s}:{x['ayah']}", "ref": x["ref"],
+                            "text_ar": x["text_ar"], "text_ms": x["text_ms"]} for x in ayahs]
+        else:
+            text = str(it.get("text_ar", "")).strip()
+            if not text or text.startswith("ISI"):
+                skipped.append(it["id"])
+                continue
+        items.append(it)
+
+    write_json(OUT_DIR / "mathurat.json",
+               {"title": src.get("title"), "source": src.get("source"), "items": items})
+    print(f"Al-Ma'thurat: {len(items)} item diterbitkan"
+          + (f"; belum diisi (dilangkau): {', '.join(skipped)}" if skipped else ""))
 
 def main() -> None:
     with open(SURAHS_PATH, encoding="utf-8") as f:
@@ -61,6 +100,7 @@ def main() -> None:
 
     for s, ayahs in by_surah.items():
         write_json(OUT_DIR / "surah" / f"{s}.json", {"surah": meta.get(s), "ayahs": ayahs})
+        build_mathurat(by_surah)
 
     juz_list = []
     for j in sorted(by_juz):

@@ -849,6 +849,74 @@ details[open] summary::after { transform: rotate(90deg); }
 }
 .reader-body > .r-page:first-child { margin-top: 10px; }
 
+/* ---------- Al-Ma'thurat ---------- */
+.m-progress {
+  position: sticky;
+  top: 76px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 760px;
+  margin: 0 auto 16px;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+.m-bar {
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 20%, transparent);
+}
+.m-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.3s ease;
+}
+.m-progress .muted { font-size: 0.82rem; white-space: nowrap; }
+
+.m-list { max-width: 760px; margin: 0 auto; }
+.m-ayah + .m-ayah {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--muted) 12%, transparent);
+}
+.m-count {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 700;
+  color: var(--on-accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  transition: transform 0.1s ease;
+}
+.m-count:active { transform: scale(0.98); }
+.m-card.is-done { opacity: 0.6; }
+.m-card.is-done .m-count {
+  cursor: default;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+}
+
+.m-card .arabic { text-align: justify; text-align-last: start; }
+.m-passage { line-height: 2.3; }
+.m-num { font-size: 0.85em; color: var(--accent); }
+.m-span { border-radius: 6px; transition: background-color 0.2s ease; }
+.m-span.is-reading { background: color-mix(in srgb, var(--gold) 22%, transparent); }
+
+@media (max-width: 640px) {
+  .topbar nav a { margin-left: 10px; font-size: 0.82rem; }
+  .brand { font-size: 1.2rem; }
+}
+
 /* ---------- Kaki halaman ---------- */
 .footer {
   width: min(1180px, 100%);

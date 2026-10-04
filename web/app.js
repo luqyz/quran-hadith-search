@@ -31,6 +31,7 @@ const surahRestartBtn = $("#surah-restart");
 const viewSearch = $("#view-search");
 const viewLibrary = $("#view-library");
 const viewArbain = $("#view-arbain");
+const viewMathurat = $("#view-mathurat");
 const surahGrid = $("#surah-grid");
 const surahFilter = $("#surah-filter");
 const resumeEl = $("#resume");
@@ -400,7 +401,7 @@ function stopWatchReadPos() {
 const AUDIO_BASE = "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
 
 let playingKey = null;   // "surah:ayat" yang sedang (atau terakhir) dimainkan
-let queue = null;        // { unit: "surah:2" | "juz:1", keys: [...] }; kekal semasa dijeda
+let queue = null;        // { unit: "surah:2" | "juz:1" | "mathurat:id", keys: [...] }; kekal semasa dijeda
 
 function audioUrl(s, a) {
   return `${AUDIO_BASE}/${ayahOffsets[s - 1] + a}.mp3`;
@@ -442,6 +443,20 @@ function updatePlayButtons() {
       if (playing) el.scrollIntoView({ block: "center", behavior: "smooth" });
     }
   }
+
+  // Al-Ma'thurat: satu butang untuk seluruh petikan, dan tonjolkan ayat yang sedang dibaca
+  const mUnit = queue && playingKey && queue.unit.startsWith("mathurat:") ? queue.unit.slice(9) : null;
+  document.querySelectorAll("[data-m-play]").forEach((b) => {
+    const mine = mUnit === b.dataset.mPlay && queue.keys.includes(playingKey);
+    b.textContent = mine ? (playing ? "❚❚ Jeda" : "▶ Sambung") : "▶ Dengar";
+    b.classList.toggle("is-playing", mine && playing);
+  });
+  document.querySelectorAll(".m-span.is-reading").forEach((el) => el.classList.remove("is-reading"));
+  if (mUnit) {
+    const el = document.querySelector(`[data-item="${CSS.escape(mUnit)}"] .m-span[data-mkey="${playingKey}"]`);
+    if (el) el.classList.add("is-reading");
+  }
+
   updateSurahButton();
 }
 
@@ -814,11 +829,179 @@ async function loadArbain() {
   }
 }
 
+/* ---------- Al-Ma'thurat ---------- */
+
+const mathuratList = $("#mathurat-list");
+const mathuratToggle = $("#mathurat-toggle");
+const mathuratProgress = $("#mathurat-progress");
+let mathurat = null;
+let mathuratTime = new Date().getHours() < 13 ? "pagi" : "petang";
+
+function todayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+// Kiraan disimpan berasingan untuk setiap hari dan sesi (pagi/petang)
+const countsKey = () => `mathurat:${todayStr()}:${mathuratTime}`;
+const getCounts = () => storage.get(countsKey(), {});
+const setCounts = (c) => storage.set(countsKey(), c);
+
+const mathuratItems = () =>
+  (mathurat?.items || []).filter((it) => !it.when || it.when === mathuratTime);
+
+const itemText = (it, field) =>
+  (mathuratTime === "petang" && it[`${field}_petang`]) || it[field] || "";
+
+function countLabel(n, repeat) {
+  if (n >= repeat) return "✓ Selesai";
+  return repeat === 1 ? "Tanda selesai" : `Ketuk · ${n}/${repeat}`;
+}
+
+const toArabicDigits = (n) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
+
+function mathuratCard(it, i, counts) {
+  const n = Math.min(counts[it.id] || 0, it.repeat);
+  const done = n >= it.repeat;
+  let body;
+  if (it.type === "quran") {
+    const ar = it.ayahs.map((x) => {
+      const a = x.key.split(":")[1];
+      return `<span class="m-span" data-mkey="${x.key}">${esc(x.text_ar)} <span class="m-num">﴿${toArabicDigits(a)}﴾</span></span>`;
+    }).join(" ");
+    const ms = it.ayahs.filter((x) => x.text_ms)
+      .map((x) => `(${x.key.split(":")[1]}) ${esc(x.text_ms)}`).join(" ");
+    body = `
+      <p class="arabic m-passage" lang="ar" dir="rtl">${ar}</p>
+      ${ms ? `<details><summary>Terjemahan</summary><p class="sub">${ms}</p></details>` : ""}
+      <div class="tools"><button type="button" class="tool" data-m-play="${esc(it.id)}">▶ Dengar</button></div>`;
+  } else {
+    const ar = itemText(it, "text_ar");
+    const ms = itemText(it, "text_ms");
+    body = (ar ? `<p class="arabic" lang="ar" dir="rtl">${esc(ar)}</p>` : "") +
+      (ms ? `<details><summary>Maksud</summary><p class="sub">${esc(ms)}</p></details>` : "");
+  }
+  return `
+    <article class="card glass m-card${done ? " is-done" : ""}" style="--i:${Math.min(i, 20)}" data-item="${esc(it.id)}">
+      <div class="card-top">
+        <span class="pill">${i + 1}. ${esc(it.title)}</span>
+        ${it.repeat > 1 ? `<span class="badge">${it.repeat}×</span>` : ""}
+      </div>
+      ${body}
+      ${it.note ? `<p class="note">${esc(it.note)}</p>` : ""}
+      <button type="button" class="m-count" data-count="${esc(it.id)}"${done ? " disabled" : ""}>${countLabel(n, it.repeat)}</button>
+    </article>`;
+}
+
+function updateMathuratProgress() {
+  const items = mathuratItems();
+  const counts = getCounts();
+  const done = items.filter((it) => (counts[it.id] || 0) >= it.repeat).length;
+  const pct = items.length ? (done / items.length) * 100 : 0;
+  mathuratProgress.innerHTML = `
+    <div class="m-bar"><span style="width:${pct}%"></span></div>
+    <span class="muted">${done}/${items.length} selesai</span>
+    <button type="button" class="tool" data-m-reset>↺ Set semula</button>`;
+}
+
+function renderMathurat() {
+  if (!mathurat) return;
+  mathuratToggle.querySelectorAll("[data-time]").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.time === mathuratTime)));
+  const items = mathuratItems();
+  const counts = getCounts();
+  mathuratList.innerHTML = items.length
+    ? items.map((it, i) => mathuratCard(it, i, counts)).join("")
+    : `<p class="muted">Tiada item untuk sesi ini.</p>`;
+  updateMathuratProgress();
+  updatePlayButtons();
+}
+
+function tapCount(id) {
+  const it = mathuratItems().find((x) => x.id === id);
+  if (!it) return;
+  const counts = getCounts();
+  const n = Math.min((counts[id] || 0) + 1, it.repeat);
+  counts[id] = n;
+  setCounts(counts);
+  navigator.vibrate?.(10);
+
+  const card = mathuratList.querySelector(`[data-item="${CSS.escape(id)}"]`);
+  const btn = card.querySelector("[data-count]");
+  btn.textContent = countLabel(n, it.repeat);
+  if (n >= it.repeat) {
+    card.classList.add("is-done");
+    btn.disabled = true;
+    const next = card.nextElementSibling;
+    if (next) next.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+  updateMathuratProgress();
+}
+
+function toggleMathuratPlay(id) {
+  const it = mathuratItems().find((x) => x.id === id);
+  if (!it || it.type !== "quran") return;
+  const unit = `mathurat:${id}`;
+  if (queue && queue.unit === unit && queue.keys.includes(playingKey)) {
+    if (!player.paused) player.pause();                                     // jeda
+    else player.play().catch(() => toast("Audio tidak dapat dimainkan"));    // sambung
+    return;
+  }
+  const keys = it.ayahs.map((x) => x.key);
+  queue = { unit, keys };            // dimainkan berturut-turut oleh pengendali "ended"
+  const [s, a] = parseKey(keys[0]);
+  playAyah(s, a);
+}
+
+async function loadMathurat() {
+  if (mathurat) return renderMathurat();
+  mathuratList.innerHTML = `<div class="card glass skeleton"><span></span><span></span><span class="short"></span></div>`.repeat(3);
+  try {
+    await ensureSurahList();   // untuk audio
+    const res = await fetch(`${DATA_BASE}/mathurat.json`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    mathurat = await res.json();
+    if (mathurat.source) {
+      $("#mathurat-source").textContent =
+        `Zikir dan doa pagi dan petang himpunan Imam Hasan al-Banna. Rujukan teks: ${mathurat.source}.`;
+    }
+    renderMathurat();
+  } catch (e) {
+    console.error(e);
+    mathuratList.innerHTML = `<p class="muted">Gagal memuatkan Al-Ma'thurat. Sila semak sambungan internet dan muat semula halaman.</p>`;
+  }
+}
+
+viewMathurat.addEventListener("click", (e) => {
+  const t = e.target;
+
+  const timeBtn = t.closest("[data-time]");
+  if (timeBtn) {
+    mathuratTime = timeBtn.dataset.time;
+    return renderMathurat();
+  }
+
+  if (t.closest("[data-m-reset]")) {
+    setCounts({});
+    return renderMathurat();
+  }
+
+  const countBtn = t.closest("[data-count]");
+  if (countBtn) return tapCount(countBtn.dataset.count);
+
+  const mPlay = t.closest("[data-m-play]");
+  if (mPlay) return toggleMathuratPlay(mPlay.dataset.mPlay);
+
+  const playBtn = t.closest("[data-play]");
+  if (playBtn) togglePlay(playBtn);
+});
+
 /* ---------- Navigasi ---------- */
 
 function currentView() {
   if (location.hash === "#quran") return "library";
   if (location.hash === "#arbain") return "arbain";
+  if (location.hash === "#mathurat") return "mathurat";
   return "search";
 }
 
@@ -827,8 +1010,10 @@ function route() {
   viewSearch.hidden = view !== "search";
   viewLibrary.hidden = view !== "library";
   viewArbain.hidden = view !== "arbain";
+  viewMathurat.hidden = view !== "mathurat";
   if (view === "library") loadLibrary();
   if (view === "arbain") loadArbain();
+  if (view === "mathurat") loadMathurat();
   if (view !== "search") window.scrollTo({ top: 0 });
 }
 
@@ -978,7 +1163,7 @@ document.addEventListener("keydown", (e) => {
   }
   if (e.key === "/" && reader.hidden && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
     const view = currentView();
-    if (view === "arbain") return;
+    if (view === "arbain" || view === "mathurat") return;
     e.preventDefault();
     (view === "library" ? surahFilter : input).focus();
   }

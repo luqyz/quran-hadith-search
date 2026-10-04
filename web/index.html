@@ -35,6 +35,7 @@
         <a href="#">Cari</a>
         <a href="#quran">Al-Quran</a>
         <a href="#arbain">Hadis 40</a>
+        <a href="#mathurat">Ma'thurat</a>
         <a href="#about" class="hide-sm">Tentang</a>
       </nav>
       <button type="button" id="theme-toggle" class="theme-btn" aria-label="Tukar tema">
@@ -117,6 +118,21 @@
       </header>
       <div id="arbain-grid" class="surah-grid"></div>
     </section>
+
+        <!-- ---------- Al-Ma'thurat ---------- -->
+    <section id="view-mathurat" class="library" hidden>
+      <header class="library-head">
+        <p class="eyebrow">Wazifah Sughra</p>
+        <h1>Al-<em>Ma'thurat</em></h1>
+        <p class="lead" id="mathurat-source">Zikir dan doa pagi dan petang.</p>
+        <div class="seg lib-toggle" id="mathurat-toggle" role="group" aria-label="Pagi atau petang">
+          <button type="button" data-time="pagi">Pagi</button>
+          <button type="button" data-time="petang">Petang</button>
+        </div>
+      </header>
+      <div id="mathurat-progress" class="m-progress glass"></div>
+      <div id="mathurat-list" class="m-list"></div>
+    </section>
   </main>
 
   <footer id="about" class="footer">
@@ -124,7 +140,7 @@
       <h2>Tentang ayat.</h2>
       <p><strong>Penting:</strong> Ini ialah alat carian dan bacaan teks, bukan sumber tafsiran atau fatwa. Hasil carian dipilih secara automatik dan mungkin tidak lengkap atau kurang tepat. Rujuk ilmuwan yang berautoriti untuk memahami maksud dan hukum.</p>
       <p><strong>Cara carian berfungsi:</strong> carian hibrid yang menggabungkan padanan kata kunci (BM25) dan carian makna (embedding multilingual), dengan Al-Quran dan hadis dicari secara berasingan.</p>
-            <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari, Sahih Muslim dan Hadis 40 Imam an-Nawawi (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api. Audio bacaan: Mishary Rashid Alafasy melalui alquran.cloud. Tafsir: Quran.com.</p>
+                  <p><strong>Sumber:</strong> teks dan terjemahan Al-Quran dari Tanzil.net melalui alquran.cloud (BM: Abdullah Basmeih; Inggeris: Sahih International). Hadis: Sahih al-Bukhari, Sahih Muslim dan Hadis 40 Imam an-Nawawi (teks Arab dan terjemahan Inggeris) melalui fawazahmed0/hadith-api. Al-Ma'thurat: teks zikir dan terjemahan dari <a href="https://github.com/litium/Mathurat" target="_blank" rel="noopener">litium/Mathurat</a>; ayat Al-Quran dari sumber di atas. Audio bacaan: Mishary Rashid Alafasy melalui alquran.cloud. Tafsir: Quran.com.</p>
             <p><strong>Privasi:</strong> soalan carian dan maklum balas
         <svg class="ico-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="berguna"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>
         /
